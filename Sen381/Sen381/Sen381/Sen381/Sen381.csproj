@@ -44,21 +44,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\Admin.cs" />
+    <Compile Include="Business\AuthService.cs" />
     <Compile Include="Business\ChatMessage.cs" />
     <Compile Include="Business\ChatSession.cs" />
+    <Compile Include="Business\ContentReport.cs" />
     <Compile Include="Business\EmailVerificationToken.cs" />
+    <Compile Include="Business\FAQItem.cs" />
     <Compile Include="Business\Forum.cs" />
+    <Compile Include="Business\ModerationAction.cs" />
     <Compile Include="Business\Notification.cs" />
     <Compile Include="Business\NotificationService.cs" />
     <Compile Include="Business\PasswordResetToken.cs" />
     <Compile Include="Business\PeerTutorProfile.cs" />
     <Compile Include="Business\Resources.cs" />
+    <Compile Include="Business\RetrievalService.cs" />
     <Compile Include="Business\Session.cs" />
+    <Compile Include="Business\StorageService.cs" />
     <Compile Include="Business\Student.cs" />
     <Compile Include="Business\StudentPreferences.cs" />
     <Compile Include="Business\StudentTopicFollow.cs" />
     <Compile Include="Business\Subject.cs" />
     <Compile Include="Business\Topic.cs" />
+    <Compile Include="Business\TutorEscalation.cs" />
     <Compile Include="Business\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
