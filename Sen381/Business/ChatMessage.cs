@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sen381.Business
 {
+    
     public class ChatMessage
     {
         // ---------- Fields ----------
