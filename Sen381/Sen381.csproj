@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BBC9AC06-2447-4672-B438-03D6A0E233A7}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Sen381</RootNamespace>
+    <AssemblyName>Sen381</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Business\Admin.cs" />
+    <Compile Include="Business\AuthService.cs" />
+    <Compile Include="Business\BotPolicy.cs" />
+    <Compile Include="Business\BotResponse.cs" />
+    <Compile Include="Business\BotService.cs" />
+    <Compile Include="Business\ChatMessage.cs" />
+    <Compile Include="Business\ChatSession.cs" />
+    <Compile Include="Business\ContentReport.cs" />
+    <Compile Include="Business\EmailService.cs" />
+    <Compile Include="Business\EmailVerificationToken.cs" />
+    <Compile Include="Business\FAQItem.cs" />
+    <Compile Include="Business\Forum.cs" />
+    <Compile Include="Business\HelpRequest.cs" />
+    <Compile Include="Business\ModerationAction.cs" />
+    <Compile Include="Business\Notification.cs" />
+    <Compile Include="Business\NotificationService.cs" />
+    <Compile Include="Business\PasswordResetToken.cs" />
+    <Compile Include="Business\PeerTutorProfile.cs" />
+    <Compile Include="Business\PrivateThread.cs" />
+    <Compile Include="Business\Resources.cs" />
+    <Compile Include="Business\RetrievalService.cs" />
+    <Compile Include="Business\Session.cs" />
+    <Compile Include="Business\StorageService.cs" />
+    <Compile Include="Business\Student.cs" />
+    <Compile Include="Business\StudentPreferences.cs" />
+    <Compile Include="Business\StudentTopicFollow.cs" />
+    <Compile Include="Business\Subject.cs" />
+    <Compile Include="Business\ThreadService.cs" />
+    <Compile Include="Business\Topic.cs" />
+    <Compile Include="Business\TutorEscalation.cs" />
+    <Compile Include="Business\TutorMatcher.cs" />
+    <Compile Include="Business\User.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data_Access\" />
+    <Folder Include="Presentation\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
