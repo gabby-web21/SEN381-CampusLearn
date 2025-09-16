@@ -1,0 +1,2 @@
+C:\Belgium Campus\2025 (3rd Year)\Classes\SEN381\Project code folder\Github repo\SEN381-CampusLearn\Sen381\obj\Debug\Sen381.csproj.AssemblyReference.cache
+C:\Belgium Campus\2025 (3rd Year)\Classes\SEN381\Project code folder\Github repo\SEN381-CampusLearn\Sen381\obj\Debug\Sen381.csproj.CoreCompileInputs.cache
