@@ -10,6 +10,7 @@ namespace Sen381
     {
         static void Main(string[] args)
         {
+            Console.ReadKey();
         }
     }
 }

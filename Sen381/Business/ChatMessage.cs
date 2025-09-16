@@ -6,11 +6,6 @@ using System.Threading.Tasks;
 
 namespace Sen381.Business
 {
-    public class SourceRef
-    {
-        public string Reference { get; set; }
-    }
-
     public class ChatMessage
     {
         // ---------- Fields ----------

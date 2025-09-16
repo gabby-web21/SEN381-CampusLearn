@@ -1,2 +1,9 @@
 C:\Belgium Campus\2025 (3rd Year)\Classes\SEN381\Project code folder\Github repo\SEN381-CampusLearn\Sen381\obj\Debug\Sen381.csproj.AssemblyReference.cache
 C:\Belgium Campus\2025 (3rd Year)\Classes\SEN381\Project code folder\Github repo\SEN381-CampusLearn\Sen381\obj\Debug\Sen381.csproj.CoreCompileInputs.cache
+C:\Users\xavie\OneDrive\Desktop\Repuh\SEN381-CampusLearn\Sen381\obj\Debug\Sen381.csproj.AssemblyReference.cache
+C:\Users\xavie\OneDrive\Desktop\Repuh\SEN381-CampusLearn\Sen381\obj\Debug\Sen381.csproj.CoreCompileInputs.cache
+C:\Users\xavie\OneDrive\Desktop\Repuh\SEN381-CampusLearn\Sen381\bin\Debug\Sen381.exe.config
+C:\Users\xavie\OneDrive\Desktop\Repuh\SEN381-CampusLearn\Sen381\bin\Debug\Sen381.exe
+C:\Users\xavie\OneDrive\Desktop\Repuh\SEN381-CampusLearn\Sen381\bin\Debug\Sen381.pdb
+C:\Users\xavie\OneDrive\Desktop\Repuh\SEN381-CampusLearn\Sen381\obj\Debug\Sen381.exe
+C:\Users\xavie\OneDrive\Desktop\Repuh\SEN381-CampusLearn\Sen381\obj\Debug\Sen381.pdb
