@@ -1,23 +1,24 @@
-﻿using System;
+﻿using Sen381.Data_Access;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Sen381.Data_Access;
+using static System.Net.WebRequestMethods;
 
 namespace Sen381
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            Console.WriteLine("Starting Supabase connection test...");
+            var supa = new SupaBaseAuthService();
 
-            var supabaseService = new SupaBaseAuthService();
-            supabaseService.TestConnection();
+            bool clientOk = await supa.TestConnectionAsync();
+            Console.WriteLine(clientOk ? "Connection succeeded" : "Connection failed");
 
-            Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
         }
+
     }
 }

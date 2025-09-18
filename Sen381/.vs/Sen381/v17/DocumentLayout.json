@@ -1,34 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\xavie\\OneDrive\\Desktop\\Repuh\\SEN381-CampusLearn\\Sen381\\",
+  "WorkspaceRootPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|c:\\users\\xavie\\onedrive\\desktop\\repuh\\sen381-campuslearn\\sen381\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|c:\\sen381 github repo\\sen381-campuslearn\\sen381\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|c:\\users\\xavie\\onedrive\\desktop\\repuh\\sen381-campuslearn\\sen381\\business\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|solutionrelative:business\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|c:\\sen381 github repo\\sen381-campuslearn\\sen381\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|solutionrelative:app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|C:\\Users\\xavie\\OneDrive\\Desktop\\Repuh\\SEN381-CampusLearn\\Sen381\\business\\forum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|solutionrelative:business\\forum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|C:\\Users\\xavie\\OneDrive\\Desktop\\Repuh\\SEN381-CampusLearn\\Sen381\\business\\helprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|solutionrelative:business\\helprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|C:\\Users\\xavie\\OneDrive\\Desktop\\Repuh\\SEN381-CampusLearn\\Sen381\\business\\faqitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|solutionrelative:business\\faqitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|c:\\users\\xavie\\onedrive\\desktop\\repuh\\sen381-campuslearn\\sen381\\business\\session.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|solutionrelative:business\\session.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|C:\\Users\\xavie\\OneDrive\\Desktop\\Repuh\\SEN381-CampusLearn\\Sen381\\business\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|solutionrelative:business\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|c:\\sen381 github repo\\sen381-campuslearn\\sen381\\data_access\\supabaseauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|solutionrelative:data_access\\supabaseauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,96 +22,61 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ChatMessage.cs",
-              "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Repuh\\SEN381-CampusLearn\\Sen381\\Business\\ChatMessage.cs",
-              "RelativeDocumentMoniker": "Business\\ChatMessage.cs",
-              "ToolTip": "C:\\Users\\xavie\\OneDrive\\Desktop\\Repuh\\SEN381-CampusLearn\\Sen381\\Business\\ChatMessage.cs",
-              "RelativeToolTip": "Business\\ChatMessage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-16T18:14:13.677Z",
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\App.config",
+              "RelativeDocumentMoniker": "App.config",
+              "ToolTip": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\App.config",
+              "RelativeToolTip": "App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-09-18T12:23:35.923Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Repuh\\SEN381-CampusLearn\\Sen381\\Program.cs",
+              "DocumentMoniker": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\xavie\\OneDrive\\Desktop\\Repuh\\SEN381-CampusLearn\\Sen381\\Program.cs",
+              "ToolTip": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-16T18:13:17.216Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Session.cs",
-              "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Repuh\\SEN381-CampusLearn\\Sen381\\Business\\Session.cs",
-              "RelativeDocumentMoniker": "Business\\Session.cs",
-              "ToolTip": "C:\\Users\\xavie\\OneDrive\\Desktop\\Repuh\\SEN381-CampusLearn\\Sen381\\Business\\Session.cs",
-              "RelativeToolTip": "Business\\Session.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-16T17:35:46.758Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Admin.cs",
-              "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Repuh\\SEN381-CampusLearn\\Sen381\\Business\\Admin.cs",
-              "RelativeDocumentMoniker": "Business\\Admin.cs",
-              "ToolTip": "C:\\Users\\xavie\\OneDrive\\Desktop\\Repuh\\SEN381-CampusLearn\\Sen381\\Business\\Admin.cs",
-              "RelativeToolTip": "Business\\Admin.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-16T17:35:39.519Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "HelpRequest.cs",
-              "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Repuh\\SEN381-CampusLearn\\Sen381\\Business\\HelpRequest.cs",
-              "RelativeDocumentMoniker": "Business\\HelpRequest.cs",
-              "ToolTip": "C:\\Users\\xavie\\OneDrive\\Desktop\\Repuh\\SEN381-CampusLearn\\Sen381\\Business\\HelpRequest.cs",
-              "RelativeToolTip": "Business\\HelpRequest.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABcAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-16T17:33:18.807Z",
+              "WhenOpened": "2025-09-18T12:21:31.114Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Forum.cs",
-              "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Repuh\\SEN381-CampusLearn\\Sen381\\Business\\Forum.cs",
-              "RelativeDocumentMoniker": "Business\\Forum.cs",
-              "ToolTip": "C:\\Users\\xavie\\OneDrive\\Desktop\\Repuh\\SEN381-CampusLearn\\Sen381\\Business\\Forum.cs",
-              "RelativeToolTip": "Business\\Forum.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "SupaBaseAuthService.cs",
+              "DocumentMoniker": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Data_Access\\SupaBaseAuthService.cs",
+              "RelativeDocumentMoniker": "Data_Access\\SupaBaseAuthService.cs",
+              "ToolTip": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Data_Access\\SupaBaseAuthService.cs",
+              "RelativeToolTip": "Data_Access\\SupaBaseAuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAwwB0AAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-16T17:33:06.881Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "FAQItem.cs",
-              "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Repuh\\SEN381-CampusLearn\\Sen381\\Business\\FAQItem.cs",
-              "RelativeDocumentMoniker": "Business\\FAQItem.cs",
-              "ToolTip": "C:\\Users\\xavie\\OneDrive\\Desktop\\Repuh\\SEN381-CampusLearn\\Sen381\\Business\\FAQItem.cs",
-              "RelativeToolTip": "Business\\FAQItem.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-16T17:32:57.168Z",
+              "WhenOpened": "2025-09-18T12:21:28.688Z",
               "EditorCaption": ""
             }
           ]
