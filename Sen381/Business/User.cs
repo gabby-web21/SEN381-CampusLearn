@@ -1,106 +1,64 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Supabase.Postgrest.Attributes;
+using Supabase.Postgrest.Models;
+using System;
 
 namespace Sen381.Business
 {
-
-    public class User
+    [Table("users")] // ⬅️ IMPORTANT: table only, no schema here
+    public class User : BaseModel
     {
-        private int id;
-        private string firstName;
-        private string lastName;
-        private string phoneNum;
-        private string email;
-        private string passwordHash;
-        private string profilePicturePath;
+        [PrimaryKey("id", false)]
+        public int Id { get; set; }
 
-        public int Id
-        {
-            get { return id; }
-            set { id = value; }
-        }
+        [Column("first_name")]
+        public string FirstName { get; set; }
 
-        public string FirstName
-        {
-            get { return firstName; }
-            set { firstName = value; }
-        }
+        [Column("last_name")]
+        public string LastName { get; set; }
 
-        public string LastName
-        {
-            get { return lastName; }
-            set { lastName = value; }
-        }
+        [Column("phone_num")]
+        public string PhoneNum { get; set; }
 
-        public string PhoneNum
-        {
-            get { return phoneNum; }
-            set { phoneNum = value; }
-        }
+        [Column("email")]
+        public string Email { get; set; }
 
-        public string Email
-        {
-            get { return email; }
-            set { email = value; }
-        }
+        [Column("password_hash")]
+        public string PasswordHash { get; set; }
 
+        [Column("is_email_verified")]
         public bool IsEmailVerified { get; set; }
 
-        public Role Role { get; set; }   // Uses enum below
+        [Column("role")]
+        public string RoleString { get; set; }
 
+        [Column("created_at")]
         public DateTime CreatedAt { get; set; }
 
+        [Column("last_login")]
         public DateTime LastLogin { get; set; }
 
-        public string ProfilePicturePath
-        {
-            get { return profilePicturePath; }
-            set { profilePicturePath = value; }
-        }
+        [Column("profile_picture_path")]
+        public string ProfilePicturePath { get; set; }
 
-        // Change password method (update hashing later for better encryption)
-        public void ChangePassword(string newPassword)
-        {
-            passwordHash = HashPassword(newPassword);
-            Console.WriteLine("Password changed successfully.");
-        }
+        public void ChangePassword(string newPassword) =>
+            PasswordHash = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(newPassword));
 
-        // Verify a password against stored hash
-        public bool VerifyPassword(string inputPassword)
-        {
-            return passwordHash == HashPassword(inputPassword);
-        }
+        public bool VerifyPassword(string inputPassword) =>
+            PasswordHash == Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(inputPassword));
 
-        // User can change details on profile
         public void UpdateProfile(string newFirstName, string newLastName, string newPhoneNum, string newEmail, string newProfilePicturePath = null)
         {
             FirstName = newFirstName;
             LastName = newLastName;
             PhoneNum = newPhoneNum;
             Email = newEmail;
-
             if (!string.IsNullOrEmpty(newProfilePicturePath))
-            {
                 ProfilePicturePath = newProfilePicturePath;
-            }
-
-            Console.WriteLine("Profile updated successfully.");
         }
 
-        private string HashPassword(string password)
-        {
-            // Simple placeholder hashing (replace with real hashing, e.g., BCrypt or SHA256)
-            return Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(password));
-        }
+        public void SetRole(Role role) => RoleString = role.ToString();
+        public Role GetRole() => Enum.TryParse<Role>(RoleString, out var r) ? r : Role.Student;
     }
 
-    // Enum aligned with UML
-    public enum Role
-    {
-        Student,
-        Admin
-    }
+    public enum Role { Student, Admin }
 }

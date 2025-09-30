@@ -1,18 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\",
+  "WorkspaceRootPath": "C:\\Users\\xavie\\Desktop\\repuh\\SEN381-CampusLearn\\Sen381\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|c:\\sen381 github repo\\sen381-campuslearn\\sen381\\data_access\\supabaseauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|solutionrelative:data_access\\supabaseauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|c:\\sen381 github repo\\sen381-campuslearn\\sen381\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|c:\\users\\xavie\\desktop\\repuh\\sen381-campuslearn\\sen381\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|c:\\sen381 github repo\\sen381-campuslearn\\sen381\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|c:\\users\\xavie\\desktop\\repuh\\sen381-campuslearn\\sen381\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|solutionrelative:app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|c:\\users\\xavie\\desktop\\repuh\\sen381-campuslearn\\sen381\\data_access\\supabaseauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|solutionrelative:data_access\\supabaseauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|c:\\users\\xavie\\desktop\\repuh\\sen381-campuslearn\\sen381\\presentation\\register.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|solutionrelative:presentation\\register.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|c:\\users\\xavie\\desktop\\repuh\\sen381-campuslearn\\sen381\\business\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|solutionrelative:business\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,15 +30,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Bookmark",
@@ -42,41 +50,64 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "App.config",
-              "DocumentMoniker": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\App.config",
+              "DocumentMoniker": "C:\\Users\\xavie\\Desktop\\repuh\\SEN381-CampusLearn\\Sen381\\App.config",
               "RelativeDocumentMoniker": "App.config",
-              "ToolTip": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\App.config",
+              "ToolTip": "C:\\Users\\xavie\\Desktop\\repuh\\SEN381-CampusLearn\\Sen381\\App.config",
               "RelativeToolTip": "App.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAABNAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-09-18T12:23:35.923Z",
+              "WhenOpened": "2025-09-30T15:13:38.534Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\xavie\\Desktop\\repuh\\SEN381-CampusLearn\\Sen381\\Business\\User.cs",
+              "RelativeDocumentMoniker": "Business\\User.cs",
+              "ToolTip": "C:\\Users\\xavie\\Desktop\\repuh\\SEN381-CampusLearn\\Sen381\\Business\\User.cs",
+              "RelativeToolTip": "Business\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-18T12:21:31.114Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-25T14:57:54.348Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SupaBaseAuthService.cs",
+              "DocumentMoniker": "C:\\Users\\xavie\\Desktop\\repuh\\SEN381-CampusLearn\\Sen381\\Data_Access\\SupaBaseAuthService.cs",
+              "RelativeDocumentMoniker": "Data_Access\\SupaBaseAuthService.cs",
+              "ToolTip": "C:\\Users\\xavie\\Desktop\\repuh\\SEN381-CampusLearn\\Sen381\\Data_Access\\SupaBaseAuthService.cs",
+              "RelativeToolTip": "Data_Access\\SupaBaseAuthService.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAIwCgAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-25T14:12:14.067Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Register.cs",
+              "DocumentMoniker": "C:\\Users\\xavie\\Desktop\\repuh\\SEN381-CampusLearn\\Sen381\\Presentation\\Register.cs",
+              "RelativeDocumentMoniker": "Presentation\\Register.cs",
+              "ToolTip": "C:\\Users\\xavie\\Desktop\\repuh\\SEN381-CampusLearn\\Sen381\\Presentation\\Register.cs",
+              "RelativeToolTip": "Presentation\\Register.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAD4v1AAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-25T13:21:25.571Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "SupaBaseAuthService.cs",
-              "DocumentMoniker": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Data_Access\\SupaBaseAuthService.cs",
-              "RelativeDocumentMoniker": "Data_Access\\SupaBaseAuthService.cs",
-              "ToolTip": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Data_Access\\SupaBaseAuthService.cs",
-              "RelativeToolTip": "Data_Access\\SupaBaseAuthService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAwwB0AAABFAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\xavie\\Desktop\\repuh\\SEN381-CampusLearn\\Sen381\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\xavie\\Desktop\\repuh\\SEN381-CampusLearn\\Sen381\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-18T12:21:28.688Z",
+              "WhenOpened": "2025-09-25T13:16:48.902Z",
               "EditorCaption": ""
             }
           ]

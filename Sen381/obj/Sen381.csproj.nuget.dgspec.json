@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Sen381.csproj": {}
+    "C:\\Users\\xavie\\Desktop\\repuh\\SEN381-CampusLearn\\Sen381\\Sen381.csproj": {}
   },
   "projects": {
-    "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Sen381.csproj": {
+    "C:\\Users\\xavie\\Desktop\\repuh\\SEN381-CampusLearn\\Sen381\\Sen381.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Sen381.csproj",
+        "projectUniqueName": "C:\\Users\\xavie\\Desktop\\repuh\\SEN381-CampusLearn\\Sen381\\Sen381.csproj",
         "projectName": "Sen381",
-        "projectPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Sen381.csproj",
-        "packagesPath": "C:\\Users\\morne\\.nuget\\packages\\",
-        "outputPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\obj\\",
+        "projectPath": "C:\\Users\\xavie\\Desktop\\repuh\\SEN381-CampusLearn\\Sen381\\Sen381.csproj",
+        "packagesPath": "C:\\Users\\xavie\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\xavie\\Desktop\\repuh\\SEN381-CampusLearn\\Sen381\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\morne\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\xavie\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -52,7 +52,7 @@
           "dependencies": {
             "Microsoft.Bcl.AsyncInterfaces": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[9.0.9, )"
             },
             "Microsoft.Bcl.HashCode": {
               "target": "Package",
@@ -64,23 +64,31 @@
             },
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[9.0.9, )"
             },
             "Microsoft.Extensions.Logging.Abstractions": {
               "target": "Package",
-              "version": "[8.0.3, )"
+              "version": "[9.0.9, )"
             },
             "Npgsql": {
               "target": "Package",
-              "version": "[8.0.7, )"
+              "version": "[9.0.3, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.4, )"
             },
             "Supabase": {
               "target": "Package",
-              "version": "[1.1.1, )"
+              "version": "[1.0.0, )"
+            },
+            "Supabase.Postgrest": {
+              "target": "Package",
+              "version": "[4.1.0, )"
             },
             "System.Collections.Immutable": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[9.0.9, )"
             },
             "System.Configuration.ConfigurationManager": {
               "target": "Package",
@@ -92,7 +100,7 @@
             },
             "System.Diagnostics.DiagnosticSource": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[9.0.9, )"
             },
             "System.Runtime.CompilerServices.Unsafe": {
               "target": "Package",
@@ -100,15 +108,19 @@
             },
             "System.Text.Encodings.Web": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[9.0.9, )"
             },
             "System.Text.Json": {
               "target": "Package",
-              "version": "[8.0.6, )"
+              "version": "[9.0.9, )"
             },
             "System.Threading.Channels": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[9.0.9, )"
+            },
+            "postgrest-csharp": {
+              "target": "Package",
+              "version": "[3.5.1, )"
             }
           },
           "imports": [
