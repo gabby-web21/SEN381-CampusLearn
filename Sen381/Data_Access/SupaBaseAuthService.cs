@@ -32,7 +32,7 @@ namespace Sen381.Data_Access
             {
                 AutoRefreshToken = true,
                 AutoConnectRealtime = false,
-                Schema = "campuslearn" // ⬅️ KEY LINE: target the campuslearn schema
+                Schema = "public" // ⬅️ KEY LINE: target the public schema
             };
 
             _client = new Client(url, anonKey, options);

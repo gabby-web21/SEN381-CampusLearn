@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright ©  2025")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c052a9e70827c5a738fa25de662eb9cdb4cf3e66")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6c7c32c3dc1a69a7f80d12528366a926cf0ff1f")]
 [assembly: System.Reflection.AssemblyProductAttribute("Sen381")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Sen381")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

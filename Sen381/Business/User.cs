@@ -7,7 +7,8 @@ namespace Sen381.Business
     [Table("users")] // ⬅️ IMPORTANT: table only, no schema here
     public class User : BaseModel
     {
-        [PrimaryKey("id", false)]
+        [PrimaryKey("user_id", false)]
+        [Column("user_id")]
         public int Id { get; set; }
 
         [Column("first_name")]
@@ -57,8 +58,8 @@ namespace Sen381.Business
         }
 
         public void SetRole(Role role) => RoleString = role.ToString();
-        public Role GetRole() => Enum.TryParse<Role>(RoleString, out var r) ? r : Role.Student;
+        public Role GetRole() => Enum.TryParse<Role>(RoleString, out var r) ? r : Role.student;
     }
 
-    public enum Role { Student, Admin }
+    public enum Role { student, admin }
 }

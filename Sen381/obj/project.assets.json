@@ -2663,11 +2663,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\xavie\\Desktop\\repuh\\SEN381-CampusLearn\\Sen381\\Sen381.csproj",
+      "projectUniqueName": "C:\\Users\\xavie\\OneDrive\\Desktop\\Repuh\\SEN381-CampusLearn\\Sen381\\Sen381.csproj",
       "projectName": "Sen381",
-      "projectPath": "C:\\Users\\xavie\\Desktop\\repuh\\SEN381-CampusLearn\\Sen381\\Sen381.csproj",
+      "projectPath": "C:\\Users\\xavie\\OneDrive\\Desktop\\Repuh\\SEN381-CampusLearn\\Sen381\\Sen381.csproj",
       "packagesPath": "C:\\Users\\xavie\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\xavie\\Desktop\\repuh\\SEN381-CampusLearn\\Sen381\\obj\\",
+      "outputPath": "C:\\Users\\xavie\\OneDrive\\Desktop\\Repuh\\SEN381-CampusLearn\\Sen381\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

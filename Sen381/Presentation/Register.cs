@@ -50,12 +50,12 @@ namespace Sen381
             {
                 Console.WriteLine("Select role (1 = Student, 2 = Admin):");
                 string input = Console.ReadLine();
-                if (input == "1") { role = Role.Student; break; }
-                if (input == "2") { role = Role.Admin; break; }
+                if (input == "1") { role = Role.student; break; }
+                if (input == "2") { role = Role.admin; break; }
                 Console.WriteLine("Invalid input. Please enter 1 or 2.");
             }
 
-            // In practice you'd let the DB assign IDs, but we'll keep the random for now.
+            // Generate user
             var random = new Random();
             int id = random.Next(1, 1_000_000);
 
@@ -68,7 +68,7 @@ namespace Sen381
                 Email = email,
                 ProfilePicturePath = "",
                 CreatedAt = DateTime.UtcNow,
-                IsEmailVerified = true,
+                IsEmailVerified = false,   // ⬅️ starts unverified
                 LastLogin = DateTime.UtcNow
             };
             user.SetRole(role);
@@ -77,18 +77,44 @@ namespace Sen381
             _users.Add(user);
 
             await PushUserToDatabase(user);
+
+            // After user is saved, generate token + send email
+            await SendVerificationEmail(user);
         }
 
         private async Task PushUserToDatabase(User user)
         {
             await _supabaseService.InitializeAsync();
 
-            // Table is inferred from [Table("users")] on User
             await _supabaseService.Client
                 .From<User>()
                 .Insert(user);
 
             Console.WriteLine($"User {user.FirstName} {user.LastName} pushed to database!");
+        }
+
+        private async Task SendVerificationEmail(User user)
+        {
+            // Generate raw token (send to user) + store hashed version
+            string rawToken = Guid.NewGuid().ToString();
+            string tokenHash = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(rawToken));
+
+            var token = new EmailVerificationToken
+            {
+                UserId = user.Id,
+                TokenHash = tokenHash,
+                CreatedAt = DateTime.UtcNow,
+                ExpiresAt = DateTime.UtcNow.AddHours(24)
+            };
+
+            await _supabaseService.Client
+                .From<EmailVerificationToken>()
+                .Insert(token);
+
+            var emailService = new EmailService();
+            emailService.SendVerificationEmail(user.Email, rawToken);
+
+            Console.WriteLine($"📧 Verification email sent to {user.Email}");
         }
 
         public void DisplayAllUsers()
@@ -101,7 +127,7 @@ namespace Sen381
 
             foreach (var user in _users)
             {
-                Console.WriteLine($"ID: {user.Id}, Name: {user.FirstName} {user.LastName}, Email: {user.Email}, Role: {user.GetRole()}");
+                Console.WriteLine($"ID: {user.Id}, Name: {user.FirstName} {user.LastName}, Email: {user.Email}, Verified: {user.IsEmailVerified}, Role: {user.GetRole()}");
             }
         }
     }

@@ -12,15 +12,19 @@ namespace Sen381
             bool clientOk = await supa.TestConnectionAsync();
             Console.WriteLine(clientOk ? "Connection succeeded" : "Connection failed");
 
+            if (!clientOk)
+            {
+                Console.WriteLine("Exiting because Supabase connection failed.");
+                return;
+            }
+
+            var login = new Login(supa);
             var register = new Register(supa);
 
-            // Register three users via console prompts
-            await register.StartRegisterAsync();
-            await register.StartRegisterAsync();
-            await register.StartRegisterAsync();
+            // Start login flow
+            await login.StartLoginAsync();
 
-            register.DisplayAllUsers();
-
+            Console.WriteLine("Press ENTER to exit...");
             Console.ReadLine();
         }
     }
