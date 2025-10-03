@@ -1,0 +1,251 @@
+﻿@page "/tutors"
+@layout DashboardLayout
+@inject NavigationManager NavManager
+
+<div class="tutors-wrapper">
+    <!-- Hero -->
+    <div class="tutors-hero">
+        <h1 class="tutors-title">Belgium Campus Tutors</h1>
+        <p class="tutors-subtitle">
+            Browse available tutors. Search by <span>name, phone, student number, or subject</span>.
+        </p>
+
+        <div class="tutors-search mt-6 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+            <input type="text" placeholder="Search tutors..." @bind="searchQuery"
+                   class="search-input rounded-2xl p-3 shadow-md focus:ring-2 focus:ring-indigo-300 focus:outline-none
+              w-full sm:w-64 md:w-72 lg:w-80" />
+            <button class="btn-landing secondary small" @onclick="ShuffleTutors">
+                Shuffle Tutors 🔀
+            </button>
+        </div>
+    </div>
+
+    <!-- Tutors List (stacked vertically) -->
+    <div class="tutors-list mt-8 flex flex-col gap-6">
+        @foreach (var tutor in FilteredTutors)
+        {
+            <div class="tutor-card">
+                <div class="tutor-header flex justify-between items-center cursor-pointer" @onclick="() => ToggleExpand(tutor)">
+                    <h2>@tutor.Name</h2>
+                    <span class="availability @(tutor.IsAvailable ? "available" : "unavailable")">
+                        @(tutor.IsAvailable ? "Available" : "Unavailable")
+                    </span>
+                </div>
+
+                @if (ExpandedTutor == tutor)
+                {
+                    <div class="tutor-details mt-4">
+                        <p><strong>Student #:</strong> @tutor.StudentNumber</p>
+                        <p><strong>Phone:</strong> @tutor.Phone</p>
+                        <p><strong>Subjects:</strong> <span class="subjects">@string.Join(", ", tutor.Subjects)</span></p>
+
+                        @if (tutor.IsAvailable)
+                        {
+                            <p class="mt-2 text-green-700 font-semibold">Check available times below:</p>
+                        }
+                        else
+                        {
+                            <p class="mt-2 text-red-500 font-semibold">Currently unavailable for booking.</p>
+                        }
+
+                        <div class="tutor-actions mt-3 flex gap-2 flex-wrap">
+                            <button class="btn-landing primary small" @onclick='() => BookSession(tutor)'>Book Session</button>
+                            <button class="btn-landing secondary soft-yellow small" @onclick='() => CheckAvailability(tutor)'>Check Available Times</button>
+                            <button class="btn-landing secondary small" @onclick='() => MessageTutor(tutor)'>Message Tutor</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .tutors-wrapper {
+        min-height: 100vh;
+        padding: 3rem 2rem;
+        background: linear-gradient(135deg, #f9fafb, #fff7ed);
+    }
+
+    .tutors-hero {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 2rem;
+    }
+
+    .tutors-title {
+        font-size: 2.8rem;
+        font-weight: 800;
+        color: #1e293b;
+        margin-bottom: 0.5rem;
+    }
+
+    .tutors-subtitle {
+        font-size: 1.25rem;
+        color: #475569;
+    }
+
+        .tutors-subtitle span {
+            color: #6366f1;
+            font-weight: 700;
+        }
+
+    .search-input {
+        transition: all 0.25s ease;
+        font-size: 1rem;
+    }
+
+    /* Tutors list */
+    .tutors-list {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .tutor-card {
+        background: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        padding: 1.5rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .tutor-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+    .tutor-header h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .availability {
+        font-weight: 600;
+    }
+
+    .available {
+        color: #10b981;
+    }
+
+    .unavailable {
+        color: #ef4444;
+    }
+
+    .tutor-details p {
+        margin: 0.25rem 0;
+        color: #374151;
+    }
+
+    .subjects {
+        color: #6366f1;
+        font-weight: 600;
+    }
+
+    .tutor-actions {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+
+    .btn-landing {
+        padding: 10px 18px;
+        font-size: 1rem;
+        border-radius: 12px;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .btn-landing.small {
+            padding: 8px 16px;
+            font-size: 0.95rem;
+        }
+
+        /* Primary (Book Session) */
+        .btn-landing.primary {
+            background: linear-gradient(45deg, #4f46e5, #818cf8);
+            color: white;
+        }
+
+        /* Shuffle Tutors */
+        .btn-landing.secondary {
+            background: #fde68a;
+            color: #1e293b;
+        }
+
+            /* Soft yellow for Check Availability */
+            .btn-landing.secondary.soft-yellow {
+                background: #fde68a;
+                color: #1e293b;
+            }
+
+                .btn-landing.secondary.soft-yellow:hover {
+                    background: #fef9c3;
+                    transform: translateY(-2px) scale(1.02);
+                    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+                }
+
+        .btn-landing:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+        }
+</style>
+
+@code {
+    private string searchQuery = "";
+    private Tutor? ExpandedTutor = null;
+
+    private class Tutor
+    {
+        public string Name { get; set; } = "";
+        public string StudentNumber { get; set; } = "";
+        public string Phone { get; set; } = "";
+        public List<string> Subjects { get; set; } = new();
+        public bool IsAvailable { get; set; }
+    }
+
+    private List<Tutor> tutors = new()
+    {
+        new Tutor { Name="Kanye East", StudentNumber="1001", Phone="0831234567", Subjects=new(){"BUM 281","MLG 201","PRG 3781"}, IsAvailable=true },
+        new Tutor { Name="Taylor Swift", StudentNumber="1002", Phone="0829876543", Subjects=new(){"UAX 3781","DBD 381"}, IsAvailable=false },
+        new Tutor { Name="Gracie Abrahams", StudentNumber="1003", Phone="0814567890", Subjects=new(){"PMM 101","PRG 3781"}, IsAvailable=true },
+        new Tutor { Name="John Doe", StudentNumber="1004", Phone="0845678901", Subjects=new(){"BUM 302","MLG 201"}, IsAvailable=true },
+        new Tutor { Name="Jane Smith", StudentNumber="1005", Phone="0856789012", Subjects=new(){"PRG 3781","UAX 3781"}, IsAvailable=false }
+    };
+
+    private IEnumerable<Tutor> FilteredTutors => tutors
+        .Where(t => string.IsNullOrEmpty(searchQuery)
+                    || t.Name.Contains(searchQuery, StringComparison.OrdinalIgnoreCase)
+                    || t.StudentNumber.Contains(searchQuery)
+                    || t.Phone.Contains(searchQuery)
+                    || t.Subjects.Any(s => s.Contains(searchQuery, StringComparison.OrdinalIgnoreCase)));
+
+    private void ToggleExpand(Tutor tutor)
+    {
+        ExpandedTutor = ExpandedTutor == tutor ? null : tutor;
+    }
+
+    private void BookSession(Tutor tutor)
+    {
+        Console.WriteLine($"Booking session with {tutor.Name}");
+    }
+
+    private void CheckAvailability(Tutor tutor)
+    {
+        Console.WriteLine($"{tutor.Name} is {(tutor.IsAvailable ? "available" : "unavailable")}");
+    }
+
+    private void ShuffleTutors()
+    {
+        var rng = new Random();
+        tutors = tutors.OrderBy(t => rng.Next()).ToList();
+    }
+
+    private void MessageTutor(Tutor tutor)
+    {
+        Console.WriteLine($"Opening chat with {tutor.Name}");
+        // Later you can replace this with actual chat/modal logic
+    }
+}

@@ -1,0 +1,99 @@
+﻿@page "/subjects"
+@layout DashboardLayout
+
+<div class="subjects-wrapper p-8">
+    <h2 class="page-title text-4xl font-extrabold mb-8">Subjects</h2>
+
+    <div class="subjects-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        @foreach (var s in subjects)
+        {
+            <div class="subject-card group" @onclick='() => SelectSubject(s)'>
+                <div class="icon bg-gradient-to-r from-indigo-500 to-blue-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold shadow-lg group-hover:scale-110 transition-transform">
+                    @s[0]
+                </div>
+                <div class="subject-name text-center font-semibold text-gray-800 group-hover:text-indigo-600 transition-colors">
+                    @s
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .subjects-wrapper {
+        min-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        background: linear-gradient(135deg, #eef2ff, #fef3c7);
+        border-radius: 1rem;
+        padding: 2rem;
+    }
+
+    .page-title {
+        color: #1e293b;
+        text-align: center;
+        margin-bottom: 3rem;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .subjects-grid {
+        display: grid;
+        gap: 1.5rem;
+    }
+
+    .subject-card {
+        background: white;
+        border-radius: 1.25rem;
+        padding: 2rem 1rem;
+        cursor: pointer;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        position: relative;
+    }
+
+        .subject-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 1.25rem;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .subject-card:hover::before {
+            opacity: 1;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 12px 25px rgba(37, 99, 235, 0.2);
+        }
+
+    .icon {
+        z-index: 1;
+    }
+
+    .subject-name {
+        z-index: 1;
+        font-size: 1.1rem;
+    }
+</style>
+
+@code {
+    string[] subjects = { "BUM 281", "BUM 301", "BUM 302", "PRG 3781", "DBD 381", "MLG 201", "UAX 3781", "PMM 101" };
+
+    private void SelectSubject(string subject)
+    {
+        Console.WriteLine($"Selected subject: {subject}");
+        // TODO: Navigate to subject detail or topics page
+    }
+}

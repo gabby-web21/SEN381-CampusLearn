@@ -1,0 +1,112 @@
+﻿@page "/tutor-profile"
+
+<div class="tutor-wrapper">
+    <!-- Tutor Profile Header -->
+    <div class="tutor-header">
+        <div class="header-info">
+            <h1 class="course-title">My BUM 281 Tutor Profile | @TutorName</h1>
+            <p class="subtext">Upload & view learning resources per topic</p>
+        </div>
+    </div>
+
+    <!-- Topics Grid -->
+    <div class="topics-grid">
+        @foreach (var topic in Topics)
+        {
+            <div class="topic-card">
+                <span>@topic</span>
+                <button class="upload-btn" @onclick="() => UploadResource(topic)">⏏</button>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .tutor-wrapper {
+        padding: 2rem;
+        max-width: 1100px;
+        margin: auto;
+        background: linear-gradient(135deg, #eef2ff, #fef3c7);
+        min-height: 100vh;
+        border-radius: 20px;
+    }
+
+    .tutor-header {
+        background: white;
+        padding: 1.5rem 2rem;
+        border-radius: 20px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+    }
+
+    .course-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin: 0;
+    }
+
+    .subtext {
+        font-size: 1rem;
+        color: #64748b;
+    }
+
+    .topics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .topic-card {
+        background: white;
+        border-radius: 16px;
+        padding: 1.2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        color: #374151;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        transition: transform 0.2s ease;
+    }
+
+        .topic-card:hover {
+            transform: translateY(-3px);
+        }
+
+    .upload-btn {
+        background: linear-gradient(to right, #2563eb, #4f46e5);
+        border: none;
+        color: white;
+        padding: 0.5rem 0.9rem;
+        border-radius: 12px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background 0.2s;
+    }
+
+        .upload-btn:hover {
+            background: linear-gradient(to right, #1d4ed8, #4338ca);
+        }
+</style>
+
+@code {
+    private string TutorName = "Taylor S.";
+    private List<string> Topics = new()
+    {
+        "1. Introduction to BUM 281",
+        "2. How to not be a bum",
+        "3. History of BUM",
+        "4. Blablabla",
+        "5. Another topic",
+        "6. Let's fill in all the topics",
+        "7. Random words",
+        "8. Last made up topic | practice"
+    };
+
+    private void UploadResource(string topic)
+    {
+        Console.WriteLine($"Upload resource for: {topic}");
+        // TODO: Add file upload logic here
+    }
+}

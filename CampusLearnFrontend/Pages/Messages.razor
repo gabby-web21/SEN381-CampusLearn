@@ -1,0 +1,339 @@
+﻿@page "/messages"
+@layout DashboardLayout
+
+<div class="messages-wrapper">
+    <!-- Contacts list -->
+    <div class="contacts-panel">
+        <h2 class="contacts-title">Messages</h2>
+        <ul class="contacts-list">
+            @foreach (var contact in contacts)
+            {
+                <li class="contact-item @(selectedContact == contact.Name ? "active" : "")"
+                    @onclick='() => SelectContact(contact.Name)'>
+
+                    <div class="contact-info">
+                        <div class="avatar">@contact.Name[0]</div>
+                        <div>
+                            <span class="contact-name">@contact.Name</span>
+                            <span class="contact-role">@contact.Role</span>
+                        </div>
+                    </div>
+
+                    @if (contact.UnreadCount > 0)
+                    {
+                        <span class="unread-badge">@contact.UnreadCount</span>
+                    }
+                </li>
+            }
+        </ul>
+    </div>
+
+    <!-- Chat area -->
+    <div class="chat-panel">
+        <!-- Chat header -->
+        <div class="chat-header">
+            <h3>@selectedContact</h3>
+            <span class="status">Active now</span>
+        </div>
+
+        <!-- Messages -->
+        <div class="chat-messages" id="chat-container">
+            @foreach (var message in messages)
+            {
+                <div class="@(message.IsIncoming ? "msg-row incoming" : "msg-row outgoing")">
+                    <div class="@(message.IsIncoming ? "bubble-incoming" : "bubble-outgoing")">
+                        <p>@message.Text</p>
+                        <span class="timestamp">@message.Timestamp.ToShortTimeString()</span>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Input box -->
+        <div class="chat-input">
+            <input @bind="newMessage" @bind:event="oninput"
+                   @onkeydown="HandleKeyPress"
+                   placeholder="Type a message…" />
+            <button class="btn-send" @onclick="SendMessage">Send</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Wrapper layout */
+    .messages-wrapper {
+        display: flex;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #eef2ff, #fef3c7);
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* Contacts */
+    .contacts-panel {
+        width: 25%;
+        background: #fff;
+        border-right: 1px solid #e5e7eb;
+        padding: 1.5rem;
+        box-shadow: 2px 0 6px rgba(0,0,0,0.05);
+    }
+
+    .contacts-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 1.5rem;
+    }
+
+    .contacts-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .contact-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        border-radius: 12px;
+        margin-bottom: 0.75rem;
+        transition: all 0.2s ease;
+        cursor: pointer;
+    }
+
+        .contact-item:hover {
+            background: #eef2ff;
+        }
+
+        .contact-item.active {
+            background: #2563eb;
+            color: white;
+        }
+
+    .contact-info {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .avatar {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #2563eb, #3b82f6);
+        color: white;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .contact-name {
+        font-weight: 600;
+        display: block;
+    }
+
+    .contact-role {
+        font-size: 0.75rem;
+        color: #64748b;
+    }
+
+    .contact-item.active .contact-role {
+        color: #dbeafe;
+    }
+
+    .unread-badge {
+        background: #ef4444;
+        color: white;
+        font-size: 0.75rem;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-weight: 600;
+    }
+
+    /* Chat panel */
+    .chat-panel {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        border-radius: 0 0 0 0;
+        box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .chat-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid #e5e7eb;
+        background: #f9fafb;
+    }
+
+        .chat-header h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .chat-header .status {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+    /* Messages */
+    .chat-messages {
+        flex: 1;
+        padding: 1.5rem;
+        overflow-y: auto;
+        background: linear-gradient(to bottom, #f9fafb, #ffffff);
+    }
+
+    .msg-row {
+        display: flex;
+        margin-bottom: 1rem;
+    }
+
+        .msg-row.incoming {
+            justify-content: flex-start;
+        }
+
+        .msg-row.outgoing {
+            justify-content: flex-end;
+        }
+
+    .bubble-incoming, .bubble-outgoing {
+        max-width: 65%;
+        padding: 12px 16px;
+        border-radius: 18px;
+        font-size: 0.95rem;
+        line-height: 1.4;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        position: relative;
+    }
+
+    .bubble-incoming {
+        background: #f1f5f9;
+        color: #1e293b;
+        border-bottom-left-radius: 6px;
+    }
+
+    .bubble-outgoing {
+        background: linear-gradient(135deg, #2563eb, #3b82f6);
+        color: white;
+        border-bottom-right-radius: 6px;
+    }
+
+    .timestamp {
+        font-size: 0.7rem;
+        color: #94a3b8;
+        margin-top: 4px;
+        display: block;
+    }
+
+    /* Input */
+    .chat-input {
+        display: flex;
+        gap: 0.75rem;
+        padding: 1rem 1.5rem;
+        border-top: 1px solid #e5e7eb;
+        background: #f9fafb;
+    }
+
+        .chat-input input {
+            flex: 1;
+            border: 1px solid #d1d5db;
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            font-size: 0.95rem;
+            transition: border 0.2s, box-shadow 0.2s;
+        }
+
+            .chat-input input:focus {
+                outline: none;
+                border-color: #2563eb;
+                box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+            }
+
+    .btn-send {
+        background: linear-gradient(135deg, #1d4ed8, #2563eb);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        box-shadow: 0 2px 8px rgba(29,78,216,0.4);
+    }
+
+        .btn-send:hover {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            transform: translateY(-1px);
+        }
+</style>
+
+@code {
+    private List<Contact> contacts = new()
+    {
+        new Contact { Name = "Dr. Smith", Role = "Tutor", UnreadCount = 2 },
+        new Contact { Name = "Taylor Swift", Role = "Student", UnreadCount = 0 },
+        new Contact { Name = "Kanye East", Role = "Tutor", UnreadCount = 5 }
+    };
+
+    private List<Message> messages = new()
+    {
+        new Message { Text = "Hey there!", IsIncoming = true, Timestamp = DateTime.Now.AddMinutes(-10) },
+        new Message { Text = "Hello, how can I help you?", IsIncoming = false, Timestamp = DateTime.Now.AddMinutes(-9) }
+    };
+
+    private string newMessage = "";
+    private string selectedContact = "Select a contact";
+
+    private void SelectContact(string contact)
+    {
+        selectedContact = contact;
+        Console.WriteLine($"Selected contact: {contact}");
+        // TODO: Load message history for that contact
+    }
+
+    private void SendMessage()
+    {
+        if (!string.IsNullOrWhiteSpace(newMessage))
+        {
+            messages.Add(new Message { Text = newMessage, IsIncoming = false, Timestamp = DateTime.Now });
+            newMessage = "";
+            ScrollToBottom();
+        }
+    }
+
+    private void HandleKeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            SendMessage();
+        }
+    }
+
+    private string GetMessageClass(bool isIncoming) => isIncoming ? "bubble-incoming" : "bubble-outgoing";
+
+    private void ScrollToBottom()
+    {
+        // JS interop to scroll chat container down
+        // await JSRuntime.InvokeVoidAsync("scrollToBottom", "chat-container");
+    }
+
+    private class Message
+    {
+        public string Text { get; set; }
+        public bool IsIncoming { get; set; }
+        public DateTime Timestamp { get; set; }
+    }
+
+    private class Contact
+    {
+        public string Name { get; set; }
+        public string Role { get; set; }
+        public int UnreadCount { get; set; }
+    }
+}

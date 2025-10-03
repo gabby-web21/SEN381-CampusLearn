@@ -1,0 +1,264 @@
+﻿@page "/admin-profile"
+@layout DashboardLayout
+@inject NavigationManager Nav
+
+@if (!IsAuthorized)
+{
+    <div class="access-denied-container">
+        <h2>Access Denied</h2>
+        <p>You must be logged in as an admin to view this page.</p>
+        <button class="btn-primary" @onclick="GoToLogin">Go to Login</button>
+    </div>
+}
+else
+{
+    <div class="admin-profile-container">
+        <h1>Admin Dashboard</h1>
+
+        <!-- Admin Card -->
+        <div class="admin-card">
+            <img src="images/admin-avatar.png" alt="Admin Avatar" />
+            <div>
+                <h2>@CurrentUserName</h2>
+                <p>System Administrator</p>
+            </div>
+        </div>
+
+        <!-- Tutor Applications -->
+        <div class="section-card">
+            <h3>Tutor Applications</h3>
+            <div class="applications-list">
+                @foreach (var applicant in Applicants)
+                {
+                    <div class="application-item">
+                        <div>
+                            <p class="applicant-name">@applicant.Name</p>
+                            <p class="applicant-course">@applicant.Course</p>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn-approve" @onclick="() => Approve(applicant)">Approve</button>
+                            <button class="btn-reject" @onclick="() => Reject(applicant)">Reject</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- Add Topics -->
+        <div class="section-card">
+            <h3>Add New Topic</h3>
+            <div class="add-topic">
+                <input @bind="NewTopic" placeholder="Topic name…" />
+                <button class="btn-add" @onclick="AddTopic">Add</button>
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+    .access-denied-container {
+        text-align: center;
+        margin-top: 100px;
+    }
+
+        .access-denied-container h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #e74c3c;
+        }
+
+        .access-denied-container p {
+            margin-top: 8px;
+            color: #555;
+            font-size: 1rem;
+        }
+
+    .admin-profile-container {
+        padding: 40px;
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+        .admin-profile-container h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+    /* Admin card */
+    .admin-card {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        background: #fff;
+        padding: 25px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+        .admin-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .admin-card h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .admin-card p {
+            color: #777;
+            font-size: 0.95rem;
+        }
+
+    /* Section cards */
+    .section-card {
+        background: #f9f9f9;
+        padding: 25px;
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+
+        .section-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+    /* Tutor applications */
+    .applications-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .application-item {
+        background: #fff;
+        padding: 12px 15px;
+        border-radius: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .applicant-name {
+        font-weight: 500;
+        font-size: 1rem;
+        color: #333;
+    }
+
+    .applicant-course {
+        font-size: 0.85rem;
+        color: #777;
+    }
+
+    .action-buttons button {
+        margin-left: 6px;
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .btn-approve {
+        background: #2ecc71;
+        color: #fff;
+    }
+
+        .btn-approve:hover {
+            filter: brightness(1.1);
+        }
+
+    .btn-reject {
+        background: #e74c3c;
+        color: #fff;
+    }
+
+        .btn-reject:hover {
+            filter: brightness(1.1);
+        }
+
+    /* Add topics */
+    .add-topic {
+        display: flex;
+        gap: 12px;
+    }
+
+        .add-topic input {
+            flex: 1;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        .add-topic button {
+            padding: 10px 18px;
+            background: #4a6cf7;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+            .add-topic button:hover {
+                filter: brightness(1.1);
+            }
+</style>
+
+@code {
+    // Get logged-in role/email from a simple mock "session"
+    private string LoggedInUserEmail = "1111@admin.belgiumcampus.ac.za"; // Replace with actual AuthService in production
+    private string CurrentUserName = "Admin Jane Doe";
+
+    private bool IsAuthorized => LoggedInUserEmail.EndsWith("@admin.belgiumcampus.ac.za");
+
+    private string NewTopic { get; set; } = string.Empty;
+
+    private List<Applicant> Applicants = new()
+    {
+        new Applicant { Name="Kanye East", Course="Applied for BUM 281" },
+        new Applicant { Name="Gracie Abrahams", Course="Applied for BUM 301" }
+    };
+
+    private void Approve(Applicant a)
+    {
+        Applicants.Remove(a);
+        Console.WriteLine($"Approved {a.Name}");
+    }
+
+    private void Reject(Applicant a)
+    {
+        Applicants.Remove(a);
+        Console.WriteLine($"Rejected {a.Name}");
+    }
+
+    private void AddTopic()
+    {
+        if (!string.IsNullOrWhiteSpace(NewTopic))
+        {
+            Console.WriteLine($"Added topic: {NewTopic}");
+            NewTopic = string.Empty;
+        }
+    }
+
+    private void GoToLogin() => Nav.NavigateTo("/login");
+
+    public class Applicant
+    {
+        public string Name { get; set; }
+        public string Course { get; set; }
+    }
+}

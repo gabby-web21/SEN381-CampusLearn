@@ -1,0 +1,270 @@
+﻿@page "/login"
+@inject NavigationManager Nav
+
+<div class="login-container">
+    <div class="login-card">
+        <img src="images/logo.png" alt="CampusLearn Logo" class="logo" />
+        <h2>Log in to CampusLearn</h2>
+
+        <!-- Username/Email input -->
+        <div class="form-group">
+            <input @bind-value="usernameOrEmail" @bind-value:event="oninput"
+                   placeholder="Username or Email"
+                   class="input @(GetInputClass(usernameError))"
+                   @onblur="ValidateUsernameOrEmail" />
+            @if (!string.IsNullOrEmpty(usernameError))
+            {
+                <small class="error-inline">@usernameError</small>
+            }
+        </div>
+
+        <!-- Password input -->
+        <div class="form-group password-group">
+            <input @bind-value="password" @bind-value:event="oninput"
+                   type="@(showPassword ? "text" : "password")"
+                   placeholder="Password"
+                   class="input @(GetInputClass(passwordError))"
+                   @onblur="ValidatePassword" />
+            <button type="button" class="toggle-btn" @onclick="() => showPassword = !showPassword">
+                @(showPassword ? "Hide" : "Show")
+            </button>
+            @if (!string.IsNullOrEmpty(passwordError))
+            {
+                <small class="error-inline">@passwordError</small>
+            }
+        </div>
+
+        <button class="btn-primary" @onclick="HandleLogin">Login</button>
+
+        <div class="links">
+            <a href="/forgot-password">Forgot password?</a>
+        </div>
+
+        <p class="signup-text">
+            Don’t have an account?
+            <a href="#" @onclick='() => Nav.NavigateTo("/signup")'>Sign up here!</a>
+        </p>
+
+
+
+    </div>
+</div>
+
+<style>
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #4a6cf7 0%, #3755d4 100%);
+    }
+
+    .login-card {
+        background: #fff;
+        padding: 50px 40px;
+        border-radius: 20px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        width: 400px;
+        text-align: center;
+        position: relative;
+        transition: transform 0.3s;
+    }
+
+        .login-card:hover {
+            transform: translateY(-3px);
+        }
+
+    .logo {
+        height: 70px;
+        margin-bottom: 20px;
+    }
+
+    .login-card h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 30px;
+    }
+
+    .form-group {
+        position: relative;
+        margin-bottom: 25px;
+    }
+
+    .input {
+        width: 100%;
+        padding: 14px 16px;
+        border: 1.5px solid #ccc;
+        border-radius: 12px;
+        font-size: 1rem;
+        outline: none;
+        transition: all 0.3s;
+        background: #f9f9f9;
+    }
+
+        .input:focus {
+            border-color: #4a6cf7;
+            background: #fff;
+        }
+
+        .input.valid {
+            border-color: green;
+        }
+
+        .input.invalid {
+            border-color: red;
+        }
+
+    .error-inline {
+        color: #e74c3c;
+        font-size: 0.85rem;
+        display: block;
+        margin-top: 4px;
+    }
+
+    .password-group {
+        position: relative;
+    }
+
+    .toggle-btn {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: #4a6cf7;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: 14px;
+        border-radius: 12px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border: none;
+        color: #fff;
+        background: linear-gradient(90deg, #4a6cf7 0%, #3755d4 100%);
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+        .btn-primary:hover {
+            filter: brightness(1.1);
+        }
+
+    .links {
+        margin-top: 15px;
+    }
+
+        .links a {
+            color: #4a6cf7;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+            .links a:hover {
+                text-decoration: underline;
+            }
+
+    .signup-text {
+        margin-top: 20px;
+        color: #555;
+        font-size: 0.95rem;
+    }
+
+        .signup-text a {
+            color: #4a6cf7;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+            .signup-text a:hover {
+                text-decoration: underline;
+            }
+</style>
+
+@code {
+    private string usernameOrEmail = "";
+    private string password = "";
+    private bool showPassword = false;
+
+    private string usernameError = "";
+    private string passwordError = "";
+
+    // Mock users with roles
+    private Dictionary<string, (string Password, string Role)> mockUsers = new()
+    {
+        { "600850@student.belgiumcampus.ac.za", ("password1%", "student") },
+        { "1111@admin.belgiumcampus.ac.za", ("Admin123!", "admin") },
+        { "tutor1@tutor.belgiumcampus.ac.za", ("TutorPass1!", "tutor") }
+    };
+
+    // Simple in-memory "session"
+    private string loggedInRole = null;
+
+    protected override void OnInitialized()
+    {
+        // If already logged in, redirect immediately
+        if (!string.IsNullOrEmpty(loggedInRole))
+        {
+            RedirectByRole(loggedInRole);
+        }
+    }
+
+    private void HandleLogin()
+    {
+        ValidateUsernameOrEmail();
+        ValidatePassword();
+
+        if (!string.IsNullOrEmpty(usernameError) || !string.IsNullOrEmpty(passwordError))
+            return;
+
+        if (mockUsers.TryGetValue(usernameOrEmail.ToLower(), out var user))
+        {
+            if (user.Password == password)
+            {
+                loggedInRole = user.Role;
+                RedirectByRole(user.Role);
+            }
+            else
+            {
+                passwordError = "Wrong password";
+            }
+        }
+        else
+        {
+            usernameError = "User not found";
+        }
+    }
+
+    private void RedirectByRole(string role)
+    {
+        switch (role)
+        {
+            case "admin":
+                Nav.NavigateTo("/admin-profile");
+                break;
+            case "tutor":
+                Nav.NavigateTo("/tutor-profile");
+                break;
+            default:
+                Nav.NavigateTo("/student-profile");
+                break;
+        }
+    }
+
+    private void ValidateUsernameOrEmail()
+    {
+        usernameError = string.IsNullOrWhiteSpace(usernameOrEmail) ? "Required" : "";
+    }
+
+    private void ValidatePassword()
+    {
+        passwordError = string.IsNullOrWhiteSpace(password) ? "Required" : "";
+    }
+
+    private string GetInputClass(string error) => string.IsNullOrEmpty(error) ? "valid" : "invalid";
+}

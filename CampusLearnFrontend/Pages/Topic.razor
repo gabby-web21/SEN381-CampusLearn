@@ -1,0 +1,366 @@
+﻿@page "/topic/{TopicId:int}"
+@layout DashboardLayout
+@inject NavigationManager NavManager
+
+<div class="topic-wrapper">
+    <!-- Hero / Topic Header -->
+    <div class="topic-hero">
+        <h1>@CurrentTopic?.Title</h1>
+        <p class="subtitle">Workspace for this topic — explore resources, discussions & assignments.</p>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="topic-grid">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>Sections</h2>
+            <nav>
+                @foreach (var link in links)
+                {
+                    <button class="section-btn @(SelectedSection == link ? "active" : "")"
+                            @onclick="() => SelectSection(link)">
+                        @link
+                        <span class="arrow">→</span>
+                    </button>
+                }
+            </nav>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content">
+            @if (SelectedSection == "Overview")
+            {
+                <div class="card">
+                    <h3>Overview</h3>
+                    <p>@CurrentTopic?.Description</p>
+                    <p class="stats">@CurrentTopic?.ResourcesCount Resources · @CurrentTopic?.DiscussionsCount Discussions</p>
+                </div>
+            }
+            else if (SelectedSection == "Resources")
+            {
+                <div class="card">
+                    <h3>Resources</h3>
+                    <ul class="resource-list">
+                        @foreach (var r in CurrentTopic?.Resources ?? new())
+                        {
+                            <li>
+                                <span>@r</span>
+                                <a href="#">Download</a>
+                            </li>
+                        }
+                    </ul>
+
+                    @if (IsTutor)
+                    {
+                        <div class="resource-actions">
+                            <input placeholder="Resource name" @bind="NewResource" />
+                            <button @onclick="AddResource">+ Upload Resource</button>
+                        </div>
+                    }
+                </div>
+            }
+            else if (SelectedSection == "Discussion")
+            {
+                <div class="card">
+                    <h3>Discussion</h3>
+                    @foreach (var q in CurrentTopic?.Questions ?? new())
+                    {
+                        <div class="discussion-item">
+                            <p><strong>@q.Author:</strong> @q.Text</p>
+                            @if (IsTutor && string.IsNullOrEmpty(q.Response))
+                            {
+                                <input placeholder="Write a response..." @bind="q.Response" />
+                                <button @onclick="() => Respond(q)">Respond</button>
+                            }
+                            else if (!string.IsNullOrEmpty(q.Response))
+                            {
+                                <p class="tutor-response"><strong>Tutor:</strong> @q.Response</p>
+                            }
+                        </div>
+                    }
+
+                    @if (!IsTutor)
+                    {
+                        <div class="ask-question">
+                            <input placeholder="Ask a question..." @bind="NewQuestion" />
+                            <button @onclick="PostQuestion">Ask</button>
+                        </div>
+                    }
+                </div>
+            }
+            else if (SelectedSection == "Assignments")
+            {
+                <div class="card">
+                    <h3>Assignments</h3>
+                    @if (!IsTutor)
+                    {
+                        <input placeholder="Upload file (mock)" />
+                        <button>Submit</button>
+                    }
+                    else
+                    {
+                        <p class="tutor-note">Tutors can give feedback.</p>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public int TopicId { get; set; }
+    private bool IsTutor = true;
+    private string SelectedSection = "Overview";
+    private string NewResource = "";
+    private string NewQuestion = "";
+
+    private MockTopic? CurrentTopic;
+
+    private List<string> links = new() { "Overview", "Resources", "Discussion", "Assignments" };
+
+    protected override void OnInitialized()
+    {
+        CurrentTopic = new MockTopic
+        {
+            Id = TopicId,
+            Title = "Introduction to BUM 281",
+            Description = "This is the intro topic for the course.",
+            Resources = new List<string> { "Lecture Notes.pdf", "Intro Video.mp4" },
+            Questions = new List<Question> { new Question { Author = "Student1", Text = "What is exam format?" } },
+            ResourcesCount = 2,
+            DiscussionsCount = 1
+        };
+    }
+
+    private void SelectSection(string s) => SelectedSection = s;
+    private void AddResource()
+    {
+        if (!string.IsNullOrWhiteSpace(NewResource))
+        {
+            CurrentTopic?.Resources.Add(NewResource);
+            NewResource = "";
+        }
+    }
+    private void PostQuestion()
+    {
+        if (!string.IsNullOrWhiteSpace(NewQuestion))
+        {
+            CurrentTopic?.Questions.Add(new Question { Author = "Me", Text = NewQuestion });
+            NewQuestion = "";
+        }
+    }
+    private void Respond(Question q)
+    {
+        q.Response = q.Response;
+        StateHasChanged();
+    }
+
+    private class MockTopic
+    {
+        public int Id { get; set; }
+        public string Title { get; set; } = "";
+        public string Description { get; set; } = "";
+        public List<string> Resources { get; set; } = new();
+        public List<Question> Questions { get; set; } = new();
+        public int ResourcesCount { get; set; }
+        public int DiscussionsCount { get; set; }
+    }
+
+    private class Question
+    {
+        public string Author { get; set; } = "";
+        public string Text { get; set; } = "";
+        public string? Response { get; set; }
+    }
+}
+
+<style>
+    .topic-wrapper {
+        padding: 3rem 2rem;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #eef2ff, #fef3c7);
+    }
+
+    /* Hero */
+    .topic-hero {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+        .topic-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1e293b;
+        }
+
+        .topic-hero .subtitle {
+            color: #475569;
+            font-weight: 500;
+        }
+
+    /* Grid */
+    .topic-grid {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        background: white;
+        border-radius: 16px;
+        padding: 1.5rem;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    }
+
+        .sidebar h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+    .section-btn {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        background: #f9fafb;
+        border: none;
+        padding: 0.75rem 1rem;
+        border-radius: 10px;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+        .section-btn:hover {
+            background: #e0e7ff;
+        }
+
+        .section-btn.active {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .section-btn .arrow {
+            opacity: 0;
+            transition: all 0.2s;
+        }
+
+        .section-btn:hover .arrow {
+            opacity: 1;
+        }
+
+    /* Content */
+    .content .card {
+        background: white;
+        border-radius: 16px;
+        padding: 1.5rem;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+        margin-bottom: 1.5rem;
+    }
+
+    .content h3 {
+        color: #2563eb;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+    }
+
+    .resource-list li {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem 1rem;
+        background: #f9fafb;
+        border-radius: 10px;
+        margin-bottom: 0.5rem;
+        transition: background 0.2s;
+    }
+
+        .resource-list li:hover {
+            background: #e0e7ff;
+        }
+
+    .resource-list a {
+        color: #2563eb;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+        .resource-list a:hover {
+            text-decoration: underline;
+        }
+
+    .resource-actions {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+
+        .resource-actions input {
+            flex: 1;
+            padding: 0.5rem;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            outline: none;
+        }
+
+        .resource-actions button {
+            background: #3b82f6;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+            .resource-actions button:hover {
+                background: #2563eb;
+            }
+
+    /* Discussion */
+    .discussion-item {
+        background: #f9fafb;
+        padding: 0.75rem 1rem;
+        border-radius: 10px;
+        margin-bottom: 0.5rem;
+    }
+
+        .discussion-item input {
+            width: 100%;
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+        }
+
+        .discussion-item button {
+            margin-top: 0.5rem;
+            background: #16a34a;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+        }
+
+            .discussion-item button:hover {
+                background: #15803d;
+            }
+
+    .tutor-response {
+        background: #e0e7ff;
+        padding: 0.5rem;
+        border-radius: 8px;
+        margin-top: 0.5rem;
+    }
+
+    /* Assignments */
+    .tutor-note {
+        font-style: italic;
+        color: #6b7280;
+    }
+</style>

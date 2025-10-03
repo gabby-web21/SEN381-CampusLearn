@@ -1,0 +1,232 @@
+﻿@page "/signup"
+@inject CampusLearnFrontend.Services.AuthService AuthService
+@inject NavigationManager Nav
+
+<div class="signup-container">
+    <div class="signup-card">
+        <img src="images/logo.png" alt="CampusLearn Logo" class="logo" />
+        <h2>Create your account</h2>
+
+        <!-- Username -->
+        <div class="form-group">
+            <input @bind-value="newUser.Username" @bind-value:event="oninput"
+                   placeholder="Username" class="input @(GetInputClass(usernameError))"
+                   @onblur="ValidateUsernameDebounced" />
+            @if (!string.IsNullOrEmpty(usernameError))
+            {
+                <small class="error-inline">@usernameError</small>
+            }
+                
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <input @bind-value="newUser.Email" @bind-value:event="oninput"
+                   placeholder="Email" class="input @(GetInputClass(emailError))"
+                   @onblur="ValidateEmailDebounced" />
+            @if (!string.IsNullOrEmpty(emailError))
+                {
+                    <small class="error-inline">@emailError</small>
+                }
+        </div>
+
+        <!-- Password -->
+        <div class="form-group password-group">
+            <input @bind-value="newUser.Password" @bind-value:event="oninput"
+                   type="@(showPassword ? "text" : "password")"
+                   placeholder="Password" class="input @(GetInputClass(passwordError))"
+                   @onblur="ValidatePasswordDebounced" />
+            <button type="button" class="toggle-btn" @onclick="() => showPassword = !showPassword">
+                @(showPassword ? "Hide" : "Show")
+            </button>
+            @if (!string.IsNullOrEmpty(passwordError))
+                {
+                    <small class="error-inline">@passwordError</small>
+                }
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group password-group">
+            <input @bind-value="confirmPassword" @bind-value:event="oninput"
+                   type="@(showConfirmPassword ? "text" : "password")"
+                   placeholder="Confirm Password" class="input @(GetInputClass(confirmError))"
+                   @onblur="ValidateConfirmPasswordDebounced" />
+            <button type="button" class="toggle-btn" @onclick="() => showConfirmPassword = !showConfirmPassword">
+                @(showConfirmPassword ? "Hide" : "Show")
+            </button>
+            @if (!string.IsNullOrEmpty(confirmError))
+            {
+                <small class="error-inline">@confirmError</small>
+            }
+               
+        </div>
+
+        <button class="btn-primary" @onclick="HandleSignUp">Sign Up</button>
+
+        <p class="login-text">
+            Already have an account? <a href="/login">Login here!</a>
+        </p>
+    </div>
+</div>
+
+<style>
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f5f5f5;
+}
+.signup-card {
+    background: #fff;
+    padding: 40px 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 360px;
+    text-align: center;
+}
+.signup-card h2 { margin: 15px 0 25px; font-weight: 600; font-size: 1.6rem; color: #333; }
+.logo { height: 60px; }
+
+.input {
+    width: 100%;
+    padding: 10px 14px;
+    margin-bottom: 2px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border 0.3s;
+}
+.input.valid { border-color: green; }
+.input.invalid { border-color: red; }
+
+.error-inline {
+    color: red;
+    font-size: 0.8rem;
+    display: block;
+    margin-top: 2px;
+}
+
+.password-group { position: relative; }
+.toggle-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #4a6cf7;
+    font-weight: 600;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background: #4a6cf7;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+    margin-top: 10px;
+}
+.btn-primary:hover { background: #3755d4; }
+
+.login-text { margin-top: 20px; font-size: 0.95rem; color: #555; }
+.login-text a { color: #4a6cf7; text-decoration: none; font-weight: 600; }
+.login-text a:hover { text-decoration: underline; }
+
+.form-group { margin-bottom: 15px; text-align: left; }
+</style>
+
+@code {
+    private Models.User newUser = new();
+    private string confirmPassword = "";
+
+    private bool showPassword = false;
+    private bool showConfirmPassword = false;
+
+    private string usernameError = "";
+    private string emailError = "";
+    private string passwordError = "";
+    private string confirmError = "";
+
+    private void HandleSignUp()
+    {
+        ValidateAll();
+        if (!string.IsNullOrEmpty(usernameError) ||
+            !string.IsNullOrEmpty(emailError) ||
+            !string.IsNullOrEmpty(passwordError) ||
+            !string.IsNullOrEmpty(confirmError)) return;
+
+        bool success = AuthService.Register(new Models.User
+        {
+            Username = newUser.Username,
+            Email = newUser.Email,
+            Password = newUser.Password
+        });
+
+        if (success) Nav.NavigateTo("/login");
+        else emailError = "Email taken";
+    }
+
+    private void ValidateAll()
+    {
+        ValidateUsername();
+        ValidateEmail();
+        ValidatePassword();
+        ValidateConfirmPassword();
+    }
+
+    private void ValidateUsernameDebounced() => ValidateUsername();
+    private void ValidateEmailDebounced() => ValidateEmail();
+    private void ValidatePasswordDebounced() => ValidatePassword();
+    private void ValidateConfirmPasswordDebounced() => ValidateConfirmPassword();
+
+    private void ValidateUsername()
+    {
+        if (string.IsNullOrWhiteSpace(newUser.Username))
+            usernameError = "Required";
+        else if (newUser.Username.Count(char.IsDigit) < 2)
+            usernameError = "Min 2 numbers";
+        else
+            usernameError = "";
+    }
+
+    private void ValidateEmail()
+    {
+        if (string.IsNullOrWhiteSpace(newUser.Email))
+        {
+            emailError = "Required";
+            return;
+        }
+        var pattern = @"^[a-zA-Z0-9._%+-]+@(student|tutor|admin)\.belgiumcampus\.ac\.za$";
+        emailError = System.Text.RegularExpressions.Regex.IsMatch(newUser.Email, pattern) ? "" : "Invalid email";
+    }
+
+    private void ValidatePassword()
+    {
+        if (string.IsNullOrWhiteSpace(newUser.Password))
+            passwordError = "Required";
+        else if (!newUser.Password.Any(char.IsDigit))
+            passwordError = "Needs number";
+        else if (!newUser.Password.Any(ch => "!@#$%^&*()_+-={}[]|:;\"'<>,.?/".Contains(ch)))
+            passwordError = "Needs special char";
+        else if (newUser.Password.Length < 6)
+            passwordError = "Min 6 chars";
+        else
+            passwordError = "";
+
+        ValidateConfirmPassword();
+    }
+
+    private void ValidateConfirmPassword()
+    {
+        confirmError = newUser.Password != confirmPassword ? "Doesn't match" : "";
+    }
+
+    private string GetInputClass(string error) => string.IsNullOrEmpty(error) ? "valid" : "invalid";
+}

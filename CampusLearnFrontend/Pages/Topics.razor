@@ -1,0 +1,256 @@
+﻿@page "/topics"
+@layout DashboardLayout
+
+<div class="topics-wrapper min-h-screen bg-gradient-to-br from-indigo-50 via-white to-yellow-50 p-8 rounded-2xl">
+    <div class="flex justify-between items-center mb-8">
+        <h2 class="page-title text-4xl font-extrabold text-gray-900 tracking-tight">
+            @DisplaySubject <span class="text-indigo-600">Topics</span>
+        </h2>
+
+        <!-- Students create topics -->
+        @if (!IsTutor)
+        {
+            <button class="btn-create" @onclick="ShowCreateModal">
+                Create Topic
+            </button>
+        }
+    </div>
+
+    <!-- Topics Grid -->
+    <div class="topics-grid grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        @foreach (var t in topics)
+        {
+            <div class="topic-card cursor-pointer" @onclick='() => NavigateTopic(t.Id)'>
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="font-semibold text-xl text-gray-800">@t.Title</h3>
+                    @if (t.IsNew)
+                    {
+                        <span class="badge-new">NEW</span>
+                    }
+                </div>
+
+                <p class="text-gray-600 text-sm mb-3">@t.Description</p>
+
+                <div class="flex flex-wrap gap-2 mb-3">
+                    @if (t.HasVideo)
+                    {
+                        <span class="topic-tag">Video</span>
+                    }
+                    @if (t.HasQuiz)
+                    {
+                        <span class="topic-tag">Quiz</span>
+                    }
+                    @if (t.HasAssignment)
+                    {
+                        <span class="topic-tag">Assignment</span>
+                    }
+                </div>
+
+                <div class="flex justify-between text-sm text-gray-600">
+                    <span>@t.ResourcesCount Resources</span>
+                    <span>@t.DiscussionsCount Discussions</span>
+                </div>
+
+                <!-- Subscribe / Manage buttons -->
+                <div class="mt-4 flex justify-end">
+                    @if (!IsTutor)
+                    {
+                        <button class="btn-subscribe @(t.IsSubscribed ? "unsubscribe" : "")"
+                                @onclick="(e) => ToggleSubscribe(t)">
+                            @(t.IsSubscribed ? "Unsubscribe" : "Subscribe")
+                        </button>
+                    }
+                    else
+                    {
+                        <button class="btn-manage">Manage</button>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Create Topic Modal -->
+@if (ShowModal)
+{
+    <div class="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
+        <div class="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-lg">
+            <h3 class="text-lg font-bold mb-4">✨ Create New Topic</h3>
+            <input class="input-field" placeholder="Topic Title" @bind="NewTopicTitle" />
+            <textarea class="input-field" placeholder="Description" @bind="NewTopicDescription"></textarea>
+            <div class="flex justify-end space-x-3 mt-4">
+                <button class="btn-cancel" @onclick="() => ShowModal = false">Cancel</button>
+                <button class="btn-primary" @onclick="CreateTopic">Create</button>
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+    .topic-card {
+        background: white;
+        border-radius: 16px;
+        padding: 1.5rem;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+        .topic-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+        }
+
+    .badge-new {
+        background: #facc15;
+        color: #1e293b;
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding: 2px 8px;
+        border-radius: 8px;
+    }
+
+    .topic-tag {
+        background: #eef2ff;
+        color: #4338ca;
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 3px 8px;
+        border-radius: 8px;
+    }
+
+    .btn-create {
+        background: linear-gradient(45deg, #2563eb, #3b82f6);
+        color: white;
+        padding: 0.6rem 1.2rem;
+        border-radius: 12px;
+        font-weight: 600;
+        box-shadow: 0 6px 15px rgba(37,99,235,0.25);
+        transition: all 0.25s;
+    }
+
+        .btn-create:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37,99,235,0.35);
+        }
+
+    .btn-subscribe {
+        background: #e0e7ff;
+        color: #3730a3;
+        padding: 0.4rem 0.8rem;
+        border-radius: 10px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        transition: all 0.25s;
+    }
+
+        .btn-subscribe:hover {
+            background: #c7d2fe;
+        }
+
+        .btn-subscribe.unsubscribe {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+            .btn-subscribe.unsubscribe:hover {
+                background: #fecaca;
+            }
+
+    .btn-manage {
+        background: #f3f4f6;
+        color: #374151;
+        padding: 0.4rem 0.8rem;
+        border-radius: 10px;
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+
+    .input-field {
+        width: 100%;
+        border: 1px solid #d1d5db;
+        border-radius: 10px;
+        padding: 0.75rem;
+        margin-bottom: 0.75rem;
+        font-size: 0.95rem;
+    }
+
+    .btn-primary {
+        background: linear-gradient(45deg, #2563eb, #3b82f6);
+        color: white;
+        padding: 0.6rem 1.2rem;
+        border-radius: 10px;
+        font-weight: 600;
+    }
+
+    .btn-cancel {
+        background: #e5e7eb;
+        padding: 0.6rem 1.2rem;
+        border-radius: 10px;
+        font-weight: 600;
+    }
+</style>
+
+@code {
+    // route parameters (support both token names to avoid name-conflict compile errors)
+    [Parameter] public string Subject { get; set; } = "";
+    [Parameter] public string SubjectName { get; set; } = "";
+
+    // friendly display value (uses whichever route param bound)
+    private string DisplaySubject => !string.IsNullOrWhiteSpace(Subject) ? Subject : (!string.IsNullOrWhiteSpace(SubjectName) ? SubjectName : "Subject");
+
+    private bool IsTutor = false; // role check (keep as you had)
+    private bool ShowModal = false;
+    private string NewTopicTitle = "";
+    private string NewTopicDescription = "";
+
+    private List<TopicItem> topics = new()
+    {
+        new TopicItem { Id=1, Title = "Introduction to BUM 281", Description="Course intro", IsNew = true, HasVideo=true, HasAssignment=true, ResourcesCount = 3, DiscussionsCount = 1 },
+        new TopicItem { Id=2, Title = "How to not be a bum", Description="Strategies", IsNew = false, HasQuiz=true, ResourcesCount = 2, DiscussionsCount = 0 },
+    };
+
+    private void ShowCreateModal() => ShowModal = true;
+
+    private void CreateTopic()
+    {
+        topics.Add(new TopicItem
+        {
+            Id = topics.Count + 1,
+            Title = NewTopicTitle,
+            Description = NewTopicDescription,
+            IsNew = true
+        });
+        ShowModal = false;
+        NewTopicTitle = "";
+        NewTopicDescription = "";
+    }
+
+    private void ToggleSubscribe(TopicItem t)
+    {
+        t.IsSubscribed = !t.IsSubscribed;
+    }
+
+    private void NavigateTopic(int id)
+    {
+        NavManager.NavigateTo($"/topic/{id}");
+    }
+
+    private class TopicItem
+    {
+        public int Id { get; set; }
+        public string Title { get; set; } = "";
+        public string Description { get; set; } = "";
+        public bool IsNew { get; set; }
+        public bool HasVideo { get; set; }
+        public bool HasQuiz { get; set; }
+        public bool HasAssignment { get; set; }
+        public int ResourcesCount { get; set; }
+        public int DiscussionsCount { get; set; }
+        public bool IsSubscribed { get; set; }
+    }
+
+    [Inject] NavigationManager NavManager { get; set; }
+}

@@ -1,0 +1,298 @@
+﻿@page "/student-profile"
+@layout DashboardLayout
+
+<div class="profile-wrapper">
+    <!-- Profile Header -->
+    <div class="profile-header">
+        <div class="profile-avatar">
+            <div class="avatar-circle">SC</div>
+        </div>
+        <div class="profile-info">
+            <h1 class="profile-name">@studentName</h1>
+            <p class="profile-lastaccess">Last access: @lastAccess</p>
+        </div>
+        <div class="profile-actions">
+            <button class="btn-message">Message</button>
+        </div>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="profile-stats">
+        <div><span class="stat-number">2</span><span class="stat-label">Contacts</span></div>
+        <div><span class="stat-number">0</span><span class="stat-label">Discussions</span></div>
+        <div><span class="stat-number">0</span><span class="stat-label">Tutors</span></div>
+        <div><span class="stat-number">0</span><span class="stat-label">Badges</span></div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="profile-tabs">
+        <button class="tab-btn @(activeTab == "about" ? "active" : "")" @onclick='() => SetTab(" about")'>About Me</button>
+        <button class="tab-btn @(activeTab == "courses" ? "active" : "")" @onclick='() => SetTab(" courses")'>Courses</button>
+        <button class="tab-btn @(activeTab == "settings" ? "active" : "")" @onclick='() => SetTab(" settings")'>Settings</button>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="profile-content">
+        @if (activeTab == "about")
+        {
+            <div class="info-grid">
+                <div>
+                    <p><strong>First name</strong><br />@firstName</p>
+                    <p><strong>Email address</strong><br />@email</p>
+                    <p><strong>Department</strong><br />@department</p>
+                    <p><strong>Country</strong><br />@country</p>
+                    <p><strong>Address</strong><br />@address</p>
+                </div>
+                <div>
+                    <p><strong>Last name</strong><br />@lastName</p>
+                    <p><strong>Phone</strong><br />@phone</p>
+                    <p><strong>Interests</strong><br />@interests</p>
+                    <p><strong>City/Town</strong><br />@city</p>
+                </div>
+            </div>
+        }
+        else if (activeTab == "courses")
+        {
+            <ul class="course-list">
+                @foreach (var course in enrolledCourses)
+                {
+                    <li class="course-item">
+                        <span>@course</span>
+                        <button class="btn-view" @onclick="() => ViewCourse(course)">View</button>
+                    </li>
+                }
+            </ul>
+        }
+        else if (activeTab == "settings")
+        {
+            <div class="settings-form">
+                <label>Name</label>
+                <input class="input" @bind="studentName" />
+
+                <label>Email</label>
+                <input class="input" @bind="email" />
+
+                <label>Password</label>
+                <input type="password" class="input" @bind="studentPassword" />
+
+                <div class="form-actions">
+                    <button class="btn-save" @onclick="SaveChanges">Save</button>
+                    <button class="btn-cancel" @onclick="ResetChanges">Cancel</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .profile-wrapper {
+        padding: 2rem;
+        max-width: 1100px;
+        margin: auto;
+        background: linear-gradient(135deg, #eef2ff, #fef3c7);
+        min-height: 100vh;
+        border-radius: 20px;
+    }
+
+    .profile-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: white;
+        border-radius: 20px;
+        padding: 1.5rem 2rem;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .avatar-circle {
+        background: linear-gradient(135deg, #facc15, #3b82f6);
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 700;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .profile-name {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin: 0;
+        color: #1e293b;
+    }
+
+    .profile-lastaccess {
+        font-size: 0.9rem;
+        color: #64748b;
+    }
+
+    .btn-message {
+        background: #be185d;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 12px;
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+        .btn-message:hover {
+            background: #9d174d;
+        }
+
+    .profile-stats {
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 1rem;
+        margin: 2rem 0;
+        text-align: center;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #2563eb;
+        display: block;
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+        color: #475569;
+    }
+
+    .profile-tabs {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .tab-btn {
+        background: #f1f5f9;
+        padding: 0.75rem 1.25rem;
+        border-radius: 12px;
+        font-weight: 600;
+        color: #475569;
+        cursor: pointer;
+        transition: 0.2s;
+        border: none;
+    }
+
+        .tab-btn.active {
+            background: linear-gradient(45deg,#2563eb,#3b82f6);
+            color: white;
+        }
+
+    .profile-content {
+        background: white;
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+    }
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        color: #1e293b;
+    }
+
+    .course-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .course-item {
+        display: flex;
+        justify-content: space-between;
+        background: #f9fafb;
+        padding: 1rem;
+        border-radius: 12px;
+        margin-bottom: 1rem;
+        transition: 0.2s;
+    }
+
+        .course-item:hover {
+            background: #eef2ff;
+        }
+
+    .btn-view {
+        background: linear-gradient(to right, #2563eb, #4f46e5);
+        color: white;
+        padding: 6px 14px;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+
+    .settings-form label {
+        display: block;
+        margin-top: 1rem;
+        font-weight: 600;
+        color: #374151;
+    }
+
+    .input {
+        width: 100%;
+        padding: 0.75rem;
+        border-radius: 10px;
+        border: 1px solid #d1d5db;
+        margin-top: 0.25rem;
+    }
+
+    .form-actions {
+        margin-top: 1.5rem;
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-end;
+    }
+
+    .btn-save {
+        background: linear-gradient(45deg, #2563eb, #3b82f6);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 12px;
+        border: none;
+        font-weight: 600;
+    }
+
+    .btn-cancel {
+        background: #e5e7eb;
+        color: #374151;
+        padding: 10px 20px;
+        border-radius: 12px;
+        border: none;
+        font-weight: 600;
+    }
+</style>
+
+@code {
+    private string studentName = "Sabrina Carpenter";
+    private string firstName = "Sabrina";
+    private string lastName = "Carpenter";
+    private string email = "SBCarpenter@student.belgiumcampus.ac.za";
+    private string phone = "0823456789";
+    private string department = "Computer Science";
+    private string country = "South Africa";
+    private string address = "-";
+    private string city = "Cape Town";
+    private string interests = "AI, Web Dev";
+    private string studentPassword = "********";
+    private string lastAccess = DateTime.Now.ToString("dddd, d MMMM yyyy, h:mm tt");
+
+    private string activeTab = "about";
+
+    private List<string> enrolledCourses = new() { "Software Engineering", "Data Structures", "Web Development" };
+
+    private void ViewCourse(string course) => Console.WriteLine($"Viewing course: {course}");
+    private void SetTab(string tab) => activeTab = tab;
+
+    private void SaveChanges() => Console.WriteLine("Saved profile changes");
+    private void ResetChanges() => Console.WriteLine("Cancelled changes");
+}

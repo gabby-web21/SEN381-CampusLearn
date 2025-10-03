@@ -1,0 +1,338 @@
+﻿@page "/forum"
+@layout DashboardLayout
+@using Microsoft.AspNetCore.Components.Web
+
+<div class="forum-wrapper p-6 max-w-5xl mx-auto min-h-screen">
+    <h1 class="forum-title">BUM 281 Forum</h1>
+
+    <!-- Posts container -->
+    <div class="posts-container">
+        @foreach (var post in Posts)
+        {
+            @RenderPost(post)
+        }
+    </div>
+
+    <!-- Input area -->
+    <div class="input-area">
+        <input @bind="NewPost" @onkeydown="HandleKeyPress"
+               placeholder="@InputPlaceholder" />
+        <button class="btn-send" @onclick="SendPost">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+            Send
+        </button>
+        <label class="anonymous-toggle">
+            <input type="checkbox" @bind="IsAnonymous" /> <span>Anonymous</span>
+        </label>
+    </div>
+</div>
+
+<style>
+    /* Page wrapper */
+    .forum-wrapper {
+        background: linear-gradient(135deg, #eef2ff, #dbeafe);
+        border-radius: 2xl;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        padding: 2rem;
+    }
+
+    /* Page title */
+    .forum-title {
+        font-size: 2.25rem;
+        font-weight: 700;
+        color: #1e40af;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Posts container */
+    .posts-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        max-height: 600px;
+        overflow-y: auto;
+        padding-right: 0.5rem;
+    }
+
+    /* Post card */
+    .post-card {
+        display: flex;
+        gap: 1rem;
+        background: white;
+        border-radius: 1.5rem;
+        padding: 1rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        transition: transform 0.15s, box-shadow 0.2s;
+    }
+
+        .post-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+    /* Avatars */
+    .avatar-tutor {
+        background: linear-gradient(135deg, #2563eb, #3b82f6);
+    }
+
+    .avatar-student {
+        background: linear-gradient(135deg, #f59e0b, #facc15);
+    }
+
+    .avatar-anonymous {
+        background: linear-gradient(135deg, #9ca3af, #d1d5db);
+    }
+
+    .avatar {
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 1.25rem;
+        border-radius: 9999px;
+    }
+
+    /* Content */
+    .post-content {
+        flex: 1;
+    }
+
+    .post-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .post-author {
+        font-weight: 600;
+        color: #1e293b;
+    }
+
+    .post-time {
+        font-size: 0.75rem;
+        color: #6b7280;
+    }
+
+    .post-text {
+        margin-top: 0.5rem;
+        color: #374151;
+        white-space: pre-wrap;
+    }
+
+    .reply-button {
+        font-size: 0.875rem;
+        color: #2563eb;
+        margin-top: 0.5rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: text-decoration 0.2s;
+    }
+
+        .reply-button:hover {
+            text-decoration: underline;
+        }
+
+    /* Replies */
+    .reply-container {
+        margin-left: 3rem;
+        border-left: 2px solid #e5e7eb;
+        padding-left: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    /* Input area */
+    .input-area {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+        background: white;
+        padding: 0.75rem 1rem;
+        border-radius: 2xl;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+        .input-area input {
+            flex: 1;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            border: 1px solid #d1d5db;
+            outline: none;
+            font-size: 0.875rem;
+        }
+
+            .input-area input:focus {
+                ring: 2px;
+                ring-color: #3b82f6;
+                border-color: #3b82f6;
+            }
+
+    /* Send button */
+    .btn-send {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        border-radius: 9999px;
+        background: linear-gradient(to right, #2563eb, #3b82f6);
+        color: white;
+        font-weight: 500;
+        cursor: pointer;
+        transition: transform 0.1s, background 0.2s, box-shadow 0.2s;
+    }
+
+        .btn-send:hover {
+            background: linear-gradient(to right, #1d4ed8, #2563eb);
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+    /* Anonymous toggle */
+    .anonymous-toggle {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        font-size: 0.875rem;
+        color: #6b7280;
+    }
+
+        .anonymous-toggle input {
+            accent-color: #3b82f6;
+        }
+</style>
+
+
+@code {
+    private string NewPost { get; set; } = string.Empty;
+    private bool IsAnonymous { get; set; } = false;
+    private ForumPostModel ReplyTo { get; set; } = null;
+    private string InputPlaceholder => ReplyTo != null ? $"Replying to {ReplyTo.Author}..." : "Type your message…";
+
+    private List<ForumPostModel> Posts = new()
+    {
+        new ForumPostModel { Id=1, Author="Taylor", Time=DateTime.Now.AddMinutes(-10).ToString("HH:mm"), Content="This is a sample message from Taylor.", Type=PostType.Student },
+        new ForumPostModel { Id=2, Author="Anonymous", Time=DateTime.Now.AddMinutes(-8).ToString("HH:mm"), Content="This is an anonymous reply.", Type=PostType.Anonymous },
+        new ForumPostModel { Id=3, Author="Tutor", Time=DateTime.Now.AddMinutes(-5).ToString("HH:mm"), Content="Helpful comment from the tutor.", Type=PostType.Tutor }
+    };
+
+    private void SendPost()
+    {
+        if (string.IsNullOrWhiteSpace(NewPost)) return;
+
+        var newPost = new ForumPostModel
+        {
+            Id = Posts.Max(p => p.Id) + 1,
+            Author = IsAnonymous ? "Anonymous" : "Sabrina",
+            Content = NewPost,
+            Time = DateTime.Now.ToString("HH:mm"),
+            Type = IsAnonymous ? PostType.Anonymous : PostType.Student,
+            ParentId = ReplyTo?.Id
+        };
+
+        if (ReplyTo != null)
+            ReplyTo.Replies.Add(newPost);
+        else
+            Posts.Add(newPost);
+
+        NewPost = string.Empty;
+        ReplyTo = null;
+    }
+
+    private void HandleKeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter") SendPost();
+    }
+
+    private void PrepareReply(ForumPostModel post)
+    {
+        ReplyTo = post;
+    }
+
+    private RenderFragment RenderPost(ForumPostModel post) => builder =>
+    {
+        int seq = 0;
+        builder.OpenElement(seq++, "div");
+        builder.AddAttribute(seq++, "class", $"post-card {GetPostStyle(post.Type)} flex space-x-4 p-4 rounded-xl shadow-sm");
+        // Avatar
+        builder.OpenElement(seq++, "div");
+        builder.AddAttribute(seq++, "class", "flex-shrink-0");
+        builder.OpenElement(seq++, "div");
+        builder.AddAttribute(seq++, "class", $"{GetAvatarStyle(post.Type)} w-10 h-10 flex items-center justify-center rounded-full text-white font-bold text-lg");
+        builder.AddContent(seq++, GetAvatarInitial(post.Author));
+        builder.CloseElement();
+        builder.CloseElement();
+        // Content
+        builder.OpenElement(seq++, "div");
+        builder.AddAttribute(seq++, "class", "flex-1");
+        builder.OpenElement(seq++, "div");
+        builder.AddAttribute(seq++, "class", "flex justify-between items-center");
+        builder.OpenElement(seq++, "p");
+        builder.AddAttribute(seq++, "class", "font-semibold");
+        builder.AddContent(seq++, post.Author);
+        builder.CloseElement();
+        builder.OpenElement(seq++, "span");
+        builder.AddAttribute(seq++, "class", "text-xs text-gray-500");
+        builder.AddContent(seq++, post.Time);
+        builder.CloseElement();
+        builder.CloseElement();
+        builder.OpenElement(seq++, "p");
+        builder.AddAttribute(seq++, "class", "text-gray-700 mt-2 whitespace-pre-wrap");
+        builder.AddContent(seq++, post.Content);
+        builder.CloseElement();
+        // Reply button
+        builder.OpenElement(seq++, "button");
+        builder.AddAttribute(seq++, "class", "text-sm text-blue-600 mt-2 hover:underline font-medium");
+        builder.AddAttribute(seq++, "onclick", EventCallback.Factory.Create(this, () => PrepareReply(post)));
+        builder.AddContent(seq++, "Reply");
+        builder.CloseElement();
+        // Replies
+        if (post.Replies.Any())
+        {
+            builder.OpenElement(seq++, "div");
+            builder.AddAttribute(seq++, "class", "reply-container mt-2 flex flex-col space-y-2");
+            foreach (var reply in post.Replies)
+                builder.AddContent(seq++, RenderPost(reply));
+            builder.CloseElement();
+        }
+        builder.CloseElement(); // flex-1
+        builder.CloseElement(); // main div
+    };
+
+    private string GetPostStyle(PostType type) => type switch
+    {
+        PostType.Tutor => "bg-tutor",
+        PostType.Student => "bg-student",
+        PostType.Anonymous => "bg-anonymous",
+        _ => "bg-student"
+    };
+
+    private string GetAvatarStyle(PostType type) => type switch
+    {
+        PostType.Tutor => "avatar-tutor",
+        PostType.Student => "avatar-student",
+        PostType.Anonymous => "avatar-anonymous",
+        _ => "avatar-student"
+    };
+
+    private string GetAvatarInitial(string author) => !string.IsNullOrWhiteSpace(author) ? author[0].ToString().ToUpper() : "?";
+
+    public enum PostType { Student, Tutor, Anonymous }
+
+    public class ForumPostModel
+    {
+        public int Id { get; set; }
+        public string Author { get; set; }
+        public string Content { get; set; }
+        public string Time { get; set; }
+        public PostType Type { get; set; }
+        public int? ParentId { get; set; }
+        public List<ForumPostModel> Replies { get; set; } = new();
+    }
+}

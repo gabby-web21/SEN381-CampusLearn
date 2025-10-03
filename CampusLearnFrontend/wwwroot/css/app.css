@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    background: #1a1a1a;
+    font-family: Segoe UI, sans-serif;
+    color: #333;
+}
+
+.top-bar {
+    background: #d3d3d3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.burger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.burger-line {
+    width: 25px;
+    height: 3px;
+    background: #333;
+}
+
+.burger-menu {
+    position: absolute;
+    top: 3.2rem;
+    right: 0;
+    background: #eee;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.main-content {
+    background: #fff;
+    padding: 2rem;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(120px,1fr));
+    gap: 1rem;
+}
+
+.subject-card {
+    background: #ccc;
+    text-align: center;
+    padding: 2rem 1rem;
+    border-radius: 4px;
+}
+
+.topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap: 1rem;
+}
+
+.topic-card {
+    background: #ccc;
+    padding: 1rem;
+    border-radius: 8px;
+}

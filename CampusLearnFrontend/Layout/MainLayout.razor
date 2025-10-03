@@ -1,0 +1,90 @@
+﻿@inherits LayoutComponentBase
+
+<div class="app-layout">
+    <!-- Header -->
+    <header class="main-header">
+        <h1>CampusLearn</h1>
+    </header>
+
+    <!-- Main body content -->
+    <main class="main-body">
+        <div class="content-wrapper">
+            @Body
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>© 2025 CampusLearn. All rights reserved.</p>
+    </footer>
+</div>
+
+<style>
+    /* Whole layout wrapper */
+    .app-layout {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #eef2ff, #fef3c7);
+        font-family: 'Segoe UI', sans-serif;
+        color: #1e293b;
+    }
+
+    /* Header */
+    .main-header {
+        text-align: center;
+        padding: 1.2rem;
+        background: linear-gradient(90deg, #2563eb, #3b82f6);
+        color: white;
+        font-size: 1.6rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    /* Main body */
+    .main-body {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 2rem;
+    }
+
+    /* Content area card */
+    .content-wrapper {
+        background: white;
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        width: 100%;
+        max-width: 1100px;
+        min-height: 70vh;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    /* Footer */
+    .main-footer {
+        text-align: center;
+        padding: 1rem;
+        font-size: 0.9rem;
+        color: #475569;
+        background: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Subtle fade-in animation */
+    @@keyframes fadeIn {
+        from
+
+    {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    }
+</style>

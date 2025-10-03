@@ -1,0 +1,357 @@
+﻿@page "/chatbot"
+@layout DashboardLayout
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Web
+@inject IJSRuntime JS
+
+<div class="chatbot-wrapper p-6">
+    <h1 class="chatbot-title mb-6">Ask <span class="italic text-blue-600">CLARA</span>!</h1>
+
+    <!-- Chat window -->
+    <div class="chat-window mb-4" @ref="ChatWindowRef">
+        @if (ChatHistory.Count == 0)
+        {
+            <p class="placeholder-text">CLARA will respond here…</p>
+        }
+        else
+        {
+            @foreach (var message in ChatHistory)
+            {
+                <div class="@GetBubbleClass(message.IsBot)">
+                    @if (message.IsFile)
+                    {
+                        <div class="file-bubble fade-in">
+                            <i class="fas fa-file-alt"></i> @message.Text
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="fade-in">@message.Text</p>
+                    }
+                </div>
+            }
+        }
+    </div>
+
+    <!-- Input row -->
+    <div class="input-row">
+        <input @bind="UserInput"
+               @onkeydown="HandleKeyPress"
+               class="chat-input flex-1"
+               placeholder="Type your question here…" />
+
+        <button class="btn-send" @onclick="SendMessage">
+            <i class="fas fa-paper-plane"></i>
+        </button>
+
+        <label class="btn-send file-btn" title="Upload File">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <InputFile OnChange="HandleFileUpload" style="display:none;" />
+        </label>
+    </div>
+
+
+    <!-- New Chat Button -->
+    <div class="new-chat mt-4 text-center">
+        <button class="btn-new" @onclick="NewChat">New Chat</button>
+    </div>
+
+    <!-- Quick Suggestions -->
+    <div class="quick-questions mt-4">
+        <span class="quick-label">Try asking:</span>
+        <button class="quick-btn" @onclick='() => SendQuick("Hello")'>Hello</button>
+        <button class="quick-btn" @onclick='() => SendQuick("Help")'>Help</button>
+        <button class="quick-btn" @onclick='() => SendQuick("Schedule")'>Schedule</button>
+        <button class="quick-btn" @onclick='() => SendQuick("Tutors")'>Tutors</button>
+        <button class="quick-btn" @onclick='() => SendQuick("Resources")'>Resources</button>
+        <button class="quick-btn" @onclick='() => SendQuick("Exams")'>Exams</button>
+        <button class="quick-btn" @onclick='() => SendQuick("Login Issues")'>Login</button>
+    </div>
+</div>
+
+<style>
+    /* Wrapper matches landing page yellow gradient */
+    .chatbot-wrapper {
+        max-width: 850px;
+        margin: auto;
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(135deg, #fef3c7, #fde68a, #fef9c3);
+        border-radius: 24px;
+        padding: 40px;
+        box-shadow: 0 10px 35px rgba(0,0,0,0.1);
+    }
+
+    .chatbot-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: #1e293b;
+        text-align: center;
+    }
+
+    .chat-window {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(16px);
+        border-radius: 20px;
+        border: 2px solid rgba(255,255,255,0.4);
+        padding: 20px;
+        min-height: 380px;
+        max-height: 500px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 1rem;
+    }
+
+    .bot-bubble {
+        align-self: flex-start;
+        background: linear-gradient(135deg, #2563eb, #3b82f6);
+        color: #fff;
+        border-radius: 18px 18px 18px 6px;
+        padding: 14px 20px;
+        max-width: 70%;
+        font-weight: 500;
+        line-height: 1.5;
+        box-shadow: 0 3px 10px rgba(37,99,235,0.25);
+    }
+
+    .user-bubble {
+        align-self: flex-end;
+        background: linear-gradient(135deg, #ffffff, #f3f4f6);
+        color: #111827;
+        border-radius: 18px 18px 6px 18px;
+        padding: 14px 20px;
+        max-width: 70%;
+        font-weight: 500;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .file-bubble {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-style: italic;
+        font-weight: 500;
+        background: linear-gradient(135deg, #fef3c7, #fde68a);
+        color: #92400e;
+        padding: 10px 14px;
+        border-radius: 16px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .placeholder-text {
+        color: #94a3b8;
+        font-style: italic;
+    }
+
+    .input-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: auto;
+    }
+
+    .chat-input {
+        flex: 1;
+        padding: 14px 16px;
+        border-radius: 16px;
+        border: 1px solid #cbd5e1;
+        font-size: 1rem;
+        transition: border 0.3s, box-shadow 0.3s;
+    }
+
+        .chat-input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+            outline: none;
+        }
+
+    .btn-send {
+        background: linear-gradient(135deg, #2563eb, #3b82f6);
+        color: white;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        box-shadow: 0 4px 14px rgba(37,99,235,0.35);
+        transition: all 0.25s ease;
+    }
+
+    .file-btn {
+        margin-left: 8px;
+    }
+
+    .btn-send:hover {
+        transform: translateY(-2px) scale(1.05);
+        filter: brightness(1.1);
+    }
+
+    .btn-new {
+        background: linear-gradient(135deg, #f87171, #ef4444);
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 14px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.2s ease;
+    }
+
+        .btn-new:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+        }
+
+    .quick-questions {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .quick-label {
+        font-weight: 600;
+        color: #475569;
+    }
+
+    .quick-btn {
+        background: #fff;
+        border: 1px solid #cbd5e1;
+        padding: 8px 14px;
+        border-radius: 12px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.25s;
+    }
+
+        .quick-btn:hover {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: white;
+            border-color: #2563eb;
+        }
+
+    .fade-in {
+        animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @@keyframes fadeIn {
+        from
+
+    {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    }
+</style>
+
+@code {
+    private string UserInput { get; set; } = string.Empty;
+    private List<ChatMessage> ChatHistory { get; set; } = new();
+    private ElementReference ChatWindowRef;
+
+    private void SendMessage()
+    {
+        if (!string.IsNullOrWhiteSpace(UserInput))
+        {
+            AddUserMessage(UserInput);
+            AddBotResponse(UserInput);
+            UserInput = string.Empty;
+            _ = ScrollToBottom();
+        }
+    }
+
+    private void SendQuick(string text)
+    {
+        AddUserMessage(text);
+        AddBotResponse(text);
+        _ = ScrollToBottom();
+    }
+
+    private async Task HandleFileUpload(InputFileChangeEventArgs e)
+    {
+        var fileName = e.File.Name;
+
+        if (await JS.InvokeAsync<bool>("confirm", $"Upload file '{fileName}'?"))
+        {
+            ChatHistory.Add(new ChatMessage
+            {
+                Text = $"Uploaded: '{fileName}' (not processed yet)",
+                IsBot = true,
+                IsFile = true
+            });
+            await ScrollToBottom();
+        }
+    }
+
+    private void HandleKeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            SendMessage();
+        }
+    }
+
+    private void AddUserMessage(string text) =>
+        ChatHistory.Add(new ChatMessage { Text = text, IsBot = false });
+
+    private void AddBotResponse(string userText)
+    {
+        string botResponse = userText.ToLower() switch
+        {
+            var s when s.Contains("hello") || s.Contains("hey")
+                => "HEY! I'm CLARA ;) your CampusLearn AI Assistant.",
+            var s when s.Contains("help")
+                => "Ask me about your courses, tutors, schedules, or resources!",
+            var s when s.Contains("schedule")
+                => "Your next class is at 10:00 AM on Monday.",
+            var s when s.Contains("tutor")
+                => "You can view tutors in your profile or apply for new tutoring.",
+            var s when s.Contains("resources")
+                => "Learning resources can be downloaded under each subject.",
+            var s when s.Contains("exam")
+                => "✏Check the Dashboard for your upcoming assessments.",
+            var s when s.Contains("login")
+                => "If login fails, make sure your CampusLearn email + password match.",
+            _ => $"CLARA says: I heard you ask '{userText}' — still learning that one "
+        };
+        ChatHistory.Add(new ChatMessage { Text = botResponse, IsBot = true });
+    }
+
+    private string GetBubbleClass(bool isBot) => isBot ? "bot-bubble" : "user-bubble";
+
+    private async Task ScrollToBottom()
+    {
+        await JS.InvokeVoidAsync("scrollToBottom", ChatWindowRef);
+    }
+
+    private void NewChat()
+    {
+        ChatHistory.Clear();
+        UserInput = string.Empty;
+    }
+
+    public class ChatMessage
+    {
+        public string Text { get; set; }
+        public bool IsBot { get; set; }
+        public bool IsFile { get; set; }
+    }
+}
+<script>
+    window.scrollToBottom = (chatWindow) => {
+        if (chatWindow) {
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+    };
+</script>

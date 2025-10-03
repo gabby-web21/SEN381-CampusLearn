@@ -1,0 +1,218 @@
+﻿@page "/resources"
+@layout DashboardLayout
+@inject NavigationManager NavManager
+
+<div class="resources-wrapper">
+    <!-- Hero -->
+    <div class="resources-hero">
+        <h1 class="resources-title">Learning Resources</h1>
+        <p class="resources-subtitle">
+            Browse study material uploaded by your lecturers, curated for <span>BUM 281</span>.
+        </p>
+    </div>
+
+    <!-- Lecturer Grid -->
+    <div class="lecturers-grid">
+        @foreach (var lecturer in Lecturers)
+        {
+            <div class="lecturer-card">
+                <div class="lecturer-header">
+                    <h2>@lecturer.Name</h2>
+                    <button class="btn-landing primary small" @onclick="() => ToggleResources(lecturer.Name)">
+                        @((SelectedLecturer == lecturer.Name) ? "Hide" : "View")
+                    </button>
+                </div>
+
+                @if (SelectedLecturer == lecturer.Name)
+                {
+                    <div class="topics-list">
+                        @foreach (var topic in lecturer.Topics)
+                        {
+                            <div class="topic-item">
+                                <span>@topic.Title</span>
+                                <span class="uploads">@topic.Uploads uploads</span>
+                            </div>
+                        }
+
+                        <div class="topic-actions">
+                            <button class="btn-landing secondary small" @onclick="() => UploadResource(lecturer.Name)">
+                                Upload Resource
+                            </button>
+                            <button class="btn-landing primary small" @onclick="() => ViewAll(lecturer.Name)">
+                                View All
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    private string? SelectedLecturer { get; set; }
+
+    private List<Lecturer> Lecturers = new()
+    {
+        new Lecturer
+        {
+            Name = "Dr. Smith",
+            Topics = new List<Topic>
+            {
+                new Topic { Title = "Intro to Databases", Uploads = 3 },
+                new Topic { Title = "Advanced Queries", Uploads = 2 }
+            }
+        },
+        new Lecturer
+        {
+            Name = "Prof. Johnson",
+            Topics = new List<Topic>
+            {
+                new Topic { Title = "Machine Learning Basics", Uploads = 4 },
+                new Topic { Title = "Neural Networks", Uploads = 1 }
+            }
+        }
+    };
+
+    private void ToggleResources(string lecturerName)
+    {
+        if (SelectedLecturer == lecturerName)
+            SelectedLecturer = null;
+        else
+            SelectedLecturer = lecturerName;
+    }
+
+    private void UploadResource(string lecturerName) { }
+    private void ViewAll(string lecturerName) => NavManager.NavigateTo($"/resources/{lecturerName}");
+
+    public class Lecturer { public string Name { get; set; } = ""; public List<Topic> Topics { get; set; } = new(); }
+    public class Topic { public string Title { get; set; } = ""; public int Uploads { get; set; } }
+}
+
+<style>
+    /* Wrapper background */
+    .resources-wrapper {
+        min-height: 100vh;
+        padding: 3rem 2rem;
+        background: linear-gradient(135deg, #eef2ff, #fef3c7);
+    }
+
+    /* Hero */
+    .resources-hero {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .resources-title {
+        font-size: 3rem;
+        font-weight: 800;
+        color: #1e293b;
+        margin-bottom: 1rem;
+    }
+
+    .resources-subtitle {
+        font-size: 1.25rem;
+        color: #475569;
+    }
+
+        .resources-subtitle span {
+            color: #2563eb;
+            font-weight: 700;
+        }
+
+    /* Lecturer Grid */
+    .lecturers-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Lecturer card */
+    .lecturer-card {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+        padding: 1.5rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .lecturer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        }
+
+    .lecturer-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+        .lecturer-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+    /* Topics */
+    .topics-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .topic-item {
+        display: flex;
+        justify-content: space-between;
+        background: #f9fafb;
+        padding: 0.75rem 1rem;
+        border-radius: 10px;
+        font-weight: 500;
+        color: #374151;
+    }
+
+        .topic-item .uploads {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+    /* Actions */
+    .topic-actions {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1rem;
+    }
+
+    /* Landing-style buttons */
+    .btn-landing {
+        padding: 10px 18px;
+        font-size: 1rem;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .btn-landing.small {
+            padding: 8px 16px;
+            font-size: 0.95rem;
+        }
+
+        .btn-landing.primary {
+            background: linear-gradient(45deg, #2563eb, #3b82f6);
+            color: white;
+        }
+
+        .btn-landing.secondary {
+            background: #facc15;
+            color: #1e293b;
+        }
+
+        .btn-landing:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+        }
+</style>

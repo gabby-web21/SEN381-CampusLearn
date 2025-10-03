@@ -1,0 +1,288 @@
+﻿@page "/dashboard"
+@layout DashboardLayout
+
+<div class="dashboard-wrapper">
+    <!-- Chatbot -->
+    <div class="chatbot @(isChatOpen ? "open" : "collapsed")" @onclick="ToggleChat">
+        @if (isChatOpen)
+        {
+            <div class="chat-window" @onclick:stopPropagation>
+                <div class="chat-header">CLARATEA</div>
+                <div class="messages">
+                    @foreach (var msg in ChatMessages)
+                    {
+                        <div class="@($"message {(msg.IsUser ? "user" : "bot")}")">@msg.Text</div>
+                    }
+                </div>
+                <div class="chat-input">
+                    <textarea @bind="currentMessage" placeholder="Type your question..."></textarea>
+                    <button class="btn-primary" @onclick="SendMessage">Send</button>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="chat-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 64 64">
+                    <circle cx="32" cy="32" r="28" fill="#fff" stroke="#2563eb" stroke-width="4" />
+                    <circle class="eye" cx="22" cy="28" r="4" fill="#2563eb" />
+                    <circle class="eye" cx="42" cy="28" r="4" fill="#2563eb" />
+                    <circle cx="18" cy="36" r="3" fill="#fcd34d" />
+                    <circle cx="46" cy="36" r="3" fill="#fcd34d" />
+                    <path d="M22 40 Q32 48 42 40" stroke="#2563eb" stroke-width="3" fill="transparent" stroke-linecap="round" />
+                    <line x1="32" y1="4" x2="32" y2="14" stroke="#2563eb" stroke-width="3" stroke-linecap="round" />
+                    <line x1="14" y1="32" x2="20" y2="32" stroke="#2563eb" stroke-width="3" stroke-linecap="round" />
+                    <line x1="44" y1="32" x2="50" y2="32" stroke="#2563eb" stroke-width="3" stroke-linecap="round" />
+                </svg>
+            </div>
+        }
+    </div>
+
+    <!-- Main Content -->
+    <div class="dashboard-container @(isChatOpen ? "pushed" : "")">
+        <h2 class="welcome">Welcome, Sabrina Carpenter <span class="role">[student]</span></h2>
+
+        <!-- Notifications -->
+        <div class="panel">
+            <h3>Notifications</h3>
+            <div class="notification">Assignment 1 graded. <em>Just now</em></div>
+            <div class="notification">Project 2 due in 3 days. <em>04 Oct 2025</em></div>
+            <div class="notification urgent">Tonight: Research Summary due at 23:59!</div>
+        </div>
+
+        <!-- Upcoming Sessions -->
+        <div class="panel">
+            <h3>Upcoming Sessions</h3>
+            <div class="session">
+                <p><b>DUM381 with Kanye East</b> | 13 Sept 2025 | FaceTime | 14:00</p>
+                <button class="btn-primary" @onclick='() => JoinSession("DUM381")'>Join</button>
+            </div>
+            <div class="session">
+                <p><b>BUM381 with Kimberly Kardashian</b> | 15 Sept 2025 | Teams | 14:00</p>
+                <button class="btn-primary" @onclick='() => JoinSession("BUM381")'>Join</button>
+            </div>
+        </div>
+
+        <!-- Calendar -->
+        <div class="panel">
+            <h3>Calendar & Assignments</h3>
+            <ul class="calendar-tasks">
+                <li>Assignment 1 due: 01 Oct 2025</li>
+                <li>Project 2 due in 3 days: 04 Oct 2025</li>
+                <li>Tonight: Research Summary due at 23:59</li>
+                <li>PRG3781 Lab Submission: 05 Oct 2025</li>
+            </ul>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="panel">
+            <h3>Recent Activity</h3>
+            <ul>
+                <li>Answered question: “What is MVC?”</li>
+                <li>Uploaded notes for DUM381</li>
+                <li>Joined session: BUM381</li>
+                <li>Commented in UAX3781 forum</li>
+            </ul>
+        </div>
+
+        <!-- Resources / Quick Links -->
+        <div class="panel">
+            <h3>Resources</h3>
+            <ul>
+                <li><a href="#">Download Lecture Slides</a></li>
+                <li><a href="#">Submit Assignment</a></li>
+                <li><a href="#">View Grades</a></li>
+                <li><a href="#">Forum Discussions</a></li>
+            </ul>
+        </div>
+
+        <!-- Bottom action -->
+        <div class="bottom-actions">
+            <button class="btn-primary" @onclick="BecomeTutor">Become a tutor</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #eef2ff, #fef3c7);
+    }
+
+    .dashboard-wrapper {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .dashboard-container {
+        flex: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        transition: margin-left 0.3s ease;
+    }
+
+        .dashboard-container.pushed {
+            margin-left: 360px;
+        }
+
+    .panel {
+        width: 100%;
+        background: white;
+        padding: 20px;
+        border-radius: 14px;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    }
+
+        .panel h3 {
+            margin-bottom: 12px;
+        }
+
+    .notification {
+        margin-bottom: 8px;
+    }
+
+        .notification.urgent {
+            color: #b91c1c;
+            font-weight: 600;
+        }
+
+    .session {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+    }
+
+    .btn-primary {
+        background: linear-gradient(45deg, #2563eb, #3b82f6);
+        color: white;
+        padding: 8px 18px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+    .calendar-tasks {
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+
+        .calendar-tasks li {
+            margin-bottom: 6px;
+        }
+
+    .chatbot {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        z-index: 1000;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: #2563eb;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+        .chatbot.open {
+            width: 320px;
+            height: 360px;
+            border-radius: 12px;
+            flex-direction: column;
+            box-shadow: 0 0 25px rgba(37, 99, 235, 0.8);
+            cursor: default;
+        }
+
+    .chat-window {
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        padding: 5px;
+    }
+
+    .chat-header {
+        text-align: center;
+        font-weight: 600;
+        font-size: 1.2rem;
+        padding: 8px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .messages {
+        flex: 1;
+        padding: 5px;
+        overflow-y: auto;
+    }
+
+    .message {
+        margin-bottom: 6px;
+        padding: 6px 10px;
+        border-radius: 8px;
+        max-width: 80%;
+    }
+
+        .message.user {
+            background: #2563eb;
+            color: white;
+            align-self: flex-end;
+        }
+
+        .message.bot {
+            background: #f3f4f6;
+            color: black;
+            align-self: flex-start;
+        }
+
+    .chat-input {
+        display: flex;
+        gap: 6px;
+        border-top: 1px solid #e5e7eb;
+        padding: 5px;
+    }
+
+        .chat-input textarea {
+            flex: 1;
+            resize: none;
+            border-radius: 6px;
+            border: 1px solid #d1d5db;
+            padding: 5px;
+            height: 36px;
+        }
+</style>
+
+@code {
+    private bool isChatOpen = false;
+    private string currentMessage = "";
+    private List<(string Text, bool IsUser)> ChatMessages = new();
+    private void ToggleChat() => isChatOpen = !isChatOpen;
+
+    private void SendMessage()
+    {
+        if (!string.IsNullOrWhiteSpace(currentMessage))
+        {
+            ChatMessages.Add((currentMessage, true));
+            ChatMessages.Add(("Hello! I’m CLARATEA — your friendly assistant.", false));
+            currentMessage = "";
+        }
+    }
+
+    private void BecomeTutor() => Console.WriteLine("Navigate to Become Tutor page");
+    private void JoinSession(string sessionCode) => Console.WriteLine($"Joining {sessionCode}");
+}
