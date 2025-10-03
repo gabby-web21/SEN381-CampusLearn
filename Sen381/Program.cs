@@ -1,10 +1,6 @@
 ﻿using Sen381.Data_Access;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using static System.Net.WebRequestMethods;
 
 namespace Sen381
 {
@@ -13,12 +9,20 @@ namespace Sen381
         static async Task Main(string[] args)
         {
             var supa = new SupaBaseAuthService();
-
             bool clientOk = await supa.TestConnectionAsync();
             Console.WriteLine(clientOk ? "Connection succeeded" : "Connection failed");
 
-            Console.ReadLine();
+            Console.ReadKey();
         }
 
+            var login = new Login(supa);
+            var register = new Register(supa);
+
+            // Start login flow
+            await login.StartLoginAsync();
+
+            Console.WriteLine("Press ENTER to exit...");
+            Console.ReadLine();
+        }
     }
 }

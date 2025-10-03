@@ -1,23 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Configuration;
-using Npgsql;
+using System.Threading.Tasks;
 using Supabase;
-
 
 namespace Sen381.Data_Access
 {
     public class SupaBaseAuthService
     {
-      private readonly Client _client;
+        private readonly Client _client;
+        public Client Client => _client;
         private bool _initialized;
 
         private static string SafeAppSetting(string key)
         {
-            try { return System.Configuration.ConfigurationManager.AppSettings[key]; }
+            try { return ConfigurationManager.AppSettings[key]; }
             catch { return null; }
         }
 
@@ -36,6 +32,7 @@ namespace Sen381.Data_Access
             {
                 AutoRefreshToken = true,
                 AutoConnectRealtime = false,
+                Schema = "public" // ⬅️ KEY LINE: target the public schema
             };
 
             _client = new Client(url, anonKey, options);
@@ -43,7 +40,7 @@ namespace Sen381.Data_Access
 
         public async Task InitializeAsync()
         {
-            if (_initialized) return;            // idempotent
+            if (_initialized) return;
             await _client.InitializeAsync();
             _initialized = true;
         }
@@ -52,7 +49,7 @@ namespace Sen381.Data_Access
         {
             try
             {
-                await InitializeAsync();         
+                await InitializeAsync();
                 Console.WriteLine("✅ Supabase client initialized and reachable.");
                 return true;
             }
@@ -62,6 +59,5 @@ namespace Sen381.Data_Access
                 return false;
             }
         }
-
     }
 }

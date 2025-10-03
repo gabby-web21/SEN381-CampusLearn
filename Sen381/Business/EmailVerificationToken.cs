@@ -1,60 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Supabase.Postgrest.Attributes;
+using Supabase.Postgrest.Models;
+using System;
 
 namespace Sen381.Business
 {
-    public class EmailVerificationToken
+    [Table("email_verification_tokens")]
+    public class EmailVerificationToken : BaseModel
     {
-        // ---------- Fields ----------
-        private int id;
-        private string tokenHash;
-        private int userId;
+        [PrimaryKey("id", false)]
+        public int Id { get; set; }
 
-        // ---------- Properties ----------
-        public int Id
-        {
-            get => id;
-            set => id = value;
-        }
+        [Column("user_id")]
+        public int UserId { get; set; }
 
-        public int UserId
-        {
-            get => userId;
-            set => userId = value;
-        }
+        [Column("token_hash")]
+        public string TokenHash { get; set; }
 
-        public DateTime ExpiresAt { get; set; }
+        [Column("created_at")]
         public DateTime CreatedAt { get; set; }
 
-        // ---------- Constructor ----------
-        public EmailVerificationToken(int userId, string tokenHash, DateTime expiresAt)
-        {
-            this.userId = userId;
-            this.tokenHash = tokenHash;
-            this.CreatedAt = DateTime.Now;
-            this.ExpiresAt = expiresAt;
-        }
+        [Column("expires_at")]
+        public DateTime ExpiresAt { get; set; }
 
-        // ---------- Methods ----------
         public void MarkUsed()
         {
-            // In real implementation, mark as consumed
+            // In real implementation, update in DB
+            ExpiresAt = DateTime.UtcNow; // expire immediately
             Console.WriteLine("Email verification token marked as used.");
         }
 
         public void Revoke()
         {
-            // Expire immediately
-            ExpiresAt = DateTime.Now;
+            ExpiresAt = DateTime.UtcNow;
             Console.WriteLine("Email verification token revoked.");
         }
 
         public TimeSpan RemainingTime()
         {
-            return ExpiresAt - DateTime.Now;
+            return ExpiresAt - DateTime.UtcNow;
         }
     }
 }
