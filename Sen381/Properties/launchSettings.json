@@ -5,6 +5,13 @@
       "environmentVariables": {
         "SUPABASE_URL": ""
       }
+    },
+    "WSL": {
+      "commandName": "WSL2",
+      "environmentVariables": {
+        "SUPABASE_URL": ""
+      },
+      "distributionName": ""
     }
   }
 }

@@ -17,7 +17,7 @@ namespace Sen381
             bool clientOk = await supa.TestConnectionAsync();
             Console.WriteLine(clientOk ? "Connection succeeded" : "Connection failed");
 
-            Console.ReadKey();
+            Console.ReadLine();
         }
 
     }
