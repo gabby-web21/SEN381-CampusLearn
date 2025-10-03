@@ -1,0 +1,7 @@
+# Ignore Visual Studio and build artifacts
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.slnLaunch.user
