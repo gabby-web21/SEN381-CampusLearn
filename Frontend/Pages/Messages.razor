@@ -1,0 +1,293 @@
+﻿@page "/topichub/messages"
+@layout TopicHubLayout
+
+<section class="dm">
+    <!-- left list -->
+    <aside class="list">
+        <h1 class="title">Messages</h1>
+        <ul class="threads">
+            @foreach (var c in contacts)
+            {
+                var active = c == current ? "item active" : "item";
+                <li class="@active">
+                    <span class="dot"></span>
+                    <span class="name">@c</span>
+                </li>
+            }
+        </ul>
+    </aside>
+
+    <!-- right conversation -->
+    <section class="conversation">
+        <header class="conv-head">
+            <span class="dot"></span>
+            <span class="name">@current</span>
+        </header>
+
+        <div class="chat">
+            <!-- incoming -->
+            <div class="row incoming"><div class="bubble time-right">20:47</div></div>
+
+            <!-- outgoing -->
+            <div class="row outgoing"><div class="bubble time-left">20:47</div></div>
+            <div class="row outgoing"><div class="bubble time-left">20:49</div></div>
+        </div>
+
+        <!-- input bar -->
+        <div class="inputbar">
+            <input type="text" class="input" placeholder="type text here to private message" />
+            <button class="send" aria-label="send">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="#AD1F54">
+                    <path d="M3 20v-5l9-3-9-3V4l18 8-18 8z" />
+                </svg>
+            </button>
+        </div>
+    </section>
+</section>
+
+@code {
+    private string current = "Taylor Swift";
+    private List<string> contacts = new() { "Taylor Swift", "Sabrina Carpenter", "Kanye East" };
+}
+
+<style>
+    :root {
+        --ink: #2D3034;
+        --nav: #DBE4EE;
+        --teal: #1B998B;
+        --rose: #AD1F54;
+        --radius: 1.25rem;
+        --ring: color-mix(in oklab, var(--ink) 12%, white);
+        --shadow: 0 6px 16px rgba(0,0,0,.06);
+        --cols: 280px 1fr; /* sidebar width + chat area */
+    }
+
+    *, *::before, *::after {
+        box-sizing: border-box
+    }
+
+    html, body {
+        margin: 0;
+        color: var(--ink);
+        font-family: system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial,sans-serif
+    }
+
+    /* Layout inside TopicHub right content */
+    .dm {
+        display: grid;
+        grid-template-columns: var(--cols);
+        gap: 16px;
+        padding: 10px;
+    }
+
+    /* Left thread list */
+    .list {
+        background: var(--nav);
+        border: 1px solid var(--ring);
+        border-radius: var(--radius);
+        padding: 12px 12px 6px;
+    }
+
+    .title {
+        margin: 0 0 8px;
+        font-weight: 800;
+        font-size: 28px;
+    }
+
+    .threads {
+        list-style: none;
+        margin: 0;
+        padding: 6px 0;
+        display: grid;
+        gap: 12px
+    }
+
+    .item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 6px 8px;
+        border-radius: 12px;
+        cursor: default;
+    }
+
+        .item.active {
+            background: rgba(0,0,0,.06)
+        }
+
+    .dot {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #9AA0A6;
+        display: inline-block;
+    }
+
+    .name {
+        font-weight: 600
+    }
+
+    /* Right conversation area */
+    .conversation {
+        background: #fff;
+        border-radius: var(--radius);
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+    }
+
+    .conv-head {
+        background: var(--nav);
+        border: 1px solid var(--ring);
+        border-radius: calc(var(--radius) - 2px);
+        height: 44px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-inline: 12px;
+        margin: 0 10px;
+        margin-top: 10px;
+    }
+
+        .conv-head .dot {
+            width: 18px;
+            height: 18px
+        }
+
+        .conv-head .name {
+            font-weight: 600
+        }
+
+    .chat {
+        margin: 10px;
+        padding: 12px;
+        background: #fff;
+        border: 1px solid var(--ring);
+        border-radius: var(--radius);
+        min-height: 220px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .row {
+        display: flex
+    }
+
+        .row.incoming {
+            justify-content: flex-end
+        }
+
+        .row.outgoing {
+            justify-content: flex-start
+        }
+
+    .bubble {
+        max-width: 60%;
+        padding: 14px 16px;
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+        position: relative;
+        font-weight: 600;
+    }
+
+    .row.incoming .bubble {
+        background: #E8EEF6;
+        color: var(--ink)
+    }
+    /* light blue-grey */
+    .row.outgoing .bubble {
+        background: #9FD6CC;
+        color: #0f1416
+    }
+    /* teal tint like mock */
+
+    .time-right::after,
+    .time-left::after {
+        content: attr(class);
+    }
+
+    .time-right::after,
+    .time-left::before {
+        content: ""
+    }
+    /* avoid text leak */
+
+    /* Small time tags visually (use pseudo elements to place) */
+    .time-right {
+        padding-right: 44px
+    }
+
+        .time-right::before {
+            content: "20:47";
+            position: absolute;
+            right: 12px;
+            bottom: 6px;
+            font-size: .75rem;
+            opacity: .7;
+            font-weight: 700;
+        }
+
+    .time-left {
+        padding-right: 44px
+    }
+
+        .time-left::before {
+            content: "20:47";
+            position: absolute;
+            right: 12px;
+            bottom: 6px;
+            font-size: .75rem;
+            opacity: .7;
+            font-weight: 700;
+        }
+
+    /* Input bar */
+    .inputbar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border-top: 1px solid var(--ring);
+        background: var(--nav);
+        margin: 0 10px 10px;
+        border-radius: 999px;
+        padding: 6px 8px;
+    }
+
+    .input {
+        flex: 1;
+        height: 38px;
+        border: 0;
+        outline: none;
+        padding: 0 12px;
+        background: #fff;
+        border-radius: 999px;
+        font: inherit;
+        color: var(--ink);
+    }
+
+    .send {
+        border: 0;
+        background: #fff;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        box-shadow: var(--shadow);
+    }
+
+    /* Responsive */
+    @@media (max-width: 900px) {
+        :root {
+            --cols: 1fr
+        }
+        /* stack list above chat */
+        .list {
+            order: 1
+        }
+
+        .conversation {
+            order: 2
+        }
+    }
+</style>

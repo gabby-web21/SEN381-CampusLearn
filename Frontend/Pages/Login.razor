@@ -1,0 +1,183 @@
+﻿@page "/login"
+<PageTitle>Login | CampusLearn</PageTitle>
+
+<main class="login-wrap">
+    <section class="login-card">
+        <div class="logo" aria-hidden="true">
+            <!-- Compact CL mark -->
+            <svg viewBox="0 0 64 64" width="38" height="38" role="img" focusable="false">
+                <g stroke="#2D3034" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M42 14c-4-4-9-6-14-6C15 8 8 15 8 26s7 18 20 18c5 0 10-2 14-6" />
+                    <path d="M56 12v32H34" />
+                </g>
+            </svg>
+        </div>
+
+        <h1 class="heading">LOGIN</h1>
+
+        <form class="form">
+            <label for="email" class="label">Email</label>
+            <input id="email" type="email" class="input" />
+
+            <label for="password" class="label">Password</label>
+            <input id="password" type="password" class="input" />
+
+            <!-- ✅ fixed typo: 'hred' → 'href' -->
+            <!-- ✅ centered via flex parent -->
+            <div class="btn-center">
+                <NavLink href="/dashboard" class="btn">Login</NavLink>
+            </div>
+        </form>
+
+        <a class="forgot" href="/forgotpassword">Forgot Password?</a>
+    </section>
+</main>
+
+<style>
+    :root {
+        --bg: #FFFFFF;
+        --ink: #2D3034;
+        --nav: #DBE4EE;
+        --panel: #DBE4EE;
+        --white: #FFFFFF;
+        --orange: #F17300;
+        --radius: 18px;
+        --pill: 999px;
+        --shadow: 0 8px 22px rgba(0,0,0,.08);
+        --ring: color-mix(in oklab, var(--ink) 12%, white);
+    }
+
+    @@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;800&family=Outfit:wght@700;800&display=swap');
+
+    *, *::before, *::after {
+        box-sizing: border-box
+    }
+
+    html, body {
+        height: 100%
+    }
+
+    body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+        line-height: 1.45;
+    }
+
+    h1 {
+        font-family: "Outfit", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+        margin: 0;
+    }
+
+    /* ===== Layout ===== */
+    .login-wrap {
+        min-height: 100dvh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+    }
+
+    .login-card {
+        width: clamp(280px, 34vw, 380px);
+        background: var(--panel);
+        border: 1px solid var(--ring);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 26px 26px 22px;
+        text-align: center;
+    }
+
+    .logo {
+        margin-inline: auto;
+    }
+
+    .heading {
+        margin-top: 6px;
+        margin-bottom: 18px;
+        font-weight: 800;
+        letter-spacing: .4px;
+        font-size: clamp(22px, 3.2vw, 28px);
+    }
+
+    .form {
+        text-align: left;
+        display: grid;
+        gap: 8px;
+        margin-bottom: 6px;
+    }
+
+    .label {
+        font-weight: 600;
+        font-size: .95rem;
+        margin-top: 6px;
+    }
+
+    .input {
+        height: 34px;
+        border: 0;
+        border-radius: var(--pill);
+        background: var(--white);
+        padding: 0 12px;
+        outline: none;
+        box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
+        font: inherit;
+        color: var(--ink);
+    }
+
+        .input:focus {
+            box-shadow: inset 0 0 0 2px color-mix(in oklab, var(--ink) 12%, white), 0 0 0 2px color-mix(in oklab, var(--ink) 6%, white);
+        }
+
+    /* ✅ Centering wrapper for button */
+    .btn-center {
+        display: flex;
+        justify-content: center;
+        margin-top: 12px;
+    }
+
+    .btn {
+        width: 180px;
+        height: 42px;
+        border: 0;
+        border-radius: 14px;
+        background: var(--orange);
+        color: #fff;
+        font-weight: 800;
+        font-size: 1rem;
+        letter-spacing: .15px;
+        cursor: pointer;
+        box-shadow: var(--shadow);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+    }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+    .forgot {
+        display: inline-block;
+        margin-top: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        color: var(--ink);
+    }
+
+        .forgot:hover {
+            text-decoration: underline;
+        }
+
+    @@media (max-width: 520px) {
+        .login-card {
+            width: 88vw;
+            padding: 22px 18px 18px;
+        }
+
+        .btn {
+            width: 70%;
+        }
+    }
+</style>

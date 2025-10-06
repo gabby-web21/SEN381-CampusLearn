@@ -1,0 +1,532 @@
+﻿@page "/dashboard"
+@using Microsoft.AspNetCore.Components.Routing
+
+<PageTitle>Dashboard | CampusLearn</PageTitle>
+
+<main class="layout container">
+    <!-- Left Column -->
+    <section class="content">
+        <h2 class="greeting">
+            Welcome, <span>@StudentName</span> <small>[ @UserRole ]</small>
+        </h2>
+
+        <!-- Notifications -->
+        <section class="panel">
+            <header class="panel-hd">Notifications</header>
+            <div class="bubble notif-bubble">
+                <ul class="notif-list">
+                    @foreach (var notification in Notifications)
+                    {
+                        <li class="notif-item">
+                            <div class="notif-icon" aria-hidden="true">
+                                <span class="bell"></span>
+                            </div>
+                            <p class="notif-text">
+                                <strong>@notification.SenderName</strong> @notification.Body
+                                <span class="notif-time">@notification.TimeAgo</span>
+                            </p>
+                        </li>
+                    }
+                    @if (Notifications.Count == 0)
+                    {
+                        <li class="notif-empty">You’re all caught up 🎉</li>
+                    }
+                </ul>
+            </div>
+        </section>
+
+        <!-- Upcoming Sessions -->
+        <section class="panel">
+            <header class="panel-hd">@UpcomingSessions.Count Upcoming Sessions</header>
+            <div class="bubble sessions-bubble">
+                @if (UpcomingSessions.Count == 0)
+                {
+                    <article class="session-empty">No upcoming sessions yet. Book one from the Tutors page.</article>
+                }
+                else
+                {
+                    @foreach (var session in UpcomingSessions)
+                    {
+                        <article class="session">
+                            <div class="session-meta">in @session.TimeUntil</div>
+                            <div class="session-card">
+                                <div class="session-title">
+                                    @session.SubjectCode session with @session.TutorName on @session.Date
+                                </div>
+                                <div class="session-tags">
+                                    <span>@session.Platform</span>
+                                    <span>@session.Duration</span>
+                                    <span>@session.Time</span>
+                                </div>
+                            </div>
+                        </article>
+                    }
+                }
+            </div>
+        </section>
+
+        <!-- Quick actions -->
+        <section class="panel">
+            <header class="panel-hd">Quick actions</header>
+            <div class="tiles tiles-qa">
+                <NavLink class="tile" href="/peers" match="NavLinkMatch.Prefix">
+                    <h3>Peers</h3>
+                    <p>Find students and tutors to connect with.</p>
+                </NavLink>
+                <NavLink class="tile" href="/subjects" match="NavLinkMatch.Prefix">
+                    <h3>Explore Subjects</h3>
+                    <p>Forums, topics, tutors, and resources.</p>
+                </NavLink>
+                <NavLink class="tile" href="/create-profile" match="NavLinkMatch.Prefix">
+                    <h3>Create/Update Profile</h3>
+                    <p>Edit your programme, year, and subjects.</p>
+                </NavLink>
+            </div>
+        </section>
+
+
+        <!-- CTA -->
+        <div class="cta-wrap">
+            <NavLink href="/become-tutor" class="btn-cta" aria-label="Apply to become a tutor">
+                Become a tutor
+            </NavLink>
+        </div>
+    </section>
+
+    <!-- Right Column (CLARA) -->
+    <aside class="sidebar">
+        <div class="clara-box clara-like-landing">
+            <div class="clara-head">
+                <span class="clara-dot"></span>
+                <h2>CLARA Assistant</h2>
+            </div>
+            <div class="clara-body">
+                <p><strong>Hi!</strong> I can help you find topics, tutors, or resources.</p>
+                <ul class="clara-list">
+                    <li>“Show BUM 281 resources”</li>
+                    <li>“Find a tutor for Thermo 244”</li>
+                    <li>“What’s new in my forums?”</li>
+                </ul>
+                <label class="input-pill">
+                    <input type="text" placeholder="Ask CLARA…" />
+                </label>
+            </div>
+        </div>
+    </aside>
+
+</main>
+
+<style>
+    /* ===== Design tokens (your palette) ===== */
+    :root {
+        --bg: #FFFFFF;
+        --nav: #DBE4EE;
+        --ink: #2D3034;
+        --teal: #1B998B;
+        --orange: #F17300;
+        --rose: #AD1F54;
+        --mist: #DBE4EE;
+        --panel-bg: #FFFFFF;
+        --panel-ring: color-mix(in oklab, var(--ink) 12%, white);
+        --panel-tint: #F4F8FA;
+        --radius: 1.25rem;
+        --shadow: 0 8px 22px rgba(0,0,0,.06);
+        --container: min(1200px, 92vw);
+    }
+
+    /* base */
+    *, *::before, *::after {
+        box-sizing: border-box
+    }
+
+    html, body {
+        height: 100%
+    }
+
+    body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial,sans-serif;
+        line-height: 1.45;
+    }
+
+    .container {
+        width: var(--container);
+        margin-inline: auto;
+        padding-inline: clamp(12px,3vw,24px)
+    }
+
+    /* main layout */
+    .layout {
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: clamp(16px,3vw,28px);
+        padding-block: clamp(14px,3vw,22px);
+    }
+
+    .content {
+        display: grid;
+        gap: clamp(16px,3vw,22px)
+    }
+
+    .sidebar {
+    }
+
+    /* greeting */
+    .greeting {
+        margin: 0;
+        font-size: clamp(20px,2.8vw,28px);
+        font-weight: 700
+    }
+
+        .greeting span {
+            font-weight: 800
+        }
+
+        .greeting small {
+            opacity: .7;
+            font-weight: 600
+        }
+
+    /* panels & bubbles */
+    .panel {
+        display: grid;
+        gap: 10px
+    }
+
+    .panel-hd {
+        font-weight: 800;
+        color: color-mix(in oklab, var(--ink) 55%, white)
+    }
+
+    .bubble {
+        background: var(--panel-bg);
+        border: 1px solid var(--panel-ring);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: clamp(12px,2.2vw,18px);
+        display: grid;
+        gap: 12px;
+    }
+
+    .notif-bubble {
+        background: var(--mist);
+        padding: 10px;
+    }
+
+    .sessions-bubble {
+        background: #E8EEF6;
+    }
+
+    /* notifications */
+    .notif-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+    }
+
+    .notif-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(180deg, var(--rose) 0%, color-mix(in oklab, var(--rose) 80%, black) 100%);
+        color: #fff;
+        border-radius: 999px;
+        padding: 10px 14px;
+    }
+
+    .notif-empty {
+        background: #fff;
+        border: 1px dashed var(--panel-ring);
+        border-radius: 999px;
+        padding: 10px 14px;
+        color: color-mix(in oklab, var(--ink) 60%, white);
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .notif-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: #fff;
+        color: var(--ink);
+        flex-shrink: 0;
+    }
+
+    .bell {
+        width: 12px;
+        height: 12px;
+        display: block;
+        border: 2px solid var(--ink);
+        border-radius: 50%
+    }
+
+    .notif-text {
+        margin: 0;
+        font-weight: 700
+    }
+
+    .notif-time {
+        margin-left: 8px;
+        font-weight: 600;
+        opacity: .9;
+        font-size: .9rem
+    }
+
+    /* sessions */
+    .session {
+        display: grid;
+        gap: 8px
+    }
+
+    .session-meta {
+        color: color-mix(in oklab, var(--ink) 50%, white);
+        font-weight: 700
+    }
+
+    .session-card {
+        background: #FFFFFF;
+        border: 1px solid var(--panel-ring);
+        border-radius: var(--radius);
+        padding: 14px 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .session-title {
+        font-weight: 700
+    }
+
+    .session-tags {
+        display: flex;
+        gap: 10px;
+        color: color-mix(in oklab, var(--ink) 55%, white);
+        font-weight: 700
+    }
+
+        .session-tags span + span::before {
+            content: "|";
+            margin: 0 8px 0 0;
+            color: color-mix(in oklab, var(--ink) 55%, white)
+        }
+
+    .session-empty {
+        background: #fff;
+        border: 1px dashed var(--panel-ring);
+        border-radius: var(--radius);
+        padding: 14px 16px;
+        text-align: center;
+        color: color-mix(in oklab, var(--ink) 60%, white);
+        font-weight: 600;
+    }
+
+    .clara-box.clara-like-landing {
+        background: var(--mist);
+        border: 1px solid var(--panel-ring);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 14px;
+        display: grid;
+        gap: 8px;
+    }
+
+    .clara-head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 4px;
+        justify-content: center;
+    }
+
+    .clara-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--teal);
+    }
+
+    .clara-like-landing h2 {
+        font-weight: 800;
+        margin: 0;
+        font-size: clamp(16px,2.2vw,20px);
+    }
+
+    .clara-like-landing .clara-body {
+        background: #FFF;
+        border-radius: var(--radius);
+        padding: 12px;
+    }
+
+    .clara-list {
+        margin: 8px 0 12px 1rem;
+    }
+
+        .clara-list li {
+            margin: 4px 0;
+            color: color-mix(in oklab,var(--ink) 55%, white);
+        }
+
+    .input-pill {
+        display: block;
+        background: #fff;
+        border: 1px solid var(--panel-ring);
+        border-radius: 999px;
+        padding: 8px 12px
+    }
+
+        .input-pill input {
+            width: 100%;
+            border: 0;
+            outline: none;
+            font: inherit;
+            color: var(--ink)
+        }
+
+    /* CTA (gradient like chatbot button) */
+    .cta-wrap {
+        display: flex;
+        justify-content: flex-end
+    }
+
+    .btn-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 20px;
+        border-radius: 999px;
+        font-weight: 800;
+        letter-spacing: .3px;
+        background: #F17300;
+        color: #fff;
+        border: none;
+        box-shadow: 0 3px 10px rgba(123, 108, 255, 0.4);
+        cursor: pointer;
+        text-decoration: none;
+        transition: all .25s ease-in-out;
+    }
+
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #6c5cff, #48c9ff);
+            box-shadow: 0 6px 16px rgba(90, 209, 255, 0.45);
+        }
+
+        .btn-cta:active {
+            transform: scale(0.97);
+            box-shadow: 0 2px 6px rgba(90, 209, 255, 0.3)
+        }
+
+    /* responsive */
+    @@media (max-width: 980px) {
+        .layout
+
+    {
+        grid-template-columns: 1fr
+    }
+
+    .cta-wrap {
+        justify-content: center
+    }
+
+    }
+
+    .tiles {
+        display: grid;
+        grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+        gap: clamp(12px,2.2vw,18px);
+    }
+
+    .tiles-qa .tile {
+        display: block;
+        text-decoration: none;
+        color: var(--ink);
+        background: color-mix(in oklab,var(--teal) 10%,white);
+        border: 1px solid var(--panel-ring);
+        border-radius: calc(var(--radius) - 4px);
+        padding: 16px 18px;
+        box-shadow: var(--shadow);
+        transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+        .tiles-qa .tile:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(0,0,0,.08);
+        }
+
+        .tiles-qa .tile h3 {
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .tiles-qa .tile p {
+            margin: 0;
+            color: color-mix(in oklab,var(--ink) 55%, white);
+            font-size: .95rem;
+        }
+</style>
+
+@code {
+    private string StudentName = "Sabrina Carpenter";
+    private string UserRole = "Student";
+
+    private List<NotificationItem> Notifications = new()
+    {
+        new NotificationItem
+        {
+            SenderName = "Taylor Swift",
+            Body = "replied to your question.",
+            TimeAgo = "13 minutes ago"
+        }
+    };
+
+    private List<SessionItem> UpcomingSessions = new()
+    {
+        new SessionItem
+        {
+            SubjectCode = "BUM381",
+            TutorName = "Kanye East",
+            Date = "13th September 2025",
+            Platform = "FaceTime",
+            Duration = "1hr",
+            Time = "14:00",
+            TimeUntil = "3 hrs"
+        },
+        new SessionItem
+        {
+            SubjectCode = "BUM381",
+            TutorName = "Kimberly Kardashian",
+            Date = "15th September 2025",
+            Platform = "Teams",
+            Duration = "2hrs",
+            Time = "14:00",
+            TimeUntil = "2 days"
+        }
+    };
+
+    public class NotificationItem
+    {
+        public string SenderName { get; set; } = "";
+        public string Body { get; set; } = "";
+        public string TimeAgo { get; set; } = "";
+    }
+
+    public class SessionItem
+    {
+        public string SubjectCode { get; set; } = "";
+        public string TutorName { get; set; } = "";
+        public string Date { get; set; } = "";
+        public string Platform { get; set; } = "";
+        public string Duration { get; set; } = "";
+        public string Time { get; set; } = "";
+        public string TimeUntil { get; set; } = "";
+    }
+}
