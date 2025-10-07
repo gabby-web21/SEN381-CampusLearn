@@ -5394,6 +5394,9 @@ C:\Users\xavie\OneDrive\Desktop\Sen381 Repo\Frontend\obj\Debug\net9.0\compressed
 C:\Users\xavie\OneDrive\Desktop\Sen381 Repo\Frontend\obj\Debug\net9.0\compressed\3xre9mjkz3-ax1wrnzo12.gz
 C:\Users\xavie\OneDrive\Desktop\Sen381 Repo\Frontend\obj\Debug\net9.0\compressed\njn95cf9xo-3n3ylejc3r.gz
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
