@@ -4,49 +4,32 @@
 @using Sen381.Data_Access
 @inject UserService UserService
 @inject SupaBaseAuthService SupabaseService
+@inject StudentService StudentService
 <PageTitle>Profile | CampusLearn</PageTitle>
-
-<h3>Student Profile</h3>
-
-@if (currentUser == null)
-{
-    <p>Loading...</p>
-}
-else
-{
-    <div class="profile-container">
-        <h2>@currentUser.FirstName @currentUser.LastName</h2>
-        <p>@currentUser.Email</p>
-
-        <button @onclick="EnableEdit">Edit</button>
-
-        @if (isEditing)
-        {
-            <EditForm Model="@editableUser" OnValidSubmit="SaveChanges">
-                <InputText @bind-Value="editableUser.FirstName" />
-                <InputText @bind-Value="editableUser.LastName" />
-                <InputText @bind-Value="editableUser.PhoneNum" />
-                <InputText @bind-Value="editableUser.Email" />
-                <button type="submit">Save</button>
-            </EditForm>
-        }
-    </div>
-}
 
 <!-- ===== Page Header (avatar + title + actions) ===== -->
 <header class="page-hd">
     <div class="hd-left">
-        <img class="avatar-xl" src="@AvatarUrl" alt="Profile picture of @StudentName" />
+        <!--Profile-->
+        <img class="avatar-xl"
+            src="@(currentUser?.ProfilePicturePath ?? "https://placehold.co/160x160/png")" 
+            alt="Profile picture of @(currentUser?.FirstName) @(currentUser?.LastName)"/>
+
         <div class="title-block">
-            <h1 class="title">@StudentName</h1>
-            <div class="subtitle">
-                @Program &middot; @YearOfStudy Year
-                @if (!string.IsNullOrWhiteSpace(StudentId))
-                {
-                    <span class="muted"> &middot; ID: @StudentId</span>
-                }
-            </div>
+            <h1 class="title">
+                @($"{currentUser?.FirstName} {currentUser?.LastName}")
+            </h1>
         </div>
+        <div class="subtitle">
+             @(currentUser?.RoleString) &middot; @(currentStudent?.YearOfStudy) Year
+
+             @if (!string.IsNullOrWhiteSpace(currentStudent?.StudentNo))
+              {
+                  <span class="muted">
+                      &middot; ID: @currentStudent.StudentNo
+                  </span>
+              }
+        </div>     
     </div>
 
     <div class="hd-actions">
@@ -55,7 +38,7 @@ else
     </div>
 </header>
 
-<!-- ===== Tabs ===== -->
+<!-- ===== Tabs ===== NEEDS WORK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 <nav class="tabs" aria-label="Profile sections">
     <a class="tab active" href="#details">Profile</a>
     <a class="tab" href="#activity">Activity</a>
@@ -70,14 +53,11 @@ else
         <section id="details" class="card">
             <h2 class="card-hd">User details</h2>
             <dl class="props">
-                <div><dt>Full name</dt><dd>@StudentName</dd></div>
-                <div><dt>Email address</dt><dd><a href="mailto:@Email">@Email</a></dd></div>
-                <div><dt>Phone</dt><dd>@(string.IsNullOrWhiteSpace(Phone) ? "—" : Phone)</dd></div>
-                <div><dt>City/town</dt><dd>@(string.IsNullOrWhiteSpace(City) ? "—" : City)</dd></div>
-                <div><dt>Country</dt><dd>@(string.IsNullOrWhiteSpace(Country) ? "—" : Country)</dd></div>
-                <div><dt>Timezone</dt><dd>@(string.IsNullOrWhiteSpace(Timezone) ? "—" : Timezone)</dd></div>
-                <div><dt>Last access</dt><dd>@LastAccess</dd></div>
-                <div><dt>Roles</dt><dd>@Roles</dd></div>
+                <div><dt>Full name</dt><dd>@($"{currentUser?.FirstName} {currentUser?.LastName}")</dd></div>
+                <div><dt>Email address</dt><dd><a href="mailto:@currentUser?.Email">@currentUser?.Email</a></dd></div>
+                <div><dt>Phone</dt><dd>@(string.IsNullOrWhiteSpace(currentUser?.PhoneNum) ? "—" : currentUser?.PhoneNum)</dd></div>
+                <div><dt>Last access</dt><dd>@currentUser?.LastLogin</dd></div>
+                <div><dt>Roles</dt><dd>@currentUser?.RoleString</dd></div>
             </dl>
         </section>
 
@@ -101,8 +81,8 @@ else
         <section class="card">
             <h2 class="card-hd">Contact</h2>
             <ul class="list">
-                <li><strong>Email:</strong> <a href="mailto:@Email">@Email</a></li>
-                <li><strong>Phone:</strong> @(string.IsNullOrWhiteSpace(Phone) ? "—" : Phone)</li>
+                <li><strong>Email:</strong> <a href="mailto:@currentUser?.Email">@currentUser?.Email</a></li>
+                <li><strong>Phone:</strong> @(string.IsNullOrWhiteSpace(currentUser?.PhoneNum) ? "—" : currentUser?.PhoneNum)</li>
                 <li><strong>Website:</strong> @(string.IsNullOrWhiteSpace(Website) ? "—" : (MarkupString)$"<a href=\"{Website}\" target=\"_blank\" rel=\"noopener\">{Website}</a>")</li>
             </ul>
         </section>
@@ -634,62 +614,70 @@ else
 
 @code {
     //===== Sample data =====
-    private string StudentName = "Sabrina Carpenter";
-    private string YearOfStudy = "2nd";
-    private string Program = "BComp";
-    private string StudentId = "123456";
-    private string Email = "123456@student.begiumcampus.ac.za";
-    private string Phone = "083 123 4567";
-    private string City = "Pretoria";
-    private string Country = "South Africa";
-    private string Timezone = "Africa/Johannesburg";
-    private string LastAccess = "Today, 09:41";
-    private string Roles = "Student";
+    // private string StudentName = "Sabrina Carpenter";
+    // private string YearOfStudy = "2nd";
+    // private string Program = "BComp";
+    // private string StudentId = "123456";
+    // private string Email = "123456@student.begiumcampus.ac.za";
+    // private string Phone = "083 123 4567";
+     private string City = "Pretoria";
+     private string Country = "South Africa";
+     private string Timezone = "Africa/Johannesburg";
+    // private string LastAccess = "Today, 09:41";
+    // private string Roles = "Student";
     private string Website = "";
     private string AvatarUrl = "https://placehold.co/160x160/png";
 
-    private string About =
-      "BComp student focusing on data structures and web tech. I like group problem-solving and I’m usually in the BUM281 forum.";
+     private string About =
+       "BComp student focusing on data structures and web tech. I like group problem-solving and I’m usually in the BUM281 forum.";
 
-    private List<string> Interests = new() { "Web Dev", "Data Structures", "Linear Algebra" };
-    private List<string> Subjects = new() { "BUM 281", "ICT 214", "PRG 201" };
+     private List<string> Interests = new() { "Web Dev", "Data Structures", "Linear Algebra" };
+     private List<string> Subjects = new() { "BUM 281", "ICT 214", "PRG 201" };
 
-    private List<SubjectRow> SubjectRows = new()
-    {
-        new SubjectRow{ Code="BUM281", Name="Business Management", Status="In progress", Grade="—"},
-        new SubjectRow{ Code="ICT214", Name="Information Systems II", Status="In progress", Grade="—"},
+     private List<SubjectRow> SubjectRows = new()
+     {
+         new SubjectRow{ Code="BUM281", Name="Business Management", Status="In progress", Grade="—"},
+         new SubjectRow{ Code="ICT214", Name="Information Systems II", Status="In progress", Grade="—"},
         new SubjectRow{ Code="PRG201", Name="Programming II", Status="Completed", Grade="78%"}
-    };
+     };
 
-    private List<string> Tutors = new() { "Tutor Name", "Tutor Name" };
-    private List<string> Peers = new() { "Amari K", "Liam P", "Thando N" };
+     private List<string> Tutors = new() { "Tutor Name", "Tutor Name" };
+     private List<string> Peers = new() { "Amari K", "Liam P", "Thando N" };
 
-    private int ForumPosts = 12;
-    private int Discussions = 4;
-    private int ResourcesUploaded = 3;
-    private int Badges = 2;
+     private int ForumPosts = 12;
+     private int Discussions = 4;
+     private int ResourcesUploaded = 3;
+     private int Badges = 2;
 
-    public class SubjectRow
-    {
-        public string Code { get; set; } = "";
-        public string Name { get; set; } = "";
-        public string Status { get; set; } = "";
-        public string Grade { get; set; } = "";
-    }
-    private User currentUser;
-    private User editableUser;
-    private bool isEditing = false;
+     public class SubjectRow
+     {
+         public string Code { get; set; } = "";
+         public string Name { get; set; } = "";
+         public string Status { get; set; } = "";
+         public string Grade { get; set; } = "";
+     }
+     private User editableUser;
+     private bool isEditing = false;
+
+    private User? currentUser;     // from Supabase
+    private bool isLoading = true; // loading indicator
+    private StudentRecord? currentStudent;
 
     protected override async Task OnInitializedAsync()
     {
-        Console.WriteLine("🔍 Fetching user profile...");
-        int loggedInUserId = 1;
-        currentUser = await UserService.GetUserByIdAsync(loggedInUserId);
+        try
+        {
+            Console.WriteLine("🔍 Fetching user profile...");
 
-        if (currentUser == null)
-            Console.WriteLine("❌ No user found with that ID.");
-        else
-            Console.WriteLine($"✅ Loaded user: {currentUser.FirstName} {currentUser.LastName}");
+            // Temporary hardcoded test ID (replace later with logged-in user's ID)
+            int loggedInUserId = 1; // temporary
+            currentUser = await UserService.GetUserByIdAsync(loggedInUserId);
+            currentStudent = await StudentService.GetStudentByUserIdAsync(loggedInUserId);
+        }
+        finally
+        {
+            isLoading = false;
+        }
     }
 
     private void EnableEdit()

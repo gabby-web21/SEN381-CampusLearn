@@ -2186,6 +2186,8 @@ C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_fram
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\fr\Microsoft.TestPlatform.CrossPlatEngine.resources.afc3tfe91d.wasm
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\fr\Microsoft.VisualStudio.TestPlatform.Common.resources.ud1w8xy0o7.wasm
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\fr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.kgtgiubdmj.wasm
+C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\Frontend.w1ffssnq1f.pdb
+C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\Frontend.htx2hzf8kg.wasm
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\icudt_CJK.tjcz0u77k5.dat
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\icudt_EFIGS.tptq2av103.dat
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\icudt_no_CJK.lfu7j35m59.dat
@@ -2273,6 +2275,8 @@ C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_fram
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\ru\Microsoft.VisualStudio.TestPlatform.Common.resources.9era4dagmb.wasm
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\ru\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dbxi910nvs.wasm
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\Sen381.dll.config
+C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\Sen381.lbr1lo4t1v.pdb
+C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\Sen381.kekcxlkr00.wasm
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\Supabase.Core.zcuz262cdn.wasm
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\Supabase.Functions.das9utiwul.wasm
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\Supabase.Gotrue.xbua2clo5a.wasm
@@ -2492,6 +2496,7 @@ C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_fram
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\System.Diagnostics.DiagnosticSource.onf7a771xa.wasm.gz
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\System.Xml.Serialization.ue0pg3pj3d.wasm.gz
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\System.Runtime.Loader.ny7ii14wer.wasm.gz
+C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\Sen381.lbr1lo4t1v.pdb.gz
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\Microsoft.TestPlatform.Utilities.kupnjntebp.wasm.gz
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\System.Core.i2gfsit2dg.wasm.gz
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\mscorlib.xd6mv31d55.wasm.gz
@@ -2530,6 +2535,7 @@ C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_fram
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\System.Threading.Thread.ela0zpa4cu.wasm.gz
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\MimeMapping.gmxjevqz69.wasm.gz
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\Microsoft.Extensions.Configuration.Json.nn2igycfnm.wasm.gz
+C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\Frontend.w1ffssnq1f.pdb.gz
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\pl\Microsoft.TestPlatform.CrossPlatEngine.resources.vc7724fskb.wasm.gz
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\Microsoft.EntityFrameworkCore.Abstractions.3lmupq1tu2.wasm.gz
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\System.Runtime.InteropServices.ksoqlt99hd.wasm.gz
@@ -2610,6 +2616,7 @@ C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_fram
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\Microsoft.VisualBasic.Core.qljjwgjnrn.wasm.gz
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\System.IO.FileSystem.278u1momgg.wasm.gz
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\ru\Microsoft.TestPlatform.CrossPlatEngine.resources.4pqkibfbrq.wasm.gz
+C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\Frontend.htx2hzf8kg.wasm.gz
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\System.Runtime.Extensions.te5ibe9mop.wasm.gz
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\ru\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dbxi910nvs.wasm.gz
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\System.Xml.XPath.XDocument.k25bvuxkbu.wasm.gz
@@ -2628,6 +2635,7 @@ C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_fram
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\fr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.kgtgiubdmj.wasm.gz
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\System.Runtime.hexcao080t.wasm.gz
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\ja\Microsoft.VisualStudio.TestPlatform.Common.resources.gkiz6b0ca4.wasm.gz
+C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\Sen381.kekcxlkr00.wasm.gz
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\System.Diagnostics.FileVersionInfo.3u9sednzu3.wasm.gz
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\cs\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.1p44dgvfax.wasm.gz
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\System.Data.DataSetExtensions.rwrekrq7sx.wasm.gz
@@ -3744,7 +3752,12 @@ C:\Sen381 github repo\SEN381-CampusLearn\Frontend\obj\Debug\net9.0\compressed\32
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\obj\Debug\net9.0\compressed\iw0ae27wof-tjcz0u77k5.gz
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\obj\Debug\net9.0\compressed\285b9jwisc-tptq2av103.gz
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\obj\Debug\net9.0\compressed\gigkqu8b6v-lfu7j35m59.gz
+C:\Sen381 github repo\SEN381-CampusLearn\Frontend\obj\Debug\net9.0\compressed\kltuif5gvt-kekcxlkr00.gz
+C:\Sen381 github repo\SEN381-CampusLearn\Frontend\obj\Debug\net9.0\compressed\3xre9mjkz3-lbr1lo4t1v.gz
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\obj\Debug\net9.0\compressed\jlteakxexk-1alq1j1wp7.gz
+C:\Sen381 github repo\SEN381-CampusLearn\Frontend\obj\Debug\net9.0\compressed\idv3gmpu33-htx2hzf8kg.gz
+C:\Sen381 github repo\SEN381-CampusLearn\Frontend\obj\Debug\net9.0\compressed\820j4a4l7m-w1ffssnq1f.gz
+C:\Sen381 github repo\SEN381-CampusLearn\Frontend\obj\Debug\net9.0\compressed\njn95cf9xo-5a6gu7sw1d.gz
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\obj\Debug\net9.0\staticwebassets.build.json
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\obj\Debug\net9.0\staticwebassets.build.json.cache
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\obj\Debug\net9.0\staticwebassets.development.json
@@ -3755,16 +3768,3 @@ C:\Sen381 github repo\SEN381-CampusLearn\Frontend\obj\Debug\net9.0\Frontend.dll
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\obj\Debug\net9.0\refint\Frontend.dll
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\obj\Debug\net9.0\Frontend.pdb
 C:\Sen381 github repo\SEN381-CampusLearn\Frontend\obj\Debug\net9.0\ref\Frontend.dll
-C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\Frontend.xya0lc5dn8.pdb
-C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\Frontend.ywgkinmh5q.wasm
-C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\Frontend.xya0lc5dn8.pdb.gz
-C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\Frontend.ywgkinmh5q.wasm.gz
-C:\Sen381 github repo\SEN381-CampusLearn\Frontend\obj\Debug\net9.0\compressed\idv3gmpu33-ywgkinmh5q.gz
-C:\Sen381 github repo\SEN381-CampusLearn\Frontend\obj\Debug\net9.0\compressed\820j4a4l7m-xya0lc5dn8.gz
-C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\Sen381.l9m1cwxiqf.pdb
-C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\Sen381.8od2ygnisz.wasm
-C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\Sen381.l9m1cwxiqf.pdb.gz
-C:\Sen381 github repo\SEN381-CampusLearn\Frontend\bin\Debug\net9.0\wwwroot\_framework\Sen381.8od2ygnisz.wasm.gz
-C:\Sen381 github repo\SEN381-CampusLearn\Frontend\obj\Debug\net9.0\compressed\kltuif5gvt-8od2ygnisz.gz
-C:\Sen381 github repo\SEN381-CampusLearn\Frontend\obj\Debug\net9.0\compressed\3xre9mjkz3-l9m1cwxiqf.gz
-C:\Sen381 github repo\SEN381-CampusLearn\Frontend\obj\Debug\net9.0\compressed\njn95cf9xo-6h75i281t1.gz

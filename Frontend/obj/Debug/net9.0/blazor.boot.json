@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Frontend",
   "resources": {
-    "hash": "sha256-WZ3y70WVsVyPXsKK2T01D2QHZuhSr9kuoP4gXqP40Ds=",
+    "hash": "sha256-6xkJL3nwlWUXUlLznSmvAAh0f8iUTFn3lMarDFeshWk=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Authorization.n7we7nbch1.wasm": "Microsoft.AspNetCore.Authorization.wasm",
       "Microsoft.AspNetCore.Components.waskkzx0nn.wasm": "Microsoft.AspNetCore.Components.wasm",
@@ -304,10 +304,10 @@
       "icudt_CJK.tjcz0u77k5.dat": "icudt_CJK.dat",
       "icudt_EFIGS.tptq2av103.dat": "icudt_EFIGS.dat",
       "icudt_no_CJK.lfu7j35m59.dat": "icudt_no_CJK.dat",
-      "Sen381.8od2ygnisz.wasm": "Sen381.wasm",
-      "Sen381.l9m1cwxiqf.pdb": "Sen381.pdb",
-      "Frontend.ywgkinmh5q.wasm": "Frontend.wasm",
-      "Frontend.xya0lc5dn8.pdb": "Frontend.pdb"
+      "Sen381.kekcxlkr00.wasm": "Sen381.wasm",
+      "Sen381.lbr1lo4t1v.pdb": "Sen381.pdb",
+      "Frontend.htx2hzf8kg.wasm": "Frontend.wasm",
+      "Frontend.w1ffssnq1f.pdb": "Frontend.pdb"
     },
     "jsModuleNative": {
       "dotnet.native.9ih887ebfz.js": "sha256-oS7IRiQoVt9ThQ7Y2UM3XoeY0JqPD02cg9IvRdufn2w="
@@ -555,12 +555,12 @@
       "WindowsBase.vy2l5u79y6.wasm": "sha256-ufB9Mo5joMyUs3DzXWWBFFIZNEVrt6h9N5stYB6Oln4=",
       "mscorlib.xd6mv31d55.wasm": "sha256-1YSLR2eZt3ceALFV//vZUF2AloxVil3VlrW1zZYPSEI=",
       "netstandard.kaml52uspo.wasm": "sha256-HLEwBpLfzKw2/zGSVzHzFJxznCkt/WIjahrziiMrOpA=",
-      "Sen381.8od2ygnisz.wasm": "sha256-uEPmKuTywXAww09hKLsRInl4h3M/r+bvdiz2jzp+cs4=",
-      "Frontend.ywgkinmh5q.wasm": "sha256-Xr/URWvnsb/VdZD1hcbtWBuL3QtTbm2Jk8E6qKyZLdE="
+      "Sen381.kekcxlkr00.wasm": "sha256-tNjbco/gr3+Yt74uwLIjfkB6xIaQjC3bIgbxMz9nnks=",
+      "Frontend.htx2hzf8kg.wasm": "sha256-S9ttSRdauuLAXoVVEYe6vCH+69smT8O1I0mopWfLwCE="
     },
     "pdb": {
-      "Sen381.l9m1cwxiqf.pdb": "sha256-Bz2f21PUVvCwk4840pm/CCpcc48/dVLbLmF2HxslaEY=",
-      "Frontend.xya0lc5dn8.pdb": "sha256-iaylmabzXTocX5icvzHrt/14nTMhwuxtzs0VO8m4ris="
+      "Sen381.lbr1lo4t1v.pdb": "sha256-b6r+JSE5SiK5ebMf3v2fwfmbw3gMjf6135dvxZmDz1k=",
+      "Frontend.w1ffssnq1f.pdb": "sha256-DIpjcCPowe/ioQVQbAXbRz0iJQ12U/ncDtD2HgaeFnE="
     },
     "satelliteResources": {
       "cs": {
