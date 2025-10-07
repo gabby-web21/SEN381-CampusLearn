@@ -1,19 +1,7 @@
 {
   "mainAssemblyName": "Frontend",
   "resources": {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    "hash": "sha256-6xkJL3nwlWUXUlLznSmvAAh0f8iUTFn3lMarDFeshWk=",
-=======
-    "hash": "sha256-KXFfz+/sWmt95xu+AIdR9HGcNLJUHrDJzMK935VJig0=",
->>>>>>> Stashed changes
-=======
-    "hash": "sha256-KXFfz+/sWmt95xu+AIdR9HGcNLJUHrDJzMK935VJig0=",
->>>>>>> Stashed changes
-=======
-    "hash": "sha256-KXFfz+/sWmt95xu+AIdR9HGcNLJUHrDJzMK935VJig0=",
->>>>>>> Stashed changes
+    "hash": "sha256-0tbQkua9YZwGyCHRIMsXQb6LWFCcM16Vw1KslVsTIgw=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Authorization.n7we7nbch1.wasm": "Microsoft.AspNetCore.Authorization.wasm",
       "Microsoft.AspNetCore.Components.waskkzx0nn.wasm": "Microsoft.AspNetCore.Components.wasm",
@@ -316,29 +304,10 @@
       "icudt_CJK.tjcz0u77k5.dat": "icudt_CJK.dat",
       "icudt_EFIGS.tptq2av103.dat": "icudt_EFIGS.dat",
       "icudt_no_CJK.lfu7j35m59.dat": "icudt_no_CJK.dat",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "Sen381.kekcxlkr00.wasm": "Sen381.wasm",
-      "Sen381.lbr1lo4t1v.pdb": "Sen381.pdb",
-      "Frontend.htx2hzf8kg.wasm": "Frontend.wasm",
-      "Frontend.w1ffssnq1f.pdb": "Frontend.pdb"
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-      "Sen381.ngpasulz8v.wasm": "Sen381.wasm",
-      "Sen381.ax1wrnzo12.pdb": "Sen381.pdb",
-      "Frontend.e4xj2kq5df.wasm": "Frontend.wasm",
-      "Frontend.ildf0qy14q.pdb": "Frontend.pdb"
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+      "Sen381.w53lfqi9f5.wasm": "Sen381.wasm",
+      "Sen381.1pxf3az631.pdb": "Sen381.pdb",
+      "Frontend.77k6x4pfe9.wasm": "Frontend.wasm",
+      "Frontend.rtwmznzn8x.pdb": "Frontend.pdb"
     },
     "jsModuleNative": {
       "dotnet.native.9ih887ebfz.js": "sha256-oS7IRiQoVt9ThQ7Y2UM3XoeY0JqPD02cg9IvRdufn2w="
@@ -586,39 +555,12 @@
       "WindowsBase.vy2l5u79y6.wasm": "sha256-ufB9Mo5joMyUs3DzXWWBFFIZNEVrt6h9N5stYB6Oln4=",
       "mscorlib.xd6mv31d55.wasm": "sha256-1YSLR2eZt3ceALFV//vZUF2AloxVil3VlrW1zZYPSEI=",
       "netstandard.kaml52uspo.wasm": "sha256-HLEwBpLfzKw2/zGSVzHzFJxznCkt/WIjahrziiMrOpA=",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "Sen381.kekcxlkr00.wasm": "sha256-tNjbco/gr3+Yt74uwLIjfkB6xIaQjC3bIgbxMz9nnks=",
-      "Frontend.htx2hzf8kg.wasm": "sha256-S9ttSRdauuLAXoVVEYe6vCH+69smT8O1I0mopWfLwCE="
+      "Sen381.w53lfqi9f5.wasm": "sha256-RHrWgZNo9HNcB7xDy4hTBUUAYsefo61RYQYQH7EIv40=",
+      "Frontend.77k6x4pfe9.wasm": "sha256-w0ytZy631C0AmkJlfMOyxCV8ELM7oEEQvDp7jwillX0="
     },
     "pdb": {
-      "Sen381.lbr1lo4t1v.pdb": "sha256-b6r+JSE5SiK5ebMf3v2fwfmbw3gMjf6135dvxZmDz1k=",
-      "Frontend.w1ffssnq1f.pdb": "sha256-DIpjcCPowe/ioQVQbAXbRz0iJQ12U/ncDtD2HgaeFnE="
-=======
-      "Sen381.ngpasulz8v.wasm": "sha256-mXzo26y2lvSbBT/kO0dOe/yvlJPCSk8kzbBKgZ+9HdM=",
-      "Frontend.e4xj2kq5df.wasm": "sha256-biCO6odHUisRBX8iCORqKzBEKLXHGJGlBoO0R3jB8g4="
-    },
-    "pdb": {
-      "Sen381.ax1wrnzo12.pdb": "sha256-vrjt6gsSmjkmjwWEF3ju6Y8a5sbPJyZ/bUciTkL5OhA=",
-      "Frontend.ildf0qy14q.pdb": "sha256-agXWhnc4Ck7+Z2pqo3zUaGqJKwZb0r8lxNOhbz8e0xk="
->>>>>>> Stashed changes
-=======
-      "Sen381.ngpasulz8v.wasm": "sha256-mXzo26y2lvSbBT/kO0dOe/yvlJPCSk8kzbBKgZ+9HdM=",
-      "Frontend.e4xj2kq5df.wasm": "sha256-biCO6odHUisRBX8iCORqKzBEKLXHGJGlBoO0R3jB8g4="
-    },
-    "pdb": {
-      "Sen381.ax1wrnzo12.pdb": "sha256-vrjt6gsSmjkmjwWEF3ju6Y8a5sbPJyZ/bUciTkL5OhA=",
-      "Frontend.ildf0qy14q.pdb": "sha256-agXWhnc4Ck7+Z2pqo3zUaGqJKwZb0r8lxNOhbz8e0xk="
->>>>>>> Stashed changes
-=======
-      "Sen381.ngpasulz8v.wasm": "sha256-mXzo26y2lvSbBT/kO0dOe/yvlJPCSk8kzbBKgZ+9HdM=",
-      "Frontend.e4xj2kq5df.wasm": "sha256-biCO6odHUisRBX8iCORqKzBEKLXHGJGlBoO0R3jB8g4="
-    },
-    "pdb": {
-      "Sen381.ax1wrnzo12.pdb": "sha256-vrjt6gsSmjkmjwWEF3ju6Y8a5sbPJyZ/bUciTkL5OhA=",
-      "Frontend.ildf0qy14q.pdb": "sha256-agXWhnc4Ck7+Z2pqo3zUaGqJKwZb0r8lxNOhbz8e0xk="
->>>>>>> Stashed changes
+      "Sen381.1pxf3az631.pdb": "sha256-VVOu9WiSilkdHpeFeckwpL3vGz3G7itchk4MPiJ8I5A=",
+      "Frontend.rtwmznzn8x.pdb": "sha256-UQFXdb/Vb5PiUC4GtJSeOwKt68PSnDbP2wA1ybSM5KI="
     },
     "satelliteResources": {
       "cs": {

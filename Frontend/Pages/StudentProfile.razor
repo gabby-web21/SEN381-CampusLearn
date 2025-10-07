@@ -670,7 +670,7 @@
             Console.WriteLine("🔍 Fetching user profile...");
 
             // Temporary hardcoded test ID (replace later with logged-in user's ID)
-            int loggedInUserId = 1; // temporary
+            int loggedInUserId = 0; // temporary
             currentUser = await UserService.GetUserByIdAsync(loggedInUserId);
             currentStudent = await StudentService.GetStudentByUserIdAsync(loggedInUserId);
         }
