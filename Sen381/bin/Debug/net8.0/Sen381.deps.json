@@ -358,7 +358,15 @@
             "assemblyVersion": "15.0.0.0",
             "fileVersion": "17.900.24.10602"
           },
+          "lib/netcoreapp3.1/Microsoft.TestPlatform.CoreUtilities.dll": {
+            "assemblyVersion": "15.0.0.0",
+            "fileVersion": "17.900.24.10602"
+          },
           "lib/netcoreapp3.1/Microsoft.TestPlatform.CrossPlatEngine.dll": {
+            "assemblyVersion": "15.0.0.0",
+            "fileVersion": "17.900.24.10602"
+          },
+          "lib/netcoreapp3.1/Microsoft.TestPlatform.PlatformAbstractions.dll": {
             "assemblyVersion": "15.0.0.0",
             "fileVersion": "17.900.24.10602"
           },
@@ -367,6 +375,10 @@
             "fileVersion": "17.900.24.10602"
           },
           "lib/netcoreapp3.1/Microsoft.VisualStudio.TestPlatform.Common.dll": {
+            "assemblyVersion": "15.0.0.0",
+            "fileVersion": "17.900.24.10602"
+          },
+          "lib/netcoreapp3.1/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll": {
             "assemblyVersion": "15.0.0.0",
             "fileVersion": "17.900.24.10602"
           },
@@ -558,7 +570,14 @@
           }
         }
       },
-      "supabase-core/0.0.3": {},
+      "supabase-core/0.0.3": {
+        "runtime": {
+          "lib/netstandard2.0/Supabase.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "Supabase.Core/1.0.0": {
         "runtime": {
           "lib/netstandard2.0/Supabase.Core.dll": {

@@ -4,10 +4,12 @@ using System;
 
 namespace Sen381.Business.Models
 {
+    // ✅ Explicitly set schema to 'public'
     [Table("email_verification_tokens")]
     public class EmailVerificationToken : BaseModel
     {
         [PrimaryKey("id", false)]
+        [Column("id")]
         public int Id { get; set; }
 
         [Column("user_id")]
@@ -22,22 +24,31 @@ namespace Sen381.Business.Models
         [Column("expires_at")]
         public DateTime ExpiresAt { get; set; }
 
+        // ✅ Check if the token has expired
+        public bool IsExpired() => DateTime.UtcNow >= ExpiresAt;
+
+        // ✅ Check if the token is still valid
+        public bool IsValid() => !IsExpired();
+
+        // ✅ Mark token as used (expire immediately)
         public void MarkUsed()
         {
-            // In real implementation, update in DB
-            ExpiresAt = DateTime.UtcNow; // expire immediately
-            Console.WriteLine("Email verification token marked as used.");
+            ExpiresAt = DateTime.UtcNow;
+            Console.WriteLine("✅ Email verification token marked as used.");
         }
 
+        // ✅ Revoke token manually
         public void Revoke()
         {
             ExpiresAt = DateTime.UtcNow;
-            Console.WriteLine("Email verification token revoked.");
+            Console.WriteLine("⚠️ Email verification token revoked.");
         }
 
+        // ✅ Get remaining time before expiration
         public TimeSpan RemainingTime()
         {
-            return ExpiresAt - DateTime.UtcNow;
+            var remaining = ExpiresAt - DateTime.UtcNow;
+            return remaining < TimeSpan.Zero ? TimeSpan.Zero : remaining;
         }
     }
 }

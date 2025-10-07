@@ -26,6 +26,8 @@ namespace Sen381.Data_Access
             url ??= fromEnvUrl ?? SafeAppSetting("SUPABASE_URL");
             anonKey ??= fromEnvKey ?? SafeAppSetting("SUPABASE_KEY");
 
+            Console.WriteLine($"Using Supabase key: {anonKey}");
+
             if (string.IsNullOrWhiteSpace(url) || string.IsNullOrWhiteSpace(anonKey))
                 throw new InvalidOperationException("Supabase URL or anon key is missing.");
 

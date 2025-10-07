@@ -1,6 +1,9 @@
 ﻿@page "/signup"
-
-<!-- SignUp — two-column form inside a rounded light-blue panel -->
+@using Sen381.Business.Models
+@using Sen381.Business.Services
+@using Sen381.Data_Access
+@using Sen381
+@inject SupaBaseAuthService SupabaseService
 
 <main class="signup-wrap">
     <section class="card">
@@ -16,47 +19,52 @@
 
         <h1 class="heading">SIGN UP</h1>
 
-        <form class="form">
+        <EditForm Model="@registerModel" OnValidSubmit="@HandleSubmit">
             <div class="grid">
                 <div class="field">
                     <label for="first">Name</label>
-                    <input id="first" class="input" />
+                    <InputText id="first" class="input" @bind-Value="registerModel.FirstName" />
                 </div>
 
                 <div class="field">
                     <label for="email">Email</label>
-                    <input id="email" class="input" type="email" />
+                    <InputText id="email" class="input" type="email" @bind-Value="registerModel.Email" />
                 </div>
 
                 <div class="field">
                     <label for="last">Surname</label>
-                    <input id="last" class="input" />
+                    <InputText id="last" class="input" @bind-Value="registerModel.LastName" />
                 </div>
 
                 <div class="field">
                     <label for="pass">Password</label>
-                    <input id="pass" class="input" type="password" />
+                    <InputText id="pass" class="input" type="password" @bind-Value="registerModel.Password" />
                 </div>
 
                 <div class="field">
                     <label for="phone">Phone number</label>
-                    <input id="phone" class="input" />
+                    <InputText id="phone" class="input" @bind-Value="registerModel.PhoneNum" />
                 </div>
 
                 <div class="field">
                     <label for="confirm">Confirm Password</label>
-                    <input id="confirm" class="input" type="password" />
+                    <InputText id="confirm" class="input" type="password" @bind-Value="registerModel.ConfirmPassword" />
                 </div>
             </div>
 
             <div class="actions">
-                <NavLink href="/login" class="btn">SIGN UP</NavLink>
+                <button type="submit" class="btn">SIGN UP</button>
             </div>
-        </form>
+        </EditForm>
+
+        @if (!string.IsNullOrEmpty(message))
+        {
+            <p>@message</p>
+        }
     </section>
 </main>
 
-<style>
+<style type="text/css">
     /* ===== Tokens (CampusLearn) ===== */
     :root {
         --ink: #2D3034;
@@ -70,25 +78,25 @@
     }
 
     *, *::before, *::after {
-        box-sizing: border-box
+        box-sizing: border-box;
     }
 
     html, body {
-        height: 100%
+        height: 100%;
     }
 
     body {
         margin: 0;
         background: #fff;
         color: var(--ink);
-        font-family: system-ui,-apple-system,"Segoe UI",Inter,Roboto,Arial,sans-serif
+        font-family: system-ui,-apple-system,"Segoe UI",Inter,Roboto,Arial,sans-serif;
     }
 
     /* ===== Layout ===== */
     .signup-wrap {
         display: grid;
         place-items: center;
-        padding: clamp(16px,4vw,32px)
+        padding: clamp(16px,4vw,32px);
     }
 
     .card {
@@ -102,7 +110,7 @@
     }
 
     .mark {
-        margin-inline: auto
+        margin-inline: auto;
     }
 
     .heading {
@@ -113,10 +121,6 @@
     }
 
     /* ===== Form ===== */
-    .form {
-        margin-top: 6px
-    }
-
     .grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -152,7 +156,7 @@
     .actions {
         display: flex;
         justify-content: center;
-        margin-top: clamp(14px,2.4vw,22px)
+        margin-top: clamp(14px,2.4vw,22px);
     }
 
     .btn {
@@ -170,14 +174,36 @@
     }
 
         .btn:active {
-            transform: translateY(1px)
+            transform: translateY(1px);
         }
 
-    /* Responsive */
+    /* ===== Responsive ===== */
     @@media (max-width: 720px) {
-        .grid {
-            grid-template-columns: 1fr;
-            gap: 12px 0
-        }
+        .grid
+
+    {
+        grid-template-columns: 1fr;
+        gap: 12px 0;
+    }
+
     }
 </style>
+
+@code {
+    private RegisterModel registerModel = new();
+    private string message = "";
+
+    private async Task HandleSubmit()
+    {
+        try
+        {
+            var registerBackend = new Register(SupabaseService);
+            await registerBackend.StartRegisterAsync(registerModel);
+            message = "✅ Registration successful! Please check your email for verification.";
+        }
+        catch (Exception ex)
+        {
+            message = $"❌ Registration failed: {ex.Message}";
+        }
+    }
+}

@@ -1,6 +1,16 @@
 ﻿@page "/login"
 <PageTitle>Login | CampusLearn</PageTitle>
 
+@inject NavigationManager NavigationManager
+
+@if (NavigationManager.Uri.Contains("verified=true"))
+{
+    <div class="alert alert-success" style="color: white; background-color: #28a745; padding: 10px; border-radius: 6px; margin-bottom: 15px;">
+        ✅ Your email has been successfully verified! Please log in.
+    </div>
+}
+
+
 <main class="login-wrap">
     <section class="login-card">
         <div class="logo" aria-hidden="true">

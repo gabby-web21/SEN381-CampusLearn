@@ -4,7 +4,8 @@ using System;
 
 namespace Sen381.Business.Models
 {
-    [Table("users")] // ⬅️ IMPORTANT: table only, no schema here
+    // ✅ Explicitly set schema to 'public'
+    [Table("users")]
     public class User : BaseModel
     {
         [PrimaryKey("user_id", false)]
@@ -41,12 +42,14 @@ namespace Sen381.Business.Models
         [Column("profile_picture_path")]
         public string ProfilePicturePath { get; set; }
 
+        // ✅ Password handling
         public void ChangePassword(string newPassword) =>
             PasswordHash = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(newPassword));
 
         public bool VerifyPassword(string inputPassword) =>
             PasswordHash == Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(inputPassword));
 
+        // ✅ Profile management
         public void UpdateProfile(string newFirstName, string newLastName, string newPhoneNum, string newEmail, string newProfilePicturePath = null)
         {
             FirstName = newFirstName;
@@ -57,9 +60,14 @@ namespace Sen381.Business.Models
                 ProfilePicturePath = newProfilePicturePath;
         }
 
+        // ✅ Role management
         public void SetRole(Role role) => RoleString = role.ToString();
         public Role GetRole() => Enum.TryParse<Role>(RoleString, out var r) ? r : Role.student;
     }
 
-    public enum Role { student, admin }
+    public enum Role
+    {
+        student,
+        admin
+    }
 }

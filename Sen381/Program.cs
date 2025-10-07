@@ -1,31 +1,12 @@
-﻿using Sen381.Data_Access;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Sen381
 {
     internal class Program
     {
-        static async Task Main(string[] args)
-        {
-            var supa = new SupaBaseAuthService();
-            bool clientOk = await supa.TestConnectionAsync();
-            Console.WriteLine(clientOk ? "Connection succeeded" : "Connection failed");
-
-            if (!clientOk)
-            {
-                Console.WriteLine("Exiting because Supabase connection failed.");
-                return;
-            }
-
-            var login = new Login(supa);
-            var register = new Register(supa);
-
-            // Start login flow
-            await login.StartLoginAsync();
-
-            Console.WriteLine("Press ENTER to exit...");
-            Console.ReadLine();
-        }
     }
 }

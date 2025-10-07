@@ -1,0 +1,34 @@
+[
+  {
+    "ContainingType": "Sen381Backend.Controllers.EmailController",
+    "Method": "SendVerification",
+    "RelativePath": "api/Email/send-verification",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Sen381Backend.Controllers.VerificationRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Sen381Backend.Controllers.VerifyController",
+    "Method": "VerifyEmail",
+    "RelativePath": "api/Verify/verify-email",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "token",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

@@ -1,104 +1,113 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Sen381.Business.Models;
+﻿using Sen381.Business.Models;
 using Sen381.Data_Access;
-using Sen381.Business.Services;
+using Supabase.Postgrest;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Sen381
 {
     public class Register
     {
-        private readonly List<User> _users = new List<User>();
+        private readonly List<User> _users = new();
         private readonly SupaBaseAuthService _supabaseService;
+        private readonly HttpClient _httpClient;
 
         public Register(SupaBaseAuthService supabaseService)
         {
             _supabaseService = supabaseService;
+            _httpClient = new HttpClient();
         }
 
-        public async Task StartRegisterAsync()
+        public async Task StartRegisterAsync(RegisterModel model)
         {
-            Console.WriteLine("Enter your first name:");
-            string firstName = Console.ReadLine();
-
-            Console.WriteLine("Enter your last name:");
-            string lastName = Console.ReadLine();
-
-            Console.WriteLine("Enter your phone number:");
-            string phoneNum = Console.ReadLine();
-
-            Console.WriteLine("Enter your email address:");
-            string email = Console.ReadLine();
-
-            string password;
-            while (true)
+            try
             {
-                Console.WriteLine("Enter your password:");
-                password = Console.ReadLine();
+                // ✅ Validate input
+                if (string.IsNullOrWhiteSpace(model.Email) || string.IsNullOrWhiteSpace(model.Password))
+                {
+                    Console.WriteLine("❌ Email and Password are required.");
+                    return;
+                }
 
-                Console.WriteLine("Confirm your password:");
-                string confirmPassword = Console.ReadLine();
+                if (model.Password != model.ConfirmPassword)
+                {
+                    Console.WriteLine("❌ Passwords do not match.");
+                    return;
+                }
 
-                if (password == confirmPassword)
-                    break;
+                await _supabaseService.InitializeAsync();
 
-                Console.WriteLine("Passwords do not match. Please try again.");
+                // ✅ Check if email already exists
+                var existingUsers = await _supabaseService.Client
+                    .From<User>()
+                    .Where(u => u.Email == model.Email)
+                    .Get();
+
+                if (existingUsers.Models.Any())
+                {
+                    Console.WriteLine("⚠️ A user with this email already exists.");
+                    return;
+                }
+
+                // ✅ Create new user object
+                var user = new User
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    PhoneNum = model.PhoneNum,
+                    Email = model.Email,
+                    ProfilePicturePath = "",
+                    CreatedAt = DateTime.UtcNow,
+                    LastLogin = DateTime.UtcNow,
+                    IsEmailVerified = false
+                };
+
+                user.SetRole(Role.student);
+                user.ChangePassword(model.Password);
+
+                _users.Add(user);
+
+                // ✅ Insert user into Supabase
+                var insertResponse = await _supabaseService.Client
+                    .From<User>()
+                    .Insert(user, new QueryOptions
+                    {
+                        Returning = QueryOptions.ReturnType.Representation
+                    });
+
+                var insertedUser = insertResponse.Models.FirstOrDefault();
+                if (insertedUser == null)
+                {
+                    Console.WriteLine("❌ Failed to insert user into database.");
+                    return;
+                }
+
+                Console.WriteLine($"✅ User '{insertedUser.Email}' registered with ID {insertedUser.Id}.");
+
+                // ✅ Generate and store email verification token
+                string rawToken = await CreateVerificationTokenAsync(insertedUser);
+
+                // ✅ Send verification email using backend
+                await SendVerificationEmailAsync(insertedUser.Email, rawToken);
+
             }
-
-            Role role;
-            while (true)
+            catch (Exception ex)
             {
-                Console.WriteLine("Select role (1 = Student, 2 = Admin):");
-                string input = Console.ReadLine();
-                if (input == "1") { role = Role.student; break; }
-                if (input == "2") { role = Role.admin; break; }
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+                Console.WriteLine($"❌ Registration failed: {ex.Message}");
             }
-
-            // Generate user
-            var random = new Random();
-            int id = random.Next(1, 1_000_000);
-
-            var user = new User
-            {
-                Id = id,
-                FirstName = firstName,
-                LastName = lastName,
-                PhoneNum = phoneNum,
-                Email = email,
-                ProfilePicturePath = "",
-                CreatedAt = DateTime.UtcNow,
-                IsEmailVerified = false,   // ⬅️ starts unverified
-                LastLogin = DateTime.UtcNow
-            };
-            user.SetRole(role);
-            user.ChangePassword(password);
-
-            _users.Add(user);
-
-            await PushUserToDatabase(user);
-
-            // After user is saved, generate token + send email
-            await SendVerificationEmail(user);
         }
 
-        private async Task PushUserToDatabase(User user)
+        // 🔑 Create & store email verification token
+        private async Task<string> CreateVerificationTokenAsync(User user)
         {
-            await _supabaseService.InitializeAsync();
-
-            await _supabaseService.Client
-                .From<User>()
-                .Insert(user);
-
-            Console.WriteLine($"User {user.FirstName} {user.LastName} pushed to database!");
-        }
-
-        private async Task SendVerificationEmail(User user)
-        {
-            // Generate raw token (send to user) + store hashed version
             string rawToken = Guid.NewGuid().ToString();
-            string tokenHash = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(rawToken));
+            string tokenHash = HashToken(rawToken);
 
             var token = new EmailVerificationToken
             {
@@ -108,16 +117,56 @@ namespace Sen381
                 ExpiresAt = DateTime.UtcNow.AddHours(24)
             };
 
-            await _supabaseService.Client
+            var tokenResponse = await _supabaseService.Client
                 .From<EmailVerificationToken>()
-                .Insert(token);
+                .Insert(token, new QueryOptions
+                {
+                    Returning = QueryOptions.ReturnType.Representation
+                });
 
-            var emailService = new EmailService();
-            emailService.SendVerificationEmail(user.Email, rawToken);
+            if (!tokenResponse.Models.Any())
+                Console.WriteLine("❌ Failed to store verification token in database.");
+            else
+                Console.WriteLine($"🔑 Verification token stored for {user.Email}");
 
-            Console.WriteLine($"📧 Verification email sent to {user.Email}");
+            return rawToken; // ✅ return this so we send the same token
         }
 
+        // 📧 Send verification email via backend API
+        private async Task SendVerificationEmailAsync(string email, string token)
+        {
+            try
+            {
+                var apiUrl = "https://localhost:7228/api/email/send-verification"; // backend endpoint
+                var response = await _httpClient.PostAsJsonAsync(apiUrl, new
+                {
+                    Email = email,
+                    Token = token
+                });
+
+                if (response.IsSuccessStatusCode)
+                    Console.WriteLine($"📧 Verification email sent to {email} via backend");
+                else
+                {
+                    var error = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine($"❌ Failed to send verification email: {response.StatusCode} - {error}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ Error calling backend email API: {ex.Message}");
+            }
+        }
+
+        // 🔒 Hash token before storing it in DB
+        private string HashToken(string token)
+        {
+            using var sha = SHA256.Create();
+            var bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(token));
+            return BitConverter.ToString(bytes).Replace("-", "").ToLower();
+        }
+
+        // 👀 Display all users (debug use)
         public void DisplayAllUsers()
         {
             if (_users.Count == 0)
@@ -128,7 +177,8 @@ namespace Sen381
 
             foreach (var user in _users)
             {
-                Console.WriteLine($"ID: {user.Id}, Name: {user.FirstName} {user.LastName}, Email: {user.Email}, Verified: {user.IsEmailVerified}, Role: {user.GetRole()}");
+                Console.WriteLine($"ID: {user.Id}, Name: {user.FirstName} {user.LastName}, " +
+                                  $"Email: {user.Email}, Verified: {user.IsEmailVerified}, Role: {user.GetRole()}");
             }
         }
     }
