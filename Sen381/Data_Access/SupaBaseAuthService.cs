@@ -3,6 +3,7 @@ using System.Configuration;
 using System.Threading.Tasks;
 using Supabase;
 
+
 namespace Sen381.Data_Access
 {
     public class SupaBaseAuthService

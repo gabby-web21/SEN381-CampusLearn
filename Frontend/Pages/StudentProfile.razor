@@ -1,5 +1,37 @@
 ﻿@page "/studentprofile"
+@using Sen381.Business.Models
+@using Sen381.Business.Services
+@using Sen381.Data_Access
+@inject UserService UserService
+@inject SupaBaseAuthService SupabaseService
 <PageTitle>Profile | CampusLearn</PageTitle>
+
+<h3>Student Profile</h3>
+
+@if (currentUser == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <div class="profile-container">
+        <h2>@currentUser.FirstName @currentUser.LastName</h2>
+        <p>@currentUser.Email</p>
+
+        <button @onclick="EnableEdit">Edit</button>
+
+        @if (isEditing)
+        {
+            <EditForm Model="@editableUser" OnValidSubmit="SaveChanges">
+                <InputText @bind-Value="editableUser.FirstName" />
+                <InputText @bind-Value="editableUser.LastName" />
+                <InputText @bind-Value="editableUser.PhoneNum" />
+                <InputText @bind-Value="editableUser.Email" />
+                <button type="submit">Save</button>
+            </EditForm>
+        }
+    </div>
+}
 
 <!-- ===== Page Header (avatar + title + actions) ===== -->
 <header class="page-hd">
@@ -601,7 +633,7 @@
     }</style>
 
 @code {
-    // ===== Sample data =====
+    //===== Sample data =====
     private string StudentName = "Sabrina Carpenter";
     private string YearOfStudy = "2nd";
     private string Program = "BComp";
@@ -643,5 +675,43 @@
         public string Name { get; set; } = "";
         public string Status { get; set; } = "";
         public string Grade { get; set; } = "";
+    }
+    private User currentUser;
+    private User editableUser;
+    private bool isEditing = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Console.WriteLine("🔍 Fetching user profile...");
+        int loggedInUserId = 1;
+        currentUser = await UserService.GetUserByIdAsync(loggedInUserId);
+
+        if (currentUser == null)
+            Console.WriteLine("❌ No user found with that ID.");
+        else
+            Console.WriteLine($"✅ Loaded user: {currentUser.FirstName} {currentUser.LastName}");
+    }
+
+    private void EnableEdit()
+    {
+        editableUser = new User
+        {
+            Id = currentUser.Id,
+            FirstName = currentUser.FirstName,
+            LastName = currentUser.LastName,
+            PhoneNum = currentUser.PhoneNum,
+            Email = currentUser.Email
+        };
+        isEditing = true;
+    }
+
+    private async Task SaveChanges()
+    {
+        var success = await UserService.UpdateUserAsync(editableUser);
+        if (success)
+        {
+            currentUser = editableUser;
+            isEditing = false;
+        }
     }
 }
