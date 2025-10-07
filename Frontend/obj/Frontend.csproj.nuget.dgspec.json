@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Sen381 github repo\\Frontend\\SEN381Frontend\\Frontend\\Frontend.csproj": {}
+    "C:\\Sen381 github repo\\SEN381-CampusLearn\\Frontend\\Frontend.csproj": {}
   },
   "projects": {
-    "C:\\Sen381 github repo\\Frontend\\SEN381Frontend\\Frontend\\Frontend.csproj": {
+    "C:\\Sen381 github repo\\SEN381-CampusLearn\\Frontend\\Frontend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Sen381 github repo\\Frontend\\SEN381Frontend\\Frontend\\Frontend.csproj",
+        "projectUniqueName": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Frontend\\Frontend.csproj",
         "projectName": "Frontend",
-        "projectPath": "C:\\Sen381 github repo\\Frontend\\SEN381Frontend\\Frontend\\Frontend.csproj",
+        "projectPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Frontend\\Frontend.csproj",
         "packagesPath": "C:\\Users\\morne\\.nuget\\packages\\",
-        "outputPath": "C:\\Sen381 github repo\\Frontend\\SEN381Frontend\\Frontend\\obj\\",
+        "outputPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Frontend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

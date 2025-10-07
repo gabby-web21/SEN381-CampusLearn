@@ -31,4 +31,7 @@
     <PackageReference Include="System.Threading.Channels" Version="9.0.9" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.9" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Business\Utilities\" />
+  </ItemGroup>
 </Project>

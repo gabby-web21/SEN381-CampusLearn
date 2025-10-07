@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Sen381.Business;
+using Sen381.Business.Models;
 using Sen381.Data_Access;
 
 namespace Sen381

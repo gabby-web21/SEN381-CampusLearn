@@ -1,7 +1,15 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Sen381 github repo\\Frontend\\SEN381Frontend\\Sen381\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|c:\\sen381 github repo\\sen381-campuslearn\\sen381\\business\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|solutionrelative:business\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\sen381 github repo\\sen381-campuslearn\\frontend\\pages\\studentprofile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +17,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,6 +42,32 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Student.cs",
+              "DocumentMoniker": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Business\\Models\\Student.cs",
+              "RelativeDocumentMoniker": "Business\\Models\\Student.cs",
+              "ToolTip": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Business\\Models\\Student.cs",
+              "RelativeToolTip": "Business\\Models\\Student.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-07T10:07:01.116Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StudentProfile.razor",
+              "DocumentMoniker": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Frontend\\Pages\\StudentProfile.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\StudentProfile.razor",
+              "ToolTip": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Frontend\\Pages\\StudentProfile.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\StudentProfile.razor",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAAAFwCAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-07T10:06:03.2Z",
+              "EditorCaption": ""
             }
           ]
         }
