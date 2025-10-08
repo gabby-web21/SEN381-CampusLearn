@@ -24,40 +24,34 @@ namespace Sen381
             _httpClient = new HttpClient();
         }
 
-        public async Task StartRegisterAsync(RegisterModel model)
+        /// <summary>
+        /// Registers a new user in the database and sends an email verification link.
+        /// Returns a detailed RegistrationResult indicating success/failure reason.
+        /// </summary>
+        public async Task<RegistrationResult> StartRegisterAsync(RegisterModel model)
         {
             try
             {
-                // ✅ Validation
+                // ✅ 1. Basic input validation
                 if (string.IsNullOrWhiteSpace(model.Email) || string.IsNullOrWhiteSpace(model.Password))
-                {
-                    Console.WriteLine("❌ Email and Password are required.");
-                    return;
-                }
+                    return new RegistrationResult { Success = false, Message = "Email and password are required." };
 
                 if (model.Password != model.ConfirmPassword)
-                {
-                    Console.WriteLine("❌ Passwords do not match.");
-                    return;
-                }
+                    return new RegistrationResult { Success = false, Message = "Passwords do not match." };
 
                 await _supabaseService.InitializeAsync();
-                var client = _supabaseService.Client;
 
-                // ✅ Check for existing email
-                var existingUsers = await client
+                // ✅ 2. Check if user already exists
+                var existingUsers = await _supabaseService.Client
                     .From<User>()
                     .Where(u => u.Email == model.Email)
                     .Get();
 
                 if (existingUsers.Models.Any())
-                {
-                    Console.WriteLine("⚠️ A user with this email already exists.");
-                    return;
-                }
+                    return new RegistrationResult { Success = false, Message = "A user with this email already exists." };
 
-                // ✅ Prepare new user
-                var newUser = new User
+                // ✅ 3. Create the new user object
+                var user = new User
                 {
                     FirstName = model.FirstName,
                     LastName = model.LastName,
@@ -69,45 +63,50 @@ namespace Sen381
                     IsEmailVerified = false
                 };
 
-                newUser.SetRole(Role.student);
-                newUser.ChangePassword(model.Password);
+                user.SetRole(Role.student);
+                user.ChangePassword(model.Password);
+                user.Id = default; // prevent sending user_id=0
 
-                _users.Add(newUser);
-
-                newUser.Id = default;
-
-                // ✅ Insert user (Supabase bug workaround)
-                await client
+                // ✅ 4. Insert into Supabase
+                await _supabaseService.Client
                     .From<User>()
-                    .Insert(newUser, new QueryOptions
+                    .Insert(user, new QueryOptions
                     {
                         Returning = QueryOptions.ReturnType.Minimal
                     });
 
-                // ✅ Immediately re-fetch real record by email (ensures ID > 0)
-                var fetchResponse = await client
+                // ✅ 5. Re-fetch record to get auto-generated ID
+                var fetchResponse = await _supabaseService.Client
                     .From<User>()
                     .Where(u => u.Email == model.Email)
                     .Get();
 
                 var insertedUser = fetchResponse.Models.FirstOrDefault();
                 if (insertedUser == null)
-                {
-                    Console.WriteLine("❌ Failed to retrieve inserted user.");
-                    return;
-                }
+                    return new RegistrationResult { Success = false, Message = "Failed to retrieve newly created user record." };
+
+                // ✅ 6. Create and store verification token
+                string rawToken = await CreateVerificationTokenAsync(insertedUser);
+
+                // ✅ 7. Send verification email
+                await SendVerificationEmailAsync(insertedUser.Email, rawToken);
 
                 Console.WriteLine($"✅ User '{insertedUser.Email}' registered successfully with ID {insertedUser.Id}.");
 
-                // ✅ Create & store email verification token
-                string rawToken = await CreateVerificationTokenAsync(insertedUser);
-
-                // ✅ Send verification email
-                await SendVerificationEmailAsync(insertedUser.Email, rawToken);
+                return new RegistrationResult
+                {
+                    Success = true,
+                    Message = "Registration successful! Please check your email for verification."
+                };
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"❌ Registration failed: {ex.Message}");
+                return new RegistrationResult
+                {
+                    Success = false,
+                    Message = $"Unexpected error occurred: {ex.Message}"
+                };
             }
         }
 
@@ -124,6 +123,8 @@ namespace Sen381
                 CreatedAt = DateTime.UtcNow,
                 ExpiresAt = DateTime.UtcNow.AddHours(24)
             };
+
+            token.Id = default; // prevent sending email_verification_token_id=0
 
             await _supabaseService.Client
                 .From<EmailVerificationToken>()
@@ -145,7 +146,7 @@ namespace Sen381
                 var response = await _httpClient.PostAsJsonAsync(apiUrl, new { Email = email, Token = token });
 
                 if (response.IsSuccessStatusCode)
-                    Console.WriteLine($"📧 Verification email sent to {email} via backend");
+                    Console.WriteLine($"📧 Verification email sent to {email}");
                 else
                     Console.WriteLine($"❌ Failed to send verification email: {response.StatusCode}");
             }
@@ -155,7 +156,7 @@ namespace Sen381
             }
         }
 
-        // 🔒 Hash token
+        // 🔒 Securely hash token using SHA256
         private string HashToken(string token)
         {
             using var sha = SHA256.Create();
@@ -163,7 +164,7 @@ namespace Sen381
             return BitConverter.ToString(bytes).Replace("-", "").ToLower();
         }
 
-        // 👀 Debug
+        // 👀 Debugging utility
         public void DisplayAllUsers()
         {
             if (_users.Count == 0)

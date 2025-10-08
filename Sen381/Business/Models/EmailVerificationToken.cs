@@ -9,7 +9,7 @@ namespace Sen381.Business.Models
     public class EmailVerificationToken : BaseModel
     {
         [PrimaryKey("email_verification_token_id", true)]
-        [Column("email_verification_token_id")]
+        [Column("email_verification_token_id", ignoreOnInsert: true)]
         public int Id { get; set; }
 
         [Column("user_id")]

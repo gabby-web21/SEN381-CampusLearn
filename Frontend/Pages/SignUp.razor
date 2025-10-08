@@ -65,7 +65,16 @@
             </div>
 
             <div class="actions">
-                <button type="submit" class="btn">SIGN UP</button>
+                <button type="submit" class="btn" disabled="@(!IsFormValid || isLoading)">
+                    @if (isLoading)
+                    {
+                        <span>Sending...</span>
+                    }
+                    else
+                    {
+                        <span>SIGN UP</span>
+                    }
+                </button>
             </div>
 
             @if (!string.IsNullOrEmpty(generalError))
@@ -180,12 +189,6 @@
         font-size: 0.95rem;
     }
 
-    .actions {
-        display: flex;
-        justify-content: center;
-        margin-top: clamp(14px,2.4vw,22px);
-    }
-
     .btn {
         min-width: 200px;
         height: 46px;
@@ -198,10 +201,16 @@
         font-size: 1rem;
         box-shadow: var(--shadow);
         cursor: pointer;
+        transition: opacity 0.2s ease;
     }
 
         .btn:active {
             transform: translateY(1px);
+        }
+
+        .btn[disabled] {
+            cursor: not-allowed;
+            opacity: 0.6;
         }
 
     @@media (max-width: 720px) {
@@ -210,12 +219,26 @@
             gap: 12px 0;
         }
     }
+
+    p {
+        margin-top: 10px;
+        font-weight: 600;
+    }
+
+        p:has(> [class*="✅"]) {
+            color: green;
+        }
+
+        p:has(> [class*="⚠️"]) {
+            color: #b30000;
+        }
 </style>
 
 @code {
     private RegisterModel registerModel = new();
     private string message = "";
     private string generalError = "";
+    private bool isLoading = false;
 
     // Validation error messages
     private string firstNameError = "";
@@ -308,14 +331,28 @@
                 return;
             }
 
-            generalError = ""; // clear the message if valid
+            generalError = "";
+            isLoading = true;
+
             var registerBackend = new Register(SupabaseService);
-            await registerBackend.StartRegisterAsync(registerModel);
-            message = "✅ Registration successful! Please check your email for verification.";
+            var result = await registerBackend.StartRegisterAsync(registerModel);
+
+            if (result.Success)
+            {
+                message = $"✅ {result.Message}";
+            }
+            else
+            {
+                message = $"⚠️ {result.Message}";
+            }
         }
         catch (Exception ex)
         {
             message = $"❌ Registration failed: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false; // always re-enable the button
         }
     }
 }
