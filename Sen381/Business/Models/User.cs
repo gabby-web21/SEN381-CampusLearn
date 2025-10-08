@@ -4,12 +4,13 @@ using System;
 
 namespace Sen381.Business.Models
 {
-    // ✅ Explicitly set schema to 'public'
     [Table("users")]
     public class User : BaseModel
     {
-        [PrimaryKey("user_id", false)]
-        [Column("user_id")]
+        // ✅ Correct primary key mapping
+        // "true" means it's auto-generated (serial/identity)
+        [PrimaryKey("user_id", true)]
+        [Column("user_id", ignoreOnInsert: true)]
         public int Id { get; set; }
 
         [Column("first_name")]
@@ -42,14 +43,14 @@ namespace Sen381.Business.Models
         [Column("profile_picture_path")]
         public string ProfilePicturePath { get; set; }
 
-        // ✅ Password handling
+        // 🔒 Password handling
         public void ChangePassword(string newPassword) =>
             PasswordHash = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(newPassword));
 
         public bool VerifyPassword(string inputPassword) =>
             PasswordHash == Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(inputPassword));
 
-        // ✅ Profile management
+        // 👤 Profile updates
         public void UpdateProfile(string newFirstName, string newLastName, string newPhoneNum, string newEmail, string newProfilePicturePath = null)
         {
             FirstName = newFirstName;
@@ -60,7 +61,7 @@ namespace Sen381.Business.Models
                 ProfilePicturePath = newProfilePicturePath;
         }
 
-        // ✅ Role management
+        // 🧭 Role management
         public void SetRole(Role role) => RoleString = role.ToString();
         public Role GetRole() => Enum.TryParse<Role>(RoleString, out var r) ? r : Role.student;
     }

@@ -28,7 +28,7 @@ namespace Sen381
         {
             try
             {
-                // ✅ Validate input
+                // ✅ Validation
                 if (string.IsNullOrWhiteSpace(model.Email) || string.IsNullOrWhiteSpace(model.Password))
                 {
                     Console.WriteLine("❌ Email and Password are required.");
@@ -42,9 +42,10 @@ namespace Sen381
                 }
 
                 await _supabaseService.InitializeAsync();
+                var client = _supabaseService.Client;
 
-                // ✅ Check if email already exists
-                var existingUsers = await _supabaseService.Client
+                // ✅ Check for existing email
+                var existingUsers = await client
                     .From<User>()
                     .Where(u => u.Email == model.Email)
                     .Get();
@@ -55,8 +56,8 @@ namespace Sen381
                     return;
                 }
 
-                // ✅ Create new user object
-                var user = new User
+                // ✅ Prepare new user
+                var newUser = new User
                 {
                     FirstName = model.FirstName,
                     LastName = model.LastName,
@@ -68,34 +69,41 @@ namespace Sen381
                     IsEmailVerified = false
                 };
 
-                user.SetRole(Role.student);
-                user.ChangePassword(model.Password);
+                newUser.SetRole(Role.student);
+                newUser.ChangePassword(model.Password);
 
-                _users.Add(user);
+                _users.Add(newUser);
 
-                // ✅ Insert user into Supabase
-                var insertResponse = await _supabaseService.Client
+                newUser.Id = default;
+
+                // ✅ Insert user (Supabase bug workaround)
+                await client
                     .From<User>()
-                    .Insert(user, new QueryOptions
+                    .Insert(newUser, new QueryOptions
                     {
-                        Returning = QueryOptions.ReturnType.Representation
+                        Returning = QueryOptions.ReturnType.Minimal
                     });
 
-                var insertedUser = insertResponse.Models.FirstOrDefault();
+                // ✅ Immediately re-fetch real record by email (ensures ID > 0)
+                var fetchResponse = await client
+                    .From<User>()
+                    .Where(u => u.Email == model.Email)
+                    .Get();
+
+                var insertedUser = fetchResponse.Models.FirstOrDefault();
                 if (insertedUser == null)
                 {
-                    Console.WriteLine("❌ Failed to insert user into database.");
+                    Console.WriteLine("❌ Failed to retrieve inserted user.");
                     return;
                 }
 
-                Console.WriteLine($"✅ User '{insertedUser.Email}' registered with ID {insertedUser.Id}.");
+                Console.WriteLine($"✅ User '{insertedUser.Email}' registered successfully with ID {insertedUser.Id}.");
 
-                // ✅ Generate and store email verification token
+                // ✅ Create & store email verification token
                 string rawToken = await CreateVerificationTokenAsync(insertedUser);
 
-                // ✅ Send verification email using backend
+                // ✅ Send verification email
                 await SendVerificationEmailAsync(insertedUser.Email, rawToken);
-
             }
             catch (Exception ex)
             {
@@ -117,19 +125,15 @@ namespace Sen381
                 ExpiresAt = DateTime.UtcNow.AddHours(24)
             };
 
-            var tokenResponse = await _supabaseService.Client
+            await _supabaseService.Client
                 .From<EmailVerificationToken>()
                 .Insert(token, new QueryOptions
                 {
-                    Returning = QueryOptions.ReturnType.Representation
+                    Returning = QueryOptions.ReturnType.Minimal
                 });
 
-            if (!tokenResponse.Models.Any())
-                Console.WriteLine("❌ Failed to store verification token in database.");
-            else
-                Console.WriteLine($"🔑 Verification token stored for {user.Email}");
-
-            return rawToken; // ✅ return this so we send the same token
+            Console.WriteLine($"🔑 Verification token stored for {user.Email}");
+            return rawToken;
         }
 
         // 📧 Send verification email via backend API
@@ -137,20 +141,13 @@ namespace Sen381
         {
             try
             {
-                var apiUrl = "https://localhost:7228/api/email/send-verification"; // backend endpoint
-                var response = await _httpClient.PostAsJsonAsync(apiUrl, new
-                {
-                    Email = email,
-                    Token = token
-                });
+                const string apiUrl = "https://localhost:7228/api/email/send-verification";
+                var response = await _httpClient.PostAsJsonAsync(apiUrl, new { Email = email, Token = token });
 
                 if (response.IsSuccessStatusCode)
                     Console.WriteLine($"📧 Verification email sent to {email} via backend");
                 else
-                {
-                    var error = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine($"❌ Failed to send verification email: {response.StatusCode} - {error}");
-                }
+                    Console.WriteLine($"❌ Failed to send verification email: {response.StatusCode}");
             }
             catch (Exception ex)
             {
@@ -158,7 +155,7 @@ namespace Sen381
             }
         }
 
-        // 🔒 Hash token before storing it in DB
+        // 🔒 Hash token
         private string HashToken(string token)
         {
             using var sha = SHA256.Create();
@@ -166,7 +163,7 @@ namespace Sen381
             return BitConverter.ToString(bytes).Replace("-", "").ToLower();
         }
 
-        // 👀 Display all users (debug use)
+        // 👀 Debug
         public void DisplayAllUsers()
         {
             if (_users.Count == 0)
