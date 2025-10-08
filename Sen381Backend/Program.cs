@@ -1,22 +1,40 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using Sen381.Data_Access; 
 
-// ✅ Add controller + CORS support
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+// ✅ Add Supabase service
+builder.Services.AddScoped<SupaBaseAuthService>();
+
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll", policy =>
-        policy.AllowAnyOrigin()
-              .AllowAnyMethod()
-              .AllowAnyHeader());
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy =>
+        {
+            policy.WithOrigins("https://localhost:7097") 
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
 });
 
-// ✅ Make IConfiguration injectable into controllers
-builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 
 var app = builder.Build();
+// Configure the HTTP request pipeline
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.UseHttpsRedirection();
-app.UseCors("AllowAll");
+app.UseCors(MyAllowSpecificOrigins);
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();

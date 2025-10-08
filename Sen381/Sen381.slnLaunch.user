@@ -11,5 +11,18 @@
         "Action": "Start"
       }
     ]
+  },
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "..\\Frontend\\Frontend.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "..\\Sen381Backend\\Sen381Backend.csproj",
+        "Action": "Start"
+      }
+    ]
   }
 ]

@@ -5,6 +5,9 @@
 @inject UserService UserService
 @inject SupaBaseAuthService SupabaseService
 @inject StudentService StudentService
+@inject IJSRuntime JS
+@inject NavigationManager NavigationManager
+@inject Frontend.Services.AuthService AuthService
 <PageTitle>Profile | CampusLearn</PageTitle>
 
 <!-- ===== Page Header (avatar + title + actions) ===== -->
@@ -667,12 +670,28 @@
     {
         try
         {
-            Console.WriteLine("🔍 Fetching user profile...");
+            isLoading = true;
 
-            // Temporary hardcoded test ID (replace later with logged-in user's ID)
-            int loggedInUserId = 1; // pass user ID after logged in here
-            currentUser = await UserService.GetUserByIdAsync(loggedInUserId);
-            currentStudent = await StudentService.GetStudentByUserIdAsync(loggedInUserId);
+            // ✅ Check login persistence
+            bool isLoggedIn = await AuthService.IsUserLoggedInAsync();
+            if (!isLoggedIn)
+            {
+                Console.WriteLine("⚠️ No active session — redirecting to login...");
+                NavigationManager.NavigateTo("/login");
+                return;
+            }
+
+            // ✅ Get current user ID
+            int? loggedInUserId = await AuthService.GetCurrentUserIdAsync();
+            if (loggedInUserId == null)
+            {
+                NavigationManager.NavigateTo("/login");
+                return;
+            }
+
+            // ✅ Fetch user + student data dynamically
+            currentUser = await UserService.GetUserByIdAsync(loggedInUserId.Value);
+            currentStudent = await StudentService.GetStudentByUserIdAsync(loggedInUserId.Value);
         }
         finally
         {

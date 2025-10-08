@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381\\Sen381.csproj": {}
+    "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Sen381.csproj": {}
   },
   "projects": {
-    "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381\\Sen381.csproj": {
+    "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Sen381.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381\\Sen381.csproj",
+        "projectUniqueName": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Sen381.csproj",
         "projectName": "Sen381",
-        "projectPath": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381\\Sen381.csproj",
-        "packagesPath": "C:\\Users\\xavie\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381\\obj\\",
+        "projectPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Sen381.csproj",
+        "packagesPath": "C:\\Users\\morne\\.nuget\\packages\\",
+        "outputPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\xavie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\morne\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -61,6 +61,10 @@
             "Microsoft.CSharp": {
               "target": "Package",
               "version": "[4.7.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[9.0.9, )"
             },
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",

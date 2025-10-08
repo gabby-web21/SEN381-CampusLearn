@@ -1,6 +1,8 @@
 ﻿@page "/login"
+@using System.Net.Http.Json
+@inject HttpClient Http
+@inject IJSRuntime JS
 <PageTitle>Login | CampusLearn</PageTitle>
-
 @inject NavigationManager NavigationManager
 
 @if (NavigationManager.Uri.Contains("verified=true"))
@@ -27,15 +29,25 @@
 
         <form class="form">
             <label for="email" class="label">Email</label>
-            <input id="email" type="email" class="input" />
+            <input id="email" type="email" class="input" @bind="Email" />
+            @if (showEmailError)
+            {
+                <p class="text-danger">Please enter a valid email address.</p>
+            }
 
             <label for="password" class="label">Password</label>
-            <input id="password" type="password" class="input" />
+            <input id="password" type="password" class="input" @bind="Password" />
+            @if (showPasswordError)
+            {
+                <p class="text-danger">Password cannot be empty.</p>
+            }
 
             <!-- ✅ fixed typo: 'hred' → 'href' -->
             <!-- ✅ centered via flex parent -->
             <div class="btn-center">
-                <NavLink href="/dashboard" class="btn">Login</NavLink>
+                    <button type="button" class="btn" @onclick="HandleLogin" disabled="@isLoading">
+                        @(isLoading ? "Loading..." : "Login")
+                    </button>
             </div>
         </form>
 
@@ -191,3 +203,59 @@
         }
     }
 </style>
+@code
+{
+    private string Email = string.Empty;
+    private string Password = string.Empty;
+    private string Message = string.Empty;
+    private bool showEmailError = false;
+    private bool showPasswordError = false;
+    private bool isLoading = false;
+
+    private async Task HandleLogin()
+    {
+        showEmailError = string.IsNullOrWhiteSpace(Email) || !Email.Contains("@");
+        showPasswordError = string.IsNullOrWhiteSpace(Password);
+        if (showEmailError || showPasswordError)
+        {
+            Message = "⚠️ Please correct the highlighted fields.";
+            return;
+        }
+
+        isLoading = true;
+        Message = string.Empty;
+
+        try
+        {
+            var loginData = new { Email, Password };
+            var response = await Http.PostAsJsonAsync("https://localhost:7228/api/Login", loginData);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadFromJsonAsync<Dictionary<string, object>>();
+                Message = "✅ Login successful!";
+
+                //Save logged in users in localstorage for once off login
+                await JS.InvokeVoidAsync("localStorage.setItem", "userId", result["userId"].ToString());
+                await JS.InvokeVoidAsync("localStorage.setItem", "email", result["email"].ToString());
+                await JS.InvokeVoidAsync("localStorage.setItem", "role", result["role"].ToString());
+                await JS.InvokeVoidAsync("localStorage.setItem", "isLoggedIn", "true");
+
+                NavigationManager.NavigateTo("/dashboard");
+            }
+            else
+            {
+                var error = await response.Content.ReadFromJsonAsync<Dictionary<string, string>>();
+                Message = $"⚠ {error?["error"] ?? "Login failed"}";
+            }
+        }
+        catch(Exception ex)
+        {
+            Message = $"Unexpected error: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}
