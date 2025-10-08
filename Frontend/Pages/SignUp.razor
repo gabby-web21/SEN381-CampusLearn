@@ -21,40 +21,57 @@
 
         <EditForm Model="@registerModel" OnValidSubmit="@HandleSubmit">
             <div class="grid">
+                <!-- First Name -->
                 <div class="field">
                     <label for="first">Name</label>
-                    <InputText id="first" class="input" @bind-Value="registerModel.FirstName" />
+                    <InputText id="first" class="input" @bind-Value="registerModel.FirstName" @oninput="ValidateFirstName" />
+                    <div class="error-message">@firstNameError</div>
                 </div>
 
+                <!-- Email -->
                 <div class="field">
                     <label for="email">Email</label>
-                    <InputText id="email" class="input" type="email" @bind-Value="registerModel.Email" />
+                    <InputText id="email" class="input" type="email" @bind-Value="registerModel.Email" @oninput="ValidateEmail" />
+                    <div class="error-message">@emailError</div>
                 </div>
 
+                <!-- Last Name -->
                 <div class="field">
                     <label for="last">Surname</label>
-                    <InputText id="last" class="input" @bind-Value="registerModel.LastName" />
+                    <InputText id="last" class="input" @bind-Value="registerModel.LastName" @oninput="ValidateLastName" />
+                    <div class="error-message">@lastNameError</div>
                 </div>
 
+                <!-- Password -->
                 <div class="field">
                     <label for="pass">Password</label>
-                    <InputText id="pass" class="input" type="password" @bind-Value="registerModel.Password" />
+                    <InputText id="pass" class="input" type="password" @bind-Value="registerModel.Password" @oninput="ValidatePassword" />
+                    <div class="error-message">@passwordError</div>
                 </div>
 
+                <!-- Phone -->
                 <div class="field">
                     <label for="phone">Phone number</label>
-                    <InputText id="phone" class="input" @bind-Value="registerModel.PhoneNum" />
+                    <InputText id="phone" class="input" @bind-Value="registerModel.PhoneNum" @oninput="ValidatePhone" />
+                    <div class="error-message">@phoneError</div>
                 </div>
 
+                <!-- Confirm Password -->
                 <div class="field">
                     <label for="confirm">Confirm Password</label>
-                    <InputText id="confirm" class="input" type="password" @bind-Value="registerModel.ConfirmPassword" />
+                    <InputText id="confirm" class="input" type="password" @bind-Value="registerModel.ConfirmPassword" @oninput="ValidateConfirmPassword" />
+                    <div class="error-message">@confirmPasswordError</div>
                 </div>
             </div>
 
             <div class="actions">
                 <button type="submit" class="btn">SIGN UP</button>
             </div>
+
+            @if (!string.IsNullOrEmpty(generalError))
+            {
+                <p class="general-error">@generalError</p>
+            }
         </EditForm>
 
         @if (!string.IsNullOrEmpty(message))
@@ -65,7 +82,6 @@
 </main>
 
 <style type="text/css">
-    /* ===== Tokens (CampusLearn) ===== */
     :root {
         --ink: #2D3034;
         --panel: #DBE4EE;
@@ -92,7 +108,6 @@
         font-family: system-ui,-apple-system,"Segoe UI",Inter,Roboto,Arial,sans-serif;
     }
 
-    /* ===== Layout ===== */
     .signup-wrap {
         display: grid;
         place-items: center;
@@ -120,7 +135,6 @@
         font-size: clamp(24px, 3.6vw, 36px);
     }
 
-    /* ===== Form ===== */
     .grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -152,7 +166,20 @@
             box-shadow: inset 0 0 0 2px color-mix(in oklab, var(--ink) 16%, white), 0 0 0 2px color-mix(in oklab, var(--ink) 8%, white);
         }
 
-    /* Actions */
+    .error-message {
+        font-size: 0.85rem;
+        color: #b30000;
+        margin-top: 4px;
+        min-height: 1.2em;
+    }
+
+    .general-error {
+        color: #b30000;
+        font-weight: 600;
+        margin-top: 10px;
+        font-size: 0.95rem;
+    }
+
     .actions {
         display: flex;
         justify-content: center;
@@ -177,26 +204,111 @@
             transform: translateY(1px);
         }
 
-    /* ===== Responsive ===== */
     @@media (max-width: 720px) {
-        .grid
-
-    {
-        grid-template-columns: 1fr;
-        gap: 12px 0;
-    }
-
+        .grid {
+            grid-template-columns: 1fr;
+            gap: 12px 0;
+        }
     }
 </style>
 
 @code {
     private RegisterModel registerModel = new();
     private string message = "";
+    private string generalError = "";
+
+    // Validation error messages
+    private string firstNameError = "";
+    private string lastNameError = "";
+    private string phoneError = "";
+    private string emailError = "";
+    private string passwordError = "";
+    private string confirmPasswordError = "";
+
+    private bool IsFormValid =>
+        string.IsNullOrEmpty(firstNameError) &&
+        string.IsNullOrEmpty(lastNameError) &&
+        string.IsNullOrEmpty(phoneError) &&
+        string.IsNullOrEmpty(emailError) &&
+        string.IsNullOrEmpty(passwordError) &&
+        string.IsNullOrEmpty(confirmPasswordError);
+
+    private void ValidateFirstName(ChangeEventArgs e)
+    {
+        registerModel.FirstName = e.Value?.ToString() ?? "";
+        firstNameError = string.IsNullOrWhiteSpace(registerModel.FirstName)
+            ? "First name is required."
+            : (registerModel.FirstName.Any(char.IsDigit) ? "First name cannot contain numbers." : "");
+    }
+
+    private void ValidateLastName(ChangeEventArgs e)
+    {
+        registerModel.LastName = e.Value?.ToString() ?? "";
+        lastNameError = string.IsNullOrWhiteSpace(registerModel.LastName)
+            ? "Surname is required."
+            : (registerModel.LastName.Any(char.IsDigit) ? "Surname cannot contain numbers." : "");
+    }
+
+    private void ValidatePhone(ChangeEventArgs e)
+    {
+        registerModel.PhoneNum = e.Value?.ToString() ?? "";
+        if (string.IsNullOrWhiteSpace(registerModel.PhoneNum))
+            phoneError = "Phone number is required.";
+        else if (!registerModel.PhoneNum.All(char.IsDigit))
+            phoneError = "Phone number must contain only digits.";
+        else if (registerModel.PhoneNum.Length != 10)
+            phoneError = "Phone number must be exactly 10 digits.";
+        else
+            phoneError = "";
+    }
+
+    private void ValidateEmail(ChangeEventArgs e)
+    {
+        registerModel.Email = e.Value?.ToString() ?? "";
+        if (string.IsNullOrWhiteSpace(registerModel.Email))
+            emailError = "Email is required.";
+        else if (!registerModel.Email.EndsWith("@student.belgiumcampus.ac.za", StringComparison.OrdinalIgnoreCase))
+            emailError = "Email must end with @student.belgiumcampus.ac.za";
+        else
+            emailError = "";
+    }
+
+    private void ValidatePassword(ChangeEventArgs e)
+    {
+        registerModel.Password = e.Value?.ToString() ?? "";
+        if (string.IsNullOrWhiteSpace(registerModel.Password))
+            passwordError = "Password is required.";
+        else if (!registerModel.Password.Any(char.IsUpper))
+            passwordError = "Must contain at least one uppercase letter.";
+        else if (!registerModel.Password.Any(char.IsLower))
+            passwordError = "Must contain at least one lowercase letter.";
+        else if (!registerModel.Password.Any(char.IsDigit))
+            passwordError = "Must contain at least one number.";
+        else
+            passwordError = "";
+
+        ValidateConfirmPassword(new ChangeEventArgs { Value = registerModel.ConfirmPassword });
+    }
+
+    private void ValidateConfirmPassword(ChangeEventArgs e)
+    {
+        registerModel.ConfirmPassword = e.Value?.ToString() ?? "";
+        confirmPasswordError = registerModel.ConfirmPassword != registerModel.Password
+            ? "Passwords do not match."
+            : "";
+    }
 
     private async Task HandleSubmit()
     {
         try
         {
+            if (!IsFormValid)
+            {
+                generalError = "⚠️ Some fields are incorrect or incomplete. Please fix them before continuing.";
+                return;
+            }
+
+            generalError = ""; // clear the message if valid
             var registerBackend = new Register(SupabaseService);
             await registerBackend.StartRegisterAsync(registerModel);
             message = "✅ Registration successful! Please check your email for verification.";
