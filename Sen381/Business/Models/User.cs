@@ -44,11 +44,20 @@ namespace Sen381.Business.Models
         public string ProfilePicturePath { get; set; }
 
         // 🔒 Password handling
-        public void ChangePassword(string newPassword) =>
-            PasswordHash = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(newPassword));
+        public void ChangePassword(string newPassword)
+        {
+            using var sha = System.Security.Cryptography.SHA256.Create();
+            var hashedBytes = sha.ComputeHash(System.Text.Encoding.UTF8.GetBytes(newPassword));
+            PasswordHash = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+        }
 
-        public bool VerifyPassword(string inputPassword) =>
-            PasswordHash == Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(inputPassword));
+        public bool VerifyPassword(string inputPassword)
+        {
+            using var sha = System.Security.Cryptography.SHA256.Create();
+            var hashedBytes = sha.ComputeHash(System.Text.Encoding.UTF8.GetBytes(inputPassword));
+            var hashedInput = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+            return PasswordHash == hashedInput;
+        }
 
         // 👤 Profile updates
         public void UpdateProfile(string newFirstName, string newLastName, string newPhoneNum, string newEmail, string newProfilePicturePath = null)
