@@ -2,21 +2,21 @@
 @using System.Net.Http.Json
 @inject HttpClient Http
 @inject IJSRuntime JS
-<PageTitle>Login | CampusLearn</PageTitle>
 @inject NavigationManager NavigationManager
+@inject Sen381.Data_Access.SupaBaseAuthService SupabaseService
+
+<PageTitle>Login | CampusLearn</PageTitle>
 
 @if (NavigationManager.Uri.Contains("verified=true"))
 {
-    <div class="alert alert-success" style="color: white; background-color: #28a745; padding: 10px; border-radius: 6px; margin-bottom: 15px;">
+    <div class="alert-message success">
         ✅ Your email has been successfully verified! Please log in.
     </div>
 }
 
-
 <main class="login-wrap">
     <section class="login-card">
         <div class="logo" aria-hidden="true">
-            <!-- Compact CL mark -->
             <svg viewBox="0 0 64 64" width="38" height="38" role="img" focusable="false">
                 <g stroke="#2D3034" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M42 14c-4-4-9-6-14-6C15 8 8 15 8 26s7 18 20 18c5 0 10-2 14-6" />
@@ -42,14 +42,17 @@
                 <p class="text-danger">Password cannot be empty.</p>
             }
 
-            <!-- ✅ fixed typo: 'hred' → 'href' -->
-            <!-- ✅ centered via flex parent -->
             <div class="btn-center">
-                    <button type="button" class="btn" @onclick="HandleLogin" disabled="@isLoading">
-                        @(isLoading ? "Loading..." : "Login")
-                    </button>
+                <button type="button" class="btn" @onclick="HandleLogin" disabled="@isLoading">
+                    @(isLoading ? "Loading..." : "Login")
+                </button>
             </div>
         </form>
+
+        @if (!string.IsNullOrEmpty(Message))
+        {
+            <div class="@($"alert-message {(isSuccess ? "success" : "error")}")">@Message</div>
+        }
 
         <a class="forgot" href="/forgotpassword">Forgot Password?</a>
     </section>
@@ -83,16 +86,15 @@
         margin: 0;
         background: var(--bg);
         color: var(--ink);
-        font-family: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+        font-family: "Lexend",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
         line-height: 1.45;
     }
 
     h1 {
-        font-family: "Outfit", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+        font-family: "Outfit",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
         margin: 0;
     }
 
-    /* ===== Layout ===== */
     .login-wrap {
         min-height: 100dvh;
         display: grid;
@@ -101,7 +103,7 @@
     }
 
     .login-card {
-        width: clamp(280px, 34vw, 380px);
+        width: clamp(280px,34vw,380px);
         background: var(--panel);
         border: 1px solid var(--ring);
         border-radius: var(--radius);
@@ -119,7 +121,7 @@
         margin-bottom: 18px;
         font-weight: 800;
         letter-spacing: .4px;
-        font-size: clamp(22px, 3.2vw, 28px);
+        font-size: clamp(22px,3.2vw,28px);
     }
 
     .form {
@@ -151,7 +153,6 @@
             box-shadow: inset 0 0 0 2px color-mix(in oklab, var(--ink) 12%, white), 0 0 0 2px color-mix(in oklab, var(--ink) 6%, white);
         }
 
-    /* ✅ Centering wrapper for button */
     .btn-center {
         display: flex;
         justify-content: center;
@@ -192,7 +193,38 @@
             text-decoration: underline;
         }
 
-    @@media (max-width: 520px) {
+    .alert-message {
+        margin-top: 14px;
+        padding: 10px;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 600;
+        color: white;
+        background-color: var(--orange);
+        animation: fadeIn .3s ease;
+    }
+
+        .alert-message.success {
+            background-color: #28a745;
+        }
+
+        .alert-message.error {
+            background-color: #F17300;
+        }
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(5px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @@media (max-width:520px) {
         .login-card {
             width: 88vw;
             padding: 22px 18px 18px;
@@ -203,55 +235,81 @@
         }
     }
 </style>
-@code
-{
+
+@code {
     private string Email = string.Empty;
     private string Password = string.Empty;
     private string Message = string.Empty;
     private bool showEmailError = false;
     private bool showPasswordError = false;
     private bool isLoading = false;
+    private bool isSuccess = false;
 
     private async Task HandleLogin()
     {
         showEmailError = string.IsNullOrWhiteSpace(Email) || !Email.Contains("@");
         showPasswordError = string.IsNullOrWhiteSpace(Password);
+
         if (showEmailError || showPasswordError)
         {
             Message = "⚠️ Please correct the highlighted fields.";
+            isSuccess = false;
             return;
         }
 
         isLoading = true;
         Message = string.Empty;
+        isSuccess = false;
 
         try
         {
-            var loginData = new { Email, Password };
-            var response = await Http.PostAsJsonAsync("https://localhost:7228/api/Login", loginData);
+            var resp = await Http.PostAsJsonAsync("https://localhost:7228/api/Login", new { Email, Password });
 
-            if (response.IsSuccessStatusCode)
+            if (!resp.IsSuccessStatusCode)
             {
-                var result = await response.Content.ReadFromJsonAsync<Dictionary<string, object>>();
-                Message = "✅ Login successful!";
+                try
+                {
+                    var errorData = await resp.Content.ReadFromJsonAsync<Dictionary<string, string>>();
+                    if (errorData != null && errorData.ContainsKey("error"))
+                        Message = $"⚠ {errorData["error"]}";
+                    else
+                        Message = "⚠ Login failed. Please try again.";
+                }
+                catch
+                {
+                    Message = "⚠ Login failed. Please try again.";
+                }
 
-                //Save logged in users in localstorage for once off login
-                await JS.InvokeVoidAsync("localStorage.setItem", "userId", result["userId"].ToString());
-                await JS.InvokeVoidAsync("localStorage.setItem", "email", result["email"].ToString());
-                await JS.InvokeVoidAsync("localStorage.setItem", "role", result["role"].ToString());
-                await JS.InvokeVoidAsync("localStorage.setItem", "isLoggedIn", "true");
+                isSuccess = false;
+                return;
+            }
 
-                NavigationManager.NavigateTo("/dashboard");
-            }
-            else
-            {
-                var error = await response.Content.ReadFromJsonAsync<Dictionary<string, string>>();
-                Message = $"⚠ {error?["error"] ?? "Login failed"}";
-            }
+            var result = await resp.Content.ReadFromJsonAsync<Dictionary<string, object>>();
+            Message = "✅ Login successful!";
+            isSuccess = true;
+
+            await JS.InvokeVoidAsync("localStorage.setItem", "userId", result["userId"]?.ToString() ?? "");
+            await JS.InvokeVoidAsync("localStorage.setItem", "email", result["email"]?.ToString() ?? "");
+            await JS.InvokeVoidAsync("localStorage.setItem", "role", result["role"]?.ToString() ?? "");
+            await JS.InvokeVoidAsync("localStorage.setItem", "isLoggedIn", "true");
+
+            var accessToken = result.ContainsKey("accessToken") ? result["accessToken"]?.ToString() : null;
+            var refreshToken = result.ContainsKey("refreshToken") ? result["refreshToken"]?.ToString() : null;
+
+            if (!string.IsNullOrWhiteSpace(accessToken))
+                await JS.InvokeVoidAsync("localStorage.setItem", "accessToken", accessToken);
+            if (!string.IsNullOrWhiteSpace(refreshToken))
+                await JS.InvokeVoidAsync("localStorage.setItem", "refreshToken", refreshToken);
+
+            await SupabaseService.InitializeAsync();
+
+            await Task.Delay(800);
+            NavigationManager.NavigateTo("/dashboard");
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
-            Message = $"Unexpected error: {ex.Message}";
+            Message = $"⚠ Unexpected error: {ex.Message}";
+            isSuccess = false;
         }
         finally
         {

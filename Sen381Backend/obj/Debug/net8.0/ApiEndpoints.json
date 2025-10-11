@@ -42,6 +42,75 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Sen381Backend.Controllers.ProfileController",
+    "Method": "Update",
+    "RelativePath": "api/Profile/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateDto",
+        "Type": "Sen381Backend.Controllers.ProfileUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Sen381Backend.Controllers.ProfileController",
+    "Method": "GetById",
+    "RelativePath": "api/Profile/by-id/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Sen381Backend.Controllers.UserController",
+    "Method": "GetUserInfo",
+    "RelativePath": "api/User/{email}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Sen381Backend.Controllers.UserController",
+    "Method": "GetUserById",
+    "RelativePath": "api/User/by-id/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Sen381Backend.Controllers.VerifyController",
     "Method": "VerifyEmail",
     "RelativePath": "api/Verify/verify-email",

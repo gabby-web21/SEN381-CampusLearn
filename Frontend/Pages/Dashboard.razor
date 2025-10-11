@@ -1,5 +1,9 @@
 ﻿@page "/dashboard"
 @using Microsoft.AspNetCore.Components.Routing
+@using System.Net.Http.Json
+@inject HttpClient Http
+@inject IJSRuntime JS
+@inject NavigationManager NavigationManager
 
 <PageTitle>Dashboard | CampusLearn</PageTitle>
 
@@ -84,7 +88,6 @@
             </div>
         </section>
 
-
         <!-- CTA -->
         <div class="cta-wrap">
             <NavLink href="/become-tutor" class="btn-cta" aria-label="Apply to become a tutor">
@@ -113,10 +116,10 @@
             </div>
         </div>
     </aside>
-
 </main>
 
 <style>
+    /* KEEPING ALL YOUR STYLING EXACTLY THE SAME */
     /* ===== Design tokens (your palette) ===== */
     :root {
         --bg: #FFFFFF;
@@ -391,7 +394,7 @@
             color: var(--ink)
         }
 
-    /* CTA (gradient like chatbot button) */
+    /* CTA */
     .cta-wrap {
         display: flex;
         justify-content: flex-end
@@ -424,8 +427,6 @@
             transform: scale(0.97);
             box-shadow: 0 2px 6px rgba(90, 209, 255, 0.3)
         }
-
-    /* responsive */
     @@media (max-width: 980px) {
         .layout
 
@@ -475,42 +476,63 @@
 </style>
 
 @code {
-    private string StudentName = "Sabrina Carpenter";
-    private string UserRole = "Student";
+    private string StudentName = "Loading...";
+    private string UserRole = "";
 
     private List<NotificationItem> Notifications = new()
     {
-        new NotificationItem
-        {
-            SenderName = "Taylor Swift",
-            Body = "replied to your question.",
-            TimeAgo = "13 minutes ago"
-        }
+        new NotificationItem { SenderName = "Taylor Swift", Body = "replied to your question.", TimeAgo = "13 minutes ago" }
     };
 
     private List<SessionItem> UpcomingSessions = new()
     {
-        new SessionItem
-        {
-            SubjectCode = "BUM381",
-            TutorName = "Kanye East",
-            Date = "13th September 2025",
-            Platform = "FaceTime",
-            Duration = "1hr",
-            Time = "14:00",
-            TimeUntil = "3 hrs"
-        },
-        new SessionItem
-        {
-            SubjectCode = "BUM381",
-            TutorName = "Kimberly Kardashian",
-            Date = "15th September 2025",
-            Platform = "Teams",
-            Duration = "2hrs",
-            Time = "14:00",
-            TimeUntil = "2 days"
-        }
+        new SessionItem { SubjectCode = "BUM381", TutorName = "Kanye East", Date = "13th September 2025", Platform = "FaceTime", Duration = "1hr", Time = "14:00", TimeUntil = "3 hrs" },
+        new SessionItem { SubjectCode = "BUM381", TutorName = "Kimberly Kardashian", Date = "15th September 2025", Platform = "Teams", Duration = "2hrs", Time = "14:00", TimeUntil = "2 days" }
     };
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // ✅ Get userId from localStorage
+            var uid = await JS.InvokeAsync<string>("localStorage.getItem", "userId");
+
+            if (string.IsNullOrEmpty(uid) || !int.TryParse(uid, out int userId))
+            {
+                Console.WriteLine("⚠️ No user ID found — redirecting to login.");
+                NavigationManager.NavigateTo("/login");
+                return;
+            }
+
+            // ✅ Fetch user info by ID
+            var response = await Http.GetAsync($"https://localhost:7228/api/User/by-id/{userId}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadFromJsonAsync<Dictionary<string, object>>();
+
+                if (json != null)
+                {
+                    StudentName = json.ContainsKey("fullName") ? json["fullName"]?.ToString() ?? "User" : "User";
+                    UserRole = json.ContainsKey("role") ? json["role"]?.ToString() ?? "Student" : "Student";
+                }
+
+                Console.WriteLine($"✅ Loaded dashboard name: {StudentName} ({UserRole})");
+            }
+            else
+            {
+                Console.WriteLine($"⚠️ Failed to load user info. Status: {response.StatusCode}");
+                StudentName = "User";
+                UserRole = "Student";
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"❌ Error fetching user info: {ex.Message}");
+            StudentName = "User";
+            UserRole = "Student";
+        }
+    }
 
     public class NotificationItem
     {

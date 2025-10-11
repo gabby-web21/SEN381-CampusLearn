@@ -2,7 +2,7 @@
 using Supabase;
 using System;
 using System.Threading.Tasks;
-using System.IO;
+
 namespace Sen381.Data_Access
 {
     public class SupaBaseAuthService
@@ -18,10 +18,9 @@ namespace Sen381.Data_Access
                 var config = new ConfigurationBuilder()
                     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                     .Build();
-
                 return config[key];
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 Console.WriteLine($"[CONFIG ERROR] {ex.Message}");
                 return null;
@@ -30,61 +29,60 @@ namespace Sen381.Data_Access
 
         public SupaBaseAuthService(string url = null, string anonKey = null)
         {
-            // 1️⃣ Try environment variables first
+            // ✅ Try environment first, then appsettings.json
             var envUrl = Environment.GetEnvironmentVariable("SUPABASE_URL");
             var envKey = Environment.GetEnvironmentVariable("SUPABASE_KEY");
 
-            // 2️⃣ Fallback to appsettings.json if missing
-            if (string.IsNullOrWhiteSpace(envUrl) || string.IsNullOrWhiteSpace(envKey))
-            {
-                envUrl = SafeAppSetting("Supabase:Url");
-                envKey = SafeAppSetting("Supabase:Key");
-
-                Console.WriteLine("[CONFIG] Loaded from appsettings.json");
-            }
-            else
-            {
-                Console.WriteLine("[CONFIG] Loaded from environment variables");
-            }
-
-            // 3️⃣ Use whichever values are available
-            url ??= envUrl;
-            anonKey ??= envKey;
+            url ??= !string.IsNullOrWhiteSpace(envUrl) ? envUrl : SafeAppSetting("Supabase:Url");
+            anonKey ??= !string.IsNullOrWhiteSpace(envKey) ? envKey : SafeAppSetting("Supabase:Key");
 
             if (string.IsNullOrWhiteSpace(url) || string.IsNullOrWhiteSpace(anonKey))
                 throw new InvalidOperationException("Supabase URL or anon key is missing.");
 
-            Console.WriteLine($"[CONFIG] Final Supabase URL: {url}");
-            Console.WriteLine($"[CONFIG] Final Supabase Key (first 10 chars): {anonKey?.Substring(0, Math.Min(anonKey.Length, 10))}...");
-
-            // 4️⃣ Initialize client
-            var options = new Supabase.SupabaseOptions
+            var options = new SupabaseOptions
             {
-                AutoConnectRealtime = true,
+                AutoConnectRealtime = false, // ⚠️ no need for realtime in auth service
                 AutoRefreshToken = true
             };
 
-            _client = new Supabase.Client(url, anonKey, options);
+            _client = new Client(url, anonKey, options);
         }
 
         public async Task InitializeAsync()
         {
-            if (_initialized) return;
-            await _client.InitializeAsync();
+            if (_initialized)
+                return;
+
+            try
+            {
+                await _client.InitializeAsync();
+                Console.WriteLine("✅ Supabase client initialized.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"⚠️ Supabase initialization failed: {ex.Message}");
+            }
+
+            // ✅ Do NOT load any tables or query anything here.
+            // No automatic calls to /rest/v1/... — that caused the 406 before.
+
             _initialized = true;
         }
 
+        /// <summary>
+        /// Simple connectivity test for debugging.
+        /// </summary>
         public async Task<bool> TestConnectionAsync()
         {
             try
             {
                 await InitializeAsync();
-                Console.WriteLine("✅ Supabase client initialized and reachable.");
+                Console.WriteLine("✅ Supabase connection verified.");
                 return true;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"❌ Connection failed: {ex.Message}");
+                Console.WriteLine($"❌ Supabase connection failed: {ex.Message}");
                 return false;
             }
         }

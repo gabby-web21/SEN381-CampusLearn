@@ -13,7 +13,6 @@ var supabaseKey = builder.Configuration["Supabase:AnonKey"];
 
 builder.Services.AddSingleton(new SupaBaseAuthService(supabaseUrl, supabaseKey));
 builder.Services.AddScoped<UserService>();
-builder.Services.AddScoped<StudentService>();
 builder.Services.AddScoped<Frontend.Services.AuthService>();
 
 builder.Services.AddScoped(sp => new HttpClient

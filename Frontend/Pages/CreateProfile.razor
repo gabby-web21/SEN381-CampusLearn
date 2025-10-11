@@ -1,5 +1,11 @@
 ﻿@page "/create-profile"
 @using Microsoft.AspNetCore.Components.Forms
+@using Sen381.Business.Models
+@using Sen381.Data_Access
+@inject SupaBaseAuthService SupabaseService
+@inject HttpClient Http
+@inject NavigationManager Nav
+@inject IJSRuntime JS
 
 <PageTitle>Create Profile | CampusLearn</PageTitle>
 
@@ -12,10 +18,10 @@
     </ol>
 </nav>
 
-<!-- ===== Page Header (same shell as profile) ===== -->
+<!-- ===== Page Header ===== -->
 <header class="page-hd">
     <div class="hd-left">
-        <img class="avatar-xl" src="@AvatarUrl" alt="" />
+        <img class="avatar-xl" src="@AvatarUrl" alt="Profile avatar" />
         <div class="title-block">
             <h1 class="title">Create your student profile</h1>
             <div class="subtitle">Tell us about your programme and year.</div>
@@ -27,7 +33,7 @@
     </div>
 </header>
 
-<!-- ===== Tabs (visual parity with profile) ===== -->
+<!-- ===== Tabs ===== -->
 <nav class="tabs" aria-label="Profile sections">
     <a class="tab active" href="#details">Profile</a>
     <span class="tab" aria-disabled="true" title="Available after saving">Activity</span>
@@ -40,68 +46,51 @@
         <DataAnnotationsValidator />
         <ValidationSummary class="val-summary" />
 
-        <!-- ===== Left column: User details (inputs instead of definition list) ===== -->
+        <!-- ===== Left column ===== -->
         <aside class="col-left">
             <section id="details" class="card">
                 <h2 class="card-hd">Your details</h2>
-
                 <div class="props fields">
                     <div class="field">
                         <label>First name</label>
                         <InputText class="input" @bind-Value="Form.FirstName" />
-                        <ValidationMessage For="@(() => Form.FirstName)" />
                     </div>
-
                     <div class="field">
                         <label>Last name</label>
                         <InputText class="input" @bind-Value="Form.LastName" />
-                        <ValidationMessage For="@(() => Form.LastName)" />
                     </div>
-
                     <div class="field">
                         <label>Email address</label>
                         <InputText class="input" type="email" @bind-Value="Form.Email" />
-                        <ValidationMessage For="@(() => Form.Email)" />
                     </div>
-
                     <div class="field">
                         <label>Phone</label>
                         <InputText class="input" @bind-Value="Form.Phone" />
-                        <ValidationMessage For="@(() => Form.Phone)" />
                     </div>
-
                     <div class="field">
                         <label>City/town</label>
                         <InputText class="input" @bind-Value="Form.City" />
                     </div>
-
                     <div class="field">
                         <label>Country</label>
                         <InputText class="input" @bind-Value="Form.Country" />
                     </div>
-
                     <div class="field">
                         <label>Timezone</label>
                         <InputText class="input" @bind-Value="Form.Timezone" placeholder="e.g., Africa/Johannesburg" />
                     </div>
-
                     <div class="field">
                         <label>Website</label>
                         <InputText class="input" @bind-Value="Form.Website" placeholder="https://…" />
                     </div>
-
                     <div class="field">
                         <label>Programme</label>
                         <InputText class="input" @bind-Value="Form.Program" placeholder="e.g., BComp" />
-                        <ValidationMessage For="@(() => Form.Program)" />
                     </div>
-
                     <div class="field">
                         <label>Year of study</label>
                         <InputText class="input" @bind-Value="Form.Year" placeholder="e.g., 2nd Year" />
-                        <ValidationMessage For="@(() => Form.Year)" />
                     </div>
-
                     <div class="field">
                         <label>Student ID (optional)</label>
                         <InputText class="input" @bind-Value="Form.StudentId" />
@@ -137,7 +126,6 @@
             <section class="card">
                 <h2 class="card-hd">Contact preference</h2>
                 <div class="field">
-                    <label class="sr-only">Contact preference</label>
                     <InputSelect class="input" @bind-Value="Form.ContactPreference">
                         <option value="">Select…</option>
                         <option>Email</option>
@@ -148,12 +136,11 @@
             </section>
         </aside>
 
-        <!-- ===== Right column: About + Subjects ===== -->
+        <!-- ===== Right column ===== -->
         <section class="col-right">
             <section class="card">
                 <h2 class="card-hd">About</h2>
                 <div class="field">
-                    <label class="sr-only">About</label>
                     <InputTextArea class="textarea" rows="5" @bind-Value="Form.About"
                                    placeholder="A short description that appears on your profile…" />
                 </div>
@@ -161,7 +148,6 @@
 
             <section class="card">
                 <h2 class="card-hd">Subjects</h2>
-
                 <div class="subject-add">
                     <InputText class="input" @bind-Value="NewSubject" placeholder="Add subject code (e.g., BUM281)" />
                     <button type="button" class="btn-cta" @onclick="AddSubject">Add subject</button>
@@ -196,9 +182,9 @@
     </EditForm>
 </main>
 
+<!-- === KEEP ALL STYLING BELOW === -->
 <style>
-    /* ===== Tokens (same as profile) ===== */
-    :root {
+    /* ===== Tokens (same as profile) ===== */ :root {
         --bg: #f5f7fb;
         --panel: #fff;
         --ink: #2D3034;
@@ -236,8 +222,8 @@
         a:hover {
             text-decoration: underline
         }
-
     /* ===== Shell / Shared with profile ===== */
+
     .crumbs {
         width: var(--container);
         margin: 10px auto 0;
@@ -395,8 +381,8 @@
         font-size: 1.05rem;
         letter-spacing: .2px
     }
-
     /* ===== Form styling to match profile visual ===== */
+
     .props.fields {
         display: grid;
         gap: 12px
@@ -491,74 +477,121 @@
         color: #333
     }
 
-    .actions {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap
-    }
-
-    .btn-cta {
-        background: #F17300;
-        color: #fff;
-        border: 0;
-        border-radius: 999px;
-        padding: 10px 16px;
-        font-weight: 800;
-        box-shadow: var(--shadow);
-        cursor: pointer
-    }
-
-        .btn-cta:hover {
-            filter: brightness(.98)
-        }
-
-    .btn-ghost {
-        text-decoration: none;
-        background: #eee;
-        color: #111;
-        border: 1px solid var(--ring);
-        border-radius: 999px;
-        padding: 10px 16px;
-        font-weight: 800;
-        box-shadow: var(--shadow)
-    }
-
-    /* Utilities */
-    .col-left {
-    }
-
-    .col-right {
-    }
-
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0,0,0,0);
-        white-space: nowrap;
-        border: 0
-    }
-
-    /* Responsive */
-    @@media (max-width:980px) {
-        .grid {
-            grid-template-columns: 1fr
-        }
-    }
+    =
 </style>
 
 @code {
-    // ===== Visual-only: avatar preview & change action (stub) =====
     private string AvatarUrl = "https://placehold.co/160x160/png";
-    private void ChangePicture() { /* wire to your uploader later */ }
+    private void ChangePicture() { }
 
-    // ===== Your existing logic, preserved =====
     private ProfileForm Form = new();
     private string NewSubject = string.Empty;
     private string NewInterest = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var uid = await JS.InvokeAsync<string>("localStorage.getItem", "userId");
+            if (string.IsNullOrEmpty(uid) || !int.TryParse(uid, out int userId))
+            {
+                Console.WriteLine("⚠️ Missing or invalid userId — cannot load profile.");
+                return;
+            }
+
+            // ✅ Fetch full user record by ID
+            var response = await Http.GetAsync($"https://localhost:7228/api/Profile/by-id/{userId}");
+            if (response.IsSuccessStatusCode)
+            {
+                var user = await response.Content.ReadFromJsonAsync<User>();
+                if (user != null)
+                {
+                    Form.FirstName = user.FirstName ?? "";
+                    Form.LastName = user.LastName ?? "";
+                    Form.Email = user.Email ?? "";
+                    Form.Phone = user.PhoneNum ?? "";
+                    Form.Program = user.Program ?? "";
+                    Form.Year = user.Year ?? "";
+                    Form.City = user.City ?? "";
+                    Form.Country = user.Country ?? "";
+                    Form.Timezone = user.Timezone ?? "";
+                    Form.Website = user.Website ?? "";
+                    Form.About = user.About ?? "";
+                    Form.ContactPreference = user.ContactPreference ?? "";
+                    Form.Subjects = (user.Subjects ?? "").Split(",", StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim()).ToList();
+                    Form.Interests = (user.Interests ?? "").Split(",", StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim()).ToList();
+
+                    Console.WriteLine($"✅ Profile data loaded for userId {userId}");
+                }
+                else
+                {
+                    Console.WriteLine("⚠️ User record returned null.");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"⚠️ Failed to load user data. Status: {response.StatusCode}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"❌ Error loading profile: {ex.Message}");
+        }
+    }
+
+    private async Task Save()
+    {
+        try
+        {
+            var uid = await JS.InvokeAsync<string>("localStorage.getItem", "userId");
+            if (!int.TryParse(uid, out int userId))
+            {
+                Console.WriteLine("⚠️ Invalid userId — cannot save.");
+                return;
+            }
+
+            // ✅ Build a plain DTO that matches ProfileUpdateDto in backend
+            var updateDto = new
+            {
+                FirstName = Form.FirstName,
+                LastName = Form.LastName,
+                Email = Form.Email,
+                PhoneNum = Form.Phone,
+                City = Form.City,
+                Country = Form.Country,
+                Timezone = Form.Timezone,
+                Website = Form.Website,
+                Program = Form.Program,
+                Year = Form.Year,
+                StudentId = Form.StudentId,
+                About = Form.About,
+                ContactPreference = Form.ContactPreference,
+                Interests = string.Join(", ", Form.Interests),
+                Subjects = string.Join(", ", Form.Subjects),
+                ProfilePicturePath = AvatarUrl
+            };
+
+            // ✅ Send the clean DTO instead of the User model
+            var response = await Http.PutAsJsonAsync(
+                $"https://localhost:7228/api/Profile/{userId}", updateDto);
+
+            if (response.IsSuccessStatusCode)
+            {
+                Console.WriteLine("✅ Profile saved successfully.");
+                Nav.NavigateTo("/dashboard");
+            }
+            else
+            {
+                var errorText = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"⚠️ Save failed. Status: {response.StatusCode}, Response: {errorText}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"❌ Error saving profile: {ex.Message}");
+        }
+    }
+
 
     private void AddSubject()
     {
@@ -588,46 +621,21 @@
         if (hit is not null) Form.Interests.Remove(hit);
     }
 
-    private void Save()
-    {
-        // TODO: Persist to your backend / Supabase.
-        // For now, go to dashboard after “saving”.
-        Nav.NavigateTo("/dashboard");
-    }
-
-    [Inject] NavigationManager Nav { get; set; } = default!;
-
-    // ===== Model with validation (extended to match profile fields) =====
     public class ProfileForm
     {
-        [System.ComponentModel.DataAnnotations.Required]
         public string FirstName { get; set; } = "";
-
-        [System.ComponentModel.DataAnnotations.Required]
         public string LastName { get; set; } = "";
-
-        [System.ComponentModel.DataAnnotations.Required, System.ComponentModel.DataAnnotations.EmailAddress]
         public string Email { get; set; } = "";
-
-        [System.ComponentModel.DataAnnotations.Required]
         public string Phone { get; set; } = "";
-
-        [System.ComponentModel.DataAnnotations.Required]
         public string Program { get; set; } = "";
-
-        [System.ComponentModel.DataAnnotations.Required]
         public string Year { get; set; } = "";
-
-        // Extra fields to mirror the profile view
         public string StudentId { get; set; } = "";
         public string City { get; set; } = "";
         public string Country { get; set; } = "";
         public string Timezone { get; set; } = "";
         public string Website { get; set; } = "";
         public string About { get; set; } = "";
-
         public string ContactPreference { get; set; } = "";
-
         public List<string> Subjects { get; set; } = new();
         public List<string> Interests { get; set; } = new();
     }
