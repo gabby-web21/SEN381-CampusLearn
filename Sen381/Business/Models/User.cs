@@ -27,7 +27,7 @@ namespace Sen381.Business.Models
         [Column("password_hash", ignoreOnUpdate: true)]
         public string PasswordHash { get; set; }
 
-        [Column("is_email_verified")]
+        [Column("is_email_verified", ignoreOnUpdate: true)]
         public bool IsEmailVerified { get; set; }
 
         [Column("role", ignoreOnUpdate: true)]
