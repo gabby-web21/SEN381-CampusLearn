@@ -1,4 +1,5 @@
-﻿using Sen381.Data_Access; 
+﻿using Sen381.Data_Access;
+using Sen381.Business.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<SupaBaseAuthService>();
+builder.Services.AddScoped<SupaBaseAuthService>();
+builder.Services.AddScoped<UserService>();
 
 // ✅ Add Supabase service
 builder.Services.AddScoped<SupaBaseAuthService>();

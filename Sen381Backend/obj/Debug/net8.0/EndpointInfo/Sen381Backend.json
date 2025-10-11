@@ -79,6 +79,28 @@
         }
       }
     },
+    "/api/Peers/search": {
+      "get": {
+        "tags": [
+          "Peers"
+        ],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": " "
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Profile/by-id/{id}": {
       "get": {
         "tags": [
