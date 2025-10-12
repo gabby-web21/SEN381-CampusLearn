@@ -1,4 +1,6 @@
-﻿using Sen381.Data_Access; 
+﻿using Sen381.Data_Access;
+using Supabase;
+using Microsoft.AspNetCore.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<SupaBaseAuthService>();
+
+//registering supabase client
+builder.Services.AddScoped<Supabase.Client>(_ =>
+
+new Supabase.Client(
+    builder.Configuration["Supabase:URl"],
+    builder.Configuration["Supabase:ApiKey"],
+    new SupabaseOptions { AutoRefreshToken = true }
+    ));
 
 // ✅ Add Supabase service
 builder.Services.AddScoped<SupaBaseAuthService>();

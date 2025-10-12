@@ -1,8 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Frontend"
+    "\\Frontend",
+    "\\Sen381",
+    "\\Sen381Backend",
+    "\\Sen381\\Business",
+    "\\Sen381\\Business\\Models"
   ],
-  "SelectedNode": "\\Frontend\\Program.cs",
+  "SelectedNode": "\\Sen381\\Business\\Models\\User.cs",
   "PreviewInSolutionExplorer": false
 }
