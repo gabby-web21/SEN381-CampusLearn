@@ -67,8 +67,7 @@
               "RelativeToolTip": "..\\Sen381Backend\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T16:39:35.929Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-12T16:39:35.929Z"
             },
             {
               "$type": "Document",
@@ -102,7 +101,7 @@
               "RelativeDocumentMoniker": "..\\Sen381.Tests\\PeersControllerTests.cs",
               "ToolTip": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381.Tests\\PeersControllerTests.cs",
               "RelativeToolTip": "..\\Sen381.Tests\\PeersControllerTests.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADMAAAAAAAAAAAAowBoAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-12T16:03:36.04Z",
               "EditorCaption": ""
@@ -117,8 +116,7 @@
               "RelativeToolTip": "..\\Sen381Backend\\Controllers\\PeersController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T16:01:45.934Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-12T16:01:45.934Z"
             }
           ]
         }

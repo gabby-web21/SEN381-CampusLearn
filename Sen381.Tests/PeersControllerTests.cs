@@ -24,7 +24,7 @@ namespace Sen381.Tests
             new User { Id = 6, FirstName = "Gabriella", LastName = "Petersen", RoleString = "Student" }
         };
 
-        // ✅ Test 1: Should return matching user by first name
+        // Should return matching user by first name
         [Fact]
         public async Task SearchPeers_ShouldReturnMatchingUser_WhenQueryMatchesFirstName()
         {
@@ -40,7 +40,7 @@ namespace Sen381.Tests
             Assert.Contains("Ella", peersJson);
         }
 
-        // ✅ Test 2: Should ignore case in search
+        // Should ignore case in search
         [Fact]
         public async Task SearchPeers_ShouldIgnoreCase_WhenMatchingNames()
         {
@@ -56,7 +56,7 @@ namespace Sen381.Tests
             Assert.Contains("Elliot", peersJson);
         }
 
-        // ✅ Test 3: Should return multiple matches when query matches several names
+        // Should return multiple matches when query matches several names
         [Fact]
         public async Task SearchPeers_ShouldReturnMultiple_WhenQueryMatchesSeveralNames()
         {
@@ -73,7 +73,7 @@ namespace Sen381.Tests
             Assert.Contains("Elliot", peersJson);
         }
 
-        // ✅ Test 4: Should return empty list when no match found
+        // Should return empty list when no match found
         [Fact]
         public async Task SearchPeers_ShouldReturnEmptyList_WhenNoMatchesFound()
         {
