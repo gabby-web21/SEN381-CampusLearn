@@ -10,31 +10,42 @@ namespace Sen381Backend.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class PeersController:ControllerBase
+    public class PeersController : ControllerBase
     {
-        private readonly UserService _userService;
+        private readonly IUserService _userService;
 
-        public PeersController(UserService userService)
+        public PeersController(IUserService userService)
         {
             _userService = userService;
         }
 
         [HttpGet("search")]
-        public async Task<IActionResult> SearchPeers([FromQuery] string? query= " ")
+        public async Task<IActionResult> SearchPeers([FromQuery] string? query = null)
         {
             try
             {
                 // ✅ Get all users from Supabase
                 var users = await _userService.GetAllUsersAsync();
 
-                // ✅ Filter by name if query provided
-                if (!string.IsNullOrWhiteSpace(query))
+                // ✅ If query is empty or null, return all users (show all peers on page load)
+                if (string.IsNullOrWhiteSpace(query))
                 {
-                    users = users.Where(u =>
-                        u.FirstName.Contains(query, StringComparison.OrdinalIgnoreCase) ||
-                        u.LastName.Contains(query, StringComparison.OrdinalIgnoreCase))
-                        .ToList();
+                    var allPeers = users.Select(u => new
+                    {
+                        UserId = u.Id,
+                        u.FirstName,
+                        u.LastName,
+                        Role = u.RoleString?.ToLower() ?? "student"
+                    });
+
+                    return Ok(allPeers);
                 }
+
+                // ✅ Filter users by name when a query is provided
+                users = users.Where(u =>
+                    u.FirstName.Contains(query, StringComparison.OrdinalIgnoreCase) ||
+                    u.LastName.Contains(query, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
 
                 // ✅ Map only what’s needed for the peers page
                 var peers = users.Select(u => new

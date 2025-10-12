@@ -89,8 +89,7 @@
             "name": "query",
             "in": "query",
             "schema": {
-              "type": "string",
-              "default": " "
+              "type": "string"
             }
           }
         ],

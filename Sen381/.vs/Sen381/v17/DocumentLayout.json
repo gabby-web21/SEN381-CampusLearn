@@ -1,32 +1,23 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\",
+  "WorkspaceRootPath": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FFB41EAE-729E-4FD0-95F5-3F6BE1522C80}|..\\Sen381.Tests\\Sen381.Tests.csproj|c:\\sen381 github repo\\sen381-campuslearn\\sen381.tests\\supabaseauthservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FFB41EAE-729E-4FD0-95F5-3F6BE1522C80}|..\\Sen381.Tests\\Sen381.Tests.csproj|c:\\users\\xavie\\onedrive\\desktop\\sen381 repo\\sen381.tests\\peerscontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|c:\\sen381 github repo\\sen381-campuslearn\\sen381\\data_access\\supabaseauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|solutionrelative:data_access\\supabaseauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{108D1F18-A8E9-43D8-9453-8B871603743A}|..\\Sen381Backend\\Sen381Backend.csproj|c:\\users\\xavie\\onedrive\\desktop\\sen381 repo\\sen381backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{108D1F18-A8E9-43D8-9453-8B871603743A}|..\\Sen381Backend\\Sen381Backend.csproj|c:\\sen381 github repo\\sen381-campuslearn\\sen381backend\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{108D1F18-A8E9-43D8-9453-8B871603743A}|..\\Sen381Backend\\Sen381Backend.csproj|c:\\users\\xavie\\onedrive\\desktop\\sen381 repo\\sen381backend\\controllers\\peerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FFB41EAE-729E-4FD0-95F5-3F6BE1522C80}|..\\Sen381.Tests\\Sen381.Tests.csproj|c:\\sen381 github repo\\sen381-campuslearn\\sen381.tests\\setuptest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|c:\\users\\xavie\\onedrive\\desktop\\sen381 repo\\sen381\\business\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|solutionrelative:business\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|c:\\sen381 github repo\\sen381-campuslearn\\sen381\\business\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|solutionrelative:business\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{108D1F18-A8E9-43D8-9453-8B871603743A}|..\\Sen381Backend\\Sen381Backend.csproj|c:\\sen381 github repo\\sen381-campuslearn\\sen381backend\\controllers\\verifycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{108D1F18-A8E9-43D8-9453-8B871603743A}|..\\Sen381Backend\\Sen381Backend.csproj|c:\\sen381 github repo\\sen381-campuslearn\\sen381backend\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\sen381 github repo\\sen381-campuslearn\\frontend\\pages\\dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|c:\\users\\xavie\\onedrive\\desktop\\sen381 repo\\sen381\\business\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|solutionrelative:business\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -36,7 +27,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -56,114 +47,77 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SupaBaseAuthServiceTests.cs",
-              "DocumentMoniker": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381.Tests\\SupaBaseAuthServiceTests.cs",
-              "RelativeDocumentMoniker": "..\\Sen381.Tests\\SupaBaseAuthServiceTests.cs",
-              "ToolTip": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381.Tests\\SupaBaseAuthServiceTests.cs",
-              "RelativeToolTip": "..\\Sen381.Tests\\SupaBaseAuthServiceTests.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAiwDoAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T14:20:17.262Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SetupTest.cs",
-              "DocumentMoniker": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381.Tests\\SetupTest.cs",
-              "RelativeDocumentMoniker": "..\\Sen381.Tests\\SetupTest.cs",
-              "ToolTip": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381.Tests\\SetupTest.cs",
-              "RelativeToolTip": "..\\Sen381.Tests\\SetupTest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T14:05:20.067Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "VerifyController.cs",
-              "DocumentMoniker": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381Backend\\Controllers\\VerifyController.cs",
-              "RelativeDocumentMoniker": "..\\Sen381Backend\\Controllers\\VerifyController.cs",
-              "ToolTip": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381Backend\\Controllers\\VerifyController.cs",
-              "RelativeToolTip": "..\\Sen381Backend\\Controllers\\VerifyController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T13:23:49.362Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SupaBaseAuthService.cs",
-              "DocumentMoniker": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Data_Access\\SupaBaseAuthService.cs",
-              "RelativeDocumentMoniker": "Data_Access\\SupaBaseAuthService.cs",
-              "ToolTip": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Data_Access\\SupaBaseAuthService.cs",
-              "RelativeToolTip": "Data_Access\\SupaBaseAuthService.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAcwFsAAAAoAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381Backend\\Program.cs",
+              "RelativeDocumentMoniker": "..\\Sen381Backend\\Program.cs",
+              "ToolTip": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381Backend\\Program.cs",
+              "RelativeToolTip": "..\\Sen381Backend\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T13:18:39.473Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ProfileController.cs",
-              "DocumentMoniker": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381Backend\\Controllers\\ProfileController.cs",
-              "RelativeDocumentMoniker": "..\\Sen381Backend\\Controllers\\ProfileController.cs",
-              "ToolTip": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381Backend\\Controllers\\ProfileController.cs",
-              "RelativeToolTip": "..\\Sen381Backend\\Controllers\\ProfileController.cs",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAIwH4AAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T13:10:52.592Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LoginController.cs",
-              "DocumentMoniker": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381Backend\\Controllers\\LoginController.cs",
-              "RelativeDocumentMoniker": "..\\Sen381Backend\\Controllers\\LoginController.cs",
-              "ToolTip": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381Backend\\Controllers\\LoginController.cs",
-              "RelativeToolTip": "..\\Sen381Backend\\Controllers\\LoginController.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAIwFgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T12:48:00.685Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Dashboard.razor",
-              "DocumentMoniker": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Frontend\\Pages\\Dashboard.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Dashboard.razor",
-              "ToolTip": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Frontend\\Pages\\Dashboard.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\Dashboard.razor",
-              "ViewState": "AgIAADwEAAAAAAAAAAAiwAYEAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-12T11:55:31.847Z",
+              "WhenOpened": "2025-10-12T16:39:35.929Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Business\\Models\\User.cs",
-              "RelativeDocumentMoniker": "Business\\Models\\User.cs",
-              "ToolTip": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Business\\Models\\User.cs",
-              "RelativeToolTip": "Business\\Models\\User.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAIwCMAAAAAAAAAAAAAAA==",
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381\\Business\\Services\\IUserService.cs",
+              "RelativeDocumentMoniker": "Business\\Services\\IUserService.cs",
+              "ToolTip": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381\\Business\\Services\\IUserService.cs",
+              "RelativeToolTip": "Business\\Services\\IUserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-11T19:51:10.511Z",
+              "WhenOpened": "2025-10-12T16:10:10.8Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381\\Business\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "Business\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381\\Business\\Services\\UserService.cs",
+              "RelativeToolTip": "Business\\Services\\UserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-12T16:07:22.739Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PeersControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381.Tests\\PeersControllerTests.cs",
+              "RelativeDocumentMoniker": "..\\Sen381.Tests\\PeersControllerTests.cs",
+              "ToolTip": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381.Tests\\PeersControllerTests.cs",
+              "RelativeToolTip": "..\\Sen381.Tests\\PeersControllerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-12T16:03:36.04Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PeersController.cs",
+              "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381Backend\\Controllers\\PeersController.cs",
+              "RelativeDocumentMoniker": "..\\Sen381Backend\\Controllers\\PeersController.cs",
+              "ToolTip": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381Backend\\Controllers\\PeersController.cs",
+              "RelativeToolTip": "..\\Sen381Backend\\Controllers\\PeersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-12T16:01:45.934Z",
               "EditorCaption": ""
             }
           ]

@@ -10,6 +10,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<SupaBaseAuthService>();
 builder.Services.AddScoped<SupaBaseAuthService>();
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<IUserService, UserService>();
+
 
 // ✅ Add Supabase service
 builder.Services.AddScoped<SupaBaseAuthService>();

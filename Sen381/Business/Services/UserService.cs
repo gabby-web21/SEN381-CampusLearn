@@ -8,7 +8,7 @@ using Sen381.Data_Access;
 
 namespace Sen381.Business.Services
 {
-    public class UserService
+    public class UserService : IUserService
     {
         private readonly SupaBaseAuthService _supabaseService;
 
