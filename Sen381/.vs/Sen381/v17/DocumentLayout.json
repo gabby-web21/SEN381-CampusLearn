@@ -3,6 +3,9 @@
   "WorkspaceRootPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\sen381 github repo\\sen381-campuslearn\\frontend\\pages\\dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|c:\\sen381 github repo\\sen381-campuslearn\\sen381\\business\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|solutionrelative:business\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -47,12 +50,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Dashboard.razor",
+              "DocumentMoniker": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Frontend\\Pages\\Dashboard.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Dashboard.razor",
+              "ToolTip": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Frontend\\Pages\\Dashboard.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\Dashboard.razor",
+              "ViewState": "AgIAAPQDAAAAAAAAAAAiwAYEAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-12T11:55:31.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Business\\Models\\User.cs",
               "RelativeDocumentMoniker": "Business\\Models\\User.cs",
               "ToolTip": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Business\\Models\\User.cs",
               "RelativeToolTip": "Business\\Models\\User.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAA9wCkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAowCkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-11T19:51:10.511Z",
               "EditorCaption": ""
