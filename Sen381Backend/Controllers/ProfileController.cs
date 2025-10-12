@@ -89,10 +89,20 @@ namespace Sen381Backend.Controllers
                 await _supabase.InitializeAsync();
                 var client = _supabase.Client;
 
-                // ✅ Only user-editable fields (exclude system timestamps)
+                // ✅ 1. Fetch existing user
+                var existingResponse = await client
+                    .From<User>()
+                    .Select("*")
+                    .Filter("user_id", Operator.Equals, id)
+                    .Single();
+
+                var existingUser = existingResponse ?? throw new Exception("User not found.");
+
+                // ✅ 2. Merge editable fields with preserved ones
                 var updatedUser = new User
                 {
                     Id = id,
+                    // Editable fields
                     FirstName = updateDto.FirstName,
                     LastName = updateDto.LastName,
                     PhoneNum = updateDto.PhoneNum,
@@ -107,10 +117,17 @@ namespace Sen381Backend.Controllers
                     Interests = updateDto.Interests,
                     Subjects = updateDto.Subjects,
                     Email = updateDto.Email,
-                    ProfilePicturePath = updateDto.ProfilePicturePath
+                    ProfilePicturePath = updateDto.ProfilePicturePath,
+
+                    // Preserved fields
+                    PasswordHash = existingUser.PasswordHash,
+                    IsEmailVerified = existingUser.IsEmailVerified,  // 👈 critical
+                    CreatedAt = existingUser.CreatedAt,
+                    LastLogin = existingUser.LastLogin,
+                    RoleString = existingUser.RoleString
                 };
 
-                // ✅ Update the record without touching created_at / last_login
+                // ✅ 3. Update safely
                 await client
                     .From<User>()
                     .Filter("user_id", Operator.Equals, id)
@@ -127,10 +144,11 @@ namespace Sen381Backend.Controllers
         }
     }
 
-    // =============================
-    // DTO for profile updates
-    // =============================
-    public class ProfileUpdateDto
+
+        // =============================
+        // DTO for profile updates
+        // =============================
+        public class ProfileUpdateDto
     {
         public string FirstName { get; set; } = "";
         public string LastName { get; set; } = "";
