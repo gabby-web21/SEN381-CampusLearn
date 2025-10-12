@@ -8,7 +8,7 @@ using Sen381.Data_Access;
 
 namespace Sen381.Business.Services
 {
-    public class UserService
+    public class UserService : IUserService
     {
         private readonly SupaBaseAuthService _supabaseService;
 
@@ -40,6 +40,34 @@ namespace Sen381.Business.Services
                 .Update(user);
 
             return response.Models.Count > 0;
+        }
+
+        public async Task<List<User>> SearchPeersAsync(string query)
+        {
+            await _supabaseService.InitializeAsync();
+            var client = _supabaseService.Client;
+
+            var allUsers = await client
+                .From<User>()
+                .Select("*")
+                .Where(u => u.FirstName.ToLower().Contains(query.ToLower()) ||
+                            u.LastName.ToLower().Contains(query.ToLower()))
+                .Get();
+
+            return allUsers.Models;
+        }
+
+        public async Task<List<User>> GetAllUsersAsync()
+        {
+            await _supabaseService.InitializeAsync();
+            var client = _supabaseService.Client;
+
+            var response = await client
+                .From<User>()
+                .Select("*")
+                .Get();
+
+            return response.Models;
         }
 
     }

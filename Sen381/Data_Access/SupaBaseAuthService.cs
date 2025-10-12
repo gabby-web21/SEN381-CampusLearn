@@ -76,7 +76,27 @@ namespace Sen381.Data_Access
         {
             try
             {
+                //Use the client’s configuration 
+                var baseUrlField = typeof(Client)
+                    .GetField("_url", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                var clientUrl = baseUrlField?.GetValue(_client)?.ToString();
+
+                //Basic format validation for whatever URL was passed to the constructor
+                if (!Uri.TryCreate(clientUrl, UriKind.Absolute, out var uriResult) ||
+                    (uriResult.Scheme != Uri.UriSchemeHttp && uriResult.Scheme != Uri.UriSchemeHttps))
+                {
+                    Console.WriteLine($"❌ Invalid Supabase URL: {clientUrl}");
+                    return false;
+                }
+
                 await InitializeAsync();
+
+                if (_client == null || !_initialized)
+                {
+                    Console.WriteLine("❌ Supabase client failed to initialize.");
+                    return false;
+                }
+
                 Console.WriteLine("✅ Supabase connection verified.");
                 return true;
             }

@@ -1,15 +1,23 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381\\",
+  "WorkspaceRootPath": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{50CD5C6D-18FC-41C7-BFD6-75C80F056D0D}|..\\DatabaseWhitebox\\DatabaseWhitebox.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\databasewhitebox\\uploadedfilestest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FFB41EAE-729E-4FD0-95F5-3F6BE1522C80}|..\\Sen381.Tests\\Sen381.Tests.csproj|c:\\users\\xavie\\onedrive\\desktop\\sen381 repo\\sen381.tests\\peerscontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{108D1F18-A8E9-43D8-9453-8B871603743A}|..\\Sen381Backend\\Sen381Backend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\sen381backend\\models\\uploadedfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{108D1F18-A8E9-43D8-9453-8B871603743A}|..\\Sen381Backend\\Sen381Backend.csproj|c:\\users\\xavie\\onedrive\\desktop\\sen381 repo\\sen381backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{108D1F18-A8E9-43D8-9453-8B871603743A}|..\\Sen381Backend\\Sen381Backend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\sen381backend\\controllers\\filecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{108D1F18-A8E9-43D8-9453-8B871603743A}|..\\Sen381Backend\\Sen381Backend.csproj|c:\\users\\xavie\\onedrive\\desktop\\sen381 repo\\sen381backend\\controllers\\peerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|c:\\users\\xavie\\onedrive\\desktop\\sen381 repo\\sen381\\business\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|solutionrelative:business\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|c:\\users\\xavie\\onedrive\\desktop\\sen381 repo\\sen381\\business\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC9AC06-2447-4672-B438-03D6A0E233A7}|Sen381.csproj|solutionrelative:business\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,62 +47,76 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UploadedFile.cs",
-              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381Backend\\Models\\UploadedFile.cs",
-              "RelativeDocumentMoniker": "..\\Sen381Backend\\Models\\UploadedFile.cs",
-              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381Backend\\Models\\UploadedFile.cs",
-              "RelativeToolTip": "..\\Sen381Backend\\Models\\UploadedFile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAuAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381Backend\\Program.cs",
+              "RelativeDocumentMoniker": "..\\Sen381Backend\\Program.cs",
+              "ToolTip": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381Backend\\Program.cs",
+              "RelativeToolTip": "..\\Sen381Backend\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T18:17:25.999Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-12T16:39:35.929Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381\\Business\\Services\\IUserService.cs",
+              "RelativeDocumentMoniker": "Business\\Services\\IUserService.cs",
+              "ToolTip": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381\\Business\\Services\\IUserService.cs",
+              "RelativeToolTip": "Business\\Services\\IUserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-12T16:10:10.8Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381\\Business\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "Business\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381\\Business\\Services\\UserService.cs",
+              "RelativeToolTip": "Business\\Services\\UserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-12T16:07:22.739Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UploadedFilesTest.cs",
-              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\DatabaseWhitebox\\UploadedFilesTest.cs",
-              "RelativeDocumentMoniker": "..\\DatabaseWhitebox\\UploadedFilesTest.cs",
-              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\DatabaseWhitebox\\UploadedFilesTest.cs",
-              "RelativeToolTip": "..\\DatabaseWhitebox\\UploadedFilesTest.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAIwC4AAAAFAAAAAAAAAA==",
+              "Title": "PeersControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381.Tests\\PeersControllerTests.cs",
+              "RelativeDocumentMoniker": "..\\Sen381.Tests\\PeersControllerTests.cs",
+              "ToolTip": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381.Tests\\PeersControllerTests.cs",
+              "RelativeToolTip": "..\\Sen381.Tests\\PeersControllerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T16:53:48.418Z",
+              "WhenOpened": "2025-10-12T16:03:36.04Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "FileController.cs",
-              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381Backend\\Controllers\\FileController.cs",
-              "RelativeDocumentMoniker": "..\\Sen381Backend\\Controllers\\FileController.cs",
-              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381Backend\\Controllers\\FileController.cs",
-              "RelativeToolTip": "..\\Sen381Backend\\Controllers\\FileController.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAQwAYAAAAgAAAAAAAAAA==",
+              "Title": "PeersController.cs",
+              "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381Backend\\Controllers\\PeersController.cs",
+              "RelativeDocumentMoniker": "..\\Sen381Backend\\Controllers\\PeersController.cs",
+              "ToolTip": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381Backend\\Controllers\\PeersController.cs",
+              "RelativeToolTip": "..\\Sen381Backend\\Controllers\\PeersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-11T21:56:11.45Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-12T16:01:45.934Z"
             }
           ]
         }
