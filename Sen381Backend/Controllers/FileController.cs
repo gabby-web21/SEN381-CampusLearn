@@ -1,55 +1,54 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Sen381.Data_Access;
 using Sen381Backend.Models;
 using Supabase;
-using Supabase.Postgrest;
-using Supabase.Postgrest.Attributes;
-using Supabase.Postgrest.Models;
 
 namespace Sen381Backend.Controllers
 {
     [ApiController]
-    [Route("api/[Controller")]
-
-    public class FileController: ControllerBase
+    [Route("api/[controller]")]
+    public class FileController : ControllerBase
     {
+        [HttpPost("upload")]
         public async Task<IActionResult> UploadFile([FromForm] FileInput input, [FromServices] Supabase.Client client)
         {
+            if (input.File == null)
+                return BadRequest("No file provided.");
+
             using var ms = new MemoryStream();
             await input.File.CopyToAsync(ms);
             var fileBytes = ms.ToArray();
 
             var bucket = client.Storage.From("User_Uploads");
             var fileName = $"{Guid.NewGuid()}_{input.File.FileName}";
+
+            // Upload to Supabase storage
             await bucket.Upload(fileBytes, fileName);
 
-            var urlResult = await bucket.CreateSignedUrl(fileName, 300);
+            // Generate a signed URL valid for 5 minutes
+            var signedUrl = await bucket.CreateSignedUrl(fileName, 300);
 
-            
+            // Get current user ID (if available)
+            var userId = User.FindFirst("sub")?.Value ?? "anonymous";
 
-            // Check both Url and SignedUrl
-            var signedUrl = urlResult;
-
-
-            var userId = User.FindFirst("sub")?.Value ?? User.FindFirst("user_id")?.Value;
-
-            // Construct your metadata object
             var uploadedFile = new UploadedFile
             {
                 FileName = fileName,
-                StorageUrl = signedUrl, // or public URL if not signed
-                UploaderId = userId,    // grab from auth/session context
+                StorageUrl = signedUrl,
+                UploaderId = userId,
                 CreatedAt = DateTime.UtcNow
             };
 
-            // Insert using Supabase client (example assumes your table is "uploaded_files")
-            await client.Table<UploadedFile>("uploaded_files").Insert(uploadedFile);
-
+            // Save file metadata in Supabase DB
+            await client.From<UploadedFile>().Insert(uploadedFile);
 
             return Ok(new { SignedUrl = signedUrl });
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllFiles([FromServices] Supabase.Client client)
+        {
+            var response = await client.From<UploadedFile>().Get();
+            return Ok(response.Models);
+        }
     }
-    
-
-
 }

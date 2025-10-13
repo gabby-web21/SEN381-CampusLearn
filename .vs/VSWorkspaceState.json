@@ -1,12 +1,12 @@
 {
   "ExpandedNodes": [
     "",
+    "\\DatabaseWhitebox",
     "\\Frontend",
     "\\Sen381",
     "\\Sen381Backend",
-    "\\Sen381\\Business",
-    "\\Sen381\\Business\\Models"
+    "\\Sen381Backend\\Controllers"
   ],
-  "SelectedNode": "\\Sen381\\Business\\Models\\User.cs",
+  "SelectedNode": "\\Sen381\\Sen381.sln",
   "PreviewInSolutionExplorer": false
 }

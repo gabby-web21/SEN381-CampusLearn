@@ -16,7 +16,7 @@ namespace Sen381Backend.Controllers
             //TODO: save all chat message to DB via (input.senderId, input.ReceiverId, input.MessageText, input.FileUrl)
 
             //Demo success reply
-            return Ok(new {Status = "Message sent", Data = input});
+            return Ok(new { Status = "Message sent", Data = input });
         }
     }
 }
