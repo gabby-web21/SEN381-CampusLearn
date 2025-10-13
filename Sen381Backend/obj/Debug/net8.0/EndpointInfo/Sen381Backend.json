@@ -67,7 +67,7 @@
         }
       }
     },
-    "/api/File/upload": {
+    "/api/File/uploadfile": {
       "post": {
         "tags": [
           "File"

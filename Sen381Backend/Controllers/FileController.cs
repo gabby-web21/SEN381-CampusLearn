@@ -7,9 +7,11 @@ namespace Sen381Backend.Controllers
     [ApiController]
     [Route("api/[controller]")]
     public class FileController : ControllerBase
+
     {
-        [HttpPost("upload")]
+        [HttpPost("uploadfile")]
         public async Task<IActionResult> UploadFile([FromForm] FileInput input, [FromServices] Supabase.Client client)
+
         {
             if (input.File == null)
                 return BadRequest("No file provided.");
@@ -40,6 +42,7 @@ namespace Sen381Backend.Controllers
 
             // Save file metadata in Supabase DB
             await client.From<UploadedFile>().Insert(uploadedFile);
+
 
             return Ok(new { SignedUrl = signedUrl });
         }

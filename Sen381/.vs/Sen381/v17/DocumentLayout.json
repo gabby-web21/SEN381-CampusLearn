@@ -3,10 +3,13 @@
   "WorkspaceRootPath": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{108D1F18-A8E9-43D8-9453-8B871603743A}|..\\Sen381Backend\\Sen381Backend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\sen381backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{108D1F18-A8E9-43D8-9453-8B871603743A}|..\\Sen381Backend\\Sen381Backend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\sen381backend\\controllers\\filecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{108D1F18-A8E9-43D8-9453-8B871603743A}|..\\Sen381Backend\\Sen381Backend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\sen381backend\\controllers\\filecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{108D1F18-A8E9-43D8-9453-8B871603743A}|..\\Sen381Backend\\Sen381Backend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\sen381backend\\models\\uploadedfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{108D1F18-A8E9-43D8-9453-8B871603743A}|..\\Sen381Backend\\Sen381Backend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\sen381backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\messages.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
@@ -19,9 +22,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{108D1F18-A8E9-43D8-9453-8B871603743A}|..\\Sen381Backend\\Sen381Backend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\sen381backend\\models\\userinput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{108D1F18-A8E9-43D8-9453-8B871603743A}|..\\Sen381Backend\\Sen381Backend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\sen381backend\\models\\uploadedfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{108D1F18-A8E9-43D8-9453-8B871603743A}|..\\Sen381Backend\\Sen381Backend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\sen381backend\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -60,7 +60,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -100,7 +100,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "UserInput.cs",
               "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381Backend\\Models\\UserInput.cs",
               "RelativeDocumentMoniker": "..\\Sen381Backend\\Models\\UserInput.cs",
@@ -108,38 +108,37 @@
               "RelativeToolTip": "..\\Sen381Backend\\Models\\UserInput.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T22:57:24.754Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-12T22:57:24.754Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "FileController.cs",
               "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381Backend\\Controllers\\FileController.cs",
               "RelativeDocumentMoniker": "..\\Sen381Backend\\Controllers\\FileController.cs",
               "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381Backend\\Controllers\\FileController.cs",
               "RelativeToolTip": "..\\Sen381Backend\\Controllers\\FileController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-12T23:03:47.319Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "UploadedFile.cs",
               "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381Backend\\Models\\UploadedFile.cs",
               "RelativeDocumentMoniker": "..\\Sen381Backend\\Models\\UploadedFile.cs",
               "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381Backend\\Models\\UploadedFile.cs",
               "RelativeToolTip": "..\\Sen381Backend\\Models\\UploadedFile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-12T22:57:20.594Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381Backend\\Program.cs",
               "RelativeDocumentMoniker": "..\\Sen381Backend\\Program.cs",
@@ -152,7 +151,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Program.cs",
               "RelativeDocumentMoniker": "..\\Frontend\\Program.cs",
@@ -160,12 +159,11 @@
               "RelativeToolTip": "..\\Frontend\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T06:58:25.958Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-13T06:58:25.958Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Messages.razor",
               "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Messages.razor",
               "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Messages.razor",
@@ -173,12 +171,11 @@
               "RelativeToolTip": "..\\Frontend\\Pages\\Messages.razor",
               "ViewState": "AgIAAAgAAAAAAAAAAAAAAFcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-13T05:59:42.469Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-13T05:59:42.469Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "FileInput.cs",
               "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381Backend\\Models\\FileInput.cs",
               "RelativeDocumentMoniker": "..\\Sen381Backend\\Models\\FileInput.cs",
@@ -186,8 +183,7 @@
               "RelativeToolTip": "..\\Sen381Backend\\Models\\FileInput.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T22:56:52.56Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-12T22:56:52.56Z"
             },
             {
               "$type": "Document",
@@ -199,8 +195,7 @@
               "RelativeToolTip": "..\\Sen381Backend\\Controllers\\ChatController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T22:57:43.962Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-12T22:57:43.962Z"
             },
             {
               "$type": "Document",
@@ -218,15 +213,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "Frontend",
+              "Title": "Frontend.csproj",
               "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Frontend.csproj",
               "RelativeDocumentMoniker": "..\\Frontend\\Frontend.csproj",
               "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Frontend.csproj",
               "RelativeToolTip": "..\\Frontend\\Frontend.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-10-13T06:28:16.725Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-13T06:28:16.725Z"
             },
             {
               "$type": "Document",
@@ -237,8 +231,7 @@
               "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Frontend.csproj",
               "RelativeToolTip": "..\\Frontend\\Frontend.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-10-13T06:29:16.463Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-13T06:29:16.463Z"
             },
             {
               "$type": "Document",
@@ -261,8 +254,7 @@
               "RelativeToolTip": "Business\\Services\\IUserService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T16:10:10.8Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-12T16:10:10.8Z"
             },
             {
               "$type": "Document",
@@ -274,8 +266,7 @@
               "RelativeToolTip": "Business\\Services\\UserService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T16:07:22.739Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-12T16:07:22.739Z"
             },
             {
               "$type": "Document",

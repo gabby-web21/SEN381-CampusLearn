@@ -44,7 +44,7 @@
   {
     "ContainingType": "Sen381Backend.Controllers.FileController",
     "Method": "UploadFile",
-    "RelativePath": "api/File/upload",
+    "RelativePath": "api/File/uploadfile",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
