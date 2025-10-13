@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381.Tests\\Sen381.Tests.csproj": {}
+    "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381.Tests\\Sen381.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381.Tests\\Sen381.Tests.csproj": {
+    "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381.Tests\\Sen381.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381.Tests\\Sen381.Tests.csproj",
+        "projectUniqueName": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381.Tests\\Sen381.Tests.csproj",
         "projectName": "Sen381.Tests",
-        "projectPath": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381.Tests\\Sen381.Tests.csproj",
-        "packagesPath": "C:\\Users\\Luqmaan Slarmie\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381.Tests\\obj\\",
+        "projectPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381.Tests\\Sen381.Tests.csproj",
+        "packagesPath": "C:\\Users\\morne\\.nuget\\packages\\",
+        "outputPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Luqmaan Slarmie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\morne\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381Backend\\Sen381Backend.csproj": {
-                "projectPath": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381Backend\\Sen381Backend.csproj"
+              "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381Backend\\Sen381Backend.csproj": {
+                "projectPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381Backend\\Sen381Backend.csproj"
               }
             }
           }
@@ -91,24 +91,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381Backend\\Sen381Backend.csproj": {
+    "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381Backend\\Sen381Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381Backend\\Sen381Backend.csproj",
+        "projectUniqueName": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381Backend\\Sen381Backend.csproj",
         "projectName": "Sen381Backend",
-        "projectPath": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381Backend\\Sen381Backend.csproj",
-        "packagesPath": "C:\\Users\\Luqmaan Slarmie\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381Backend\\obj\\",
+        "projectPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381Backend\\Sen381Backend.csproj",
+        "packagesPath": "C:\\Users\\morne\\.nuget\\packages\\",
+        "outputPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381Backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Luqmaan Slarmie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\morne\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -123,8 +123,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381\\Sen381.csproj": {
-                "projectPath": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381\\Sen381.csproj"
+              "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Sen381.csproj": {
+                "projectPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Sen381.csproj"
               }
             }
           }
@@ -177,24 +177,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381\\Sen381.csproj": {
+    "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Sen381.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381\\Sen381.csproj",
+        "projectUniqueName": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Sen381.csproj",
         "projectName": "Sen381",
-        "projectPath": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381\\Sen381.csproj",
-        "packagesPath": "C:\\Users\\Luqmaan Slarmie\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381\\obj\\",
+        "projectPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Sen381.csproj",
+        "packagesPath": "C:\\Users\\morne\\.nuget\\packages\\",
+        "outputPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Luqmaan Slarmie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\morne\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -320,7 +320,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

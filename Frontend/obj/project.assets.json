@@ -646,13 +646,13 @@
           }
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.5": {
+      "Microsoft.NET.ILLink.Tasks/9.0.9": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
-      "Microsoft.NET.Sdk.WebAssembly.Pack/9.0.5": {
+      "Microsoft.NET.Sdk.WebAssembly.Pack/9.0.9": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.Sdk.WebAssembly.Pack.props": {},
@@ -2054,13 +2054,13 @@
           }
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.5": {
+      "Microsoft.NET.ILLink.Tasks/9.0.9": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
-      "Microsoft.NET.Sdk.WebAssembly.Pack/9.0.5": {
+      "Microsoft.NET.Sdk.WebAssembly.Pack/9.0.9": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.Sdk.WebAssembly.Pack.props": {},
@@ -4000,10 +4000,10 @@
         "microsoft.jsinterop.webassembly.nuspec"
       ]
     },
-    "Microsoft.NET.ILLink.Tasks/9.0.5": {
-      "sha512": "4L7wbb3Y4BJgIeSnmAf/C6S/qCs9rT1b0dX72uj3qo0qvUH7D0U1tU5ZlC7A3Wb8E/dXK4caOi4JkdLTVJaXhw==",
+    "Microsoft.NET.ILLink.Tasks/9.0.9": {
+      "sha512": "cHi1os/s6aobEgNkbOh/jW+ru//rHuedvj4PmTh2mMY7et/mJjqphBeXeKCesDvMd0+E2JyX9EPZZC4VRKslXg==",
       "type": "package",
-      "path": "microsoft.net.illink.tasks/9.0.5",
+      "path": "microsoft.net.illink.tasks/9.0.9",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -4017,7 +4017,7 @@
         "build/Microsoft.NET.ILLink.Analyzers.props",
         "build/Microsoft.NET.ILLink.Tasks.props",
         "build/Microsoft.NET.ILLink.targets",
-        "microsoft.net.illink.tasks.9.0.5.nupkg.sha512",
+        "microsoft.net.illink.tasks.9.0.9.nupkg.sha512",
         "microsoft.net.illink.tasks.nuspec",
         "tools/net472/ILLink.Tasks.dll",
         "tools/net472/ILLink.Tasks.dll.config",
@@ -4051,10 +4051,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.NET.Sdk.WebAssembly.Pack/9.0.5": {
-      "sha512": "h1210SGJTqvciPbSMEJjSRa4yc+zCEDeyoc9o3Fc5hScP9v+26INSOMLf4OwNw+oTz4nAwBo+rc5V4FQLWB1pQ==",
+    "Microsoft.NET.Sdk.WebAssembly.Pack/9.0.9": {
+      "sha512": "Nx4yF/l8YyzwHM+xBRFOSGv77mjBZP0XkImzLMdrSBGYPB32nEZNXTSwhH9viDhxMhGij+fVUjJj5iAtUdMBww==",
       "type": "package",
-      "path": "microsoft.net.sdk.webassembly.pack/9.0.5",
+      "path": "microsoft.net.sdk.webassembly.pack/9.0.9",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -4085,7 +4085,7 @@
         "build/Microsoft.NET.Sdk.WebAssembly.Pack.targets",
         "build/Wasm.web.config",
         "build/browser.runtimeconfig.template.json",
-        "microsoft.net.sdk.webassembly.pack.9.0.5.nupkg.sha512",
+        "microsoft.net.sdk.webassembly.pack.9.0.9.nupkg.sha512",
         "microsoft.net.sdk.webassembly.pack.nuspec",
         "tools/net472/Microsoft.NET.Sdk.WebAssembly.Pack.Tasks.dll",
         "tools/net472/Microsoft.NET.WebAssembly.Webcil.dll",
@@ -4934,29 +4934,29 @@
     "net9.0": [
       "Microsoft.AspNetCore.Components.WebAssembly >= 9.0.9",
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 9.0.9",
-      "Microsoft.NET.ILLink.Tasks >= 9.0.5",
-      "Microsoft.NET.Sdk.WebAssembly.Pack >= 9.0.5",
+      "Microsoft.NET.ILLink.Tasks >= 9.0.9",
+      "Microsoft.NET.Sdk.WebAssembly.Pack >= 9.0.9",
       "Sen381 >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Luqmaan Slarmie\\.nuget\\packages\\": {},
+    "C:\\Users\\morne\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Frontend.csproj",
+      "projectUniqueName": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Frontend\\Frontend.csproj",
       "projectName": "Frontend",
-      "projectPath": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Frontend.csproj",
-      "packagesPath": "C:\\Users\\Luqmaan Slarmie\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\obj\\",
+      "projectPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Frontend\\Frontend.csproj",
+      "packagesPath": "C:\\Users\\morne\\.nuget\\packages\\",
+      "outputPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Frontend\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Luqmaan Slarmie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\morne\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4971,8 +4971,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381\\Sen381.csproj": {
-              "projectPath": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381\\Sen381.csproj"
+            "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Sen381.csproj": {
+              "projectPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Sen381.csproj"
             }
           }
         }
@@ -5005,13 +5005,13 @@
           "Microsoft.NET.ILLink.Tasks": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[9.0.5, )",
+            "version": "[9.0.9, )",
             "autoReferenced": true
           },
           "Microsoft.NET.Sdk.WebAssembly.Pack": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[9.0.5, )",
+            "version": "[9.0.9, )",
             "autoReferenced": true
           }
         },
@@ -5029,7 +5029,7 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-            "version": "[9.0.5, 9.0.5]"
+            "version": "[9.0.9, 9.0.9]"
           }
         ],
         "frameworkReferences": {
@@ -5037,7 +5037,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

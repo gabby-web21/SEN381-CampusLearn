@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Frontend.csproj": {}
+    "C:\\Sen381 github repo\\SEN381-CampusLearn\\Frontend\\Frontend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Frontend.csproj": {
+    "C:\\Sen381 github repo\\SEN381-CampusLearn\\Frontend\\Frontend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Frontend.csproj",
+        "projectUniqueName": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Frontend\\Frontend.csproj",
         "projectName": "Frontend",
-        "projectPath": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Frontend.csproj",
-        "packagesPath": "C:\\Users\\Luqmaan Slarmie\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\obj\\",
+        "projectPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Frontend\\Frontend.csproj",
+        "packagesPath": "C:\\Users\\morne\\.nuget\\packages\\",
+        "outputPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Frontend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Luqmaan Slarmie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\morne\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,8 +32,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381\\Sen381.csproj": {
-                "projectPath": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381\\Sen381.csproj"
+              "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Sen381.csproj": {
+                "projectPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Sen381.csproj"
               }
             }
           }
@@ -66,13 +66,13 @@
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.5, )",
+              "version": "[9.0.9, )",
               "autoReferenced": true
             },
             "Microsoft.NET.Sdk.WebAssembly.Pack": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.5, )",
+              "version": "[9.0.9, )",
               "autoReferenced": true
             }
           },
@@ -90,7 +90,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-              "version": "[9.0.5, 9.0.5]"
+              "version": "[9.0.9, 9.0.9]"
             }
           ],
           "frameworkReferences": {
@@ -98,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
@@ -107,20 +107,20 @@
         }
       }
     },
-    "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381\\Sen381.csproj": {
+    "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Sen381.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381\\Sen381.csproj",
+        "projectUniqueName": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Sen381.csproj",
         "projectName": "Sen381",
-        "projectPath": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381\\Sen381.csproj",
-        "packagesPath": "C:\\Users\\Luqmaan Slarmie\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381\\obj\\",
+        "projectPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\Sen381.csproj",
+        "packagesPath": "C:\\Users\\morne\\.nuget\\packages\\",
+        "outputPath": "C:\\Sen381 github repo\\SEN381-CampusLearn\\Sen381\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Luqmaan Slarmie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\morne\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -246,7 +246,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
