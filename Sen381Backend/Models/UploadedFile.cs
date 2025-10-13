@@ -1,21 +1,24 @@
-﻿using Microsoft.Extensions.Configuration;
-using Supabase;
-using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Supabase.Postgrest.Attributes;
+﻿using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
+
 namespace Sen381Backend.Models
 {
-
-    public class UploadedFile
+    [Table("uploaded_files")]
+    public class UploadedFile : BaseModel
     {
-        
-        public string FileName { get; set; }
-        public string StorageUrl { get; set; }
-        public string UploaderId { get; set; }
-        public DateTime CreatedAt { get; set; }
-        
+        [PrimaryKey("id", false)]
+        public int Id { get; set; }
 
+        [Column("file_name")]
+        public string FileName { get; set; } = string.Empty;
+
+        [Column("storage_url")]
+        public string StorageUrl { get; set; } = string.Empty;
+
+        [Column("uploader_id")]
+        public string UploaderId { get; set; } = string.Empty;
+
+        [Column("created_at")]
+        public DateTime CreatedAt { get; set; }
     }
 }
