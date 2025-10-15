@@ -1,0 +1,132 @@
+############################
+# Global/OS
+############################
+# OneDrive/Windows cache noise
+[Tt]humbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.tmp
+*.temp
+
+# VSCode / Rider (optional)
+.vscode/
+.idea/
+
+############################
+# Visual Studio + MSBuild
+############################
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.vsidx
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+TestResults/
+[Mm]igrations/obj/
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+**/packages/*
+*.nupkg.sha512
+.nuget/
+# Artifacts from restore/build
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# MSBuild generated
+*.cache
+*.mdb
+*.pdb
+*.mdb.gz
+*.ilk
+*.obj
+*.idb
+*.tlog
+*.lastbuildstate
+*.sbr
+*_i.c
+*_p.c
+*.ipch
+
+############################
+# Rider / ReSharper
+############################
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+############################
+# IIS / ASP.NET
+############################
+App_Data/
+IISExpress/
+*.dbmdl
+
+############################
+# Certificates / Secrets
+############################
+*.pfx
+*.p12
+*.cer
+*.key
+*.pem
+secrets.json
+**/appsettings.*.local.json
+
+############################
+# Node / tooling
+############################
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-lock.yaml
+package-lock.json
+
+############################
+# Blazor/WebAssembly build
+############################
+# DO NOT commit built framework bits
+wwwroot/_framework/
+**/wwwroot/_framework/
+# Debug published artifacts
+**/bin/**/wwwroot/_framework/
+
+############################
+# Publish / Dist / Coverage
+############################
+dist/
+out/
+publish/
+coverage/
+*.coverage
+*.coveragexml
+
+############################
+# SQLite / local dbs (optional)
+############################
+*.db
+*.sqlite
+*.sqlite3
+
+############################
+# Rider/JetBrains caches
+############################
+*.sln.iml
+
+############################
+# Misc
+############################
+*.DS_Store
+*.swp
+*.bak
+*.orig
