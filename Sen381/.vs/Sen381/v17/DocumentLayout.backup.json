@@ -3,6 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Sen381\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\subjects.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\peers.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\messages.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
@@ -10,9 +16,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\shared\\navigation.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\peers.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,11 +25,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Navigation.razor",
               "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Shared\\Navigation.razor",
               "RelativeDocumentMoniker": "..\\Frontend\\Shared\\Navigation.razor",
@@ -40,7 +43,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Dashboard.razor",
               "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Dashboard.razor",
               "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Dashboard.razor",
@@ -49,6 +52,20 @@
               "ViewState": "AgIAAI4BAAAAAAAAAAAwwJ4BAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-10-15T22:11:42.394Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Messages.razor",
+              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Messages.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Messages.razor",
+              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Messages.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\Messages.razor",
+              "ViewState": "AgIAAPMCAAAAAAAAAAAwwPsCAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-15T23:22:44.573Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
@@ -87,25 +104,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Messages.razor",
-              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Messages.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Messages.razor",
-              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Messages.razor*",
-              "RelativeToolTip": "..\\Frontend\\Pages\\Messages.razor*",
-              "ViewState": "AgIAAMUCAAAAAAAAAAAwwN4CAAAAAAAAAAAAAA==",
+              "Title": "Subjects.razor",
+              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Subjects.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Subjects.razor",
+              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Subjects.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\Subjects.razor",
+              "ViewState": "AgIAACsBAAAAAAAAAAAwwDQBAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-15T23:22:44.573Z",
+              "WhenOpened": "2025-10-16T00:50:48.075Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Peers.razor",
               "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Peers.razor",
               "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Peers.razor",
               "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Peers.razor",
               "RelativeToolTip": "..\\Frontend\\Pages\\Peers.razor",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABEAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHkCAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-10-15T16:31:54.268Z",
               "EditorCaption": ""
