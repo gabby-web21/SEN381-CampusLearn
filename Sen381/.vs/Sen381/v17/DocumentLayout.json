@@ -3,10 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\7420\\source\\repos\\SEN381-CampusLearn\\CampusLearnV2\\Sen381\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\7420\\source\\repos\\sen381-campuslearn\\campuslearnv2\\frontend\\wwwroot\\js\\clarabot.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\7420\\source\\repos\\sen381-campuslearn\\campuslearnv2\\frontend\\shared\\topichublayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\7420\\source\\repos\\sen381-campuslearn\\campuslearnv2\\frontend\\pages\\chatbot.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\7420\\source\\repos\\sen381-campuslearn\\campuslearnv2\\frontend\\pages\\dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\7420\\source\\repos\\sen381-campuslearn\\campuslearnv2\\frontend\\wwwroot\\js\\clarabot.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\7420\\source\\repos\\sen381-campuslearn\\campuslearnv2\\frontend\\shared\\clarapanel.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\7420\\source\\repos\\sen381-campuslearn\\campuslearnv2\\frontend\\shared\\navigation.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\7420\\source\\repos\\sen381-campuslearn\\campuslearnv2\\frontend\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
@@ -19,7 +31,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 13,
           "Children": [
             {
               "$type": "Bookmark",
@@ -28,10 +40,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Bookmark",
@@ -55,37 +63,41 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:1924764005:0:{13143d73-808b-4a2f-bebb-ccbe9c93fe37}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "index.html",
-              "DocumentMoniker": "C:\\Users\\7420\\source\\repos\\SEN381-CampusLearn\\CampusLearnV2\\Frontend\\wwwroot\\index.html",
-              "RelativeDocumentMoniker": "..\\Frontend\\wwwroot\\index.html",
-              "ToolTip": "C:\\Users\\7420\\source\\repos\\SEN381-CampusLearn\\CampusLearnV2\\Frontend\\wwwroot\\index.html",
-              "RelativeToolTip": "..\\Frontend\\wwwroot\\index.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-10-16T15:52:53.486Z",
+              "DocumentIndex": 4,
+              "Title": "ClaraPanel.razor",
+              "DocumentMoniker": "C:\\Users\\7420\\source\\repos\\SEN381-CampusLearn\\CampusLearnV2\\Frontend\\Shared\\ClaraPanel.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Shared\\ClaraPanel.razor",
+              "ToolTip": "C:\\Users\\7420\\source\\repos\\SEN381-CampusLearn\\CampusLearnV2\\Frontend\\Shared\\ClaraPanel.razor",
+              "RelativeToolTip": "..\\Frontend\\Shared\\ClaraPanel.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-16T21:13:14.598Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "clarabot.js",
               "DocumentMoniker": "C:\\Users\\7420\\source\\repos\\SEN381-CampusLearn\\CampusLearnV2\\Frontend\\wwwroot\\js\\clarabot.js",
               "RelativeDocumentMoniker": "..\\Frontend\\wwwroot\\js\\clarabot.js",
               "ToolTip": "C:\\Users\\7420\\source\\repos\\SEN381-CampusLearn\\CampusLearnV2\\Frontend\\wwwroot\\js\\clarabot.js",
               "RelativeToolTip": "..\\Frontend\\wwwroot\\js\\clarabot.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2025-10-16T15:12:17.659Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
@@ -95,9 +107,65 @@
               "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Chatbot.razor",
               "ToolTip": "C:\\Users\\7420\\source\\repos\\SEN381-CampusLearn\\CampusLearnV2\\Frontend\\Pages\\Chatbot.razor",
               "RelativeToolTip": "..\\Frontend\\Pages\\Chatbot.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAmwBQAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-10-16T13:57:20.102Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TopicHubLayout.razor",
+              "DocumentMoniker": "C:\\Users\\7420\\source\\repos\\SEN381-CampusLearn\\CampusLearnV2\\Frontend\\Shared\\TopicHubLayout.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Shared\\TopicHubLayout.razor",
+              "ToolTip": "C:\\Users\\7420\\source\\repos\\SEN381-CampusLearn\\CampusLearnV2\\Frontend\\Shared\\TopicHubLayout.razor",
+              "RelativeToolTip": "..\\Frontend\\Shared\\TopicHubLayout.razor",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACcAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-16T21:13:16.767Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Dashboard.razor",
+              "DocumentMoniker": "C:\\Users\\7420\\source\\repos\\SEN381-CampusLearn\\CampusLearnV2\\Frontend\\Pages\\Dashboard.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Dashboard.razor",
+              "ToolTip": "C:\\Users\\7420\\source\\repos\\SEN381-CampusLearn\\CampusLearnV2\\Frontend\\Pages\\Dashboard.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\Dashboard.razor",
+              "ViewState": "AgIAAKkFAAAAAAAAAAAqwNIFAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-16T21:13:27.779Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Navigation.razor",
+              "DocumentMoniker": "C:\\Users\\7420\\source\\repos\\SEN381-CampusLearn\\CampusLearnV2\\Frontend\\Shared\\Navigation.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Shared\\Navigation.razor",
+              "ToolTip": "C:\\Users\\7420\\source\\repos\\SEN381-CampusLearn\\CampusLearnV2\\Frontend\\Shared\\Navigation.razor",
+              "RelativeToolTip": "..\\Frontend\\Shared\\Navigation.razor",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAuwJcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-16T21:12:35.866Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\7420\\source\\repos\\SEN381-CampusLearn\\CampusLearnV2\\Frontend\\wwwroot\\index.html",
+              "RelativeDocumentMoniker": "..\\Frontend\\wwwroot\\index.html",
+              "ToolTip": "C:\\Users\\7420\\source\\repos\\SEN381-CampusLearn\\CampusLearnV2\\Frontend\\wwwroot\\index.html",
+              "RelativeToolTip": "..\\Frontend\\wwwroot\\index.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-10-16T15:52:53.486Z",
               "EditorCaption": ""
             }
           ]
