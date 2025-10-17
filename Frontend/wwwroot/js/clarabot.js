@@ -15,7 +15,7 @@
         if (!data) return;
 
         if (data.type === 'webchat.ready') {
-            window.claraDotNetRef.invokeMethodAsync('OnBotpressReady'); 
+            window.claraDotNetRef.invokeMethodAsync('OnBotpressReady');
         }
 
         if (data.type === 'webchat.message') {
