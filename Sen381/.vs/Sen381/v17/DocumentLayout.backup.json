@@ -1,15 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\7420\\source\\repos\\SEN381-CampusLearn\\CampusLearnV2\\Sen381\\",
+  "WorkspaceRootPath": "C:\\Sen381 github repo\\own repo\\own-repo-of-sen\\Sen381\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\7420\\source\\repos\\sen381-campuslearn\\campuslearnv2\\frontend\\wwwroot\\js\\clarabot.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\7420\\source\\repos\\sen381-campuslearn\\campuslearnv2\\frontend\\pages\\chatbot.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\7420\\source\\repos\\sen381-campuslearn\\campuslearnv2\\frontend\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\sen381 github repo\\own repo\\own-repo-of-sen\\frontend\\pages\\adminprofile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,11 +13,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Bookmark",
@@ -31,73 +29,27 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:2:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:1924764005:0:{13143d73-808b-4a2f-bebb-ccbe9c93fe37}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "index.html",
-              "DocumentMoniker": "C:\\Users\\7420\\source\\repos\\SEN381-CampusLearn\\CampusLearnV2\\Frontend\\wwwroot\\index.html",
-              "RelativeDocumentMoniker": "..\\Frontend\\wwwroot\\index.html",
-              "ToolTip": "C:\\Users\\7420\\source\\repos\\SEN381-CampusLearn\\CampusLearnV2\\Frontend\\wwwroot\\index.html",
-              "RelativeToolTip": "..\\Frontend\\wwwroot\\index.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-10-16T15:52:53.486Z",
-              "EditorCaption": ""
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "clarabot.js",
-              "DocumentMoniker": "C:\\Users\\7420\\source\\repos\\SEN381-CampusLearn\\CampusLearnV2\\Frontend\\wwwroot\\js\\clarabot.js",
-              "RelativeDocumentMoniker": "..\\Frontend\\wwwroot\\js\\clarabot.js",
-              "ToolTip": "C:\\Users\\7420\\source\\repos\\SEN381-CampusLearn\\CampusLearnV2\\Frontend\\wwwroot\\js\\clarabot.js",
-              "RelativeToolTip": "..\\Frontend\\wwwroot\\js\\clarabot.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-10-16T15:12:17.659Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Chatbot.razor",
-              "DocumentMoniker": "C:\\Users\\7420\\source\\repos\\SEN381-CampusLearn\\CampusLearnV2\\Frontend\\Pages\\Chatbot.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Chatbot.razor",
-              "ToolTip": "C:\\Users\\7420\\source\\repos\\SEN381-CampusLearn\\CampusLearnV2\\Frontend\\Pages\\Chatbot.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\Chatbot.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAmwBQAAAAJAAAAAAAAAA==",
+              "Title": "AdminProfile.razor",
+              "DocumentMoniker": "C:\\Sen381 github repo\\own repo\\own-repo-of-sen\\Frontend\\Pages\\AdminProfile.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\AdminProfile.razor",
+              "ToolTip": "C:\\Sen381 github repo\\own repo\\own-repo-of-sen\\Frontend\\Pages\\AdminProfile.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\AdminProfile.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-16T13:57:20.102Z",
+              "WhenOpened": "2025-10-16T16:16:02.369Z",
               "EditorCaption": ""
             }
           ]
