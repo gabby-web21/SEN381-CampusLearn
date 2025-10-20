@@ -3,25 +3,46 @@
   "WorkspaceRootPath": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Sen381\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\landingpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\signup.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\shared\\navigation.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\shared\\authlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\messages.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\peers.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\managesubjectsandtopics.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\forum.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\shared\\clarapanel.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\tutoringsessionroom.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\chatbot.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\tutors.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\tutorprofile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\tutoringsessionroom.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\tutorapplications.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\tutorapplication.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\topics.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
@@ -39,31 +60,10 @@
       "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\studentprofile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\signup.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\reports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\peers.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\messages.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\managesubjectsandtopics.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\learningresources.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\landingpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\forum.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\createprofile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
@@ -76,9 +76,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\adminprofile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\luqmaan slarmie\\onedrive - belgiumcampus.ac.za\\desktop\\sen381-campuslearn\\frontend\\pages\\chatbot.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -88,7 +85,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 18,
+          "SelectedChildIndex": 14,
           "Children": [
             {
               "$type": "Bookmark",
@@ -144,189 +141,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "TutorProfile.razor",
-              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\TutorProfile.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\TutorProfile.razor",
-              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\TutorProfile.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\TutorProfile.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAWAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Login.razor",
+              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Login.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Login.razor",
+              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Login.razor*",
+              "RelativeToolTip": "..\\Frontend\\Pages\\Login.razor*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T21:44:33.43Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "TutoringSessionRoom.razor",
-              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\TutoringSessionRoom.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\TutoringSessionRoom.razor",
-              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\TutoringSessionRoom.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\TutoringSessionRoom.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T21:44:31.561Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "TutorApplications.razor",
-              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\TutorApplications.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\TutorApplications.razor",
-              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\TutorApplications.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\TutorApplications.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T21:44:29.124Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "TutorApplication.razor",
-              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\TutorApplication.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\TutorApplication.razor",
-              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\TutorApplication.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\TutorApplication.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T21:44:23.947Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AuthLayout.razor",
-              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Shared\\AuthLayout.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Shared\\AuthLayout.razor",
-              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Shared\\AuthLayout.razor",
-              "RelativeToolTip": "..\\Frontend\\Shared\\AuthLayout.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T21:41:31.726Z",
+              "WhenOpened": "2025-10-20T10:19:30.063Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Navigation.razor",
-              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Shared\\Navigation.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Shared\\Navigation.razor",
-              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Shared\\Navigation.razor",
-              "RelativeToolTip": "..\\Frontend\\Shared\\Navigation.razor",
-              "ViewState": "AgIAAHUAAAAAAAAAAAAAAKQAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T21:40:57.185Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Tutors.razor",
-              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Tutors.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Tutors.razor",
-              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Tutors.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\Tutors.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T21:44:37.835Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Topics.razor",
-              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Topics.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Topics.razor",
-              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Topics.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\Topics.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T21:44:14.867Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "TopicHub.razor",
-              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\TopicHub.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\TopicHub.razor",
-              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\TopicHub.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\TopicHub.razor",
+              "Title": "LandingPage.razor",
+              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\LandingPage.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\LandingPage.razor",
+              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\LandingPage.razor*",
+              "RelativeToolTip": "..\\Frontend\\Pages\\LandingPage.razor*",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T21:44:05.461Z",
+              "WhenOpened": "2025-10-19T21:42:33.717Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "SubjectSubscribers.razor",
-              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\SubjectSubscribers.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\SubjectSubscribers.razor",
-              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\SubjectSubscribers.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\SubjectSubscribers.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "Dashboard.razor",
+              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Dashboard.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Dashboard.razor",
+              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Dashboard.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\Dashboard.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T21:44:02.985Z",
+              "WhenOpened": "2025-10-19T21:42:14.7Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Subjects.razor",
-              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Subjects.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Subjects.razor",
-              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Subjects.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\Subjects.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAASAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "Messages.razor",
+              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Messages.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Messages.razor",
+              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Messages.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\Messages.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T21:43:55.768Z",
+              "WhenOpened": "2025-10-19T21:43:23.43Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "StudentProfile.razor",
-              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\StudentProfile.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\StudentProfile.razor",
-              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\StudentProfile.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\StudentProfile.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T21:43:46.6Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "SignUp.razor",
-              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\SignUp.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\SignUp.razor",
-              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\SignUp.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\SignUp.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T21:43:45.849Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Reports.razor",
-              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Reports.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Reports.razor",
-              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Reports.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\Reports.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T21:43:41.836Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 5,
               "Title": "Peers.razor",
               "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Peers.razor",
               "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Peers.razor",
@@ -339,20 +206,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Messages.razor",
-              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Messages.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Messages.razor",
-              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Messages.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\Messages.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAASAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Navigation.razor",
+              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Shared\\Navigation.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Shared\\Navigation.razor",
+              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Shared\\Navigation.razor*",
+              "RelativeToolTip": "..\\Frontend\\Shared\\Navigation.razor*",
+              "ViewState": "AgIAAJ4AAAAAAAAAAAAkwLQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T21:43:23.43Z",
+              "WhenOpened": "2025-10-19T21:40:57.185Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 1,
+              "Title": "SignUp.razor",
+              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\SignUp.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\SignUp.razor",
+              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\SignUp.razor*",
+              "RelativeToolTip": "..\\Frontend\\Pages\\SignUp.razor*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-19T21:43:45.849Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "ManageSubjectsAndTopics.razor",
               "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\ManageSubjectsAndTopics.razor",
               "RelativeDocumentMoniker": "..\\Frontend\\Pages\\ManageSubjectsAndTopics.razor",
@@ -365,33 +245,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "LearningResources.razor",
-              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\LearningResources.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\LearningResources.razor",
-              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\LearningResources.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\LearningResources.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T21:43:09.728Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "LandingPage.razor",
-              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\LandingPage.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\LandingPage.razor",
-              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\LandingPage.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\LandingPage.razor",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T21:42:33.717Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 8,
               "Title": "Forum.razor",
               "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Forum.razor",
               "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Forum.razor",
@@ -404,16 +258,151 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "Dashboard.razor",
-              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Dashboard.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Dashboard.razor",
-              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Dashboard.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\Dashboard.razor",
+              "DocumentIndex": 9,
+              "Title": "ClaraPanel.razor",
+              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Shared\\ClaraPanel.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Shared\\ClaraPanel.razor",
+              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Shared\\ClaraPanel.razor",
+              "RelativeToolTip": "..\\Frontend\\Shared\\ClaraPanel.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-20T10:15:32.516Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "TutorProfile.razor",
+              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\TutorProfile.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\TutorProfile.razor",
+              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\TutorProfile.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\TutorProfile.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-19T21:44:33.43Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TutoringSessionRoom.razor",
+              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\TutoringSessionRoom.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\TutoringSessionRoom.razor",
+              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\TutoringSessionRoom.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\TutoringSessionRoom.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-19T21:44:31.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Chatbot.razor",
+              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Chatbot.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Chatbot.razor",
+              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Chatbot.razor*",
+              "RelativeToolTip": "..\\Frontend\\Pages\\Chatbot.razor*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAkwAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-19T21:40:13.769Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Tutors.razor",
+              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Tutors.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Tutors.razor",
+              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Tutors.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\Tutors.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-19T21:44:37.835Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Topics.razor",
+              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Topics.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Topics.razor",
+              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Topics.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\Topics.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-19T21:44:14.867Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "TopicHub.razor",
+              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\TopicHub.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\TopicHub.razor",
+              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\TopicHub.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\TopicHub.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-19T21:44:05.461Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "SubjectSubscribers.razor",
+              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\SubjectSubscribers.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\SubjectSubscribers.razor",
+              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\SubjectSubscribers.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\SubjectSubscribers.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-19T21:44:02.985Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Subjects.razor",
+              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Subjects.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Subjects.razor",
+              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Subjects.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\Subjects.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-19T21:43:55.768Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "StudentProfile.razor",
+              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\StudentProfile.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\StudentProfile.razor",
+              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\StudentProfile.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\StudentProfile.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T21:42:14.7Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-19T21:43:46.6Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Reports.razor",
+              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Reports.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Reports.razor",
+              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Reports.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\Reports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-19T21:43:41.836Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "LearningResources.razor",
+              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\LearningResources.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\LearningResources.razor",
+              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\LearningResources.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\LearningResources.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-19T21:43:09.728Z"
             },
             {
               "$type": "Document",
@@ -425,8 +414,7 @@
               "RelativeToolTip": "..\\Frontend\\Pages\\CreateProfile.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T21:42:03.004Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-19T21:42:03.004Z"
             },
             {
               "$type": "Document",
@@ -438,8 +426,7 @@
               "RelativeToolTip": "..\\Frontend\\Pages\\BecomeTutor.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T21:42:00.726Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-19T21:42:00.726Z"
             },
             {
               "$type": "Document",
@@ -451,8 +438,7 @@
               "RelativeToolTip": "..\\Frontend\\Pages\\Analytics.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T21:42:00.049Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-19T21:42:00.049Z"
             },
             {
               "$type": "Document",
@@ -464,21 +450,7 @@
               "RelativeToolTip": "..\\Frontend\\Pages\\AdminProfile.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T21:41:58.043Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "Chatbot.razor",
-              "DocumentMoniker": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Chatbot.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Chatbot.razor",
-              "ToolTip": "C:\\Users\\Luqmaan Slarmie\\OneDrive - belgiumcampus.ac.za\\Desktop\\SEN381-CampusLearn\\Frontend\\Pages\\Chatbot.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\Chatbot.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T21:40:13.769Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-19T21:41:58.043Z"
             }
           ]
         }
