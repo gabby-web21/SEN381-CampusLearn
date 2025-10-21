@@ -559,8 +559,7 @@
 
     private void NavigateToProfile(long userId, bool isTutor)
     {
-        var profileType = isTutor ? "tutorprofile" : "studentprofile";
-        NavManager.NavigateTo($"/{profileType}/{userId}");
+         NavManager.NavigateTo($"/studentprofile/{userId}");
     }
 
     private void NavigateToPeerProfile(PeerUser peer)
