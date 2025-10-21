@@ -42,7 +42,9 @@
                         <div class="bubble">
                             @if (msg.IsFile && msg.FileId != null)
                             {
-                                <a href="@msg.Content" target="_blank" style="color:#fff;text-decoration:underline;">📎 @Path.GetFileName(msg.Content)</a>
+                                <a href="@msg.Content" target="_blank" style="color:#fff;text-decoration:underline;">
+                                    📎 @(Path.GetFileNameWithoutExtension(msg.Content))
+                                </a>
                             }
                             else
                             {

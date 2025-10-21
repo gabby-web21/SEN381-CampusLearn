@@ -6,19 +6,25 @@
       "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\xavie\\onedrive\\desktop\\sen381 repo\\frontend\\pages\\forum.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\xavie\\onedrive\\desktop\\sen381 repo\\frontend\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{108D1F18-A8E9-43D8-9453-8B871603743A}|..\\Sen381Backend\\Sen381Backend.csproj|c:\\users\\xavie\\onedrive\\desktop\\sen381 repo\\sen381backend\\controllers\\filecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{108D1F18-A8E9-43D8-9453-8B871603743A}|..\\Sen381Backend\\Sen381Backend.csproj|c:\\users\\xavie\\onedrive\\desktop\\sen381 repo\\sen381backend\\models\\uploadedfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\xavie\\onedrive\\desktop\\sen381 repo\\frontend\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\xavie\\onedrive\\desktop\\sen381 repo\\frontend\\wwwroot\\js\\scripts.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\xavie\\onedrive\\desktop\\sen381 repo\\frontend\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{108D1F18-A8E9-43D8-9453-8B871603743A}|..\\Sen381Backend\\Sen381Backend.csproj|c:\\users\\xavie\\onedrive\\desktop\\sen381 repo\\sen381backend\\controllers\\forumchatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{108D1F18-A8E9-43D8-9453-8B871603743A}|..\\Sen381Backend\\Sen381Backend.csproj|c:\\users\\xavie\\onedrive\\desktop\\sen381 repo\\sen381backend\\models\\forummessagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\xavie\\onedrive\\desktop\\sen381 repo\\frontend\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{108D1F18-A8E9-43D8-9453-8B871603743A}|..\\Sen381Backend\\Sen381Backend.csproj|c:\\users\\xavie\\onedrive\\desktop\\sen381 repo\\sen381backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -31,7 +37,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 13,
+          "SelectedChildIndex": 15,
           "Children": [
             {
               "$type": "Bookmark",
@@ -63,7 +69,33 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UploadedFile.cs",
+              "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381Backend\\Models\\UploadedFile.cs",
+              "RelativeDocumentMoniker": "..\\Sen381Backend\\Models\\UploadedFile.cs",
+              "ToolTip": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381Backend\\Models\\UploadedFile.cs",
+              "RelativeToolTip": "..\\Sen381Backend\\Models\\UploadedFile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T13:37:11.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "FileController.cs",
+              "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381Backend\\Controllers\\FileController.cs",
+              "RelativeDocumentMoniker": "..\\Sen381Backend\\Controllers\\FileController.cs",
+              "ToolTip": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381Backend\\Controllers\\FileController.cs",
+              "RelativeToolTip": "..\\Sen381Backend\\Controllers\\FileController.cs",
+              "ViewState": "AgIAAKIAAAAAAAAAAADwv74AAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T13:32:12.503Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "AuthService.cs",
               "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Frontend\\Services\\AuthService.cs",
               "RelativeDocumentMoniker": "..\\Frontend\\Services\\AuthService.cs",
@@ -76,7 +108,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "ForumChatController.cs",
               "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381Backend\\Controllers\\ForumChatController.cs",
               "RelativeDocumentMoniker": "..\\Sen381Backend\\Controllers\\ForumChatController.cs",
@@ -89,7 +121,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "ForumMessageDTO.cs",
               "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381Backend\\Models\\ForumMessageDTO.cs",
               "RelativeDocumentMoniker": "..\\Sen381Backend\\Models\\ForumMessageDTO.cs",
@@ -102,20 +134,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "index.html",
               "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Frontend\\wwwroot\\index.html",
               "RelativeDocumentMoniker": "..\\Frontend\\wwwroot\\index.html",
               "ToolTip": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Frontend\\wwwroot\\index.html",
               "RelativeToolTip": "..\\Frontend\\wwwroot\\index.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
               "WhenOpened": "2025-10-21T12:59:02.69Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "scripts.js",
               "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Frontend\\wwwroot\\js\\scripts.js",
               "RelativeDocumentMoniker": "..\\Frontend\\wwwroot\\js\\scripts.js",
@@ -128,7 +160,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Sen381Backend\\Program.cs",
               "RelativeDocumentMoniker": "..\\Sen381Backend\\Program.cs",
@@ -147,7 +179,7 @@
               "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Forum.razor",
               "ToolTip": "C:\\Users\\xavie\\OneDrive\\Desktop\\Sen381 Repo\\Frontend\\Pages\\Forum.razor",
               "RelativeToolTip": "..\\Frontend\\Pages\\Forum.razor",
-              "ViewState": "AgIAAHYAAAAAAAAAAADgv1kAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAiwDAAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-10-21T12:29:44.251Z",
               "EditorCaption": ""
