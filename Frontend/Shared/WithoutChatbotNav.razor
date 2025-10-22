@@ -21,7 +21,6 @@
         if (firstRender)
         {
             await CheckUserRole();
-            await UpdateBotpressVisibility();
         }
     }
 
@@ -31,7 +30,7 @@
         {
             var currentUser = await AuthService.GetCurrentUserAsync();
             Console.WriteLine($"[Navigation] Current user: {currentUser?.UserId}, Role: '{currentUser?.Role}'");
-            
+
             if (currentUser != null && !string.IsNullOrEmpty(currentUser.Role))
             {
                 Role = currentUser.Role.ToLower() switch
@@ -48,34 +47,13 @@
             {
                 Console.WriteLine($"[Navigation] No user or role found");
             }
-            
+
             StateHasChanged(); // Force re-render to update the UI
         }
         catch (Exception ex)
         {
             Console.WriteLine($"[Navigation] Error checking user role: {ex.Message}");
         }
-    }
-
-    private async Task UpdateBotpressVisibility()
-    {
-        // Pages where Botpress should NOT appear
-        var excludedPages = new[] { "/landing", "/login", "/signup" };
-        var currentPath = Nav.ToBaseRelativePath(Nav.Uri).ToLower();
-
-        if (excludedPages.Any(p => currentPath.StartsWith(p)))
-        {
-            await _js.InvokeVoidAsync("BotpressHelper.hide");
-        }
-        else
-        {
-            await _js.InvokeVoidAsync("BotpressHelper.show");
-        }
-    }
-    protected override async Task OnParametersSetAsync()
-    {
-        // Run every time the route changes
-        await UpdateBotpressVisibility();
     }
 
     private void ToggleMenu() => IsMenuOpen = !IsMenuOpen;
@@ -170,7 +148,6 @@
         <a @onclick='() => NavigateTo("/subjects")'>Subjects</a>
         <a @onclick='() => NavigateTo("/peers")'>Peers</a>
         <a @onclick='() => NavigateTo("/messages")'>Messages</a>
-        <a @onclick='() => NavigateTo("/claratea")'>Ask ClaraTea</a>
 
         @if (IsAdmin)
         {
@@ -184,17 +161,11 @@
     </nav>
 </aside>
 
-<div id="bp-widget-container" style="display:none;"></div>
-
 <main class="page-body">
     @Body
 </main>
 
 <style>
-
-    #bp-widget-container {
-        display: none;
-    }
     :root {
         --nav-bg: #3f3f3f;
         --ink: #2a2a2a;
@@ -274,7 +245,6 @@
             transform: translateY(-1px);
             width: 50px;
             height: 50px;
-
         }
 
         .user-avatar::before {
@@ -432,7 +402,3 @@
     }
 
 </style>
-
-<script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
-<script src="https://files.bpcontent.cloud/2025/10/15/17/20251015175639-1WINNZGW.js" defer></script>
-
