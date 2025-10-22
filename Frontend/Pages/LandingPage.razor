@@ -4,6 +4,9 @@
 <!-- Landing Page — CampusLearn -->
 
 <main class="page">
+    <!-- Page-wide background image (fixed, covers viewport) -->
+    <img class="page-bg" src="images/background.jpg" alt="" aria-hidden="true" />
+
     <div class="container grid">
         <!-- HERO band (full-width, centered content) -->
         <section class="panel hero full-bleed">
@@ -25,20 +28,9 @@
                 </div>
             </div>
         </section>
-
-        <!-- CLARA band (full-width, centered content) -->
-        <section class="panel full-bleed">
-            <div class="band-inner center-block">
-                <ClaraPanel Small="false" />
-            </div>
-        </section>
-    </div>
-
-    <!-- Bottom CTA -->
-    <div class="cta-wrap">
-        <a class="cta" href="/signup">Get Started — it’s free</a>
     </div>
 </main>
+
 
 <footer class="foot">
     <div class="container"><small>© CampusLearn</small></div>
@@ -327,5 +319,93 @@
             right: 0;
             width: auto;
         }
+    }
+    /* ===== PAGE-WIDE BACKGROUND IMAGE (fixed & covering viewport) ===== */
+    .page {
+        position: relative; /* create stacking context for the bg */
+    }
+
+    .page-bg {
+        position: fixed; /* lock to viewport */
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* fill without distortion */
+        z-index: -1; /* behind everything */
+        pointer-events: none; /* ignore clicks */
+        filter: none; /* keep crisp; adjust below if needed */
+    }
+
+    /* Optional: slight darken to improve legibility site-wide */
+    body:not(.dark-mode) .page-bg {
+        filter: brightness(0.9);
+    }
+
+    .dark-mode .page-bg {
+        filter: brightness(0.6); /* lift contrast in dark mode */
+    }
+
+    /* ===== HERO SHOULD BE TRANSPARENT OVER THE BACKGROUND ===== */
+    .panel.hero {
+        background: transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        padding-top: clamp(28px, 8vw, 80px);
+        padding-bottom: clamp(28px, 8vw, 80px);
+    }
+
+    /* Soft gradient overlay only inside the hero for text readability */
+    .hero.full-bleed {
+        position: relative;
+    }
+
+        /* .hero.full-bleed::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient( to bottom, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.20) 35%, rgba(0, 0, 0, 0.10) 60%, rgba(0, 0, 0, 0.00) 100% );
+            pointer-events: none;
+        } */
+
+    /* Text color tweaks on hero for contrast over the image */
+    .hero h1,
+    .hero .lede {
+        color: #fff;
+        text-shadow: 0 2px 12px rgba(0,0,0,.35);
+    }
+
+    .hero .accent {
+        color: #fff;
+        text-shadow: 0 2px 12px rgba(0,0,0,.35);
+    }
+
+    /* Keep other panels readable on top of the photo */
+    .panel:not(.hero) {
+        background: color-mix(in oklab, var(--panel-bg) 85%, transparent);
+        backdrop-filter: saturate(1.1) blur(3px);
+    }
+
+    /* Dark mode: slightly stronger glass effect for non-hero panels */
+    .dark-mode .panel:not(.hero) {
+        background: color-mix(in oklab, var(--panel-bg) 75%, transparent);
+    }
+
+    /* Ensure full-bleed bands don't override the photo */
+    .hero.full-bleed {
+        background: none !important;
+    }
+
+    /* Mobile nicety: keep hero text readable on tiny screens */
+    @@media (max-width: 520px) {
+        .hero h1
+
+    {
+        font-size: clamp(26px, 8vw, 44px);
+    }
+
+    .hero .lede {
+        color: rgba(255,255,255,0.9);
+    }
+
     }
 </style>

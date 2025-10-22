@@ -1,45 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Sen381\\",
+  "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\SEN381-CampusLearn\\Sen381\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\studentprofile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\learningresources.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\forum.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\tutors.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\topichub.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\shared\\topichublayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\topics.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\subjects.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\messages.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\shared\\navigation.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\becometutor.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\chatbot.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\user\\source\\repos\\sen381-campuslearn\\frontend\\pages\\landingpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -49,176 +13,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 20,
+          "SelectedChildIndex": 8,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Navigation.razor",
-              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Shared\\Navigation.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Shared\\Navigation.razor",
-              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Shared\\Navigation.razor",
-              "RelativeToolTip": "..\\Frontend\\Shared\\Navigation.razor",
-              "ViewState": "AgIAABIBAAAAAAAAAAAwwBwBAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-15T23:05:42.839Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Dashboard.razor",
-              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Dashboard.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Dashboard.razor",
-              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Dashboard.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\Dashboard.razor",
-              "ViewState": "AgIAACkFAAAAAAAAAAAwwDQFAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-15T22:11:42.394Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Messages.razor",
-              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Messages.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Messages.razor",
-              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Messages.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\Messages.razor",
-              "ViewState": "AgIAAPMCAAAAAAAAAAAwwPsCAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-15T23:22:44.573Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Subjects.razor",
-              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Subjects.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Subjects.razor",
-              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Subjects.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\Subjects.razor",
-              "ViewState": "AgIAABgBAAAAAAAAAAAAwBwBAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-16T01:15:05.807Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Chatbot.razor",
-              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Chatbot.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Chatbot.razor",
-              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Chatbot.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\Chatbot.razor",
-              "ViewState": "AgIAAIcBAAAAAAAAAAAwwI4BAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-16T02:02:31.97Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "BecomeTutor.razor",
-              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\BecomeTutor.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\BecomeTutor.razor",
-              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\BecomeTutor.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\BecomeTutor.razor",
-              "ViewState": "AgIAAAQBAAAAAAAAAAAwwBcBAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-16T02:47:19.626Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Topics.razor",
-              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Topics.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Topics.razor",
-              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Topics.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\Topics.razor",
-              "ViewState": "AgIAAOoAAABAMjMzMzMbwAABAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-16T05:14:29.082Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "TopicHub.razor",
-              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\TopicHub.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\TopicHub.razor",
-              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\TopicHub.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\TopicHub.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-16T05:12:51.992Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "TopicHubLayout.razor",
-              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Shared\\TopicHubLayout.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Shared\\TopicHubLayout.razor",
-              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Shared\\TopicHubLayout.razor",
-              "RelativeToolTip": "..\\Frontend\\Shared\\TopicHubLayout.razor",
-              "ViewState": "AgIAABcBAAAAACRSDPXHvx8BAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-16T09:51:28.406Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Tutors.razor",
-              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Tutors.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Tutors.razor",
-              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Tutors.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\Tutors.razor",
-              "ViewState": "AgIAAOkAAAAAAAAAAADwv/YAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-16T09:34:03.764Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Forum.razor",
-              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Forum.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Forum.razor",
-              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Forum.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\Forum.razor",
-              "ViewState": "AgIAADMBAAAAAAAAAAAIwEYBAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-16T09:37:40.675Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LearningResources.razor",
-              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\LearningResources.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\LearningResources.razor",
-              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\LearningResources.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\LearningResources.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-16T09:38:47.32Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:1924764005:0:{13143d73-808b-4a2f-bebb-ccbe9c93fe37}"
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Bookmark",
@@ -230,6 +33,10 @@
             },
             {
               "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
@@ -238,19 +45,19 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "StudentProfile.razor",
-              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\StudentProfile.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\StudentProfile.razor",
-              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\StudentProfile.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\StudentProfile.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD4JAAAAAAAAAAAAAA==",
+              "Title": "LandingPage.razor",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\SEN381-CampusLearn\\Frontend\\Pages\\LandingPage.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\LandingPage.razor",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\SEN381-CampusLearn\\Frontend\\Pages\\LandingPage.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\LandingPage.razor",
+              "ViewState": "AgIAAH0BAAAAAAAAAAAQwI8BAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-22T10:12:31.405Z",
+              "WhenOpened": "2025-10-22T14:07:57.188Z",
               "EditorCaption": ""
             }
           ]
