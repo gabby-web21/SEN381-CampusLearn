@@ -3,13 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Sen381\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\studentprofile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\landingpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\messages.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\createprofile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\signup.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\navigationforlanding.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,33 +22,61 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "StudentProfile.razor",
-              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\StudentProfile.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\StudentProfile.razor",
-              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\StudentProfile.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\StudentProfile.razor",
-              "ViewState": "AgIAAH4EAAAAAAAAAAAswIMEAABXAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "NavigationForLanding.razor",
+              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\NavigationForLanding.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\NavigationForLanding.razor",
+              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\NavigationForLanding.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\NavigationForLanding.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-22T10:12:31.405Z",
+              "WhenOpened": "2025-10-22T20:03:18.006Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LandingPage.razor",
+              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\LandingPage.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\LandingPage.razor",
+              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\LandingPage.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\LandingPage.razor",
+              "ViewState": "AgIAALQAAAAADNj6k4IWwLsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-22T20:02:25.654Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "CreateProfile.razor",
-              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\CreateProfile.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\CreateProfile.razor",
-              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\CreateProfile.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\CreateProfile.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAZAAAAAAAAAA==",
+              "Title": "SignUp.razor",
+              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\SignUp.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\SignUp.razor",
+              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\SignUp.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\SignUp.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-22T14:23:29.164Z",
+              "WhenOpened": "2025-10-22T20:02:32.159Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Login.razor",
+              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Login.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Login.razor",
+              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Login.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\Login.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-22T20:02:28.374Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
@@ -80,19 +111,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Messages.razor",
-              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Messages.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Messages.razor",
-              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Messages.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\Messages.razor",
-              "ViewState": "AgIAADIEAAAAAAAAAAAswD0EAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-22T19:41:38.558Z",
-              "EditorCaption": ""
             }
           ]
         }
