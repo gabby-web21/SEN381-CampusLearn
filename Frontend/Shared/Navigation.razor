@@ -111,8 +111,10 @@
     <div class="container nav-row">
         <!-- Brand -->
         <a class="brand" href="/landing">
+            <img class="brand-logo" src="images/logo.jpg" alt="CampusLearn logo" />
             <h1 id="mainTitle">Campus<span>Learn</span></h1>
         </a>
+
 
         <!-- Right controls: avatar then burger (burger far right) -->
         <div class="nav-actions">
@@ -377,4 +379,28 @@
             grid-template-columns: auto auto;
         }
     }
+    /* ===== BRAND LOGO & TITLE ===== */
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px; /* space between logo and text */
+        text-decoration: none; /* remove underline */
+    }
+
+    .brand-logo {
+        width: clamp(38px, 6vw, 54px); /* scales smoothly with screen size */
+        height: auto;
+        display: block;
+        border-radius: 8px; /* optional: soft corners, can remove */
+    }
+
+    /* keep the title vertically centered with logo */
+    #mainTitle {
+        margin: 0;
+        color: var(--ink-on);
+        font-weight: 900;
+        font-size: clamp(22px, 3vw, 32px);
+        line-height: 1;
+    }
+
 </style>

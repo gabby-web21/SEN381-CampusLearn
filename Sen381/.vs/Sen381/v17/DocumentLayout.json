@@ -3,7 +3,13 @@
   "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\SEN381-CampusLearn\\Sen381\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\user\\source\\repos\\sen381-campuslearn\\frontend\\pages\\landingpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\user\\source\\repos\\sen381-campuslearn\\frontend\\shared\\navigation.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\user\\source\\repos\\sen381-campuslearn\\frontend\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\user\\source\\repos\\sen381-campuslearn\\frontend\\pages\\signup.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -13,8 +19,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Navigation.razor",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\SEN381-CampusLearn\\Frontend\\Shared\\Navigation.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Shared\\Navigation.razor",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\SEN381-CampusLearn\\Frontend\\Shared\\Navigation.razor*",
+              "RelativeToolTip": "..\\Frontend\\Shared\\Navigation.razor*",
+              "ViewState": "AgIAAG8BAAAAAAAAAAAUwJQBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-22T15:13:02.36Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -49,15 +68,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "LandingPage.razor",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\SEN381-CampusLearn\\Frontend\\Pages\\LandingPage.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\LandingPage.razor",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\SEN381-CampusLearn\\Frontend\\Pages\\LandingPage.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\LandingPage.razor",
-              "ViewState": "AgIAAD4BAAAAAAAAAAAQwGABAAAkAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "SignUp.razor",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\SEN381-CampusLearn\\Frontend\\Pages\\SignUp.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\SignUp.razor",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\SEN381-CampusLearn\\Frontend\\Pages\\SignUp.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\SignUp.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-22T14:07:57.188Z",
+              "WhenOpened": "2025-10-22T15:06:25.702Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Login.razor",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\SEN381-CampusLearn\\Frontend\\Pages\\Login.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Login.razor",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\SEN381-CampusLearn\\Frontend\\Pages\\Login.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\Login.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-22T15:03:54.74Z",
               "EditorCaption": ""
             }
           ]

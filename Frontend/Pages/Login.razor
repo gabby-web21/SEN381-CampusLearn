@@ -15,14 +15,10 @@
 }
 
 <main class="login-wrap">
+    <img class="page-bg" src="images/background.jpg" alt="" aria-hidden="true" />
     <section class="login-card">
-        <div class="logo" aria-hidden="true">
-            <svg viewBox="0 0 64 64" width="38" height="38" role="img" focusable="false">
-                <g stroke="#2D3034" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M42 14c-4-4-9-6-14-6C15 8 8 15 8 26s7 18 20 18c5 0 10-2 14-6" />
-                    <path d="M56 12v32H34" />
-                </g>
-            </svg>
+        <div class="logo">
+            <img src="images/logoLight.jpg" alt="CampusLearn Logo" />
         </div>
 
         <h1 class="heading">LOGIN</h1>
@@ -234,6 +230,61 @@
             width: 70%;
         }
     }
+    /* ===== PAGE BACKGROUND IMAGE FOR LOGIN PAGE ===== */
+    .login-wrap {
+        position: relative;
+        min-height: 100dvh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        overflow: hidden; /* keeps background clean at edges */
+    }
+
+    .page-bg {
+        position: fixed; /* covers entire viewport */
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* fills without distortion */
+        z-index: -1; /* sits behind everything */
+        pointer-events: none; /* ignore clicks */
+    }
+
+    /* Optional: tone down brightness slightly for readability */
+    body:not(.dark-mode) .page-bg {
+        filter: brightness(0.92);
+    }
+
+    .dark-mode .page-bg {
+        filter: brightness(0.6);
+    }
+
+    /* Keep login card fully visible above background */
+    .login-card {
+        position: relative;
+        z-index: 2;
+        background: var(--panel);
+    }
+    /* ===== LOGO IMAGE STYLING ===== */
+    .logo img,
+    .mark img {
+        display: block;
+        margin-inline: auto;
+        width: clamp(120px, 22vw, 160px); /* scales with screen */
+        height: auto;
+        margin-bottom: 12px;
+    }
+
+    /* Center logo and keep consistent spacing */
+    .logo,
+    .mark {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+
 </style>
 
 @code {

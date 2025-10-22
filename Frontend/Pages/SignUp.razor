@@ -6,15 +6,14 @@
 @inject SupaBaseAuthService SupabaseService
 
 <main class="signup-wrap">
+    <img class="page-bg" src="images/background.jpg" alt="" aria-hidden="true" />
     <section class="card">
         <div class="mark" aria-hidden="true">
             <!-- CL logo -->
-            <svg viewBox="0 0 64 64" width="40" height="40" role="img" focusable="false">
-                <g stroke="#2D3034" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M42 14c-4-4-9-6-14-6C15 8 8 15 8 26s7 18 20 18c5 0 10-2 14-6" />
-                    <path d="M56 12v32H34" />
-                </g>
-            </svg>
+            <div class="logo">
+                <img src="images/logoLight.jpg" alt="CampusLearn Logo" />
+            </div>
+
         </div>
 
         <h1 class="heading">SIGN UP</h1>
@@ -232,6 +231,60 @@
         p:has(> [class*="⚠️"]) {
             color: #b30000;
         }
+    /* ===== PAGE BACKGROUND IMAGE FOR SIGNUP PAGE ===== */
+    .signup-wrap {
+        position: relative;
+        min-height: 100dvh; /* fill viewport height */
+        display: grid;
+        place-items: center;
+        padding: clamp(16px,4vw,32px);
+        overflow: hidden; /* keeps bg tidy at edges */
+    }
+
+    .page-bg {
+        position: fixed; /* cover full viewport */
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* fill without distortion */
+        z-index: -1; /* behind everything */
+        pointer-events: none;
+    }
+
+    /* Optional: tiny brightness tweak for readability */
+    body:not(.dark-mode) .page-bg {
+        filter: brightness(0.92);
+    }
+
+    .dark-mode .page-bg {
+        filter: brightness(0.6);
+    }
+
+    /* Ensure the card stays above the background */
+    .card {
+        position: relative;
+        z-index: 2;
+        background: var(--panel);
+    }
+    /* ===== LOGO IMAGE STYLING ===== */
+    .logo img,
+    .mark img {
+        display: block;
+        margin-inline: auto;
+        width: clamp(120px, 22vw, 160px); /* scales with screen */
+        height: auto;
+        margin-bottom: 12px;
+    }
+
+    /* Center logo and keep consistent spacing */
+    .logo,
+    .mark {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
 </style>
 
 @code {
