@@ -8,13 +8,7 @@
 <main class="signup-wrap">
     <section class="card">
         <div class="mark" aria-hidden="true">
-            <!-- CL logo -->
-            <svg viewBox="0 0 64 64" width="40" height="40" role="img" focusable="false">
-                <g stroke="#2D3034" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M42 14c-4-4-9-6-14-6C15 8 8 15 8 26s7 18 20 18c5 0 10-2 14-6" />
-                    <path d="M56 12v32H34" />
-                </g>
-            </svg>
+            <img src="/images/logoLight.jpg" alt="CampusLearn Logo" class="signup-logo" />
         </div>
 
         <h1 class="heading">SIGN UP</h1>
@@ -232,6 +226,42 @@
         p:has(> [class*="⚠️"]) {
             color: #b30000;
         }
+    /* === Full-page background image for login page === */
+    body {
+        background: url("/images/background.jpg") no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    /* Make sure the login card sits above the background and overlay */
+    .login-wrap {
+        position: relative;
+        z-index: 1;
+    }
+    /* Sign-up logo sizing */
+    .signup-logo {
+        display: block;
+        margin: 0 auto 8px; /* center and add spacing */
+        max-width: 110px; /* cap size so it never takes over */
+        width: 100%; /* responsive downscale */
+        height: auto; /* keep aspect ratio */
+        object-fit: contain; /* avoid stretching */
+        border-radius: 10px; /* optional soften corners */
+    }
+
+    @@media (max-width: 720px) {
+        .signup-logo
+
+    {
+        max-width: 90px; /* slightly smaller on phones/tablets */
+    }
+
+    }
+
+    .signup-wrap {
+        position: relative;
+        z-index: 1;
+    }
+
 </style>
 
 @code {

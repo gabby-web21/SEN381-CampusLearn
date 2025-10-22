@@ -10,7 +10,7 @@
             <div class="band-inner center-block">
                 <h1>Welcome to <span class="accent">CampusLearn</span></h1>
                 <p class="lede">
-                    Peer-powered learning with forums, tutors, resources, and CLARA by your side.
+                    Peer-powered learning with forums, tutors, and shared resources.
                 </p>
 
                 <div class="tiles">
@@ -26,18 +26,18 @@
             </div>
         </section>
 
-        <!-- CLARA band (full-width, centered content) -->
+        @* REMOVED: Clara band
         <section class="panel full-bleed">
             <div class="band-inner center-block">
                 <ClaraPanel Small="false" />
             </div>
-        </section>
+        </section> *@
     </div>
 
-    <!-- Bottom CTA -->
+    @* REMOVED: Bottom CTA "Get Started — it’s free"
     <div class="cta-wrap">
         <a class="cta" href="/signup">Get Started — it’s free</a>
-    </div>
+    </div> *@
 </main>
 
 <footer class="foot">
@@ -46,8 +46,8 @@
 
 <style>
     /* =========================
-           DESIGN TOKENS
-           ========================= */
+               DESIGN TOKENS
+               ========================= */
     :root {
         --bg: #FFFFFF;
         --nav: #DBE4EE;
@@ -61,8 +61,6 @@
         --shadow-1: 0 6px 18px rgba(0,0,0,.06);
         --shadow-2: 0 12px 28px rgba(0,0,0,.08);
         --container: min(1200px, 92vw);
-        
-        /* Add smooth transitions for all elements */
         transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -78,30 +76,30 @@
         --shadow-2: 0 12px 28px rgba(0,0,0,.4);
     }
 
-    /* Dark mode specific styles */
-    .dark-mode .tile {
-        background: color-mix(in oklab, var(--accent) 20%, var(--panel-bg));
-        border-color: var(--panel-ring);
-        color: var(--ink);
-    }
+        .dark-mode .tile {
+            background: color-mix(in oklab, var(--accent) 20%, var(--panel-bg));
+            border-color: var(--panel-ring);
+            color: var(--ink);
+        }
 
-    .dark-mode .tile:hover {
-        box-shadow: var(--shadow-2);
-    }
+            .dark-mode .tile:hover {
+                box-shadow: var(--shadow-2);
+            }
 
-    .dark-mode .tile p {
-        color: var(--muted);
-    }
+            .dark-mode .tile p {
+                color: var(--muted);
+            }
 
-    .dark-mode .hero.full-bleed {
-        background: linear-gradient(180deg, color-mix(in oklab, var(--accent) 15%, var(--panel-bg)) 0%, var(--panel-bg) 30%);
-    }
+        .dark-mode .hero.full-bleed {
+            background: linear-gradient(180deg, color-mix(in oklab, var(--accent) 15%, var(--panel-bg)) 0%, var(--panel-bg) 30%);
+        }
 
-    .dark-mode .hero .accent {
-        color: var(--ink);
-        text-shadow: none;
-    }
+        .dark-mode .hero .accent {
+            color: var(--ink);
+            text-shadow: none;
+        }
 
+    /* NOTE: in Razor, use @@ to escape CSS at-rules */
     @@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap');
 
     *, *::before, *::after {
@@ -112,14 +110,24 @@
         height: 100%
     }
 
-    body {
+    /* body {
         margin: 0;
         background: var(--bg);
         color: var(--ink);
         font-family: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
         line-height: 1.45;
         transition: background-color 0.3s ease, color 0.3s ease;
+    } */
+    body {
+        margin: 0;
+        background: url("/images/background.jpg") no-repeat center center fixed;
+        background-size: cover;
+        color: var(--ink);
+        font-family: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+        line-height: 1.45;
+        transition: background-color 0.3s ease, color 0.3s ease;
     }
+
 
     h1, h2, h3 {
         font-family: "Outfit", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
@@ -130,7 +138,6 @@
         display: block
     }
 
-    /* NAV (if used elsewhere) */
     .nav {
         background: var(--nav);
         border-bottom: 1px solid var(--panel-ring);
@@ -154,7 +161,7 @@
 
     .grid {
         display: grid;
-        grid-template-columns: 1fr; /* stacked layout */
+        grid-template-columns: 1fr;
         gap: clamp(16px, 3vw, 28px);
         padding-block: clamp(18px, 4vw, 36px);
     }
@@ -175,30 +182,37 @@
         right: 50%;
         margin-left: -50vw;
         margin-right: -50vw;
-        width: 100vw; /* stretch edge-to-edge */
+        width: 100vw;
         border-radius: 0;
         padding-block: clamp(18px, 4vw, 40px);
         border: 0;
-        box-shadow: none; /* cleaner band look */
+        box-shadow: none;
     }
 
     .hero.full-bleed {
-        background: linear-gradient(180deg, color-mix(in oklab, var(--accent) 8%, #fff) 0%, #fff 30%);
+        /* full-bleed band already set by .full-bleed */
+        position: relative;
+        /* put the image on the hero itself */
+        background: url("/images/background.jpg") no-repeat center center;
+        background-size: cover;
+        /* optional: keep it fixed for a nice parallax feel (remove if you prefer scroll) */
+        background-attachment: fixed;
+        /* give the hero some height so the image shows off */
+        min-height: clamp(360px, 60vh, 720px);
+        display: grid;
+        place-items: center; /* vertically center inner content */
     }
 
-    /* Inner wrapper that recenters content within the full-bleed */
     .band-inner {
         width: var(--container);
         margin-inline: auto;
         padding-inline: clamp(12px, 3vw, 24px);
     }
 
-    /* ---------- CENTERING ---------- */
     .center-block {
         text-align: center;
     }
 
-    /* Hero heading tweaks */
     .hero h1 {
         font-size: clamp(28px, 6.5vw, 64px);
         font-weight: 800;
@@ -215,14 +229,14 @@
         margin: 6px 0 18px;
     }
 
-    /* Tiles: centered grid + centered cards */
+    /* Tiles */
     .tiles {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: clamp(12px, 2.2vw, 18px);
-        max-width: 920px; /* comfortable width */
-        margin-inline: auto; /* center the grid block */
-        justify-items: center; /* center each tile */
+        max-width: 920px;
+        margin-inline: auto;
+        justify-items: center;
     }
 
     .tile {
@@ -254,57 +268,6 @@
             font-size: .95rem
         }
 
-    /* CTA */
-    .cta-wrap {
-        display: flex;
-        justify-content: center;
-        padding: clamp(12px, 3vw, 18px);
-    }
-
-    .cta {
-        display: inline-block;
-        text-decoration: none;
-        text-align: center;
-        font-weight: 700;
-        letter-spacing: 0.3px;
-        font-family: 'Segoe UI', 'Lexend', sans-serif;
-        padding: 14px 28px;
-        border-radius: 999px;
-        min-width: 260px;
-        color: #fff;
-        background: #F17300;
-        border: none;
-        box-shadow: 0 3px 10px rgba(123,108,255,0.4);
-        transition: all .25s ease-in-out;
-        cursor: pointer;
-        animation: cta-pulse 3s infinite ease-in-out;
-    }
-
-        .cta:hover {
-            transform: translateY(-2px);
-            background: linear-gradient(135deg, #6c5cff, #48c9ff);
-            box-shadow: 0 6px 16px rgba(90,209,255,0.45);
-        }
-
-        .cta:active {
-            transform: scale(0.97);
-            box-shadow: 0 2px 6px rgba(90,209,255,0.3);
-        }
-
-    @@keyframes cta-pulse {
-        0% {
-            box-shadow: 0 0 0 rgba(90,209,255,.6);
-        }
-
-        70% {
-            box-shadow: 0 0 14px rgba(90,209,255,.4);
-        }
-
-        100% {
-            box-shadow: 0 0 0 rgba(90,209,255,0);
-        }
-    }
-
     /* FOOTER */
     .foot {
         border-top: 1px solid var(--panel-ring);
@@ -326,6 +289,21 @@
             left: 0;
             right: 0;
             width: auto;
+        }
+    }
+
+    /* (Optional, unused now) CTA animation — escaped at-rule so Razor doesn't choke */
+    @@keyframes cta-pulse {
+        0% {
+            box-shadow: 0 0 0 rgba(90,209,255,.6);
+        }
+
+        70% {
+            box-shadow: 0 0 14px rgba(90,209,255,.4);
+        }
+
+        100% {
+            box-shadow: 0 0 0 rgba(90,209,255,0);
         }
     }
 </style>

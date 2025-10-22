@@ -110,9 +110,14 @@
 <nav class="cl-nav">
     <div class="container nav-row">
         <!-- Brand -->
+        <!-- Brand -->
         <a class="brand" href="/landing">
-            <h1 id="mainTitle">Campus<span>Learn</span></h1>
+            <div class="brand-content">
+                <img src="/images/logo.jpg" alt="CampusLearn Logo" class="brand-logo" />
+                <h1 id="mainTitle">Campus<span>Learn</span></h1>
+            </div>
         </a>
+
 
         <!-- Right controls: avatar then burger (burger far right) -->
         <div class="nav-actions">
@@ -377,4 +382,18 @@
             grid-template-columns: auto auto;
         }
     }
+
+    .brand-content {
+        display: flex;
+        align-items: center;
+        gap: 10px; /* spacing between logo and text */
+    }
+
+    .brand-logo {
+        height: 42px;
+        width: auto;
+        border-radius: 8px; /* optional: soft corner if your logo is square */
+        object-fit: contain;
+    }
+
 </style>

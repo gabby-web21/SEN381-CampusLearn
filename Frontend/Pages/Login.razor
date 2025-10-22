@@ -17,13 +17,9 @@
 <main class="login-wrap">
     <section class="login-card">
         <div class="logo" aria-hidden="true">
-            <svg viewBox="0 0 64 64" width="38" height="38" role="img" focusable="false">
-                <g stroke="#2D3034" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M42 14c-4-4-9-6-14-6C15 8 8 15 8 26s7 18 20 18c5 0 10-2 14-6" />
-                    <path d="M56 12v32H34" />
-                </g>
-            </svg>
+            <img src="/images/logoLight.jpg" alt="CampusLearn Logo" class="login-logo" />
         </div>
+
 
         <h1 class="heading">LOGIN</h1>
 
@@ -233,6 +229,35 @@
         .btn {
             width: 70%;
         }
+    }
+    /* === Full-page background image for login page === */
+    body {
+        background: url("/images/background.jpg") no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    /* Make sure the login card sits above the background and overlay */
+    .login-wrap {
+        position: relative;
+        z-index: 1;
+    }
+    /* === Custom logo size for login page === */
+    .login-logo {
+        display: block;
+        margin: 0 auto 8px auto; /* center it and add spacing below */
+        max-width: 100px; /* control logo width */
+        width: 100%; /* responsive scaling */
+        height: auto; /* keep aspect ratio */
+        object-fit: contain; /* no stretching */
+    }
+
+    @@media (max-width: 520px) {
+        .login-logo
+
+    {
+        max-width: 80px; /* smaller logo on phones */
+    }
+
     }
 </style>
 
