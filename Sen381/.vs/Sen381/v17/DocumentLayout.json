@@ -1,15 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\SEN381-CampusLearn\\Sen381\\",
+  "WorkspaceRootPath": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Sen381\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\user\\source\\repos\\sen381-campuslearn\\frontend\\shared\\navigation.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\peers.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\user\\source\\repos\\sen381-campuslearn\\frontend\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\messages.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\user\\source\\repos\\sen381-campuslearn\\frontend\\pages\\signup.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\studentprofile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F71772DD-08CB-4B67-878D-2A90E4D77AEF}|..\\Frontend\\Frontend.csproj|c:\\users\\kaira\\onedrive\\desktop\\sen381 stuff\\the git\\frontend\\pages\\createprofile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,19 +22,61 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Navigation.razor",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\SEN381-CampusLearn\\Frontend\\Shared\\Navigation.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Shared\\Navigation.razor",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\SEN381-CampusLearn\\Frontend\\Shared\\Navigation.razor*",
-              "RelativeToolTip": "..\\Frontend\\Shared\\Navigation.razor*",
-              "ViewState": "AgIAAG8BAAAAAAAAAAAUwJQBAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "StudentProfile.razor",
+              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\StudentProfile.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\StudentProfile.razor",
+              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\StudentProfile.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\StudentProfile.razor",
+              "ViewState": "AgIAADAGAAAAAAAAAAAqwEEGAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-22T15:13:02.36Z",
+              "WhenOpened": "2025-10-22T10:12:31.405Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CreateProfile.razor",
+              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\CreateProfile.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\CreateProfile.razor",
+              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\CreateProfile.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\CreateProfile.razor",
+              "ViewState": "AgIAAKkFAAAAAAAAAAAqwMEFAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-22T14:23:29.164Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Messages.razor",
+              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Messages.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Messages.razor",
+              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Messages.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\Messages.razor",
+              "ViewState": "AgIAADYEAAAAAAAAAAAswE8EAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-22T19:41:38.558Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Peers.razor",
+              "DocumentMoniker": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Peers.razor",
+              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Peers.razor",
+              "ToolTip": "C:\\Users\\kaira\\OneDrive\\Desktop\\SEN381 stuff\\the git\\Frontend\\Pages\\Peers.razor",
+              "RelativeToolTip": "..\\Frontend\\Pages\\Peers.razor",
+              "ViewState": "AgIAAEMCAAAAAAAAAAAswEsCAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-22T19:50:56.365Z",
               "EditorCaption": ""
             },
             {
@@ -40,7 +85,11 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1924764005:0:{13143d73-808b-4a2f-bebb-ccbe9c93fe37}"
             },
             {
               "$type": "Bookmark",
@@ -52,10 +101,6 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
@@ -64,33 +109,7 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SignUp.razor",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\SEN381-CampusLearn\\Frontend\\Pages\\SignUp.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\SignUp.razor",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\SEN381-CampusLearn\\Frontend\\Pages\\SignUp.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\SignUp.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-22T15:06:25.702Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Login.razor",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\SEN381-CampusLearn\\Frontend\\Pages\\Login.razor",
-              "RelativeDocumentMoniker": "..\\Frontend\\Pages\\Login.razor",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\SEN381-CampusLearn\\Frontend\\Pages\\Login.razor",
-              "RelativeToolTip": "..\\Frontend\\Pages\\Login.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-22T15:03:54.74Z",
-              "EditorCaption": ""
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             }
           ]
         }
