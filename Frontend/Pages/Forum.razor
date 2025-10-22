@@ -39,12 +39,41 @@
                             <span class="name">@msg.SenderName</span>
                             <span class="time">@msg.CreatedAt.ToLocalTime().ToString("HH:mm")</span>
                         </div>
+
                         <div class="bubble">
-                            @if (msg.IsFile && msg.FileId != null)
+                            @if (msg.IsFile && !string.IsNullOrEmpty(msg.Content))
                             {
-                                <a href="@msg.Content" target="_blank" style="color:#fff;text-decoration:underline;">
-                                    📎 @(Path.GetFileNameWithoutExtension(msg.Content))
-                                </a>
+                                var lowerUrl = msg.Content.ToLowerInvariant();
+                                var lowerName = msg.FileName?.ToLowerInvariant() ?? "";
+
+                                bool isImage =
+                                lowerName.EndsWith(".png") ||
+                                lowerName.EndsWith(".jpg") ||
+                                lowerName.EndsWith(".jpeg") ||
+                                lowerName.EndsWith(".gif") ||
+                                lowerName.EndsWith(".bmp") ||
+                                lowerUrl.Contains(".png") ||
+                                lowerUrl.Contains(".jpg") ||
+                                lowerUrl.Contains(".jpeg") ||
+                                lowerUrl.Contains(".gif") ||
+                                lowerUrl.Contains(".bmp");
+
+                                if (isImage)
+                                {
+                                    <!-- 🖼️ Inline image preview -->
+                                    <a href="@msg.Content" target="_blank" title="@msg.FileName">
+                                        <img src="@msg.Content"
+                                             alt="@msg.FileName"
+                                             class="chat-image" />
+                                    </a>
+                                }
+                                else
+                                {
+                                    <!-- 📎 File link -->
+                                    <a href="@msg.Content" target="_blank" style="color:#fff;text-decoration:underline;">
+                                        📎 @Path.GetFileNameWithoutExtension(msg.FileName ?? msg.Content)
+                                    </a>
+                                }
                             }
                             else
                             {
@@ -83,7 +112,7 @@
     private List<ForumMessage> messages = new();
     private string newMessage = "";
     private bool isAnonymous = false;
-    private int ForumId = 1; // temporary
+    private int ForumId = 1;
     private int currentUserId;
 
     protected override async Task OnInitializedAsync()
@@ -189,7 +218,8 @@
             SenderName = senderName,
             IsFile = true,
             FileId = fileInfo.FileId,
-            Content = fileInfo.StorageUrl
+            FileName = fileInfo.FileName,
+            Content = fileInfo.SignedUrl
         };
 
         await Http.PostAsJsonAsync("https://localhost:7228/api/ForumChat/send", msg);
@@ -219,6 +249,7 @@
         public string Content { get; set; } = "";
         public bool IsFile { get; set; }
         public int? FileId { get; set; }
+        public string? FileName { get; set; }
         public DateTime CreatedAt { get; set; }
     }
 
@@ -226,8 +257,7 @@
     {
         public int FileId { get; set; }
         public string FileName { get; set; } = "";
-        public string StorageUrl { get; set; } = "";
-        public string UploaderId { get; set; } = "";
+        public string SignedUrl { get; set; } = "";
         public DateTime CreatedAt { get; set; }
     }
 
@@ -240,7 +270,6 @@
 }
 
 <style>
-    /* ===== Scoped tokens so we don’t touch the global nav ===== */
     .forum-scope {
         --ink: #1f2937;
         --muted: #6b7280;
@@ -304,14 +333,6 @@
         margin: 10px 0;
     }
 
-        .msg.anon {
-            display: grid;
-            grid-template-columns: 38px 1fr;
-            gap: 10px;
-            align-items: start;
-            margin: 10px 0;
-        }
-
     .avatar {
         width: 38px;
         height: 38px;
@@ -352,6 +373,19 @@
         line-height: 1.35;
         word-break: break-word;
     }
+
+    .preview-image {
+        max-width: 240px;
+        max-height: 240px;
+        border-radius: 8px;
+        display: block;
+        margin-top: 4px;
+        transition: transform 0.2s ease-in-out;
+    }
+
+        .preview-image:hover {
+            transform: scale(1.05);
+        }
 
     .msg.student .bubble {
         color: #fff;

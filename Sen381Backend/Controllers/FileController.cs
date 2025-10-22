@@ -41,28 +41,24 @@ namespace Sen381Backend.Controllers
 
                 var fileName = $"{Guid.NewGuid()}_{originalName}";
 
-                // ✅ Upload to Supabase storage
+                // ✅ Upload file to private bucket
                 await bucket.Upload(fileBytes, fileName);
 
-                // ✅ Create both public and signed URLs
-                var publicUrl = bucket.GetPublicUrl(fileName);
-                var signedUrl = await bucket.CreateSignedUrl(fileName, 86400);
+                // ✅ Generate signed URL (valid for 7 days)
+                var signedUrl = await bucket.CreateSignedUrl(fileName, 604800);
 
-                // ✅ Save metadata in Supabase table
+                // ✅ Save metadata in DB
                 var uploadedFile = new UploadedFile
                 {
                     UploaderUserId = long.TryParse(User?.FindFirst("sub")?.Value, out var uid) ? uid : 0,
                     FileName = fileName,
                     FileType = input.File.ContentType,
                     SizeBytes = input.File.Length,
-                    StorageLocation = publicUrl ?? signedUrl,
+                    StorageLocation = signedUrl,
                     CreatedAt = DateTime.UtcNow
                 };
 
-                var dbResponse = await client
-                    .From<UploadedFile>()
-                    .Insert(uploadedFile);
-
+                var dbResponse = await client.From<UploadedFile>().Insert(uploadedFile);
                 var inserted = dbResponse.Models.FirstOrDefault();
 
                 if (inserted == null)
@@ -73,23 +69,18 @@ namespace Sen381Backend.Controllers
                         FileId = 0,
                         FileName = fileName,
                         FileType = input.File.ContentType,
-                        PublicUrl = publicUrl,
                         SignedUrl = signedUrl
                     });
                 }
 
                 Console.WriteLine($"✅ Uploaded file '{fileName}' (FileId={inserted.FileId}) successfully.");
-
-                // ✅ Return clean DTO with both URLs
                 return Ok(new
                 {
                     inserted.FileId,
                     inserted.FileName,
                     inserted.FileType,
                     inserted.SizeBytes,
-                    PublicUrl = publicUrl,
                     SignedUrl = signedUrl,
-                    inserted.UploaderUserId,
                     inserted.CreatedAt
                 });
             }
@@ -130,15 +121,15 @@ namespace Sen381Backend.Controllers
                 var originalName = string.IsNullOrWhiteSpace(input.Name)
                     ? input.File.FileName
                     : input.Name;
-
                 var fileName = $"transcript_{Guid.NewGuid()}_{originalName}";
 
                 await bucket.Upload(fileBytes, fileName);
-                var publicUrl = bucket.GetPublicUrl(fileName);
-                var signedUrl = await bucket.CreateSignedUrl(fileName, 3600);
+
+                // ✅ Use signed URL for secure transcript access
+                var signedUrl = await bucket.CreateSignedUrl(fileName, 604800);
 
                 Console.WriteLine($"✅ Uploaded transcript '{fileName}' successfully.");
-                return Ok(new { FileName = fileName, PublicUrl = publicUrl, SignedUrl = signedUrl });
+                return Ok(new { FileName = fileName, SignedUrl = signedUrl });
             }
             catch (Exception ex)
             {
@@ -159,7 +150,7 @@ namespace Sen381Backend.Controllers
                 var client = _supabase.Client;
                 var bucket = client.Storage.From("Transcripts");
 
-                var signedUrl = await bucket.CreateSignedUrl(filePath, 3600);
+                var signedUrl = await bucket.CreateSignedUrl(filePath, 604800);
                 Console.WriteLine($"✅ Generated signed URL for transcript: {filePath}");
                 return Ok(new { signedUrl });
             }
@@ -167,35 +158,6 @@ namespace Sen381Backend.Controllers
             {
                 Console.WriteLine($"❌ [FileController] Error generating transcript URL: {ex.Message}");
                 return StatusCode(500, new { error = ex.Message });
-            }
-        }
-
-        [HttpGet("view-transcript")]
-        public async Task<IActionResult> ViewTranscript([FromQuery] string filePath)
-        {
-            if (string.IsNullOrEmpty(filePath))
-                return BadRequest("File path is required.");
-
-            try
-            {
-                await _supabase.InitializeAsync();
-                var client = _supabase.Client;
-                var bucket = client.Storage.From("Transcripts");
-
-                var fileBytes = await bucket.Download(filePath, (EventHandler<float>?)null);
-
-                if (fileBytes == null || fileBytes.Length == 0)
-                    return NotFound("File not found or empty");
-
-                var result = new FileContentResult(fileBytes, "application/pdf");
-                Response.Headers.Add("Content-Disposition",
-                    "inline; filename=\"" + Path.GetFileName(filePath) + "\"");
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"❌ [FileController] Error viewing transcript: {ex.Message}");
-                return StatusCode(500, $"Error retrieving file: {ex.Message}");
             }
         }
 
