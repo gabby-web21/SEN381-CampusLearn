@@ -62,11 +62,43 @@ namespace Sen381.Business.Services
             var existingTopics = await GetTopicsBySubjectAsync(topic.SubjectId);
             topic.OrderNumber = existingTopics.Count + 1;
 
+            // Ensure TopicId is 0 so Supabase auto-generates it
+            topic.TopicId = 0;
             topic.CreatedAt = DateTime.UtcNow;
             topic.UpdatedAt = DateTime.UtcNow;
 
+            Console.WriteLine($"[TopicService] Inserting topic: SubjectId={topic.SubjectId}, Title='{topic.Title}', OrderNumber={topic.OrderNumber}");
+
             var response = await client.From<TopicDb>().Insert(topic);
-            return response.Models.FirstOrDefault() ?? topic;
+            
+            Console.WriteLine($"[TopicService] Insert response status: {response.ResponseMessage?.StatusCode}");
+            Console.WriteLine($"[TopicService] Insert response content: {response.Content}");
+            Console.WriteLine($"[TopicService] Number of models returned: {response.Models?.Count ?? 0}");
+            
+            var result = response.Models.FirstOrDefault();
+            Console.WriteLine($"[TopicService] Insert result: {(result != null ? $"TopicId={result.TopicId}, Title='{result.Title}'" : "null")}");
+            
+            // If the insert didn't return a proper ID, try to fetch the topic by other means
+            if (result != null && result.TopicId <= 0)
+            {
+                Console.WriteLine($"[TopicService] TopicId is invalid ({result.TopicId}), attempting to fetch by title and subject");
+                try
+                {
+                    var fetchedTopics = await GetTopicsBySubjectAsync(topic.SubjectId);
+                    var matchingTopic = fetchedTopics.FirstOrDefault(t => t.Title == topic.Title);
+                    if (matchingTopic != null && matchingTopic.TopicId > 0)
+                    {
+                        Console.WriteLine($"[TopicService] Found matching topic with valid ID: {matchingTopic.TopicId}");
+                        return matchingTopic;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"[TopicService] Error fetching topics to find valid ID: {ex.Message}");
+                }
+            }
+            
+            return result ?? topic;
         }
 
         /// <summary>

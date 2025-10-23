@@ -1172,6 +1172,25 @@
         public string? ProfilePicturePath { get; set; }
     }
 
+    private class ProfileUpdateRequest
+    {
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public string? Email { get; set; }
+        public string? PhoneNum { get; set; }
+        public string? City { get; set; }
+        public string? Country { get; set; }
+        public string? Timezone { get; set; }
+        public string? Website { get; set; }
+        public string? Program { get; set; }
+        public string? Year { get; set; }
+        public string? About { get; set; }
+        public string? Interests { get; set; }
+        public string? ContactPreference { get; set; }
+        public string? Subjects { get; set; }
+        public string? ProfilePicturePath { get; set; }
+    }
+
     private class BookingSessionVM
     {
         public int BookingId { get; set; }
@@ -1328,27 +1347,86 @@
         isSaving = true; saveMsg = null;
         try
         {
-            var dto = new
+            string? profilePicturePath = profileEdit.ProfilePicturePath;
+            
+            // If there's a preview image (newly uploaded), upload it first
+            if (!string.IsNullOrEmpty(PreviewImageDataUrl))
             {
-                profileEdit.FirstName,
-                profileEdit.LastName,
-                profileEdit.Email,
-                PhoneNum = profileEdit.PhoneNum,
-                profileEdit.City,
-                profileEdit.Country,
-                profileEdit.Timezone,
-                profileEdit.Program,
-                profileEdit.Year,
-                profileEdit.Website,
-                profileEdit.About,
-                Interests = profileEdit.Interests
+                try
+                {
+                    Console.WriteLine("[Frontend] Uploading profile picture...");
+                    
+                    // Convert data URL back to file
+                    var base64Data = PreviewImageDataUrl.Split(',')[1];
+                    var imageBytes = Convert.FromBase64String(base64Data);
+                    
+                    using var content = new MultipartFormDataContent();
+                    using var fileContent = new ByteArrayContent(imageBytes);
+                    fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/jpeg");
+                    
+                    content.Add(fileContent, "file", "profile-picture.jpg");
+                    
+                    var uploadResponse = await Http.PostAsync("api/file/uploadfile", content);
+                    
+                    if (uploadResponse.IsSuccessStatusCode)
+                    {
+                        var uploadResult = await uploadResponse.Content.ReadFromJsonAsync<dynamic>();
+                        var fileName = uploadResult?.GetProperty("fileName").GetString();
+                        var signedUrl = uploadResult?.GetProperty("signedUrl").GetString();
+                        
+                        if (!string.IsNullOrEmpty(fileName) && !string.IsNullOrEmpty(signedUrl))
+                        {
+                            profilePicturePath = signedUrl;
+                            Console.WriteLine($"[Frontend] Profile picture uploaded successfully: {fileName}");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"[Frontend] Failed to upload profile picture: {uploadResponse.StatusCode}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"[Frontend] Error uploading profile picture: {ex.Message}");
+                }
+            }
+            
+            var dto = new ProfileUpdateRequest
+            {
+                FirstName = string.IsNullOrWhiteSpace(profileEdit.FirstName) ? null : profileEdit.FirstName,
+                LastName = string.IsNullOrWhiteSpace(profileEdit.LastName) ? null : profileEdit.LastName,
+                Email = string.IsNullOrWhiteSpace(profileEdit.Email) ? null : profileEdit.Email,
+                PhoneNum = string.IsNullOrWhiteSpace(profileEdit.PhoneNum) ? null : profileEdit.PhoneNum,
+                City = string.IsNullOrWhiteSpace(profileEdit.City) ? null : profileEdit.City,
+                Country = string.IsNullOrWhiteSpace(profileEdit.Country) ? null : profileEdit.Country,
+                Timezone = string.IsNullOrWhiteSpace(profileEdit.Timezone) ? null : profileEdit.Timezone,
+                Program = string.IsNullOrWhiteSpace(profileEdit.Program) ? null : profileEdit.Program,
+                Year = string.IsNullOrWhiteSpace(profileEdit.Year) ? null : profileEdit.Year,
+                Website = string.IsNullOrWhiteSpace(profileEdit.Website) ? null : profileEdit.Website,
+                About = string.IsNullOrWhiteSpace(profileEdit.About) ? null : profileEdit.About,
+                Interests = string.IsNullOrWhiteSpace(profileEdit.Interests) ? null : profileEdit.Interests,
+                ContactPreference = null, // Optional field
+                Subjects = null, // Optional field
+                ProfilePicturePath = profilePicturePath
             };
+            
+            Console.WriteLine($"[Frontend] Sending PUT request to api/Profile/{profileEdit.Id}");
+            Console.WriteLine($"[Frontend] DTO: FirstName={dto.FirstName}, LastName={dto.LastName}, Email={dto.Email}");
+            
             var resp = await Http.PutAsJsonAsync($"api/Profile/{profileEdit.Id}", dto);
-            saveMsg = resp.IsSuccessStatusCode ? "Saved!" : "Could not save. Check API route.";
-
-            // refresh snapshot for Additional Info
-            if (resp.IsSuccessStatusCode)
+            
+            Console.WriteLine($"[Frontend] Response status: {resp.StatusCode}");
+            
+            if (!resp.IsSuccessStatusCode)
             {
+                var errorContent = await resp.Content.ReadAsStringAsync();
+                Console.WriteLine($"[Frontend] Error response: {errorContent}");
+                saveMsg = $"Could not save. Status: {resp.StatusCode}, Error: {errorContent}";
+            }
+            else
+            {
+                saveMsg = "Saved!";
+                // refresh snapshot for Additional Info
                 originalProfile = new EditProfileModel
                 {
                     Id = profileEdit.Id,
@@ -1367,9 +1445,21 @@
                     RoleString = profileEdit.RoleString,
                     ProfilePicturePath = profileEdit.ProfilePicturePath
                 };
+                
+                // Clear preview image after successful save
+                PreviewImageDataUrl = null;
+                
+                // Redirect to student profile page after successful save
+                await Task.Delay(1000); // Give user time to see "Saved!" message
+                Nav.NavigateTo("/studentprofile");
             }
         }
-        catch (Exception ex) { saveMsg = "Save failed."; Console.WriteLine(ex.Message); }
+        catch (Exception ex) 
+        { 
+            saveMsg = $"Save failed: {ex.Message}"; 
+            Console.WriteLine($"[Frontend] Save exception: {ex.Message}");
+            Console.WriteLine($"[Frontend] Stack trace: {ex.StackTrace}");
+        }
         finally { isSaving = false; }
     }
 

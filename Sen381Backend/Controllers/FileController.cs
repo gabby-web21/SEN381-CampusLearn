@@ -141,8 +141,13 @@ namespace Sen381Backend.Controllers
         [HttpGet("get-transcript-url")]
         public async Task<IActionResult> GetTranscriptUrl([FromQuery] string filePath)
         {
+            Console.WriteLine($"🔍 [FileController] GetTranscriptUrl called with filePath: '{filePath}'");
+            
             if (string.IsNullOrEmpty(filePath))
+            {
+                Console.WriteLine("❌ [FileController] File path is null or empty");
                 return BadRequest("File path is required.");
+            }
 
             try
             {
@@ -150,14 +155,85 @@ namespace Sen381Backend.Controllers
                 var client = _supabase.Client;
                 var bucket = client.Storage.From("Transcripts");
 
+                Console.WriteLine($"🔍 [FileController] Attempting to create signed URL for: {filePath}");
                 var signedUrl = await bucket.CreateSignedUrl(filePath, 604800);
-                Console.WriteLine($"✅ Generated signed URL for transcript: {filePath}");
+                
+                if (string.IsNullOrEmpty(signedUrl))
+                {
+                    Console.WriteLine($"❌ [FileController] Failed to generate signed URL for: {filePath}");
+                    return NotFound($"File not found: {filePath}");
+                }
+                
+                // Modify the signed URL to force inline viewing instead of download
+                if (signedUrl.Contains("?"))
+                {
+                    signedUrl += "&inline=true&download=false";
+                }
+                else
+                {
+                    signedUrl += "?inline=true&download=false";
+                }
+                
+                Console.WriteLine($"✅ [FileController] Generated signed URL for transcript: {filePath}");
+                Console.WriteLine($"🔍 [FileController] Modified signed URL: {signedUrl}");
                 return Ok(new { signedUrl });
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"❌ [FileController] Error generating transcript URL: {ex.Message}");
+                Console.WriteLine($"❌ [FileController] Stack trace: {ex.StackTrace}");
                 return StatusCode(500, new { error = ex.Message });
+            }
+        }
+
+        [HttpGet("view/{filePath}")]
+        public async Task<IActionResult> ViewTranscript(string filePath)
+        {
+            Console.WriteLine($"🔍 [FileController] ViewTranscript called with filePath: '{filePath}'");
+            
+            if (string.IsNullOrEmpty(filePath))
+            {
+                Console.WriteLine("❌ [FileController] File path is null or empty");
+                return BadRequest("File path is required.");
+            }
+
+            try
+            {
+                await _supabase.InitializeAsync();
+                var client = _supabase.Client;
+                var bucket = client.Storage.From("Transcripts");
+
+                Console.WriteLine($"🔍 [FileController] Creating signed URL for: {filePath}");
+                
+                // Create signed URL
+                var signedUrl = await bucket.CreateSignedUrl(filePath, 604800);
+                
+                if (string.IsNullOrEmpty(signedUrl))
+                {
+                    Console.WriteLine($"❌ [FileController] Failed to generate signed URL for: {filePath}");
+                    return NotFound($"File not found: {filePath}");
+                }
+                
+                // Add inline parameter to force inline viewing
+                if (signedUrl.Contains("?"))
+                {
+                    signedUrl += "&inline=true&download=false";
+                }
+                else
+                {
+                    signedUrl += "?inline=true&download=false";
+                }
+                
+                Console.WriteLine($"✅ [FileController] Redirecting to signed URL: {signedUrl}");
+                
+                // Redirect to the signed URL
+                return Redirect(signedUrl);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ [FileController] Error viewing transcript: {ex.Message}");
+                Console.WriteLine($"❌ [FileController] Stack trace: {ex.StackTrace}");
+                return StatusCode(500, $"Error viewing transcript: {ex.Message}");
             }
         }
 

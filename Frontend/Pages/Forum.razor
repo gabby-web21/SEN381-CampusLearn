@@ -1,7 +1,9 @@
 ﻿@page "/topichub/forum"
+@page "/topichub/forum/{topicId:int}"
 @layout TopicHubLayout
 @using System.Net.Http.Json
 @using Microsoft.AspNetCore.SignalR.Client
+@using Frontend.Models
 @inject HttpClient Http
 @inject NavigationManager Navigation
 @inject IJSRuntime JS
@@ -9,7 +11,7 @@
 
 <section class="forum-scope forum">
     <h1 class="forum-title">
-        <span class="code">BUM 281</span>
+        <span class="code">@(topicTitle ?? $"Topic {TopicId}")</span>
         <span class="dot">•</span>
         <span class="label">Forum</span>
     </h1>
@@ -32,7 +34,7 @@
                 else if (!msg.SenderName.Equals("Anonymous", StringComparison.OrdinalIgnoreCase))
                     role = "student";
 
-                <div class="msg @role">
+                <div class="msg @role" @onclick="() => ShowReportModal(msg)" style="cursor: pointer;">
                     <div class="avatar">@GetInitials(msg.SenderName)</div>
                     <div class="body">
                         <div class="meta">
@@ -108,37 +110,90 @@
 </section>
 
 @code {
+    [Parameter] public int TopicId { get; set; } = 1; // Default to 1 if no topicId provided
+    
     private HubConnection? hubConnection;
     private List<ForumMessage> messages = new();
     private string newMessage = "";
     private bool isAnonymous = false;
-    private int ForumId = 1;
     private int currentUserId;
+    private string? topicTitle;
 
     protected override async Task OnInitializedAsync()
+    {
+        Console.WriteLine($"[Forum] OnInitializedAsync - TopicId: {TopicId}");
+        await InitializeForum();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        Console.WriteLine($"[Forum] OnParametersSetAsync - TopicId: {TopicId}");
+        // Clear messages when TopicId changes
+        messages.Clear();
+        await InitializeForum();
+    }
+
+    private async Task InitializeForum()
     {
         var user = await AuthService.GetCurrentUserAsync();
         currentUserId = user.UserId;
 
+        // Load topic title
+        await LoadTopicTitle();
+
         await LoadMessages();
+
+        if (hubConnection != null)
+        {
+            await hubConnection.DisposeAsync();
+        }
 
         hubConnection = new HubConnectionBuilder()
             .WithUrl(Navigation.ToAbsoluteUri("https://localhost:7228/forumHub"))
             .WithAutomaticReconnect()
             .Build();
 
+        var uniqueForumId = GetUniqueForumId();
         hubConnection.On<ForumMessage>("ReceiveForumMessage", async (msg) =>
         {
-            messages.Add(msg);
-            await InvokeAsync(StateHasChanged);
+            // Only add message if it's for the current forum
+            if (msg.ForumId == uniqueForumId)
+            {
+                messages.Add(msg);
+                await InvokeAsync(StateHasChanged);
+            }
         });
 
         await hubConnection.StartAsync();
-        await hubConnection.SendAsync("JoinForumGroup", ForumId);
+        await hubConnection.SendAsync("JoinForumGroup", uniqueForumId);
     }
 
     private async Task TriggerFileUpload() =>
         await JS.InvokeVoidAsync("triggerFileInput", "fileInput");
+
+    private async Task LoadTopicTitle()
+    {
+        try
+        {
+            Console.WriteLine($"[Forum] Loading topic title for TopicId: {TopicId}");
+            var topic = await Http.GetFromJsonAsync<TopicInfo>($"https://localhost:7228/api/topic/{TopicId}");
+            if (topic != null)
+            {
+                topicTitle = topic.Title;
+                Console.WriteLine($"[Forum] Loaded topic title: '{topicTitle}'");
+            }
+            else
+            {
+                Console.WriteLine($"[Forum] Topic response was null for TopicId: {TopicId}");
+                topicTitle = $"Topic {TopicId}";
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[Forum] Error loading topic title: {ex.Message}");
+            topicTitle = $"Topic {TopicId}";
+        }
+    }
 
     private async Task<string> GetUserFullName(int id)
     {
@@ -157,7 +212,10 @@
     {
         try
         {
-            var result = await Http.GetFromJsonAsync<List<ForumMessage>>($"https://localhost:7228/api/ForumChat/{ForumId}");
+            // Create unique forum ID by combining subject and topic
+            var forumId = GetUniqueForumId();
+            Console.WriteLine($"[Forum] Loading messages for ForumId: {forumId} (TopicId: {TopicId})");
+            var result = await Http.GetFromJsonAsync<List<ForumMessage>>($"https://localhost:7228/api/ForumChat/{forumId}");
             if (result != null)
                 messages = result;
         }
@@ -165,6 +223,40 @@
         {
             Console.WriteLine($"Error loading messages: {ex.Message}");
         }
+    }
+
+    private int GetUniqueForumId()
+    {
+        // Extract subjectId from URL to create unique forum ID
+        try
+        {
+            var uri = Navigation.ToAbsoluteUri(Navigation.Uri);
+            var queryString = uri.Query;
+            
+            if (!string.IsNullOrEmpty(queryString) && queryString.Contains("subjectId="))
+            {
+                var cleanQuery = queryString.TrimStart('?');
+                var subjectIdParam = cleanQuery.Split('&')
+                    .FirstOrDefault(p => p.StartsWith("subjectId="))
+                    ?.Split('=')[1];
+                
+                if (!string.IsNullOrEmpty(subjectIdParam) && int.TryParse(subjectIdParam, out int subjectId))
+                {
+                    // Create unique forum ID: subjectId * 10000 + topicId
+                    // This ensures each topic in each subject has a unique forum ID
+                    var uniqueForumId = subjectId * 10000 + TopicId;
+                    Console.WriteLine($"[Forum] Generated unique ForumId: {uniqueForumId} (SubjectId: {subjectId}, TopicId: {TopicId})");
+                    return uniqueForumId;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[Forum] Error generating unique forum ID: {ex.Message}");
+        }
+        
+        // Fallback to TopicId if we can't extract subjectId
+        return TopicId;
     }
 
     private async Task SendMessage()
@@ -178,7 +270,7 @@
 
         var message = new ForumMessage
         {
-            ForumId = ForumId,
+            ForumId = GetUniqueForumId(),
             SenderId = currentUserId,
             SenderName = senderName,
             Content = newMessage,
@@ -213,7 +305,7 @@
 
         var msg = new ForumMessage
         {
-            ForumId = ForumId,
+            ForumId = GetUniqueForumId(),
             SenderId = currentUserId,
             SenderName = senderName,
             IsFile = true,
@@ -267,7 +359,46 @@
         public string FirstName { get; set; } = "";
         public string LastName { get; set; } = "";
     }
+
+    public class TopicInfo
+    {
+        public int TopicId { get; set; }
+        public string Title { get; set; } = "";
+        public string? Description { get; set; }
+    }
+
+    // Reporting functionality
+    private bool showReportModal = false;
+    private MessageReportData? reportData;
+
+    private async Task ShowReportModal(ForumMessage message)
+    {
+        reportData = new MessageReportData
+        {
+            MessageId = message.MessageId.ToString(),
+            MessageContent = message.Content ?? "",
+            ReportedUserId = message.SenderId,
+            SenderName = message.SenderName ?? "Unknown",
+            MessageType = "forum",
+            ContextUrl = Navigation.Uri
+        };
+        showReportModal = true;
+        StateHasChanged();
+    }
+
+    private async Task OnReportSubmitted()
+    {
+        showReportModal = false;
+        reportData = null;
+        StateHasChanged();
+    }
 }
+
+<!-- Report Modal -->
+<ReportMessageModal IsVisible="showReportModal" 
+                   IsVisibleChanged="(value) => showReportModal = value" 
+                   ReportData="reportData" 
+                   OnReportSubmitted="OnReportSubmitted" />
 
 <style>
     .forum-scope {

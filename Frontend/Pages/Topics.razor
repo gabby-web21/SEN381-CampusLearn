@@ -305,7 +305,7 @@ private List<TopicVM> topics = new();
             }
 
             var uploadResult = await uploadResponse.Content.ReadFromJsonAsync<dynamic>();
-            var transcriptPath = uploadResult?.GetProperty("filePath").GetString();
+            var transcriptPath = uploadResult?.GetProperty("fileName").GetString();
 
             if (string.IsNullOrEmpty(transcriptPath))
             {
@@ -352,6 +352,7 @@ private List<TopicVM> topics = new();
         while (b >= 1024 && i < u.Length - 1) { b /= 1024; i++; }
         return $"{b:0.#} {u[i]}";
     }
+
 }
 
 <style>
@@ -516,6 +517,7 @@ private List<TopicVM> topics = new();
     background: #fff;
     color: var(--rose);
 }
+
 
 .no-topics {
     grid-column: 1 / -1;

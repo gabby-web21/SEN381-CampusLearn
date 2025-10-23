@@ -116,6 +116,14 @@ namespace Sen381Backend.Controllers
 
                 var createdTopic = await _topicService.CreateTopicAsync(topic);
                 
+                Console.WriteLine($"[TopicController] Created topic result: TopicId={createdTopic.TopicId}, Title='{createdTopic.Title}'");
+                
+                if (createdTopic.TopicId <= 0)
+                {
+                    Console.WriteLine($"[TopicController] ERROR: Created topic has invalid TopicId: {createdTopic.TopicId}");
+                    return StatusCode(500, new { error = "Failed to create topic - invalid ID returned" });
+                }
+                
                 var topicDto = new TopicDto
                 {
                     TopicId = createdTopic.TopicId,
@@ -128,6 +136,7 @@ namespace Sen381Backend.Controllers
                     UpdatedAt = createdTopic.UpdatedAt
                 };
                 
+                Console.WriteLine($"[TopicController] Returning topic DTO with TopicId: {topicDto.TopicId}");
                 return CreatedAtAction(nameof(GetTopic), new { id = createdTopic.TopicId }, topicDto);
             }
             catch (Exception ex)
@@ -145,22 +154,40 @@ namespace Sen381Backend.Controllers
         {
             try
             {
+                Console.WriteLine($"[TopicController] Received UpdateTopic request: ID={id}, Title='{dto?.Title}', IsActive={dto?.IsActive}");
+                
+                if (dto == null)
+                    return BadRequest(new { error = "Invalid topic data" });
+                
                 var existingTopic = await _topicService.GetTopicByIdAsync(id);
                 if (existingTopic == null)
+                {
+                    Console.WriteLine($"[TopicController] Topic {id} not found");
                     return NotFound(new { error = "Topic not found" });
+                }
 
                 if (string.IsNullOrWhiteSpace(dto.Title))
                     return BadRequest(new { error = "Topic title is required" });
 
                 // Check if topic title already exists within the subject (excluding current topic)
-                if (await _topicService.TopicTitleExistsAsync(existingTopic.SubjectId, dto.Title, id))
+                var titleExists = await _topicService.TopicTitleExistsAsync(existingTopic.SubjectId, dto.Title, id);
+                Console.WriteLine($"[TopicController] Title '{dto.Title}' exists in subject {existingTopic.SubjectId}: {titleExists}");
+                
+                if (titleExists)
                     return BadRequest(new { error = "Topic title already exists in this subject" });
 
                 existingTopic.Title = dto.Title.Trim();
                 existingTopic.Description = dto.Description?.Trim();
                 existingTopic.IsActive = dto.IsActive;
 
+                Console.WriteLine($"[TopicController] Updating topic {id} with title: '{existingTopic.Title}'");
                 var updatedTopic = await _topicService.UpdateTopicAsync(existingTopic);
+                
+                if (updatedTopic == null)
+                {
+                    Console.WriteLine($"[TopicController] UpdateTopicAsync returned null for topic {id}");
+                    return StatusCode(500, new { error = "Failed to update topic in database" });
+                }
                 
                 var topicDto = new TopicDto
                 {
@@ -174,11 +201,13 @@ namespace Sen381Backend.Controllers
                     UpdatedAt = updatedTopic.UpdatedAt
                 };
                 
+                Console.WriteLine($"[TopicController] Successfully updated topic {id} with title: '{topicDto.Title}'");
                 return Ok(topicDto);
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"[TopicController] Error updating topic {id}: {ex.Message}");
+                Console.WriteLine($"[TopicController] Stack trace: {ex.StackTrace}");
                 return StatusCode(500, new { error = "Failed to update topic" });
             }
         }

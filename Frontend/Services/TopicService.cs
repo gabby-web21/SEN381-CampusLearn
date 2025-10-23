@@ -89,16 +89,27 @@ namespace Frontend.Services
         {
             try
             {
+                Console.WriteLine($"[TopicService] Sending PUT request to api/topic/{topicId} with DTO: Title='{dto.Title}', IsActive={dto.IsActive}");
+                
                 var response = await _httpClient.PutAsJsonAsync($"api/topic/{topicId}", dto);
+                
+                Console.WriteLine($"[TopicService] Received response status: {response.StatusCode}");
+                
                 if (!response.IsSuccessStatusCode)
                 {
                     var errorContent = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine($"[TopicService] Error updating topic: {errorContent}");
+                    Console.WriteLine($"[TopicService] Error updating topic: Status={response.StatusCode}, Content={errorContent}");
                     return null;
                 }
 
                 var result = await response.Content.ReadFromJsonAsync<TopicDto>();
-                if (result == null) return null;
+                if (result == null) 
+                {
+                    Console.WriteLine($"[TopicService] Response content was null");
+                    return null;
+                }
+
+                Console.WriteLine($"[TopicService] Successfully parsed response: TopicId={result.TopicId}, Title='{result.Title}'");
 
                 return new TopicVM
                 {
@@ -110,7 +121,8 @@ namespace Frontend.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"[TopicService] Error updating topic: {ex.Message}");
+                Console.WriteLine($"[TopicService] Exception updating topic: {ex.Message}");
+                Console.WriteLine($"[TopicService] Stack trace: {ex.StackTrace}");
                 return null;
             }
         }

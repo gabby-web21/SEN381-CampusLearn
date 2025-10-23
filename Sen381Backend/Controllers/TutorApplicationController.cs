@@ -26,6 +26,19 @@ namespace Sen381Backend.Controllers
         {
             try
             {
+                // Validate required fields
+                if (input == null)
+                    return BadRequest(new TutorApplicationResponse { Success = false, Message = "Application data is required" });
+                
+                if (input.UserId <= 0)
+                    return BadRequest(new TutorApplicationResponse { Success = false, Message = "Valid user ID is required" });
+                
+                if (input.SubjectId <= 0)
+                    return BadRequest(new TutorApplicationResponse { Success = false, Message = "Valid subject ID is required" });
+                
+                if (string.IsNullOrWhiteSpace(input.TranscriptPath))
+                    return BadRequest(new TutorApplicationResponse { Success = false, Message = "Transcript file is required" });
+
                 await _supabase.InitializeAsync();
                 var client = _supabase.Client;
 
@@ -50,7 +63,7 @@ namespace Sen381Backend.Controllers
                     .Get();
 
                 if (existingResponse.Models.Any())
-                    return BadRequest(new TutorApplicationResponse { Success = false, Message = "You already have a pending tutor application for this subject" });
+                    return BadRequest(new TutorApplicationResponse { Success = false, Message = "You already have a pending application for this subject" });
 
                 // Check if user is already an approved tutor for this subject
                 var existingTutorResponse = await client
@@ -100,7 +113,15 @@ namespace Sen381Backend.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine($"[TutorApplicationController] Error (SubmitApplication): {ex.Message}");
-                return StatusCode(500, new TutorApplicationResponse { Success = false, Message = "Internal server error" });
+                Console.WriteLine($"[TutorApplicationController] Stack trace: {ex.StackTrace}");
+                
+                // Provide more specific error messages based on the exception type
+                if (ex.Message.Contains("key was not present in the dictionary"))
+                {
+                    return StatusCode(500, new TutorApplicationResponse { Success = false, Message = "Error submitting application: Missing required data. Please ensure all fields are properly filled." });
+                }
+                
+                return StatusCode(500, new TutorApplicationResponse { Success = false, Message = $"Error submitting application: {ex.Message}" });
             }
         }
 

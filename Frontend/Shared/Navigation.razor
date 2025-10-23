@@ -1,5 +1,6 @@
 ﻿@using Frontend.Services
 @inherits LayoutComponentBase
+@implements IDisposable
 @inject NavigationManager Nav
 @inject AuthService AuthService
 @inject IJSRuntime _js
@@ -10,6 +11,8 @@
     private bool IsAdmin = false;
     private UserRole Role = UserRole.Student;
     private bool IsMenuOpen;
+    private bool IsLoggedIn = false;
+    private System.Threading.Timer? _refreshTimer;
 
     protected override async Task OnInitializedAsync()
     {
@@ -21,18 +24,48 @@
         if (firstRender)
         {
             await CheckUserRole();
+            
+            // Start a timer to periodically check login state
+            _refreshTimer = new System.Threading.Timer(async _ => 
+            {
+                await InvokeAsync(async () => 
+                {
+                    await CheckUserRole();
+                });
+            }, null, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(2));
         }
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        // Check user role whenever parameters change (like when navigating)
+        await CheckUserRole();
     }
 
     private async Task CheckUserRole()
     {
         try
         {
+            // First check if user is logged in via session storage
+            var isLoggedInFlag = await AuthService.IsUserLoggedInAsync();
+            Console.WriteLine($"[Navigation] IsLoggedIn flag: {isLoggedInFlag}");
+            
+            if (!isLoggedInFlag)
+            {
+                IsLoggedIn = false;
+                Role = UserRole.Unknown;
+                IsAdmin = false;
+                Console.WriteLine($"[Navigation] User not logged in according to session storage");
+                StateHasChanged();
+                return;
+            }
+
             var currentUser = await AuthService.GetCurrentUserAsync();
             Console.WriteLine($"[Navigation] Current user: {currentUser?.UserId}, Role: '{currentUser?.Role}'");
             
             if (currentUser != null && !string.IsNullOrEmpty(currentUser.Role))
             {
+                IsLoggedIn = true;
                 Role = currentUser.Role.ToLower() switch
                 {
                     "admin" => UserRole.Admin,
@@ -41,11 +74,14 @@
                     _ => UserRole.Unknown
                 };
                 IsAdmin = Role == UserRole.Admin;
-                Console.WriteLine($"[Navigation] Set Role: {Role}, IsAdmin: {IsAdmin}");
+                Console.WriteLine($"[Navigation] Set Role: {Role}, IsAdmin: {IsAdmin}, IsLoggedIn: {IsLoggedIn}");
             }
             else
             {
-                Console.WriteLine($"[Navigation] No user or role found");
+                IsLoggedIn = false;
+                Role = UserRole.Unknown;
+                IsAdmin = false;
+                Console.WriteLine($"[Navigation] No user or role found - user not logged in");
             }
             
             StateHasChanged(); // Force re-render to update the UI
@@ -53,6 +89,10 @@
         catch (Exception ex)
         {
             Console.WriteLine($"[Navigation] Error checking user role: {ex.Message}");
+            IsLoggedIn = false;
+            Role = UserRole.Unknown;
+            IsAdmin = false;
+            StateHasChanged();
         }
     }
 
@@ -64,11 +104,38 @@
         Nav.NavigateTo(path);
     }
 
+    private async Task HandleLogout()
+    {
+        try
+        {
+            // Clear session storage
+            await AuthService.LogoutAsync();
+            
+            // Close the menu
+            IsMenuOpen = false;
+            
+            // Navigate to landing page
+            Nav.NavigateTo("/");
+            
+            Console.WriteLine("[Navigation] User logged out successfully");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[Navigation] Error during logout: {ex.Message}");
+        }
+    }
+
     // Public method to refresh user role (can be called from other components)
     public async Task RefreshUserRoleAsync()
     {
         await CheckUserRole();
     }
+
+    public void Dispose()
+    {
+        _refreshTimer?.Dispose();
+    }
+
 
     // Temporary test method - remove in production
     private async Task TestAdminRole()
@@ -116,51 +183,57 @@
         </a>
 
 
-        <!-- Right controls: avatar then burger (burger far right) -->
-        <div class="nav-actions">
-            <!-- round avatar (role ring) -->
-            <button class="user-avatar @AvatarGradientClass"
-                    title="My profile"
-                    @onclick="@(() => Nav.NavigateTo("/studentprofile"))">
-            </button>
+        <!-- Right controls: avatar then burger (burger far right) - only show when logged in -->
+        @if (IsLoggedIn)
+        {
+            <div class="nav-actions">
+                <!-- round avatar (role ring) -->
+                <button class="user-avatar @AvatarGradientClass"
+                        title="My profile"
+                        @onclick="@(() => Nav.NavigateTo("/studentprofile"))">
+                </button>
 
-            <button class="hamburger @(IsMenuOpen ? "active" : "")"
-                    aria-label="Menu"
-                    aria-expanded="@IsMenuOpen.ToString().ToLowerInvariant()"
-                    type="button"
-                    @onclick="ToggleMenu">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
+                <button class="hamburger @(IsMenuOpen ? "active" : "")"
+                        aria-label="Menu"
+                        aria-expanded="@IsMenuOpen.ToString().ToLowerInvariant()"
+                        type="button"
+                        @onclick="ToggleMenu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        }
     </div>
 </nav>
 
-<!-- Backdrop (sits ABOVE the top bar) -->
-<button class="backdrop"
-        type="button"
-        data-open="@IsMenuOpen.ToString().ToLowerInvariant()"
-        @onclick="ToggleMenu"></button>
+@if (IsLoggedIn)
+{
+    <!-- Backdrop (sits ABOVE the top bar) -->
+    <button class="backdrop"
+            type="button"
+            data-open="@IsMenuOpen.ToString().ToLowerInvariant()"
+            @onclick="ToggleMenu"></button>
 
-<!-- Slide-out Drawer (z-index > nav) -->
-<aside class="drawer" data-open="@IsMenuOpen.ToString().ToLowerInvariant()">
-    <nav class="drawer-nav">
-        <a @onclick='() => NavigateTo("/dashboard")'>Dashboard</a>
-        <a @onclick='() => NavigateTo("/subjects")'>Subjects</a>
-        <a @onclick='() => NavigateTo("/peers")'>Peers</a>
-        <a @onclick='() => NavigateTo("/messages")'>Messages</a>
-        <a @onclick='() => NavigateTo("/claratea")'>Ask ClaraTea</a>
+    <!-- Slide-out Drawer (z-index > nav) -->
+    <aside class="drawer" data-open="@IsMenuOpen.ToString().ToLowerInvariant()">
+        <nav class="drawer-nav">
+            <a @onclick='() => NavigateTo("/dashboard")'>Dashboard</a>
+            <a @onclick='() => NavigateTo("/subjects")'>Subjects</a>
+            <a @onclick='() => NavigateTo("/peers")'>Peers</a>
+            <a @onclick='() => NavigateTo("/messages")'>Messages</a>
+            <a @onclick='() => NavigateTo("/claratea")'>Ask ClaraTea</a>
 
-        @if (IsAdmin)
-        {
-            <a @onclick='() => NavigateTo("/adminprofile")'>Admin</a>
-        }
+            @if (IsAdmin)
+            {
+                <a @onclick='() => NavigateTo("/adminprofile")'>Admin</a>
+            }
 
-        @* Temporary test button - remove in production *@
-        <a @onclick='TestAdminRole' style="background: #ff6b6b; color: white;">TEST: Toggle Admin</a>
+            @* Temporary test button - remove in production *@
+            <a @onclick='TestAdminRole' style="background: #ff6b6b; color: white;">TEST: Toggle Admin</a>
 
-        <a @onclick='() => NavigateTo("/")'>Logout</a>
-    </nav>
-</aside>
+            <a @onclick='HandleLogout'>Logout</a>
+        </nav>
+    </aside>
+}
 
 <main class="page-body">
     @Body

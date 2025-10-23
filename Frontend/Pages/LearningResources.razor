@@ -1,7 +1,10 @@
 ﻿@page "/topichub/resources"
+@page "/topichub/resources/{topicId:int}"
 @layout TopicHubLayout
+@inject NavigationManager Nav
 
-<section class="lr-scope lr">
+<CascadingValue Value="@CurrentTopicId">
+    <section class="lr-scope lr">
     <header class="lr-head">
         <h1 class="lr-title">
             <span class="code">BUM 281</span>
@@ -70,8 +73,13 @@
         }
     </section>
 </section>
+</CascadingValue>
 
 @code {
+    // ------- parameters -------
+    [Parameter] public int TopicId { get; set; } = 1; // Default to 1 if no topicId provided
+    private int CurrentTopicId = 1; // Default to 1 if no topicId provided
+
     // ------- data model -------
     private record ResourceItem(
         string Title,
@@ -145,6 +153,12 @@
 
     private static string FormatDuration(TimeSpan ts)
         => ts.TotalHours >= 1 ? $"{(int)ts.TotalHours}h {ts.Minutes}m" : $"{ts.Minutes}m";
+
+    protected override void OnInitialized()
+    {
+        // Set the current topic ID from the parameter
+        CurrentTopicId = TopicId;
+    }
 }
 <style>
     /* scoped theme */

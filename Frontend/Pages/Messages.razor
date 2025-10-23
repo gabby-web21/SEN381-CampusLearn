@@ -4,6 +4,7 @@
 @using Sen381.Business.Models
 @using Frontend.Services
 @using Microsoft.AspNetCore.Components.Forms
+@using Frontend.Models
 @inject HttpClient Http
 @inject IJSRuntime JS
 @inject AuthService AuthService
@@ -611,7 +612,9 @@
                             }
                         }
 
-                        <div class="message-row @(isOutgoing ? "outgoing" : "incoming")">
+                        <div class="message-row @(isOutgoing ? "outgoing" : "incoming")" 
+                             @onclick="() => ShowReportModal(msg)" 
+                             style="cursor: pointer;">
                             <div class="message-bubble @(isOutgoing ? "outgoing-bubble" : "incoming-bubble")">
                                 @if (isAttachment && !string.IsNullOrEmpty(attachUrl))
                                 {
@@ -1100,4 +1103,36 @@
         ConversationMessages = new List<DirectMessage>(); // standard "No messages yet" state
         StateHasChanged();
     }
+
+    // Reporting functionality
+    private bool showReportModal = false;
+    private MessageReportData? reportData;
+
+    private async Task ShowReportModal(DirectMessage message)
+    {
+        reportData = new MessageReportData
+        {
+            MessageId = message.Id.ToString(),
+            MessageContent = message.MessageText ?? "",
+            ReportedUserId = message.SenderId,
+            SenderName = SelectedUser?.FirstName + " " + SelectedUser?.LastName ?? "Unknown",
+            MessageType = "messages",
+            ContextUrl = NavigationManager.Uri
+        };
+        showReportModal = true;
+        StateHasChanged();
+    }
+
+    private async Task OnReportSubmitted()
+    {
+        showReportModal = false;
+        reportData = null;
+        StateHasChanged();
+    }
 }
+
+<!-- Report Modal -->
+<ReportMessageModal IsVisible="showReportModal" 
+                   IsVisibleChanged="(value) => showReportModal = value" 
+                   ReportData="reportData" 
+                   OnReportSubmitted="OnReportSubmitted" />

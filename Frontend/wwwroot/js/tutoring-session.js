@@ -56,6 +56,10 @@ window.initializeMedia = async function() {
 
         console.log('[TutoringSession] User media obtained:', localStream);
 
+        // Initialize peer connection after getting media
+        await initializePeerConnection();
+        console.log('[TutoringSession] Peer connection initialized');
+
         // Wait for DOM to be ready and retry if element not found
         let localVideo = document.getElementById('localVideo');
         let retryCount = 0;
@@ -397,6 +401,10 @@ function simulateRemoteConnection() {
 
 // WebRTC signaling functions
 async function createOffer() {
+    console.log('[TutoringSession] createOffer called');
+    console.log('[TutoringSession] peerConnection exists:', !!peerConnection);
+    console.log('[TutoringSession] otherUserConnectionId:', otherUserConnectionId);
+    
     if (!peerConnection || !otherUserConnectionId) {
         console.log('[TutoringSession] Cannot create offer: peerConnection or otherUserConnectionId not available');
         return;
@@ -409,8 +417,9 @@ async function createOffer() {
         
         console.log('[TutoringSession] Sending offer to', otherUserConnectionId);
         if (blazorComponent) {
-            blazorComponent.invokeMethodAsync('SendOffer', otherUserConnectionId, offer);
+            await blazorComponent.invokeMethodAsync('SendOffer', otherUserConnectionId, offer);
         }
+        console.log('[TutoringSession] Offer sent successfully');
     } catch (error) {
         console.error('[TutoringSession] Error creating offer:', error);
     }
@@ -498,7 +507,9 @@ window.initializeSignalRConnection = async function(sessionId) {
             console.log('[TutoringSession] User joined:', connectionId);
             // Ignore our own join event
             const selfId = signalRConnection.connectionId || signalRConnection.connection?.connectionId;
+            console.log('[TutoringSession] Self ID:', selfId, 'Joined ID:', connectionId);
             if (connectionId === selfId) {
+                console.log('[TutoringSession] Ignoring own join event');
                 return;
             }
             if (blazorComponent) {
@@ -531,6 +542,7 @@ window.initializeSignalRConnection = async function(sessionId) {
         // Start connection
         await signalRConnection.start();
         console.log('[TutoringSession] SignalR connection started');
+        console.log('[TutoringSession] Connection ID:', signalRConnection.connectionId);
 
         // Join session
         await signalRConnection.invoke("JoinSession", sessionId);
@@ -563,14 +575,18 @@ window.sendIceCandidateViaSignalR = async function(sessionId, targetConnectionId
 // Handle user joined/left events
 window.handleUserJoined = function(connectionId) {
     console.log('[TutoringSession] Handling user joined:', connectionId);
+    console.log('[TutoringSession] Current otherUserConnectionId:', otherUserConnectionId);
     if (!otherUserConnectionId) {
         otherUserConnectionId = connectionId;
         isInitiator = true;
         console.log('[TutoringSession] Setting as initiator, creating offer...');
+        console.log('[TutoringSession] Peer connection exists:', !!peerConnection);
         // Create offer when another user joins
         setTimeout(() => {
             createOffer();
         }, 1000);
+    } else {
+        console.log('[TutoringSession] Already have another user connected:', otherUserConnectionId);
     }
 };
 

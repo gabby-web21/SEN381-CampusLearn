@@ -140,9 +140,9 @@
                 <div class="card-body">
                     <ul class="tips">
                         <li>Log in daily to keep Noodle happy.</li>
-                        <li>Feed bamboo when hunger is low.</li>
-                        <li>Let Noodle roll around when energy is high.</li>
-                        <li>Give belly rubs for instant happiness boost.</li>
+                        <li>Feed cookie when hunger is low.</li>
+                        <li>Let Noodle play when happiness is low</li>
+                        <li>Give pets for instant happiness boost.</li>
                     </ul>
                     <div class="noodle-actions side">
                         <button class="noodle-action" @onclick="FeedNoodle"><span>🍎</span><strong>Feed</strong></button>
@@ -1295,6 +1295,32 @@ else
             }, iv);
         }, 100);
     };
+
+    window.playPettingAnimationWithDelay = function(componentRef) {
+        const sprite = document.getElementById('noodle-sprite');
+        if (!sprite) return;
+        setTimeout(() => {
+            const frames = [
+                '/images/Noodle petting/Noodle-petting-1.png','/images/Noodle petting/Noodle-petting-2.png','/images/Noodle petting/Noodle-petting-3.png',
+                '/images/Noodle petting/Noodle-petting-4.png','/images/Noodle petting/Noodle-petting-5.png','/images/Noodle petting/Noodle-petting-6.png',
+                '/images/Noodle petting/Noodle-petting-7.png','/images/Noodle petting/Noodle-petting-8.png','/images/Noodle petting/Noodle-petting-9.png'
+            ];
+            let i = 0, loops = 0, maxLoops = 2, iv = 80;
+            const h = setInterval(() => {
+                sprite.src = frames[i++];
+                if (i >= frames.length) {
+                    i = 0;
+                    if (++loops >= maxLoops) {
+                        clearInterval(h);
+                        setTimeout(() => {
+                            sprite.src = '/images/Noodle idle frame.png';
+                            if (componentRef) componentRef.invokeMethodAsync('UpdateEnergyAfterPetting');
+                        }, iv);
+                    }
+                }
+            }, iv);
+        }, 100);
+    };
 </script>
 
 @code {
@@ -1363,6 +1389,9 @@ else
             if (!response.IsSuccessStatusCode) { Console.WriteLine($"⚠️ Failed to load profile data. Status: {response.StatusCode}"); return; }
 
             currentUser = await response.Content.ReadFromJsonAsync<User>();
+
+            Console.WriteLine($"[StudentProfile] Loaded user: {currentUser?.FirstName} {currentUser?.LastName}");
+            Console.WriteLine($"[StudentProfile] ProfilePicturePath: '{currentUser?.ProfilePicturePath}'");
 
             if (currentUser != null && !string.IsNullOrWhiteSpace(currentUser.Interests))
                 Interests = currentUser.Interests.Split(',', StringSplitOptions.RemoveEmptyEntries).Select(i => i.Trim()).ToList();
@@ -1570,8 +1599,9 @@ else
     private async Task FeedNoodle() => await JS.InvokeVoidAsync("playEatingAnimationWithDelay", DotNetObjectReference.Create(this));
     [JSInvokable] public void UpdateHungerAfterAnimation() { hunger = Math.Min(100, hunger + 15); StateHasChanged(); }
     [JSInvokable] public void UpdateHappinessAfterPlay() { happiness = Math.Min(100, happiness + 20); energy = Math.Max(0, energy - 10); StateHasChanged(); }
+    [JSInvokable] public void UpdateEnergyAfterPetting() { energy = Math.Min(100, energy + 25); happiness = Math.Min(100, happiness + 10); StateHasChanged(); }
     private async Task PlayWithNoodle() { await JS.InvokeVoidAsync("console.log", "Playing with Noodle..."); await JS.InvokeVoidAsync("playTwerkingAnimationWithDelay", DotNetObjectReference.Create(this)); }
-    private async Task PetNoodle() { await JS.InvokeVoidAsync("console.log", "Petting Noodle..."); await JS.InvokeVoidAsync("alert", "💕 Noodle chirps happily and loves the belly rubs! Happiness increased!"); }
+    private async Task PetNoodle() { await JS.InvokeVoidAsync("console.log", "Petting Noodle..."); await JS.InvokeVoidAsync("playPettingAnimationWithDelay", DotNetObjectReference.Create(this)); }
 
     private async Task LoadTutorSubjects(int userId)
     {

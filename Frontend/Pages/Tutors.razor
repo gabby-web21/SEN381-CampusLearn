@@ -6,7 +6,8 @@
 @inject SubjectService SubjectService
 @inject AuthService AuthService
 
-<section class="tutors-scope">
+<CascadingValue Value="@CurrentTopicId">
+    <section class="tutors-scope">
     <div class="head-row">
         <h1 class="title"><span class="code">@(currentSubject?.SubjectCode?.ToUpper() ?? "SUBJECT")</span> • <span class="emph">Tutors</span></h1>
 
@@ -53,37 +54,63 @@
         }
     </div>
 </section>
+</CascadingValue>
 
 @code {
     private string query = "";
     private List<SubjectTutorVM> tutors = new();
     private SubjectVM? currentSubject;
     private int? currentSubjectId;
+    private int CurrentTopicId = 1; // Default to 1 if no topicId provided
 
     protected override async Task OnInitializedAsync()
     {
-        // Get subject ID from query parameters
+        await LoadDataFromUrl();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await LoadDataFromUrl();
+    }
+
+    private async Task LoadDataFromUrl()
+    {
+        // Get subject ID and topic ID from query parameters
         var uri = Nav.ToAbsoluteUri(Nav.Uri);
         var queryString = uri.Query;
         
-        if (!string.IsNullOrEmpty(queryString) && queryString.Contains("subjectId="))
+        if (!string.IsNullOrEmpty(queryString))
         {
             try
             {
                 var cleanQuery = queryString.TrimStart('?');
-                var subjectIdParam = cleanQuery.Split('&')
+                var parameters = cleanQuery.Split('&');
+                
+                // Extract subjectId
+                var subjectIdParam = parameters
                     .FirstOrDefault(p => p.StartsWith("subjectId="))
                     ?.Split('=')[1];
                 
                 if (!string.IsNullOrEmpty(subjectIdParam) && int.TryParse(subjectIdParam, out int subjectId))
                 {
                     currentSubjectId = subjectId;
-                    await LoadSubjectAndTutors();
                 }
+                
+                // Extract topicId
+                var topicIdParam = parameters
+                    .FirstOrDefault(p => p.StartsWith("topicId="))
+                    ?.Split('=')[1];
+                
+                if (!string.IsNullOrEmpty(topicIdParam) && int.TryParse(topicIdParam, out int topicId))
+                {
+                    CurrentTopicId = topicId;
+                }
+                
+                await LoadSubjectAndTutors();
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"[Tutors] Error parsing subjectId from URL: {ex.Message}");
+                Console.WriteLine($"[Tutors] Error parsing URL parameters: {ex.Message}");
             }
         }
     }

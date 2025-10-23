@@ -530,7 +530,8 @@
             if (newTopic != null)
             {
                 CurrentTopics.Add(newTopic);
-                await BeginEditTopic(newTopic);
+                // Don't automatically start editing - just add the topic to the list
+                Console.WriteLine($"[ManageSubjectsAndTopics] Topic created successfully: '{newTopic.Title}'");
             }
         }
         catch (Exception ex)
@@ -563,6 +564,8 @@
 
         try
         {
+            Console.WriteLine($"[ManageSubjectsAndTopics] Attempting to update topic {EditingTopicId.Value} with title: '{trimmed}'");
+            
             var dto = new UpdateTopicDto
             {
                 Title = trimmed,
@@ -572,6 +575,8 @@
             var updatedTopic = await TopicService.UpdateTopicAsync(EditingTopicId.Value, dto);
             if (updatedTopic != null)
             {
+                Console.WriteLine($"[ManageSubjectsAndTopics] Successfully updated topic. New title: '{updatedTopic.Title}'");
+                
                 // Update the local list
                 var index = CurrentTopics.FindIndex(x => x.TopicId == EditingTopicId);
                 if (index >= 0)
@@ -582,13 +587,15 @@
             }
             else
             {
+                Console.WriteLine($"[ManageSubjectsAndTopics] UpdateTopicAsync returned null for topic {EditingTopicId.Value}");
                 TopicEditError = "Failed to update topic. Please try again.";
             }
         }
         catch (Exception ex)
         {
             Console.WriteLine($"[ManageSubjectsAndTopics] Error updating topic: {ex.Message}");
-            TopicEditError = "Failed to update topic. Please try again.";
+            Console.WriteLine($"[ManageSubjectsAndTopics] Stack trace: {ex.StackTrace}");
+            TopicEditError = $"Failed to update topic: {ex.Message}";
         }
     }
 
@@ -858,7 +865,15 @@
         background: #f7f9fc;
         border: 1px solid var(--ring);
         border-radius: 12px;
-        padding: .7rem
+        padding: .7rem;
+        margin-bottom: .5rem;
+    }
+
+    .row {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        flex-wrap: wrap;
     }
 
     .grid-2 {
