@@ -69,6 +69,12 @@ namespace Sen381Backend.Controllers
                     return Unauthorized(new { error = "Email not verified. Please verify your email before logging in." });
                 }
 
+                if (user.IsBanned)
+                {
+                    Console.WriteLine($"[LOGIN FAILED] Banned user attempted login: {model.Email}");
+                    return Unauthorized(new { error = "Your account has been banned. Please contact support for more information." });
+                }
+
                 try
                 {
                     var now = DateTime.UtcNow;

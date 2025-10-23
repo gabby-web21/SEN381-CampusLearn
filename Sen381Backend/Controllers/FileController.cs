@@ -190,6 +190,7 @@ namespace Sen381Backend.Controllers
         public async Task<IActionResult> ViewTranscript(string filePath)
         {
             Console.WriteLine($"🔍 [FileController] ViewTranscript called with filePath: '{filePath}'");
+            Console.WriteLine($"🔍 [FileController] Full URL: {Request.Scheme}://{Request.Host}{Request.Path}{Request.QueryString}");
             
             if (string.IsNullOrEmpty(filePath))
             {
@@ -199,22 +200,31 @@ namespace Sen381Backend.Controllers
 
             try
             {
+                Console.WriteLine($"🔍 [FileController] Initializing Supabase client...");
                 await _supabase.InitializeAsync();
                 var client = _supabase.Client;
+                Console.WriteLine($"✅ [FileController] Supabase client initialized successfully");
+                
                 var bucket = client.Storage.From("Transcripts");
+                Console.WriteLine($"✅ [FileController] Connected to 'Transcripts' bucket");
 
-                Console.WriteLine($"🔍 [FileController] Creating signed URL for: {filePath}");
+                Console.WriteLine($"🔍 [FileController] Creating signed URL for file: '{filePath}'");
                 
                 // Create signed URL
                 var signedUrl = await bucket.CreateSignedUrl(filePath, 604800);
+                Console.WriteLine($"🔍 [FileController] CreateSignedUrl returned: '{signedUrl}'");
                 
                 if (string.IsNullOrEmpty(signedUrl))
                 {
                     Console.WriteLine($"❌ [FileController] Failed to generate signed URL for: {filePath}");
+                    Console.WriteLine($"❌ [FileController] This could mean the file doesn't exist in the bucket");
                     return NotFound($"File not found: {filePath}");
                 }
                 
+                Console.WriteLine($"✅ [FileController] Successfully generated signed URL: {signedUrl}");
+                
                 // Add inline parameter to force inline viewing
+                var originalUrl = signedUrl;
                 if (signedUrl.Contains("?"))
                 {
                     signedUrl += "&inline=true&download=false";
@@ -224,16 +234,75 @@ namespace Sen381Backend.Controllers
                     signedUrl += "?inline=true&download=false";
                 }
                 
-                Console.WriteLine($"✅ [FileController] Redirecting to signed URL: {signedUrl}");
+                Console.WriteLine($"🔍 [FileController] Original URL: {originalUrl}");
+                Console.WriteLine($"✅ [FileController] Final URL with inline params: {signedUrl}");
+                
+                Console.WriteLine($"➡️ [FileController] About to redirect to: {signedUrl}");
                 
                 // Redirect to the signed URL
                 return Redirect(signedUrl);
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"❌ [FileController] Error viewing transcript: {ex.Message}");
+                Console.WriteLine($"❌ [FileController] Exception occurred: {ex.Message}");
+                Console.WriteLine($"❌ [FileController] Exception type: {ex.GetType().Name}");
                 Console.WriteLine($"❌ [FileController] Stack trace: {ex.StackTrace}");
+                
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine($"❌ [FileController] Inner exception: {ex.InnerException.Message}");
+                }
+                
                 return StatusCode(500, $"Error viewing transcript: {ex.Message}");
+            }
+        }
+
+        [HttpGet("test")]
+        public IActionResult Test()
+        {
+            Console.WriteLine("🔍 [FileController] Test endpoint hit!");
+            return Ok(new { message = "FileController is working!", timestamp = DateTime.UtcNow });
+        }
+
+        [HttpGet("test-file/{filePath}")]
+        public async Task<IActionResult> TestFileExists(string filePath)
+        {
+            try
+            {
+                Console.WriteLine($"🔍 [FileController] TestFileExists called with filePath: '{filePath}'");
+                
+                await _supabase.InitializeAsync();
+                var client = _supabase.Client;
+                var bucket = client.Storage.From("Transcripts");
+                
+                Console.WriteLine($"🔍 [FileController] Testing if file exists: '{filePath}'");
+                
+                // Try to list files in the bucket to see what's there
+                var files = await bucket.List();
+                Console.WriteLine($"🔍 [FileController] Files in bucket: {files.Count}");
+                
+                foreach (var file in files)
+                {
+                    Console.WriteLine($"📄 [FileController] Found file: {file.Name}");
+                }
+                
+                // Check if our specific file exists
+                var targetFile = files.FirstOrDefault(f => f.Name == filePath);
+                if (targetFile != null)
+                {
+                    Console.WriteLine($"✅ [FileController] File found: {targetFile.Name}");
+                    return Ok(new { exists = true, fileName = targetFile.Name });
+                }
+                else
+                {
+                    Console.WriteLine($"❌ [FileController] File not found: {filePath}");
+                    return NotFound(new { exists = false, message = $"File '{filePath}' not found in bucket" });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ [FileController] Error testing file: {ex.Message}");
+                return StatusCode(500, $"Error testing file: {ex.Message}");
             }
         }
 

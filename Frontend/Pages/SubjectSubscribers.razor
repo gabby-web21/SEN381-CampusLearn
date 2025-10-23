@@ -130,7 +130,7 @@
                             <label for="sessionDate">Date *</label>
                             <input type="date" id="sessionDate" @bind="bookingRequest.SessionDate" 
                                    @bind:after="ValidateDate"
-                                   min="@DateTime.Now.ToString("yyyy-MM-dd")" 
+                                   min="@DateTime.Now.AddDays(8).ToString("yyyy-MM-dd")" 
                                    class="form-input" 
                                    style="display: block; width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 10px;" />
                             <ValidationMessage TValue="DateTime?" For="@(() => bookingRequest.SessionDate)" />
@@ -280,11 +280,12 @@
         {
             var selectedDate = bookingRequest.SessionDate.Value.Date;
             var today = DateTime.Today;
+            var minAllowedDate = today.AddDays(8); // 8 days from today
             
-            if (selectedDate < today)
+            if (selectedDate < minAllowedDate)
             {
-                bookingRequest.SessionDate = today;
-                JS.InvokeVoidAsync("alert", "You cannot select a date in the past. Date has been reset to today.");
+                bookingRequest.SessionDate = minAllowedDate;
+                JS.InvokeVoidAsync("alert", "You cannot book sessions within the next 7 days. Date has been reset to the earliest available date (8 days from today).");
             }
         }
     }
@@ -357,10 +358,10 @@
 
     private bool ValidateBookingData()
     {
-        // Check if date is in the past
-        if (bookingRequest.SessionDate.HasValue && bookingRequest.SessionDate.Value.Date < DateTime.Today)
+        // Check if date is within the next 7 days (not allowed)
+        if (bookingRequest.SessionDate.HasValue && bookingRequest.SessionDate.Value.Date < DateTime.Today.AddDays(8))
         {
-            JS.InvokeVoidAsync("alert", "Please select a date that is today or in the future.");
+            JS.InvokeVoidAsync("alert", "You cannot book sessions within the next 7 days. Please select a date 8 days or more in the future.");
             return false;
         }
 

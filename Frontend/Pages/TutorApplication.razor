@@ -248,7 +248,7 @@
             ErrorMessage = null;
             
             // Debug: Log the transcript path
-            Console.WriteLine($"🔍 [Frontend] Attempting to view transcript: '{transcriptPath}'");
+            Console.WriteLine($"🔍 [Frontend] ViewTranscript called with path: '{transcriptPath}'");
             
             if (string.IsNullOrEmpty(transcriptPath))
             {
@@ -257,19 +257,28 @@
                 return;
             }
             
-            // Use the direct PDF endpoint that serves the file with proper headers
-            var pdfUrl = $"api/file/view/{Uri.EscapeDataString(transcriptPath)}";
+            // Clean the path - remove any leading slashes or backslashes
+            var cleanPath = transcriptPath.TrimStart('/', '\\');
+            Console.WriteLine($"🔍 [Frontend] Original path: '{transcriptPath}'");
+            Console.WriteLine($"🔍 [Frontend] Cleaned path: '{cleanPath}'");
             
-            Console.WriteLine($"🔍 [Frontend] Opening PDF URL in new tab: {pdfUrl}");
+            // Use the direct PDF endpoint that serves the file with proper headers
+            var pdfUrl = $"api/file/view/{Uri.EscapeDataString(cleanPath)}";
+            
+            Console.WriteLine($"🔍 [Frontend] Constructed URL: {pdfUrl}");
+            Console.WriteLine($"🔍 [Frontend] About to open new tab with URL: {pdfUrl}");
             
             // Open the PDF URL in a new tab - this will redirect to the signed URL
             await JSRuntime.InvokeVoidAsync("eval", $"window.open('{pdfUrl}', '_blank');");
             
-            Console.WriteLine($"🔍 [Frontend] Window.open called successfully");
+            Console.WriteLine($"✅ [Frontend] Window.open called successfully");
+            Console.WriteLine($"🔍 [Frontend] New tab should have opened with URL: {pdfUrl}");
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"❌ [Frontend] Error opening transcript: {ex.Message}");
+            Console.WriteLine($"❌ [Frontend] Exception in ViewTranscript: {ex.Message}");
+            Console.WriteLine($"❌ [Frontend] Exception type: {ex.GetType().Name}");
+            Console.WriteLine($"❌ [Frontend] Stack trace: {ex.StackTrace}");
             ErrorMessage = $"Error opening transcript: {ex.Message}";
         }
     }

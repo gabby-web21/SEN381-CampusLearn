@@ -56,6 +56,9 @@ namespace Sen381Backend.Controllers
                     .From<UserFollow>()
                     .Insert(follow);
 
+                // Create notification for the user being followed
+                await CreateFollowNotification(client, request.FollowerId, request.FollowingId);
+
                 Console.WriteLine($"✅ Follow created: {request.FollowerId} -> {request.FollowingId}");
                 return Ok(new { success = true, message = "Successfully followed user" });
             }
@@ -98,6 +101,9 @@ namespace Sen381Backend.Controllers
                     .From<UserFollow>()
                     .Where(f => f.FollowerId == request.FollowerId && f.FollowingId == request.FollowingId)
                     .Delete();
+
+                // Create notification for the user being unfollowed (optional)
+                await CreateUnfollowNotification(client, request.FollowerId, request.FollowingId);
 
                 Console.WriteLine($"✅ Unfollow successful: {request.FollowerId} -> {request.FollowingId}");
                 return Ok(new { success = true, message = "Successfully unfollowed user" });
@@ -266,6 +272,92 @@ namespace Sen381Backend.Controllers
             {
                 Console.WriteLine($"⚠️ Error getting following list: {ex.Message}");
                 return StatusCode(500, new { error = ex.Message });
+            }
+        }
+
+        // =============================
+        // Helper method to create follow notification
+        // =============================
+        private async Task CreateFollowNotification(Supabase.Client client, int followerId, int followingId)
+        {
+            try
+            {
+                // Get the follower's details
+                var followerResponse = await client
+                    .From<User>()
+                    .Select("first_name, last_name")
+                    .Filter("user_id", Operator.Equals, followerId)
+                    .Get();
+
+                var follower = followerResponse.Models.FirstOrDefault();
+                if (follower == null)
+                {
+                    Console.WriteLine($"⚠️ Could not find follower with ID: {followerId}");
+                    return;
+                }
+
+                // Create the notification
+                var notification = new Notification
+                {
+                    UserId = followingId, // The user being followed receives the notification
+                    Type = "follow",
+                    Title = "New Follower",
+                    Body = $"{follower.FirstName} {follower.LastName} has followed you",
+                    Priority = "normal",
+                    SentAt = DateTime.UtcNow,
+                    IsRead = false
+                };
+
+                await client.From<Notification>().Insert(notification);
+                Console.WriteLine($"✅ Follow notification created for user {followingId}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"⚠️ Error creating follow notification: {ex.Message}");
+                // Don't throw - notification failure shouldn't break the follow action
+            }
+        }
+
+        // =============================
+        // Helper method to create unfollow notification
+        // =============================
+        private async Task CreateUnfollowNotification(Supabase.Client client, int followerId, int followingId)
+        {
+            try
+            {
+                // Get the follower's details
+                var followerResponse = await client
+                    .From<User>()
+                    .Select("first_name, last_name")
+                    .Filter("user_id", Operator.Equals, followerId)
+                    .Get();
+
+                var follower = followerResponse.Models.FirstOrDefault();
+                if (follower == null)
+                {
+                    Console.WriteLine($"⚠️ Could not find follower with ID: {followerId}");
+                    return;
+                }
+
+                // Create the notification
+                var notification = new Notification
+                {
+                    UserId = followingId, // The user being unfollowed receives the notification
+                    Type = "unfollow",
+                    Title = "User Unfollowed",
+                    Body = $"{follower.FirstName} {follower.LastName} has unfollowed you",
+                    Priority = "low",
+                    SentAt = DateTime.UtcNow,
+                    IsRead = false
+                };
+
+                await client.From<Notification>().Insert(notification);
+                Console.WriteLine($"✅ Unfollow notification created for user {followingId}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"⚠️ Error creating unfollow notification: {ex.Message}");
+                // Don't throw - notification failure shouldn't break the unfollow action
             }
         }
     }

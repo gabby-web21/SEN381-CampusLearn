@@ -83,7 +83,8 @@ namespace Sen381Backend.Controllers
                     Type = "direct_message",
                     Title = "New Message",
                     Body = $"<strong>{senderName}</strong> sent you a message",
-                    Priority = "normal"
+                    Priority = "normal",
+                    SubjectId = request.SenderId // Store sender's ID in SubjectId field
                     // NotificationId, SentAt, and IsRead will be set by database defaults
                 };
                 

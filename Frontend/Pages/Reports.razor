@@ -25,6 +25,10 @@
                 <option value="forum">Forum</option>
                 <option value="tutoring">Tutoring</option>
             </select>
+            <select class="filter" @bind="ViewFilter">
+                <option value="reports">Reports</option>
+                <option value="banned">Banned Users</option>
+            </select>
             <label class="chk">
                 <input type="checkbox" @bind="OpenOnly" />
                 <span>Open only</span>
@@ -36,6 +40,48 @@
     @if (IsLoading)
     {
         <div class="state empty">Loading reports...</div>
+    }
+    else if (ViewFilter == "banned")
+    {
+        @if (BannedUsers.Count == 0)
+        {
+            <div class="state empty">No banned users found.</div>
+        }
+        else
+        {
+            <section class="group">
+                <h2 class="group__title">Banned Users <span class="badge">@BannedUsers.Count</span></h2>
+                <div class="grid">
+                    @foreach (var user in BannedUsers)
+                    {
+                        <article class="card banned">
+                            <button class="btn-icon unban" aria-label="Unban User" title="Unban this user"
+                                    @onclick="@(() => UnbanUser(user.UserId))">
+                                ✓
+                            </button>
+                            
+                            <header class="card__head">
+                                <div class="meta">
+                                    <h3 class="card__title">@user.FirstName @user.LastName</h3>
+                                    <p class="card__sub">
+                                        <span>Banned on @user.BannedAt?.ToString("dd MMM yyyy, HH:mm")</span>
+                                        <span>· Reason: @user.BanReason</span>
+                                    </p>
+                                </div>
+                            </header>
+                            
+                            <div class="body">
+                                <ul class="kv">
+                                    <li><b>Email:</b> @user.Email</li>
+                                    <li><b>Ban Reason:</b> @user.BanReason</li>
+                                    <li><b>Banned By:</b> Admin #@user.BannedBy</li>
+                                </ul>
+                            </div>
+                        </article>
+                    }
+                </div>
+            </section>
+        }
     }
     else if (!AnyVisible)
     {
@@ -56,15 +102,15 @@
                     {
                         <article class="card @(CssFor(r))">
                             <!-- Corner actions; disabled once resolved -->
-                            <button class="btn-icon decline" aria-label="Remove" title="Remove (soft-hide)"
+                            <button class="btn-icon decline" aria-label="Cancel" title="Cancel report"
                                     disabled="@r.Dismissed"
-                                    @onclick="@(() => Remove(r.ContentReportId))">
+                                    @onclick="@(() => CancelReport(r.ContentReportId))">
                                 ✕
                             </button>
-                            <button class="btn-icon accept" aria-label="Keep" title="Keep (unflag)"
+                            <button class="btn-icon ban" aria-label="Ban User" title="Ban the reported user"
                                     disabled="@r.Dismissed"
-                                    @onclick="@(() => Keep(r.ContentReportId))">
-                                ✓
+                                    @onclick="@(() => BanUser(r.ContentReportId, r.ReportedUserId))">
+                                Ban
                             </button>
 
                             <header class="card__head">
@@ -118,10 +164,12 @@
     // ---------- Filters ----------
     private string Search = string.Empty;
     private string TypeFilter = string.Empty;
+    private string ViewFilter = "reports";
     private bool OpenOnly = true;
 
     // ---------- Data ----------
     private List<ReportVM> Items = new();
+    private List<BannedUserVM> BannedUsers = new();
     private bool IsLoading = true;
 
     private string[] KindOrder = new[] { "topic", "reply", "resource", "comment", "messages", "forum", "tutoring" };
@@ -152,62 +200,142 @@
         try
         {
             IsLoading = true;
-            Console.WriteLine("Loading reports from API...");
-            var response = await Http.GetAsync("https://localhost:7228/api/MessageReport/admin");
             
-            if (response.IsSuccessStatusCode)
+            if (ViewFilter == "banned")
             {
-                var jsonContent = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"Raw JSON response: {jsonContent}");
-                
-                var jsonDocument = JsonDocument.Parse(jsonContent);
-                var root = jsonDocument.RootElement;
-                var reports = root.GetProperty("reports");
-                var reportCount = reports.GetArrayLength();
-                Console.WriteLine($"Received {reportCount} reports from API");
-                
-                Items.Clear();
-                
-                foreach (var report in reports.EnumerateArray())
-                {
-                    var reportVM = new ReportVM
-                    {
-                        ContentReportId = report.GetProperty("id").GetInt32(),
-                        Kind = report.GetProperty("messageType").GetString() ?? "",
-                        ContentId = report.GetProperty("messageId").GetString()?.GetHashCode() ?? 0,
-                        Reason = report.GetProperty("reason").GetString() ?? "",
-                        Details = report.TryGetProperty("details", out JsonElement details) ? details.GetString() : null,
-                        ReporterName = report.GetProperty("reporterName").GetString() ?? "",
-                        CreatedAt = report.GetProperty("createdAt").GetDateTime(),
-                        Dismissed = report.GetProperty("isResolved").GetBoolean(),
-                        Resolution = report.TryGetProperty("resolution", out JsonElement resolution) ? resolution.GetString() : null,
-                        TargetUrl = report.TryGetProperty("contextUrl", out JsonElement contextUrl) ? contextUrl.GetString() : null,
-                        Context = GetContextForMessageType(report.GetProperty("messageType").GetString() ?? "", report.GetProperty("senderName").GetString() ?? ""),
-                        Snippet = report.GetProperty("messageContent").GetString() ?? ""
-                    };
-                    
-                    Items.Add(reportVM);
-                    Console.WriteLine($"Added report: {reportVM.Context} - {reportVM.Snippet}");
-                }
-                
-                Console.WriteLine($"Total reports loaded: {Items.Count}");
-                Console.WriteLine($"Filtered reports count: {Filtered.Count()}");
-                Console.WriteLine($"AnyVisible: {AnyVisible}");
+                await LoadBannedUsers();
             }
             else
             {
-                Console.WriteLine($"API call failed with status: {response.StatusCode}");
+                await LoadReportData();
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error loading reports: {ex.Message}");
-            Console.WriteLine($"Stack trace: {ex.StackTrace}");
+            Console.WriteLine($"Error loading data: {ex.Message}");
         }
         finally
         {
             IsLoading = false;
             StateHasChanged();
+        }
+    }
+
+    private async Task LoadReportData()
+    {
+        Console.WriteLine("Loading reports from API...");
+        var response = await Http.GetAsync("https://localhost:7228/api/MessageReport/admin");
+        
+        if (response.IsSuccessStatusCode)
+        {
+            var jsonContent = await response.Content.ReadAsStringAsync();
+            Console.WriteLine($"Raw JSON response: {jsonContent}");
+            
+            var jsonDocument = JsonDocument.Parse(jsonContent);
+            var root = jsonDocument.RootElement;
+            var reports = root.GetProperty("reports");
+            var reportCount = reports.GetArrayLength();
+            Console.WriteLine($"Received {reportCount} reports from API");
+            
+            Items.Clear();
+            
+            foreach (var report in reports.EnumerateArray())
+            {
+                var reportVM = new ReportVM
+                {
+                    ContentReportId = report.GetProperty("id").GetInt32(),
+                    Kind = report.GetProperty("messageType").GetString() ?? "",
+                    ContentId = report.GetProperty("messageId").GetString()?.GetHashCode() ?? 0,
+                    Reason = report.GetProperty("reason").GetString() ?? "",
+                    Details = report.TryGetProperty("details", out JsonElement details) ? details.GetString() : null,
+                    ReporterName = report.GetProperty("reporterName").GetString() ?? "",
+                    CreatedAt = report.GetProperty("createdAt").GetDateTime(),
+                    Dismissed = report.GetProperty("isResolved").GetBoolean(),
+                    Resolution = report.TryGetProperty("resolution", out JsonElement resolution) ? resolution.GetString() : null,
+                    TargetUrl = report.TryGetProperty("contextUrl", out JsonElement contextUrl) ? contextUrl.GetString() : null,
+                    Context = GetContextForMessageType(report.GetProperty("messageType").GetString() ?? "", report.GetProperty("senderName").GetString() ?? ""),
+                    Snippet = report.GetProperty("messageContent").GetString() ?? "",
+                    ReportedUserId = report.TryGetProperty("reportedUserId", out JsonElement reportedUserId) ? reportedUserId.GetInt32() : 0
+                };
+                
+                Items.Add(reportVM);
+                Console.WriteLine($"Added report: {reportVM.Context} - {reportVM.Snippet}");
+            }
+            
+            Console.WriteLine($"Total reports loaded: {Items.Count}");
+            Console.WriteLine($"Filtered reports count: {Filtered.Count()}");
+            Console.WriteLine($"AnyVisible: {AnyVisible}");
+        }
+        else
+        {
+            Console.WriteLine($"API call failed with status: {response.StatusCode}");
+        }
+    }
+
+    private async Task LoadBannedUsers()
+    {
+        Console.WriteLine("🔍 [FRONTEND DEBUG] Starting LoadBannedUsers...");
+        Console.WriteLine("🔍 [FRONTEND DEBUG] Making API call to: https://localhost:7228/api/MessageReport/banned-users");
+        
+        try
+        {
+            var response = await Http.GetAsync("https://localhost:7228/api/MessageReport/banned-users");
+            Console.WriteLine($"🔍 [FRONTEND DEBUG] API response status: {response.StatusCode}");
+            
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonContent = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"🔍 [FRONTEND DEBUG] Raw JSON response: {jsonContent}");
+                
+                var jsonDocument = JsonDocument.Parse(jsonContent);
+                var root = jsonDocument.RootElement;
+                
+                Console.WriteLine($"🔍 [FRONTEND DEBUG] Root element keys: {string.Join(", ", root.EnumerateObject().Select(p => p.Name))}");
+                
+                if (root.TryGetProperty("bannedUsers", out JsonElement bannedUsers))
+                {
+                    var userCount = bannedUsers.GetArrayLength();
+                    Console.WriteLine($"🔍 [FRONTEND DEBUG] Found {userCount} banned users in response");
+                    
+                    BannedUsers.Clear();
+                    
+                    foreach (var user in bannedUsers.EnumerateArray())
+                    {
+                        Console.WriteLine($"🔍 [FRONTEND DEBUG] Processing user: {user}");
+                        
+                        var bannedUserVM = new BannedUserVM
+                        {
+                            UserId = user.GetProperty("userId").GetInt32(),
+                            FirstName = user.GetProperty("firstName").GetString() ?? "",
+                            LastName = user.GetProperty("lastName").GetString() ?? "",
+                            Email = user.GetProperty("email").GetString() ?? "",
+                            BannedAt = user.TryGetProperty("bannedAt", out JsonElement bannedAt) ? bannedAt.GetDateTime() : null,
+                            BannedBy = user.TryGetProperty("bannedBy", out JsonElement bannedBy) ? bannedBy.GetInt32() : null,
+                            BanReason = user.TryGetProperty("banReason", out JsonElement banReason) ? banReason.GetString() : ""
+                        };
+                        
+                        BannedUsers.Add(bannedUserVM);
+                        Console.WriteLine($"🔍 [FRONTEND DEBUG] Added banned user: {bannedUserVM.FirstName} {bannedUserVM.LastName} (ID: {bannedUserVM.UserId})");
+                    }
+                    
+                    Console.WriteLine($"🔍 [FRONTEND DEBUG] Total banned users loaded: {BannedUsers.Count}");
+                }
+                else
+                {
+                    Console.WriteLine("❌ [FRONTEND DEBUG] No 'bannedUsers' property found in response");
+                }
+            }
+            else
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"❌ [FRONTEND DEBUG] API call failed with status: {response.StatusCode}");
+                Console.WriteLine($"❌ [FRONTEND DEBUG] Error content: {errorContent}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"❌ [FRONTEND DEBUG] Exception in LoadBannedUsers: {ex.Message}");
+            Console.WriteLine($"❌ [FRONTEND DEBUG] Stack trace: {ex.StackTrace}");
         }
     }
 
@@ -261,33 +389,84 @@
         }
     }
 
-    private async Task Remove(long id)
+    private async Task CancelReport(int reportId)
     {
         try
         {
-            var response = await Http.PostAsJsonAsync($"https://localhost:7228/api/MessageReport/resolve/{id}", new
-            {
-                AdminId = 1, // TODO: Get actual admin ID from auth
-                Resolution = "user_suspended"
-            });
-
+            Console.WriteLine($"Cancelling report {reportId}");
+            var response = await Http.PostAsync($"https://localhost:7228/api/MessageReport/cancel/{reportId}", 
+                JsonContent.Create(new { adminId = 1 }));
+            
             if (response.IsSuccessStatusCode)
             {
-                var r = Items.FirstOrDefault(x => x.ContentReportId == id);
-                if (r is not null) { r.Dismissed = true; r.Resolution = "remove"; }
-                StateHasChanged();
+                Console.WriteLine($"Report {reportId} cancelled successfully");
+                await LoadReports();
+            }
+            else
+            {
+                Console.WriteLine($"Failed to cancel report {reportId}: {response.StatusCode}");
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error resolving report: {ex.Message}");
+            Console.WriteLine($"Error cancelling report: {ex.Message}");
+        }
+    }
+
+    private async Task BanUser(int reportId, int userId)
+    {
+        try
+        {
+            Console.WriteLine($"Banning user {userId} from report {reportId}");
+            var response = await Http.PostAsync($"https://localhost:7228/api/MessageReport/ban-user", 
+                JsonContent.Create(new { userId = userId, adminId = 1, reason = "Reported for inappropriate behavior" }));
+            
+            if (response.IsSuccessStatusCode)
+            {
+                Console.WriteLine($"User {userId} banned successfully");
+                // Switch to banned users view to show the newly banned user
+                ViewFilter = "banned";
+                await LoadReports();
+            }
+            else
+            {
+                Console.WriteLine($"Failed to ban user {userId}: {response.StatusCode}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error banning user: {ex.Message}");
+        }
+    }
+
+    private async Task UnbanUser(int userId)
+    {
+        try
+        {
+            Console.WriteLine($"Unbanning user {userId}");
+            var response = await Http.PostAsync($"https://localhost:7228/api/MessageReport/unban-user", 
+                JsonContent.Create(new { userId = userId, adminId = 1 }));
+            
+            if (response.IsSuccessStatusCode)
+            {
+                Console.WriteLine($"User {userId} unbanned successfully");
+                await LoadReports();
+            }
+            else
+            {
+                Console.WriteLine($"Failed to unban user {userId}: {response.StatusCode}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error unbanning user: {ex.Message}");
         }
     }
 
     // ---------- Model ----------
     private class ReportVM
     {
-        public long ContentReportId { get; set; }
+        public int ContentReportId { get; set; }
         public string Kind { get; set; } = "";
         public long ContentId { get; set; }
         public string Reason { get; set; } = "";
@@ -299,6 +478,18 @@
         public string? TargetUrl { get; set; }
         public string? Context { get; set; }
         public string? Snippet { get; set; }
+        public int ReportedUserId { get; set; }
+    }
+
+    private class BannedUserVM
+    {
+        public int UserId { get; set; }
+        public string FirstName { get; set; } = "";
+        public string LastName { get; set; } = "";
+        public string Email { get; set; } = "";
+        public DateTime? BannedAt { get; set; }
+        public int? BannedBy { get; set; }
+        public string BanReason { get; set; } = "";
     }
 }
 
@@ -576,11 +767,29 @@
             background: #1B998B
         }
 
+        .btn-icon.ban {
+            right: .55rem;
+            background: #DC2626;
+            font-size: .8rem;
+        }
+
+        .btn-icon.unban {
+            right: .55rem;
+            background: #059669;
+            font-size: .8rem;
+        }
+
         /* Disabled look when resolved */
         .btn-icon[disabled] {
             opacity: .45;
             filter: grayscale(.1);
             cursor: default;
             box-shadow: none
+        }
+
+        /* Banned user card styling */
+        .card.banned {
+            background: #FEF2F2;
+            border-color: #FECACA;
         }
 </style>

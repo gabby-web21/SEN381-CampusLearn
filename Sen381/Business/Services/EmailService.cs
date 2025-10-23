@@ -14,7 +14,7 @@ namespace Sen381.Business.Services
         // ✅ CHANGE THESE VALUES
         private readonly string _fromAddress = "xavierbarnard10@gmail.com";  // your Gmail address
         private readonly string _password = "ivdq zduu tsik tnoy";           // Gmail App Password
-        private readonly string _baseUrl = "https://localhost:7228";         // your app's base URL (change if deployed)
+        private readonly string _baseUrl = "https://localhost:7097";         // your frontend URL (change if deployed)
 
         // ---------- Core Email Sender ----------
         private void SendEmail(string toEmail, string subject, string body)
@@ -75,7 +75,8 @@ namespace Sen381.Business.Services
                 $"We received a request to reset your password.\n\n" +
                 $"Click the link below to set a new one:\n" +
                 $"{resetUrl}\n\n" +
-                $"If you didn’t request this, you can safely ignore this email.\n\n" +
+                $"This link will expire in 1 hour for security reasons.\n\n" +
+                $"If you didn't request this, you can safely ignore this email.\n\n" +
                 $"Thank you,\nCampusLearn Support Team";
 
             SendEmail(toEmail, subject, body);

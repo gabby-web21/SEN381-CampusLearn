@@ -23,8 +23,8 @@ namespace Sen381.Business.Models
         [Column("email")]
         public string Email { get; set; }
 
-        // ✅ Do not update this field when saving profile changes
-        [Column("password_hash", ignoreOnUpdate: true)]
+        // ✅ Password hash can be updated during password reset
+        [Column("password_hash")]
         public string PasswordHash { get; set; }
 
         [Column("is_email_verified")]
@@ -73,6 +73,21 @@ namespace Sen381.Business.Models
 
         [Column("subjects")]
         public string Subjects { get; set; }
+
+        // =============================
+        // Ban Status Fields
+        // =============================
+        [Column("is_banned")]
+        public bool IsBanned { get; set; } = false;
+
+        [Column("banned_at")]
+        public DateTime? BannedAt { get; set; }
+
+        [Column("banned_by")]
+        public int? BannedBy { get; set; } // Admin who banned the user
+
+        [Column("ban_reason")]
+        public string? BanReason { get; set; }
 
         // =============================
         // Password Utilities

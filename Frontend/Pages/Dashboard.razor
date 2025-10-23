@@ -34,17 +34,22 @@
                 <ul class="notif-list">
                     @foreach (var notification in Notifications)
                     {
-                        <li class="notif-item clickable" @onclick='() => HandleNotificationClick(notification)' data-role="@notification.RoleString">
-                            <div class="notif-dot" aria-hidden="true">
-                                @if (notification.Count > 1)
-                                {
-                                    <span class="notif-badge">@notification.Count</span>
-                                }
+                        <li class="notif-item" data-role="@notification.RoleString">
+                            <div class="notif-content" @onclick='() => HandleNotificationClick(notification)'>
+                                <div class="notif-dot" aria-hidden="true">
+                                    @if (notification.Count > 1)
+                                    {
+                                        <span class="notif-badge">@notification.Count</span>
+                                    }
+                                </div>
+                                <p class="notif-text">
+                                    @((MarkupString)notification.Body)
+                                    <span class="notif-time">@notification.TimeAgo</span>
+                                </p>
                             </div>
-                            <p class="notif-text">
-                                @((MarkupString)notification.Body)
-                                <span class="notif-time">@notification.TimeAgo</span>
-                            </p>
+                            <button class="btn-mark-single" @onclick='() => MarkSingleAsRead(notification)' @onclick:stopPropagation="true" title="Mark as read">
+                                ✓
+                            </button>
                         </li>
                     }
                     @if (Notifications.Count == 0)
@@ -589,10 +594,45 @@
         border-radius: var(--radius);
         display: flex;
         align-items: center;
+        justify-content: space-between;
         gap: 0.6rem; /* Further reduced gap within notification items */
-        cursor: pointer;
         transition: transform .14s ease, filter .14s ease
     }
+
+    .notif-content {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        flex: 1;
+        cursor: pointer;
+    }
+
+    .btn-mark-single {
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #fff;
+        font-size: 12px;
+        font-weight: bold;
+        transition: all .2s ease;
+        flex-shrink: 0;
+    }
+
+        .btn-mark-single:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: scale(1.1);
+        }
+
+        .btn-mark-single:active {
+            transform: scale(0.95);
+        }
 
         .notif-item[data-role="Tutor"] {
             background: linear-gradient(135deg,#E12929 0% 70%,#F3E17F 100%);
@@ -1117,6 +1157,9 @@
 
             // Load calendar events (booking sessions)
             await LoadCalendarEvents();
+            
+            // Initialize calendar picker values
+            SyncPickers();
         }
         catch { StudentName = "User"; UserRole = "Student"; }
     }
@@ -1159,7 +1202,8 @@
                                 Type = latest.Type,
                                 Count = g.Count(),
                                 NotificationIds = g.Select(n => n.NotificationId).ToList(),
-                                RoleString = inferredRole
+                                RoleString = inferredRole,
+                                SubjectId = latest.SubjectId
                             };
                         })
                         .Take(5)
@@ -1205,7 +1249,15 @@
         {
             case "direct_message":
             case "chat_message":
-                NavigationManager.NavigateTo("/messages");
+                // Navigate to messages page with sender ID parameter
+                if (notification.SubjectId.HasValue)
+                {
+                    NavigationManager.NavigateTo($"/messages?userId={notification.SubjectId.Value}");
+                }
+                else
+                {
+                    NavigationManager.NavigateTo("/messages");
+                }
                 break;
             default:
                 Console.WriteLine($"Notification clicked: {notification.Type}");
@@ -1243,6 +1295,43 @@
         }
     }
 
+    private async Task MarkSingleAsRead(NotificationItem notification)
+    {
+        try
+        {
+            // If this is a grouped notification (multiple notifications), mark all of them
+            if (notification.NotificationIds.Count > 1)
+            {
+                foreach (var notificationId in notification.NotificationIds)
+                {
+                    var response = await Http.PutAsync($"https://localhost:7228/api/Notifications/mark-read/{notificationId}", null);
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        Console.WriteLine($"⚠️ Error marking notification {notificationId} as read");
+                    }
+                }
+            }
+            else
+            {
+                // Single notification
+                var response = await Http.PutAsync($"https://localhost:7228/api/Notifications/mark-read/{notification.NotificationId}", null);
+                if (!response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine($"⚠️ Error marking notification {notification.NotificationId} as read");
+                    return;
+                }
+            }
+
+            // Remove the notification from the UI
+            Notifications.Remove(notification);
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"⚠️ Exception marking single notification as read: {ex.Message}");
+        }
+    }
+
     public class NotificationItem
     {
         public int NotificationId { get; set; }
@@ -1254,6 +1343,7 @@
         public int Count { get; set; } = 1;
         public List<int> NotificationIds { get; set; } = new();
         public string RoleString { get; set; } = "Student"; // used by data-role for color
+        public int? SubjectId { get; set; } // Contains sender's user ID for message notifications
     }
 
     public class NotificationDto

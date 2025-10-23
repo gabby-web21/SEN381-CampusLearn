@@ -1,58 +1,64 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Supabase.Postgrest.Attributes;
+using Supabase.Postgrest.Models;
+using System;
 
 namespace Sen381.Business.Models
 {
-    public class PasswordResetToken
+    [Table("password_reset_tokens")]
+    public class PasswordResetToken : BaseModel
     {
-        // ---------- Fields ----------
-        private int id;
-        private string tokenHash;
-        private int userId;
+        [PrimaryKey("id", true)]
+        [Column("id", ignoreOnInsert: true)]
+        public int Id { get; set; }
 
-        // ---------- Properties ----------
-        public int Id
-        {
-            get => id;
-            set => id = value;
-        }
+        [Column("user_id")]
+        public int UserId { get; set; }
 
-        public int UserId
-        {
-            get => userId;
-            set => userId = value;
-        }
+        [Column("token_hash")]
+        public string TokenHash { get; set; }
 
+        [Column("expires_at")]
         public DateTime ExpiresAt { get; set; }
 
-        // ---------- Constructor ----------
-        public PasswordResetToken(int userId, string tokenHash, DateTime expiresAt)
+        [Column("is_used")]
+        public bool IsUsed { get; set; }
+
+        [Column("created_at", ignoreOnInsert: true, ignoreOnUpdate: true)]
+        public DateTime? CreatedAt { get; set; }
+
+        // Helper method to check if token is expired
+        public bool IsExpired()
         {
-            this.userId = userId;
-            this.tokenHash = tokenHash;
-            ExpiresAt = expiresAt;
+            return DateTime.UtcNow > ExpiresAt;
         }
 
-        // ---------- Methods ----------
+        // Helper method to check if token is valid (not expired and not used)
+        public bool IsValid()
+        {
+            return !IsExpired() && !IsUsed;
+        }
+
+        // Mark token as used
+        public void MarkAsUsed()
+        {
+            IsUsed = true;
+        }
+
+        // Legacy methods for backward compatibility
         public void MarkUsed()
         {
-            // In a real system, you’d flag the token as consumed
-            Console.WriteLine("Password reset token marked as used.");
+            MarkAsUsed();
         }
 
         public void Revoke()
         {
             // Invalidate immediately by expiring now
-            ExpiresAt = DateTime.Now;
-            Console.WriteLine("Password reset token revoked.");
+            ExpiresAt = DateTime.UtcNow;
         }
 
         public TimeSpan RemainingTime()
         {
-            return ExpiresAt - DateTime.Now;
+            return ExpiresAt - DateTime.UtcNow;
         }
     }
 }
