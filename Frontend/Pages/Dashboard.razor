@@ -178,11 +178,6 @@
     </section>
 </main>
 
-<!-- Clara floating bubble (kept as-is) -->
-<button class="clara-fab" title="Ask Clara" aria-label="Ask Clara" @onclick='() => NavigationManager.NavigateTo("/messages")'>
-    <img src="/svgs/glitter-2-svgrepo-com.svg" alt="" aria-hidden="true" />
-</button>
-
 @* ===== New Event Modal (Moodle-style) ===== *@
 @if (ShowNewEvent)
 {
@@ -1052,36 +1047,6 @@
         font-weight: 500;
         color: var(--ink);
     }
-
-    /* Clara floating bubble */
-    .clara-fab {
-        position: fixed;
-        right: 20px;
-        bottom: 20px;
-        z-index: 70;
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
-        border: 1px solid var(--panel-ring);
-        background: #FFFFFF;
-        display: grid;
-        place-items: center;
-        box-shadow: 0 10px 24px rgba(0,0,0,.12);
-        cursor: pointer;
-        transition: transform .15s ease, filter .15s ease, box-shadow .15s ease
-    }
-
-        .clara-fab img {
-            width: 26px;
-            height: 26px;
-            display: block
-        }
-
-        .clara-fab:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.06);
-            box-shadow: 0 14px 32px rgba(0,0,0,.16)
-        }
 
     /* responsive */
     @@media (max-width:980px) {
